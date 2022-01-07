@@ -1,0 +1,35 @@
+Colin O'Rourke
+csorourk@ucsc.edu
+CMPM 121 Assignment Final
+
+This is a brief write up of the final build I am turning in of my First-Person Spell Caster.
+For more depth, go look at the original ReadMe.txt also in this folder.
+This is still entirely intended as a systems prototype.
+
+---------Controls----------
+    Mouse to look around.
+    Left-click to target enemy close/in reticle
+    WASD/Arrow keys to move.
+    Space to Jump
+    1,2,3 to cast spells in the 1st/2nd/3rd slot (left to right)
+
+---------Spells----------
+    BurnAura - Ticks for 1 damage every second. Emits orange particles while target is burned. Denoted by Red Square icon
+
+    FireSpellA - Costs 5 mana, takes 1 second to cast. Shoots a small fireball projectile that deals 2 damage to a target, and emits a particle burst on hit.
+    FireSpellB - Costs 8 mana, takes 2 seconds to cast. Instantly applies a 5 second burn to the target. If Target is already burnt, applies a 15 second burn instead.
+    FireSpellC - Costs 14 mana, is cast instantly. Immediately Deals 5 damage to target & applies a 5 second burn.
+    FireSpellD - Costs 15 mana, takes 2 second to cast. Shoots a small fireball projectile that deals 8 damage to target. Refunds 10 mana (& plays a particle burst) if target has Burn aura.
+    FireSpellE - Costs 8 mana, is cast instantly. Immediately deals 5 damage to target. If target has a burn aura, removes the burn and deals extra damage equal to double what the burn would have done.
+    FireSpellF - Costs 5 mana, takes 2 seconds to cast. Shoots a small fireball projectile that deals 2 damage to a target. If it is cast from the players left-most spell position, adds a powerful spellG to the deck. (Also plays a particle effect on player on success)
+
+    FireSpellG - Not normally in deck - costs 5 mana, takes 5 seconds to cast. Shoots a small fireball projectile that deals 20 damage to a target, and emits a particle burst on hit. Exhausts, so it does not return to queue after being cast.
+
+---------Changelog from First Turn In-------------
+    Fixed several targeting and system errors.
+    Enemies will now 'die' and destroy the game object when health goes below 0
+    Added a reticle, and revamped targeting. You now left-click to target the enemy you're looking at (close to reticle)
+        If no enemy in reticle, target is cancelled. If same enemy as already targeted in reticle, target is canceled.
+    Added Walls
+    Lowered Mouse Sensitivity.
+    Tweaked mid-air movement.

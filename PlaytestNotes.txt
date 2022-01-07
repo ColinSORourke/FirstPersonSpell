@@ -1,0 +1,33 @@
+Playtested by: Alex Basinski 12/8
+Feedback:
+* Targeting system is inelegant & f button is a poor mapping for that.
+* Encountered several targeting errors
+* Mouse Sensitivity too high
+* Understanding what spells did was a little tough.
+
+Playtested by: Andrew Bagger 12/8
+Feedback:
+* Mouse Sensitivity too high.
+* Kept forgetting to hit f to select target.
+* Encountered several targeting errors.
+* UI was good at communicating some things, not so much others.
+
+Playtested by: Ben Tingley 12/5
+Feedback:
+* Mouse Sensitivity too high
+* Everything felt intuitive except targeting.
+* Cycling targets is clunky, a point & lock-on system could be better
+* It would be cool if there was some sort of ultimate ability as well.
+
+Playtested by Eric Huang 12/6
+Feedback:
+* Mouse Sensitivity too high
+* Upset target dummies don't actually die.
+* Walked off edge of map.
+
+Deciding Prototype:
+I apparently dramatically misunderstood the assignment, and thought we decided which prototype to develop after receiving feedback on the pitches. Oops!
+I at least originally picked this one because I wanted to prototype the core systems to pitch for CMPM 171.
+For this turn in, I'm only making one major change which is a re-vamp of the targeting system. 
+I intend in the future to add a system for ultimate abilities, but didn't want to implement that before getting feedback from my potential team members in 171.
+
