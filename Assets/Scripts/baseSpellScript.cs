@@ -8,28 +8,27 @@ public class baseSpellScript : ScriptableObject
     public int id;
     public float manaCost;
     public float castTime;
+
     public bool isProjectile;
     public float projSpeed;
     public GameObject projObj;
-    public float damage;
-    public Sprite icon;
-    public bool reqTarget;
 
+    public float damage;
+    public float ultCost;
+    public bool reqTarget;
     public bool exhaust;
     public baseAuraScript aura_A;
     public baseAuraScript aura_B;
     public baseSpellScript token;
 
+    public Sprite icon;
     public ParticleSystem castParticle;
     public ParticleSystem hitParticle;    
 
     public virtual void onCastGeneral(Transform Player, Transform Target, int slot){
-        Mana pMana = (Mana) Player.GetComponent<Mana>();
-        pMana.changeMana(this.manaCost * -1);
         if (castParticle != null){
             Instantiate(castParticle, Player);
         }
-
         this.onCastSpecific(Player, Target, slot);
 
         if (isProjectile){

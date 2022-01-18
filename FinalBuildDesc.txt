@@ -17,10 +17,15 @@ This is still entirely intended as a systems prototype.
     BurnAura - Ticks for 1 damage every second. Emits orange particles while target is burned. Denoted by Red Square icon
 
     FireSpellA - Costs 5 mana, takes 1 second to cast. Shoots a small fireball projectile that deals 2 damage to a target, and emits a particle burst on hit.
+
     FireSpellB - Costs 8 mana, takes 2 seconds to cast. Instantly applies a 5 second burn to the target. If Target is already burnt, applies a 15 second burn instead.
+
     FireSpellC - Costs 14 mana, is cast instantly. Immediately Deals 5 damage to target & applies a 5 second burn.
+
     FireSpellD - Costs 15 mana, takes 2 second to cast. Shoots a small fireball projectile that deals 8 damage to target. Refunds 10 mana (& plays a particle burst) if target has Burn aura.
+
     FireSpellE - Costs 8 mana, is cast instantly. Immediately deals 5 damage to target. If target has a burn aura, removes the burn and deals extra damage equal to double what the burn would have done.
+
     FireSpellF - Costs 5 mana, takes 2 seconds to cast. Shoots a small fireball projectile that deals 2 damage to a target. If it is cast from the players left-most spell position, adds a powerful spellG to the deck. (Also plays a particle effect on player on success)
 
     FireSpellG - Not normally in deck - costs 5 mana, takes 5 seconds to cast. Shoots a small fireball projectile that deals 20 damage to a target, and emits a particle burst on hit. Exhausts, so it does not return to queue after being cast.

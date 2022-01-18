@@ -10,8 +10,8 @@ public class Health : MonoBehaviour
     public float currentBonus = 20.0f;
 
     public List<liveAura> auras = new List<liveAura>();
-    List<Image> auraIcons = new List<Image>();
 
+    List<Image> auraIcons = new List<Image>();
     Image HealthBar;
     Image BonusBar;
     Image TargetMark;
