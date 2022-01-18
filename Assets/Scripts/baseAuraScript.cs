@@ -36,12 +36,19 @@ public class baseAuraScript : ScriptableObject
 }
 
 public class liveAura {
+    [SerializeField]
     public baseAuraScript aura;
+
     public Transform on;
+    [SerializeField]
     public Transform src;
+    [SerializeField]
     public int stacks;
+    [SerializeField]
     public float duration;
+    [SerializeField]
     public float tickTime;
+    [SerializeField]
     public int tickNum;
 
     ParticleSystem activeParticle;

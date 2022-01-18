@@ -62,11 +62,10 @@ public class GenericUI : MonoBehaviour
 
             j += 1;
         }
-
-        spellIcons[3] = this.addIcon(icon, 3);
+        this.addIcon(icon, 3);
     }
 
-    public virtual Image addIcon(Sprite icon, int slot){
+    public virtual void addIcon(Sprite icon, int slot){
         GameObject imgObject = new GameObject("Spell" + slot); 
         //Create the GameObject
         Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
@@ -81,7 +80,7 @@ public class GenericUI : MonoBehaviour
             imgtrans.sizeDelta = new Vector2(40, 40);
         }
         imgObject.SetActive(true);
-        return NewImage;
+        spellIcons[slot] = NewImage;
     }
 
     public virtual void displayShield(){

@@ -19,11 +19,13 @@ MonoBehaviour:
   projSpeed: 0.2
   projObj: {fileID: 6923778780920329287, guid: 15525b4d54a514236bf55ba3b1c5f8cc, type: 3}
   damage: 2
-  icon: {fileID: 21300000, guid: e7fe540e5e75a4025870fe34729fbb65, type: 3}
+  ultCost: 0
+  range: 1000
   reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 0}
   aura_B: {fileID: 0}
   token: {fileID: 0}
+  icon: {fileID: 21300000, guid: e7fe540e5e75a4025870fe34729fbb65, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 8962791607997238272, guid: eea94a6fb9e8541cf8cc521678144514, type: 3}

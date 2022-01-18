@@ -10,8 +10,8 @@ public class PlayerAbilities : MonoBehaviour
 
     baseSpellScript castingSpell;
     int castingSpellSlot;
-    float castTime = -1.0f;
-    float totalCastTime;
+    public float castTime = -1.0f;
+    public float totalCastTime;
 
     PlayerStateScript myState;
 
@@ -60,9 +60,10 @@ public class PlayerAbilities : MonoBehaviour
         if (castTime != -1.0f){
             castTime += Time.deltaTime;
             if (castTime >= totalCastTime){
+                Debug.Log("finished casting");
                 myState.castSpell(castingSpellSlot);
-                castingSpell.onCastGeneral(transform, Targets[currTarget].transform, castingSpellSlot);
                 castTime = -1.0f;
+                castingSpell.onCastGeneral(transform, Targets[currTarget].transform, castingSpellSlot);
                 myUI.updateCast(0);
             } else {
                 myUI.updateCast(castTime/totalCastTime);

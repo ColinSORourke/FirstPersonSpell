@@ -34,8 +34,7 @@ public class TargetUI : GenericUI
         // DO NOTHING
     }
 
-    override public Image addIcon(Sprite icon, int slot){
+    override public void addIcon(Sprite icon, int slot){
         // DO NOTHING
-        return null;
     }
 }

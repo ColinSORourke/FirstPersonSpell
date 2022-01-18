@@ -157,8 +157,10 @@ public class PlayerStateScript : MonoBehaviour
         return (shieldDur > 0.0f);
     }
 
-    public void takeDamage(float dam){
-        dam *= takeDamageMult;
+    public void takeDamage(float dam, bool mult = true){
+        if (mult){
+            dam *= takeDamageMult;
+        }
         if (dam > currentBonus){
             dam -= currentBonus;
             currentBonus = 0;

@@ -10,8 +10,8 @@ public class BurnAura : baseAuraScript
     }
 
     override public void onTick(Transform Player, Transform Target, int stack, int tickNum){
-        Health tHP = (Health) Target.GetComponent<Health>();
-        tHP.takeDamage(damage);
+        PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
+        tHP.takeDamage(damage, false);
         Debug.Log("Burn ticked");
     }
 
