@@ -64,6 +64,7 @@ public class PlayerStateScript : MonoBehaviour
         }
 
         InvokeRepeating("tick", 0.0f, 0.25f);
+        myUI.updateUlt(0.0f);
     }
 
     // Update is called once per frame
@@ -132,6 +133,7 @@ public class PlayerStateScript : MonoBehaviour
             toApply.tickNum = 0;
             toApply.onApply();
             auras.Add(toApply);
+            Debug.Log(auras);
             myUI.addAura(aura.icon, aura.id, 1);
         }
     }

@@ -102,9 +102,13 @@ public class PlayerAbilities : MonoBehaviour
             this.cast(2, valid);
         }
 
-        if (Input.GetKeyUp("f")){
-            myState.shieldDur = myState.shieldTime;
-            myUI.displayShield();
+        if (Input.GetKeyUp(KeyCode.F)){
+            Debug.Log("Pressed F");
+            if (myState.currShields> 0){
+                myState.shieldDur = myState.shieldTime;
+                myState.currShields -= 1;
+                myUI.displayShield();
+            }
         }
     }
 

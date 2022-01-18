@@ -29,7 +29,9 @@ public class ProjectileBehavior : MonoBehaviour
             Transform Hit = collider.GetComponent<Transform>().parent;
             if (Hit == Target){
                 GameObject.Destroy(this.gameObject);
-                spell.onHit(Source, Target, slot);
+                if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
+                    spell.onHit(Source, Target, slot);
+                }
             }
         }
         

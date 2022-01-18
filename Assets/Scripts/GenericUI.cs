@@ -91,7 +91,7 @@ public class GenericUI : MonoBehaviour
         Shield.enabled = false;
     }
 
-    public virtual Image addAura(Sprite icon, int id, int count){
+    public virtual void addAura(Sprite icon, int id, int count){
         GameObject imgObject = new GameObject("Aura" + id); 
         //Create the GameObject
         Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
@@ -103,7 +103,7 @@ public class GenericUI : MonoBehaviour
         imgtrans.localPosition = new Vector3(-1 + (0.5f * count),0,0);
         imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
         imgObject.SetActive(true);
-        return NewImage;
+        auraIcons.Add(NewImage);
     }
 
     public virtual void removeAura(int i){

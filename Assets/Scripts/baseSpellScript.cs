@@ -44,7 +44,9 @@ public class baseSpellScript : ScriptableObject
             flyScript.Source = Player;
             flyScript.slot = slot;
         } else {
-            this.onHit(Player, Target, slot);
+            if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
+                this.onHit(Player, Target, slot);
+            }
         }
     }
 

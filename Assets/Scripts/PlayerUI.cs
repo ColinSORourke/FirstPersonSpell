@@ -16,6 +16,7 @@ public class PlayerUI : GenericUI
         CastBar = UITrans.Find("CastBar").GetComponent<Image>();
         UltBar = UITrans.Find("Ultimate").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
+        Shield.enabled = false;
     }
 
     override public void displayShield(){
@@ -23,7 +24,7 @@ public class PlayerUI : GenericUI
     }
 
     // Will have to change the positions & sizes for the player UI
-    override public Image addAura(Sprite icon, int id, int count){
+    override public void addAura(Sprite icon, int id, int count){
         GameObject imgObject = new GameObject("Aura" + id); 
         //Create the GameObject
         Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
@@ -35,7 +36,7 @@ public class PlayerUI : GenericUI
         imgtrans.localPosition = new Vector3(-1 + (0.5f * count),0,0);
         imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
         imgObject.SetActive(true);
-        return NewImage;
+        auraIcons.Add(NewImage);
     }
 
     // Will have to change the positions

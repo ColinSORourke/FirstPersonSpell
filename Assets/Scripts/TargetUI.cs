@@ -16,6 +16,7 @@ public class TargetUI : GenericUI
         UltBar = UITrans.Find("UltBar").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
         TargetMark = UITrans.Find("TargetMarker").GetComponent<Image>();
+        Shield.enabled = false;
 
         cameraToLookAt = Camera.main;
     }
