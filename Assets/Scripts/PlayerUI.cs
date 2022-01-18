@@ -33,8 +33,8 @@ public class PlayerUI : GenericUI
         var imgtrans = imgObject.GetComponent<RectTransform>();
         imgtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
         imgtrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        imgtrans.localPosition = new Vector3(-1 + (0.5f * count),0,0);
-        imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
+        imgtrans.localPosition = new Vector3(-1 + (120.0f * count),0,0);
+        imgtrans.sizeDelta = new Vector2(100.0f, 100.0f);
         imgObject.SetActive(true);
         auraIcons.Add(NewImage);
     }

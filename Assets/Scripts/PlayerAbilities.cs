@@ -63,7 +63,11 @@ public class PlayerAbilities : MonoBehaviour
                 Debug.Log("finished casting");
                 myState.castSpell(castingSpellSlot);
                 castTime = -1.0f;
-                castingSpell.onCastGeneral(transform, Targets[currTarget].transform, castingSpellSlot);
+                Transform myTar = null;
+                if (castingSpell.reqTarget){
+                    myTar = Targets[currTarget].transform;
+                }
+                castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
                 myUI.updateCast(0);
             } else {
                 myUI.updateCast(castTime/totalCastTime);
@@ -121,7 +125,11 @@ public class PlayerAbilities : MonoBehaviour
             castingSpellSlot = slot;
         } else {
             myState.castSpell(slot);
-            spell.onCastGeneral(transform, Targets[currTarget].transform, slot);
+            Transform myTar = null;
+            if (spell.reqTarget){
+                myTar = Targets[currTarget].transform;
+            }
+            spell.onCastGeneral(transform, myTar, slot);
         }
     }
 
