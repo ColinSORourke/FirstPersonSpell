@@ -15,6 +15,7 @@ public class baseSpellScript : ScriptableObject
 
     public float damage;
     public float ultCost;
+    public float range;
     public bool reqTarget;
     public bool exhaust;
     public baseAuraScript aura_A;

@@ -36,9 +36,13 @@ public class PlayerStateScript : MonoBehaviour
 
     public float moveSpeed = 12.0f;
 
+    GenericUI myUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        myUI = this.GetComponent<GenericUI>();
+
         int[] shuffleOrder = { 0,1,2,3,4,5,6 };
         int i = 6;
         while (i >= 1){
@@ -51,7 +55,11 @@ public class PlayerStateScript : MonoBehaviour
             i -= 1;
         }
         while (i < 7){
-            spellQueue.Add(spellDeck[ shuffleOrder[i] ]);
+            baseSpellScript added = spellDeck[ shuffleOrder[i] ];
+            spellQueue.Add(added);
+            if (i < 4){
+                myUI.addIcon(added.icon, i);
+            }
             i += 1;
         }
 
@@ -85,9 +93,12 @@ public class PlayerStateScript : MonoBehaviour
             shieldDur -= 0.25f;
             if (shieldDur == 0.0f){
                 shieldDur = -1.0f;
+                myUI.removeShield();
             }
         }
-        // Update Health, Mana, & Shield UI
+       
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
+        myUI.updateMana(currMana/maxMana);
 
         // Decay Auras
         int i = 0; 
@@ -121,14 +132,14 @@ public class PlayerStateScript : MonoBehaviour
             toApply.tickNum = 0;
             toApply.onApply();
             auras.Add(toApply);
-            // Update Auras UI
+            myUI.addAura(aura.icon, aura.id, 1);
         }
     }
 
     public void removeAura(int i){
         auras[i].onExpire();
         auras.RemoveAt(i);
-        // Update Auras UI
+        myUI.removeAura(i);
     }
 
     public int hasAura(int id){
@@ -158,7 +169,7 @@ public class PlayerStateScript : MonoBehaviour
             currentHealth -= dam;
         }
 
-        // Update Health UI
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
 
         if (currentHealth <= 0){
             // Trigger death
@@ -168,14 +179,14 @@ public class PlayerStateScript : MonoBehaviour
     public void changeMana(float value){
         currMana += value;
         currMana = Mathf.Clamp(currMana, 0, maxMana);
-        // Update Mana UI
+        myUI.updateMana(currMana/maxMana);
     }
 
     public void pickupManaCrystal(){
         currMana += 15.0f;
         currMana = Mathf.Clamp(currMana, 0, maxMana);
         manaPickedUp += 1;
-        // Update Mana UI
+        myUI.updateMana(currMana/maxMana);
     }
 
     public void pickupUltCrystal(){
@@ -184,17 +195,17 @@ public class PlayerStateScript : MonoBehaviour
             currUlt -= ultSpell.ultCost;
             spellQueue.Add(ultSpell);
         }
-        // Update Spell UI
+        myUI.updateUlt(currUlt/ultSpell.ultCost);
     }
 
     public void pickupHealthCrystal(){
         currentBonus += 15.0f;
         currentBonus = Mathf.Clamp(currentBonus, 0, maxHealth);
-        // Update Health UI
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
-    public float validCast(int slot, bool Target){
-        if (Target || !spellQueue[slot].reqTarget){
+    public float validCast(int slot, bool Target, float distance){
+        if ((Target && distance < spellQueue[slot].range) || !spellQueue[slot].reqTarget){
             if (spellQueue[slot].manaCost * manaCostMult <= currMana){
                 return spellQueue[slot].castTime * castTimeMult;
             } else {
@@ -203,7 +214,6 @@ public class PlayerStateScript : MonoBehaviour
         } else {
             return -1.0f;
         }
-        
     }
 
     public void castSpell(int slot){
@@ -215,6 +225,8 @@ public class PlayerStateScript : MonoBehaviour
             spellQueue.Add(castSpell);
         }
         spellsCast += 1;
-        // Update Spell & Mana UI
+
+        myUI.updateMana(currMana/maxMana);
+        myUI.shiftSpells(slot, spellQueue[3].icon);
     }
 }

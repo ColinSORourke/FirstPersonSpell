@@ -15,9 +15,14 @@ public class PlayerAbilities : MonoBehaviour
 
     PlayerStateScript myState;
 
+    GenericUI myUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        myUI = this.GetComponent<GenericUI>();
+        myState = this.GetComponent<PlayerStateScript>();
+
         Targets = FindGameObjectsInLayer(7);
         visibleTargets = new List<bool>();
 
@@ -37,16 +42,16 @@ public class PlayerAbilities : MonoBehaviour
         foreach(GameObject tar in Targets){
             bool visible;
             if (i == currTarget){
-                visible = hasLOS(tar, true);
+                visible = hasLOS(tar);
             } else {
                 visible = hasLOS(tar);
             }
             
             visibleTargets[i] = visible;
             if (i == currTarget && !visible){
-                Targets[i].GetComponent<Health>().unTarget();
+                Targets[currTarget].GetComponent<GenericUI>().unTarget();
                 currTarget = -1;
-                // Update Casting UI
+                myUI.updateCast(0);
                 castTime = -1.0f;
             }
             i += 1;        
@@ -58,9 +63,9 @@ public class PlayerAbilities : MonoBehaviour
                 myState.castSpell(castingSpellSlot);
                 castingSpell.onCastGeneral(transform, Targets[currTarget].transform, castingSpellSlot);
                 castTime = -1.0f;
-                // Update Casting UI
+                myUI.updateCast(0);
             } else {
-                // Update Casting UI
+                myUI.updateCast(castTime/totalCastTime);
             }
         }
 
@@ -73,26 +78,32 @@ public class PlayerAbilities : MonoBehaviour
             newTarget();
         }
 
+        float valid;
+        float range = 0.0f;
         bool tar = currTarget != -1;
-        float valid = myState.validCast(0, tar);
+        if (tar){
+            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            
+        }
+        valid = myState.validCast(0, tar, range);
 
         if (Input.GetKeyUp("1") && valid != -1.0f ){
             this.cast(0, valid);
         }
         
-        valid = myState.validCast(1, tar);
+        valid = myState.validCast(1, tar, range);
         if (Input.GetKeyUp("2") && valid != -1.0f){
             this.cast(1, valid);
         }
 
-        valid = myState.validCast(2, tar);
+        valid = myState.validCast(2, tar, range);
         if (Input.GetKeyUp("3") && valid != -1.0f){
             this.cast(2, valid);
         }
 
         if (Input.GetKeyUp("f")){
             myState.shieldDur = myState.shieldTime;
-            // Update Shield UI
+            myUI.displayShield();
         }
     }
 
@@ -112,7 +123,7 @@ public class PlayerAbilities : MonoBehaviour
     void newTarget(){
         int oldTar = currTarget;
         if (oldTar != -1){
-            // Update Target UI
+            Targets[oldTar].GetComponent<GenericUI>().unTarget();
         }
 
         RaycastHit[] hits;
@@ -146,11 +157,10 @@ public class PlayerAbilities : MonoBehaviour
 
         if (currTarget == oldTar){
             currTarget = -1;
-            // Update Cast UI
+            myUI.updateCast(0);
             castTime = -1.0f;
-            // Update Target UI
         } else {
-            // Update Target UI
+            Targets[currTarget].GetComponent<GenericUI>().target();
         }
     }
 
