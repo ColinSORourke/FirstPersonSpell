@@ -88,7 +88,6 @@ public class PlayerAbilities : MonoBehaviour
         bool tar = currTarget != -1;
         if (tar){
             range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
-            
         }
         valid = myState.validCast(0, tar, range);
 
@@ -214,10 +213,6 @@ public class PlayerAbilities : MonoBehaviour
             {
                 goList.Add(goArray[i]);
             }
-        }
-        if (goList.Count == 0)
-        {
-            return null;
         }
         return goList;
     }

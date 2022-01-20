@@ -36,7 +36,7 @@ public class PlayerStateScript : MonoBehaviour
 
     public float moveSpeed = 12.0f;
 
-    GenericUI myUI;
+    public GenericUI myUI;
 
     // Start is called before the first frame update
     void Start()
