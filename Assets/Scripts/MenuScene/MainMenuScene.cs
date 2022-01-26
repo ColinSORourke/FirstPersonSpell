@@ -8,6 +8,8 @@ using UnityEditor;
 public class MainMenuScene : MonoBehaviour
 {
     public Canvas mainCanvas;
+    public Transform mainCamera;
+    public float cameraRotationSpeed;
 
     void Start()
     {
@@ -27,13 +29,20 @@ public class MainMenuScene : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public void rotateCamera(float degree, bool dir)
+    {
+        mainCamera.Rotate(Vector3.forward * this.cameraRotationSpeed * (dir ? 1 : -1) * Time.deltaTime);
+    }
+
     public void quitGame()
     {
+        Application.Quit();
+        /*
         #if UNITY_EDITOR
-                EditorApplication.ExitPlaymode();
+            EditorApplication.ExitPlaymode();
         #else
                 Application.Quit();
         #endif
-        
+        */
     }
 }
