@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class MainMenuScene : MonoBehaviour
 {
@@ -28,7 +29,11 @@ public class MainMenuScene : MonoBehaviour
 
     public void quitGame()
     {
-        Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; //Only applies to editor, remove before publish if needed
+        #if UNITY_EDITOR
+                EditorApplication.ExitPlaymode();
+        #else
+                Application.Quit();
+        #endif
+        
     }
 }
