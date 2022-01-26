@@ -14,11 +14,11 @@ public class BurnManaSpell : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-        Health tHP = (Health) Target.GetComponent<Health>();
-        Mana pMana = Player.GetComponent<Mana>();
-        tHP.takeDamage(this.damage);
-        if (tHP.hasAura(aura_A.id) != -1){
-            pMana.changeMana(10.0f);
+        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
+        target.takeDamage(this.damage);
+        if (target.hasAura(aura_A.id) != -1){
+            target.changeMana(10.0f);
+            //pMana.changeMana(10.0f);
             if (hitParticle != null){
                 var particleBurst = Instantiate(hitParticle, Target);
                 particleBurst.Emit(20);

@@ -17,6 +17,7 @@ MonoBehaviour:
   castTime: 2
   isProjectile: 1
   projSpeed: 0.2
+  projLifespan: 1.0
   projObj: {fileID: 6923778780920329287, guid: 15525b4d54a514236bf55ba3b1c5f8cc, type: 3}
   damage: 2
   ultCost: 0

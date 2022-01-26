@@ -14,9 +14,10 @@ public class TokenGenerator : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-        Health tHP = (Health) Target.GetComponent<Health>();
-        Targeting targeter = Player.GetComponent<Targeting>();
-        tHP.takeDamage(this.damage);
+        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
+        PlayerStateScript targeter = Player.GetComponent<PlayerStateScript>();
+        //Targeting targeter = Player.GetComponent<Targeting>();
+        target.takeDamage(this.damage);
         Debug.Log("Hit Basic Fire Spell");
         Debug.Log(targeter);
         if (slot == 0){
@@ -24,6 +25,7 @@ public class TokenGenerator : baseSpellScript
             if (hitParticle != null){
                 var particleBurst = Instantiate(hitParticle, Player);
                 particleBurst.Emit(10);
+                Debug.Log("Emitted");
             }
         }
         

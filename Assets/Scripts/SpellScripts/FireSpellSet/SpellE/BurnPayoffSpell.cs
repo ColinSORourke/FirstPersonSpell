@@ -14,14 +14,14 @@ public class BurnPayoffSpell : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-        Health tHP = (Health) Target.GetComponent<Health>();
+        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         float extraDamage = 0.0f;
-        int burnInd = tHP.hasAura(aura_A.id);
+        int burnInd = target.hasAura(aura_A.id);
         if (burnInd != -1){
-            extraDamage = tHP.auras[burnInd].duration * 2;
-            tHP.removeAura(burnInd);
+            extraDamage = target.auras[burnInd].duration * 2;
+            target.removeAura(burnInd);
         }
-        tHP.takeDamage(this.damage + extraDamage);
+        target.takeDamage(this.damage + extraDamage);
         Debug.Log("Hit Burn Consume Spell");
     }
 }

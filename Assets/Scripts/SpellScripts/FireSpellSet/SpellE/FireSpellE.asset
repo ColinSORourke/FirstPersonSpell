@@ -17,6 +17,7 @@ MonoBehaviour:
   castTime: 0
   isProjectile: 0
   projSpeed: 0
+  projLifespan: 0
   projObj: {fileID: 0}
   damage: 5
   ultCost: 0

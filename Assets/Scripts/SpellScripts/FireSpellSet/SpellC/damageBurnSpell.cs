@@ -14,9 +14,9 @@ public class damageBurnSpell : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-        Health tHP = (Health) Target.GetComponent<Health>();
-        tHP.takeDamage(damage);
-        tHP.applyAura(Player, aura_A, 5.0f);
+        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
+        target.takeDamage(damage);
+        target.applyAura(Player, aura_A, 5.0f);
         
         if (hitParticle != null){
             Instantiate(hitParticle, Target);
