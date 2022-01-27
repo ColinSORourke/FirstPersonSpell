@@ -59,16 +59,30 @@ public class PlayerAbilities : MonoBehaviour
 
         if (castTime != -1.0f){
             castTime += Time.deltaTime;
+
+            float valid;
+            float range = 0.0f;
+            bool tar = currTarget != -1;
+            if (tar){
+                range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            }
+            valid = myState.validCast(castingSpellSlot, tar, range);
             if (castTime >= totalCastTime){
-                Debug.Log("finished casting");
-                myState.castSpell(castingSpellSlot);
-                castTime = -1.0f;
-                Transform myTar = null;
-                if (castingSpell.reqTarget){
-                    myTar = Targets[currTarget].transform;
+                if (valid != -1.0f){
+                    Debug.Log("finished casting");
+                    myState.castSpell(castingSpellSlot);
+                    castTime = -1.0f;
+                    Transform myTar = null;
+                    if (castingSpell.reqTarget){
+                        myTar = Targets[currTarget].transform;
+                    }
+                    castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
+                    myUI.updateCast(0);
+                } else {
+                    castTime = -1.0f;
+                    myUI.updateCast(0);
                 }
-                castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
-                myUI.updateCast(0);
+                
             } else {
                 myUI.updateCast(castTime/totalCastTime);
             }
