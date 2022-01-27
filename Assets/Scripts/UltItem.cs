@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaCrystal : MonoBehaviour
+public class UltItem : MonoBehaviour
 {
     public float bounce = 0.0f;
     public float baseY;
@@ -24,11 +24,12 @@ public class ManaCrystal : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        Mana Player = (Mana) collider.GetComponent<Mana>();
+        PlayerStateScript Player = collider.GetComponent<PlayerStateScript>();
         if (Player != null){
             GameObject.Destroy(this.gameObject);
-            Player.changeMana(10.0f);
-            this.transform.parent.parent.GetComponent<CrystalSpawning>().crystalDestroyed();
+            Player.pickupUltCrystal();
+            this.transform.parent.parent.GetComponent<ItemSpawner>().itemDestroyed();
         }
     }
 }
+

@@ -1338,7 +1338,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17894
+  m_Name: pb_Mesh21668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1595,7 +1595,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17808
+  m_Name: pb_Mesh21582
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1816,7 +1816,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18114
+  m_Name: pb_Mesh21888
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4091,13 +4091,13 @@ MonoBehaviour:
   shieldDur: -1
   spellDeck:
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
-  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
-  - {fileID: 11400000, guid: 6315e5d8d600043f29409e4ea784be45, type: 2}
-  - {fileID: 11400000, guid: e37ed8f24c91941139f0ed2e195ee495, type: 2}
-  - {fileID: 11400000, guid: 763843b2f1f7049698daa0b7a7d6253e, type: 2}
-  - {fileID: 11400000, guid: 204c0fbc9ac0046de98ad005801a718a, type: 2}
-  ultSpell: {fileID: 0}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  ultSpell: {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
   spellQueue: []
   spellsCast: 0
   manaPickedUp: 0
@@ -4105,6 +4105,7 @@ MonoBehaviour:
   manaCostMult: 1
   castTimeMult: 1
   moveSpeed: 12
+  myUI: {fileID: 0}
 --- !u!1 &1128478384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,9 +4561,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b722beb89b41d4e90bd477c402a5c2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalPrefab: {fileID: 8429278938932299544, guid: 87fa6f0be55d446b883facf22c025adb, type: 3}
-  maxCrystals: 3
-  crystals: []
+  itemPrefabs:
+  - {fileID: 5303516435620904740, guid: d1403f434c5fd44ecb6e4fa92843eb26, type: 3}
+  - {fileID: 2679792689890536955, guid: 4a5bf26e633a84cb6af928ed31e96f71, type: 3}
+  - {fileID: 2925257334817670345, guid: 0627b67bfdf1a454caf99ec1c90e0392, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxItems: 3
+  items: []
 --- !u!1 &1546195718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5564,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18076
+  m_Name: pb_Mesh21850
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7412,7 +7418,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18064
+  m_Name: pb_Mesh21838
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

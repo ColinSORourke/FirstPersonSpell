@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalSpawning : MonoBehaviour
+public class ItemSpawner : MonoBehaviour
 {
-    public GameObject crystalPrefab;
-    public int maxCrystals = 3;
-    int currCrystals = 0;
+    public GameObject[] itemPrefabs = new GameObject[5];
+    public int maxItems = 3;
+    int currItems = 0;
     Vector3[] spawnPoints;
-    public GameObject[] crystals;
+    public GameObject[] items;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,7 @@ public class CrystalSpawning : MonoBehaviour
         Transform crysParent = transform.GetChild(1);
         int number = spawnParent.childCount;
         spawnPoints = new Vector3[number];
-        crystals = new GameObject[number];
+        items = new GameObject[number];
         int i = 0;
         while (i < number){
             Vector3 pos = spawnParent.GetChild(i).position;
@@ -28,7 +28,7 @@ public class CrystalSpawning : MonoBehaviour
             i += 1;
         }
 
-        InvokeRepeating("spawnCrystal", 10.0f, 10.0f);
+        InvokeRepeating("spawnItem", 10.0f, 10.0f);
         
     }
 
@@ -38,20 +38,21 @@ public class CrystalSpawning : MonoBehaviour
         
     }
 
-    void spawnCrystal(){
+    void spawnItem(){
+        GameObject toSpawn = itemPrefabs[Random.Range(0, 3)];
         Transform crysParent = transform.GetChild(1);
-        if (currCrystals < maxCrystals){
+        if (currItems < maxItems){
             int i = Random.Range(0, spawnPoints.Length);
-            while (crystals[i] != null){
+            while (items[i] != null){
                 i = Random.Range(0, spawnPoints.Length);
             }
-            crystals[i] = Instantiate(crystalPrefab, spawnPoints[i], Quaternion.identity);
-            crystals[i].transform.parent = crysParent;
-            currCrystals += 1;
+            items[i] = Instantiate(toSpawn, spawnPoints[i], Quaternion.identity);
+            items[i].transform.parent = crysParent;
+            currItems += 1;
         }
     }
 
-    public void crystalDestroyed(){
-        currCrystals -= 1;
+    public void itemDestroyed(){
+        currItems -= 1;
     }
 }

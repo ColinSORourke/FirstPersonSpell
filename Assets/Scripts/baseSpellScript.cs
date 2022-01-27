@@ -65,8 +65,6 @@ public class baseSpellScript : ScriptableObject
     }
 
     public virtual void onHit(Transform Player, Transform Target, int slot){
-        Health tHP = (Health) Target.GetComponent<Health>();
-        tHP.takeDamage(this.damage);
         Debug.Log("Hit a basic spell");
         if (hitParticle != null){
             Instantiate(hitParticle, Target);
