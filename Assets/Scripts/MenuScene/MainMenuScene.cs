@@ -8,8 +8,11 @@ using UnityEditor;
 public class MainMenuScene : MonoBehaviour
 {
     public Canvas mainCanvas;
-    public Transform mainCamera;
+    public GameObject mainCamera;
     public float cameraRotationSpeed;
+    public Vector2 angles; //angles.x is min, angles.y is max
+
+    private bool isMenu = true;
 
     void Start()
     {
@@ -21,7 +24,12 @@ public class MainMenuScene : MonoBehaviour
 
     void Update()
     {
-        
+        if ((!isMenu && this.mainCamera.transform.eulerAngles.y <= angles.y) || 
+            (isMenu && this.mainCamera.transform.eulerAngles.y >= angles.x))
+        {
+            mainCamera.transform.Rotate(Vector3.up * this.cameraRotationSpeed * (isMenu ? -1 : 1) * Time.deltaTime, Space.World);
+        }
+            
     }
 
     public void loadLevel(string name)
@@ -29,9 +37,9 @@ public class MainMenuScene : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-    public void rotateCamera(float degree, bool dir)
+    public void rotateCamera()
     {
-        mainCamera.Rotate(Vector3.forward * this.cameraRotationSpeed * (dir ? 1 : -1) * Time.deltaTime);
+        this.isMenu = !this.isMenu;
     }
 
     public void quitGame()
