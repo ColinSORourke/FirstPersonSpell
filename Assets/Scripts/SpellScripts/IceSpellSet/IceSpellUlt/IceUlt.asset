@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea6b73e8250d433a8a5ce8b2dff019e, type: 3}
-  m_Name: FireSpellE
+  m_Script: {fileID: 11500000, guid: 1b8d9e89a1e3c2d4494497622bfd573f, type: 3}
+  m_Name: IceUlt
   m_EditorClassIdentifier: 
-  id: 105
-  manaCost: 8
-  castTime: 0
+  id: 208
+  manaCost: 0
+  castTime: 2
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
   projObj: {fileID: 0}
-  damage: 5
-  ultCost: 0
+  damage: 0
+  ultCost: 15
   range: 1000
   reqTarget: 1
   exhaust: 0
-  aura_A: {fileID: 11400000, guid: 2d48813b542ef410cb6fd1d8f895c718, type: 2}
+  aura_A: {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 21300000, guid: 052f4866223bf48c1a5a4d39df44f013, type: 3}
+  icon: {fileID: 21300000, guid: b798b5b884d1c4e23b901dda28d900c7, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84746b1353d5453ca52eeda7a59db0b, type: 3}
   m_Name: FireSpellB
   m_EditorClassIdentifier: 
-  id: 2
+  id: 102
   manaCost: 8
   castTime: 2
   isProjectile: 0

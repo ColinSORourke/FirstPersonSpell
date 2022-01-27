@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea6b73e8250d433a8a5ce8b2dff019e, type: 3}
-  m_Name: FireSpellE
+  m_Script: {fileID: 11500000, guid: d0a12b2096fe5774b956b7d338b5f67e, type: 3}
+  m_Name: IceSpellB
   m_EditorClassIdentifier: 
-  id: 105
-  manaCost: 8
-  castTime: 0
+  id: 202
+  manaCost: 20
+  castTime: 2
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
   projObj: {fileID: 0}
-  damage: 5
+  damage: 8
   ultCost: 0
   range: 1000
   reqTarget: 1
   exhaust: 0
-  aura_A: {fileID: 11400000, guid: 2d48813b542ef410cb6fd1d8f895c718, type: 2}
+  aura_A: {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 21300000, guid: 052f4866223bf48c1a5a4d39df44f013, type: 3}
+  icon: {fileID: 21300000, guid: dde82ea33afec4216ad0e09f3279f95e, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

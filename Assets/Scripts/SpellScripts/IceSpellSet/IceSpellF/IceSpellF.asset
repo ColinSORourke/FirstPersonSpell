@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6583db767401a4a88a896a302f36c8d0, type: 3}
-  m_Name: FireSpellF
+  m_Script: {fileID: 11500000, guid: 3bd5aa828b9b40c478f93f766e55accc, type: 3}
+  m_Name: IceSpellF
   m_EditorClassIdentifier: 
-  id: 106
-  manaCost: 5
-  castTime: 2
+  id: 206
+  manaCost: 10
+  castTime: 1
   isProjectile: 1
   projSpeed: 0.2
   projLifespan: 1
-  projObj: {fileID: 6923778780920329287, guid: 15525b4d54a514236bf55ba3b1c5f8cc, type: 3}
-  damage: 2
+  projObj: {fileID: 7645604505232120644, guid: 767e8bcb4f480d241a8b3b305320e4c1, type: 3}
+  damage: 3
   ultCost: 0
   range: 1000
   reqTarget: 1
   exhaust: 0
-  aura_A: {fileID: 0}
+  aura_A: {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
   aura_B: {fileID: 0}
-  token: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  token: {fileID: 0}
   icon: {fileID: 21300000, guid: a81397529b80d472b94b1b8aa485ea95, type: 3}
   castParticle: {fileID: 0}
-  hitParticle: {fileID: 8962791607997238272, guid: eea94a6fb9e8541cf8cc521678144514, type: 3}
+  hitParticle: {fileID: 0}

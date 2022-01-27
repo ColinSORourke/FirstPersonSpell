@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba233b93d4aa46fe8b2c2c0506af7d9, type: 3}
   m_Name: LargeFireSpell
   m_EditorClassIdentifier: 
-  id: 7
+  id: 107
   manaCost: 5
   castTime: 5
   isProjectile: 0

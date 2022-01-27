@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc22c06612a7a48829f5f869edc2b763, type: 3}
   m_Name: FireSpellC
   m_EditorClassIdentifier: 
-  id: 3
+  id: 103
   manaCost: 14
   castTime: 0
   isProjectile: 0
