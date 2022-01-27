@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43748972, g: 0.4853109, b: 0.56558526, a: 1}
+  m_IndirectSpecularColor: {r: 0.4374901, g: 0.48531127, b: 0.56558615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4097,7 +4097,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  ultSpell: {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
+  ultSpell: {fileID: 11400000, guid: a5c5176af7c4f874c8effbce08b3c442, type: 2}
   spellQueue: []
   spellsCast: 0
   manaPickedUp: 0
