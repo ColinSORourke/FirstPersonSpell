@@ -1397,7 +1397,7 @@ MonoBehaviour:
   mainCamera: {fileID: 232897241}
   cameraRotationSpeed: 60
   angles: {x: 1, y: 25}
-  cardDeck: {fileID: 111345692}
+  cardDeckDropdown: {fileID: 111345692}
 --- !u!4 &405067418
 Transform:
   m_ObjectHideFlags: 0

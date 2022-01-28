@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d03ac7e7b81032448e2711407cdb079, type: 3}
+  m_Name: FireDeck
+  m_EditorClassIdentifier: 
+  id: 902
+  spellDeck:
+  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
+  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
+  - {fileID: 11400000, guid: 6315e5d8d600043f29409e4ea784be45, type: 2}
+  - {fileID: 11400000, guid: e37ed8f24c91941139f0ed2e195ee495, type: 2}
+  - {fileID: 11400000, guid: 763843b2f1f7049698daa0b7a7d6253e, type: 2}
+  - {fileID: 11400000, guid: 204c0fbc9ac0046de98ad005801a718a, type: 2}
+  ultSpell: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}

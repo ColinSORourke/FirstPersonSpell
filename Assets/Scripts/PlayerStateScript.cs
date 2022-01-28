@@ -23,6 +23,7 @@ public class PlayerStateScript : MonoBehaviour
 
     public List<liveAura> auras = new List<liveAura>();
 
+    public static int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
     public baseSpellScript[] spellDeck = new baseSpellScript[7];
     public baseSpellScript ultSpell;
     public List<baseSpellScript> spellQueue = new List<baseSpellScript>();
@@ -38,10 +39,19 @@ public class PlayerStateScript : MonoBehaviour
 
     public GenericUI myUI;
 
+    private SelectDeck allDecks;
+
     // Start is called before the first frame update
     void Start()
     {
         myUI = this.GetComponent<GenericUI>();
+        allDecks = this.GetComponent<SelectDeck>();
+
+        //Create Card Deck
+        Debug.Log("Card Deck ID: " + playerCardDeckId);
+        spellDeck = allDecks.spellDecks[playerCardDeckId].getSpellDeck();
+        //Create Ult
+        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell();
 
         int[] shuffleOrder = { 0,1,2,3,4,5,6 };
         int i = 6;

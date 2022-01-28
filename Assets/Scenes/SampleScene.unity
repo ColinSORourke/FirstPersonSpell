@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43748972, g: 0.4853109, b: 0.56558526, a: 1}
+  m_IndirectSpecularColor: {r: 0.4374901, g: 0.48531127, b: 0.56558615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1974,6 +1974,25 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &786306821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8351938042615357958, guid: cdb800c5bc7934245b7e95f458fd8188, type: 3}
+  m_PrefabInstance: {fileID: 8351938043577506549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &786306822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786306821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755462f1497e0ad42b358ec75f22f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDecks:
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
 --- !u!1 &786496659
 GameObject:
   m_ObjectHideFlags: 0
@@ -3958,6 +3977,7 @@ GameObject:
   - component: {fileID: 1096731602}
   - component: {fileID: 1096731601}
   - component: {fileID: 1096731600}
+  - component: {fileID: 1096731603}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -4106,6 +4126,22 @@ MonoBehaviour:
   castTimeMult: 1
   moveSpeed: 12
   myUI: {fileID: 0}
+--- !u!114 &1096731603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096731596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755462f1497e0ad42b358ec75f22f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDecks:
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
+  - {fileID: 11400000, guid: e984a8fdc418cb6428149276a7d8846d, type: 2}
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
 --- !u!1 &1128478384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,6 +4552,44 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1311772601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8351938042615357958, guid: cdb800c5bc7934245b7e95f458fd8188, type: 3}
+  m_PrefabInstance: {fileID: 719406686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1311772602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311772601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755462f1497e0ad42b358ec75f22f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDecks:
+  - {fileID: 11400000, guid: e984a8fdc418cb6428149276a7d8846d, type: 2}
+--- !u!1 &1398657922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8351938042615357958, guid: cdb800c5bc7934245b7e95f458fd8188, type: 3}
+  m_PrefabInstance: {fileID: 406103568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1398657923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398657922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755462f1497e0ad42b358ec75f22f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDecks:
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
 --- !u!1 &1485985609
 GameObject:
   m_ObjectHideFlags: 0

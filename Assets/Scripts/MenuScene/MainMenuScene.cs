@@ -11,10 +11,9 @@ public class MainMenuScene : MonoBehaviour
     public GameObject mainCamera;
     public float cameraRotationSpeed;
     public Vector2 angles; //angles.x is min, angles.y is max
-    public Dropdown cardDeck;
+    public Dropdown cardDeckDropdown;
 
     private bool isMenu = true;
-
     void Start()
     {
         if (mainCanvas == null)
@@ -35,7 +34,8 @@ public class MainMenuScene : MonoBehaviour
 
     public void loadLevel(string name)
     {
-        Debug.Log(cardDeck.value + " - " + cardDeck.options[cardDeck.value].text);
+        Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
+        PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
         SceneManager.LoadScene(name);
     }
 
