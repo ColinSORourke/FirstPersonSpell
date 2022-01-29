@@ -25,20 +25,14 @@ public class ProjectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //if (timerRunning){
-            //Debug.Log("Timer running");
         if (lifespan > 0){
             lifespan -= Time.deltaTime;
         }
         else{
             Debug.Log("Spell expired");
             GameObject.Destroy(this.gameObject);
-            //timerRunning = false;
         }
-        //}
         
-
         Vector3 dir = Target.transform.position - this.gameObject.transform.position;
         dir.Normalize();
         transform.position += (dir * speed);

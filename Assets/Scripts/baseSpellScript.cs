@@ -44,10 +44,7 @@ public class baseSpellScript : ScriptableObject
             flyScript.speed = projSpeed;
             flyScript.Source = Player;
             flyScript.slot = slot;
-            //flyScript.timerRunning = true;
             flyScript.lifespan = projLifespan;
-            Debug.Log("this == ");
-            Debug.Log(this);
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){

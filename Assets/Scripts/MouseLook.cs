@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
 
     public float mouseSensitivity = 10.0f;
 
-    public float speed = 12.0f;
+    public float speed;
     public float jumpSpeed = 12.0f;
     public float gravity = 0.2f;
     public float terminalV = -16.0f;
@@ -39,7 +39,8 @@ public class MouseLook : MonoBehaviour
         grndCheck = this.gameObject.transform.GetChild(2);
         whole = this.GetComponent<Transform>();
         controller = this.GetComponent<CharacterController>();
-        
+        speed = this.GetComponent<PlayerStateScript>().moveSpeed;
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
