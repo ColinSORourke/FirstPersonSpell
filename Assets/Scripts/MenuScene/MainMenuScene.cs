@@ -14,7 +14,6 @@ public class MainMenuScene : MonoBehaviour
     public Vector2 angles; //angles.x is min, angles.y is max
     public Dropdown cardDeckDropdown;
 
-
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
     public Dropdown qualityDropdown;
@@ -23,6 +22,9 @@ public class MainMenuScene : MonoBehaviour
     public Slider volumeSlider;
     float currentVolume;
     Resolution[] resolutions;
+
+    public GameObject playerCharacter;
+    public GameObject[] characterModels;
 
     private bool isMenu = true;
     void Start()
@@ -144,4 +146,32 @@ public class MainMenuScene : MonoBehaviour
         else
             volumeSlider.value = 0.5f;
     }
+
+    public void selectCharacter(string newCharacter)
+    {
+        Material mat = playerCharacter.GetComponent<Renderer>().material;
+        Debug.Log("New Color/Model: " + newCharacter);
+        switch (newCharacter)
+        {
+            case "Red":
+                mat.SetColor("_Color", Color.red);
+                break;
+            case "Blue":
+                mat.SetColor("_Color", Color.blue);
+                break;
+            case "Green":
+                mat.SetColor("_Color", Color.green);
+                break;
+            case "Black":
+                mat.SetColor("_Color", Color.black);
+                break;
+            case "White":
+                mat.SetColor("_Color", Color.white);
+                break;
+            case "Gray":
+                mat.SetColor("_Color", Color.gray);
+                break;
+        }
+    }
+
 }
