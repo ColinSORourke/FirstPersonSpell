@@ -121,10 +121,17 @@ public class GenericUI : MonoBehaviour
         TargetMark.enabled = true;
     }
 
-    public virtual void updateRange(){
-        // TO BE IMPLEMENTED
-        // This should change the color of the target mark to reflect range
-        // Or Simply show the range number on the targetmark
+    public virtual void updateRange(float range){
+        if (range < 12.0){
+            TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
+        }
+        else if (range < 26.0){
+            TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
+        }
+        else{
+            TargetMark.GetComponent<Image>().color = new Color32(217,18,10,255);
+        }
+        
     }
 
     public virtual void unTarget(){

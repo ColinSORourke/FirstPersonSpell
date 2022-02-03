@@ -102,6 +102,7 @@ public class PlayerAbilities : MonoBehaviour
         bool tar = currTarget != -1;
         if (tar){
             range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
         }
         valid = myState.validCast(0, tar, range);
 

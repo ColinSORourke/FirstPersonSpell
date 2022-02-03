@@ -55,7 +55,7 @@ public class PlayerUI : GenericUI
         // THIS DOES NOTHING
     }
 
-    override public void updateRange(){
+    override public void updateRange(float range){
         // THIS DOES NOTHING
     }
 
