@@ -14,7 +14,6 @@ public class PlayerAbilities : MonoBehaviour
     public float totalCastTime;
 
     PlayerStateScript myState;
-
     GenericUI myUI;
 
     // Start is called before the first frame update
@@ -91,11 +90,13 @@ public class PlayerAbilities : MonoBehaviour
         parseInput();
     }
 
-    void parseInput()
+    public void parseInput()
     {
+        /*
         if (Input.GetKeyUp(KeyCode.Mouse0)){
             newTarget();
         }
+        */
 
         float valid;
         float range = 0.0f;
@@ -106,16 +107,20 @@ public class PlayerAbilities : MonoBehaviour
         }
         valid = myState.validCast(0, tar, range);
 
+        /*
         if (Input.GetKeyUp("1") && valid != -1.0f ){
             this.cast(0, valid);
         }
-        
+        */
         valid = myState.validCast(1, tar, range);
+        /*
         if (Input.GetKeyUp("2") && valid != -1.0f){
             this.cast(1, valid);
         }
-
+        */
         valid = myState.validCast(2, tar, range);
+
+        /*
         if (Input.GetKeyUp("3") && valid != -1.0f){
             this.cast(2, valid);
         }
@@ -128,9 +133,10 @@ public class PlayerAbilities : MonoBehaviour
                 myUI.displayShield();
             }
         }
+        */
     }
 
-    void cast(int slot, float Time){
+    public void cast(int slot, float Time){
         var spell = myState.spellQueue[slot];
         if (spell.castTime > 0){
             castTime = 0.0f;
@@ -147,7 +153,8 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-    void newTarget(){
+    public void newTarget(){
+        Debug.Log("New Target");
         int oldTar = currTarget;
         if (oldTar != -1){
             Targets[oldTar].GetComponent<GenericUI>().unTarget();
