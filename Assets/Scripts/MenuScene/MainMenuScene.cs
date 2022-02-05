@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 
 public class MainMenuScene : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class MainMenuScene : MonoBehaviour
     //public Dropdown textureDropdown;
     //public Dropdown aaDropdown;
     public Slider volumeSlider;
+    public Slider mouseSensitivitySlider;
     float currentVolume;
     Resolution[] resolutions;
 
@@ -27,6 +29,7 @@ public class MainMenuScene : MonoBehaviour
     public GameObject[] characterModels;
 
     public Text mouseSensitivityText;
+
     private bool isMenu = true;
     void Start()
     {
@@ -165,4 +168,26 @@ public class MainMenuScene : MonoBehaviour
         }
     }
     public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
+
+    public InputActionReference walkAction;
+    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
+    public void RemapButtonClicked(InputAction actionToRebind)
+    {
+        rebindingOperation = actionToRebind.PerformInteractiveRebinding()
+                    // To avoid accidental input from mouse motion
+                    .WithControlsExcluding("Mouse")
+                    .OnMatchWaitForAnother(0.1f)
+                    .OnComplete(operation => RebindComplete())
+                    .Start();
+    }
+    private void RebindComplete()
+    {
+        int bindingIndex = walkAction.action.GetBindingIndexForControl(walkAction.action.controls[0]);
+        /*
+        bindingDisplayNameText.text = InputControlPath.ToHumanReadableString(
+            jumpAction.action.bindings[bindingIndex].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+        */
+        rebindingOperation.Dispose();
+    }
 }
