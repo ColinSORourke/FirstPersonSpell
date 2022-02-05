@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
 
-    public float mouseSensitivity = 10.0f;
+    public float mouseSensitivity;
 
     public float speed;
     public float jumpSpeed = 12.0f;
@@ -42,6 +42,7 @@ public class MouseLook : MonoBehaviour
         speed = this.GetComponent<PlayerStateScript>().moveSpeed;
 
         Cursor.lockState = CursorLockMode.Locked;
+        mouseSensitivity = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
     }
 
     // Update is called once per frame

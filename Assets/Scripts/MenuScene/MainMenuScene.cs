@@ -116,17 +116,12 @@ public class MainMenuScene : MonoBehaviour
         //PlayerPrefs.SetInt("AntiAliasingPreference", aaDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference", System.Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("VolumePreference", currentVolume);
+        PlayerPrefs.SetFloat("MouseSensitivityPreference", mouseSensitivitySlider.value);
     }
     public void LoadSettings(int currentResolutionIndex)
     {
-        if (PlayerPrefs.HasKey("QualitySettingPreference"))
-            qualityDropdown.value = PlayerPrefs.GetInt("QualitySettingPreference");
-        else 
-            qualityDropdown.value = 3;
-        if (PlayerPrefs.HasKey("ResolutionPreference"))
-            resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
-        else
-            resolutionDropdown.value = currentResolutionIndex;
+        qualityDropdown.value = PlayerPrefs.HasKey("QualitySettingPreference") ? PlayerPrefs.GetInt("QualitySettingPreference") : 3;
+        resolutionDropdown.value = PlayerPrefs.HasKey("ResolutionPreference") ? PlayerPrefs.GetInt("ResolutionPreference") : currentResolutionIndex;
         /*
         if (PlayerPrefs.HasKey("TextureQualityPreference"))
             textureDropdown.value = PlayerPrefs.GetInt("TextureQualityPreference");
@@ -137,14 +132,9 @@ public class MainMenuScene : MonoBehaviour
         else
             aaDropdown.value = 1;
         */
-        if (PlayerPrefs.HasKey("FullscreenPreference"))
-            Screen.fullScreen = System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference"));
-        else
-            Screen.fullScreen = true;
-        if (PlayerPrefs.HasKey("VolumePreference"))
-            volumeSlider.value = PlayerPrefs.GetFloat("VolumePreference");
-        else
-            volumeSlider.value = 0.5f;
+        Screen.fullScreen = PlayerPrefs.HasKey("FullscreenPreference") ? System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference")) : true;
+        volumeSlider.value = PlayerPrefs.HasKey("VolumePreference") ? PlayerPrefs.GetFloat("VolumePreference") : 0.5f;
+        mouseSensitivitySlider.value = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
     }
 
     public void selectCharacter(string newCharacter)
@@ -173,5 +163,5 @@ public class MainMenuScene : MonoBehaviour
                 break;
         }
     }
-
+    public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
 }
