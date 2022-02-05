@@ -154,7 +154,6 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     public void newTarget(){
-        Debug.Log("New Target");
         int oldTar = currTarget;
         if (oldTar != -1){
             Targets[oldTar].GetComponent<GenericUI>().unTarget();
