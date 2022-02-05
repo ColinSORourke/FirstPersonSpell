@@ -26,6 +26,7 @@ public class MainMenuScene : MonoBehaviour
     public GameObject playerCharacter;
     public GameObject[] characterModels;
 
+    public Text mouseSensitivityText;
     private bool isMenu = true;
     void Start()
     {
