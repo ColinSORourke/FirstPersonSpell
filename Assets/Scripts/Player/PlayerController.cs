@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour
         gameplayActions.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
 
         gameplayActions.Shoot.performed += _ => playerAbilities.newTarget();
-        gameplayActions.Abilities1.performed += _ => playerAbilities.cast(0, 1f);
-        gameplayActions.Abilities2.performed += _ => playerAbilities.cast(1, 1f);
-        gameplayActions.Abilities3.performed += _ => playerAbilities.cast(2, 1f);
+        gameplayActions.Abilities1.performed += _ => playerAbilities.castSpell(0);
+        gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
+        gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(2);
+        gameplayActions.Shield.performed += _ => playerAbilities.castShield();
     }
 
     private void Update()

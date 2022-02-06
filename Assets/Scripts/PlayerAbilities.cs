@@ -38,12 +38,12 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         int i = 0;
-        foreach(GameObject tar in Targets){
+        foreach(GameObject tarObjs in Targets){
             bool visible;
             if (i == currTarget){
-                visible = hasLOS(tar);
+                visible = hasLOS(tarObjs);
             } else {
-                visible = hasLOS(tar);
+                visible = hasLOS(tarObjs);
             }
             
             visibleTargets[i] = visible;
@@ -56,12 +56,18 @@ public class PlayerAbilities : MonoBehaviour
             i += 1;        
         }
 
+        float range = 0.0f;
+        bool tar = currTarget != -1;
+        if (tar)
+        {
+            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
+        }
+
         if (castTime != -1.0f){
             castTime += Time.deltaTime;
 
             float valid;
-            float range = 0.0f;
-            bool tar = currTarget != -1;
             if (tar){
                 range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
             }
@@ -87,7 +93,8 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
 
-        parseInput();
+        
+        //parseInput();
     }
 
     public void parseInput()
@@ -101,11 +108,7 @@ public class PlayerAbilities : MonoBehaviour
         float valid;
         float range = 0.0f;
         bool tar = currTarget != -1;
-        if (tar){
-            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
-            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
-        }
-        valid = myState.validCast(0, tar, range);
+        
 
         /*
         if (Input.GetKeyUp("1") && valid != -1.0f ){
@@ -136,11 +139,22 @@ public class PlayerAbilities : MonoBehaviour
         */
     }
 
-    public void cast(int slot, float Time){
+    public void castSpell(int slot){
+        float valid = 0;
+        float range = 0.0f;
+        bool tar = currTarget != -1;
+        if (tar)
+        {
+            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            //Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
+        }
+
+        valid = myState.validCast(slot, tar, range);
+
         var spell = myState.spellQueue[slot];
         if (spell.castTime > 0){
             castTime = 0.0f;
-            totalCastTime = Time;
+            totalCastTime = valid;
             castingSpell = spell;
             castingSpellSlot = slot;
         } else {
@@ -153,6 +167,15 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
+    public void castShield(){
+        Debug.Log("Pressed Shield Button");
+        if (myState.currShields > 0)
+        {
+            myState.shieldDur = myState.shieldTime;
+            myState.currShields -= 1;
+            myUI.displayShield();
+        }
+    }
     public void newTarget(){
         int oldTar = currTarget;
         if (oldTar != -1){

@@ -98,6 +98,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e49a4e8-395d-4ca2-8fa0-af239f91023d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Abilities 3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""594f1382-1382-4784-a2dc-9ec555ee56f7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -276,6 +296,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Abilities1 = m_Gameplay.FindAction("Abilities 1", throwIfNotFound: true);
         m_Gameplay_Abilities2 = m_Gameplay.FindAction("Abilities 2", throwIfNotFound: true);
         m_Gameplay_Abilities3 = m_Gameplay.FindAction("Abilities 3", throwIfNotFound: true);
+        m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -346,6 +367,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Abilities1;
     private readonly InputAction m_Gameplay_Abilities2;
     private readonly InputAction m_Gameplay_Abilities3;
+    private readonly InputAction m_Gameplay_Shield;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -358,6 +380,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Abilities1 => m_Wrapper.m_Gameplay_Abilities1;
         public InputAction @Abilities2 => m_Wrapper.m_Gameplay_Abilities2;
         public InputAction @Abilities3 => m_Wrapper.m_Gameplay_Abilities3;
+        public InputAction @Shield => m_Wrapper.m_Gameplay_Shield;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +414,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Abilities3.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbilities3;
                 @Abilities3.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbilities3;
                 @Abilities3.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAbilities3;
+                @Shield.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
+                @Shield.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
+                @Shield.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -419,6 +445,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Abilities3.started += instance.OnAbilities3;
                 @Abilities3.performed += instance.OnAbilities3;
                 @Abilities3.canceled += instance.OnAbilities3;
+                @Shield.started += instance.OnShield;
+                @Shield.performed += instance.OnShield;
+                @Shield.canceled += instance.OnShield;
             }
         }
     }
@@ -466,6 +495,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAbilities1(InputAction.CallbackContext context);
         void OnAbilities2(InputAction.CallbackContext context);
         void OnAbilities3(InputAction.CallbackContext context);
+        void OnShield(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
