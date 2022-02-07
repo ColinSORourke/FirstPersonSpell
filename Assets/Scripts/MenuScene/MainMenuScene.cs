@@ -167,27 +167,6 @@ public class MainMenuScene : MonoBehaviour
                 break;
         }
     }
-    public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
 
-    public InputActionReference walkAction;
-    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
-    public void RemapButtonClicked(InputAction actionToRebind)
-    {
-        rebindingOperation = actionToRebind.PerformInteractiveRebinding()
-                    // To avoid accidental input from mouse motion
-                    .WithControlsExcluding("Mouse")
-                    .OnMatchWaitForAnother(0.1f)
-                    .OnComplete(operation => RebindComplete())
-                    .Start();
-    }
-    private void RebindComplete()
-    {
-        int bindingIndex = walkAction.action.GetBindingIndexForControl(walkAction.action.controls[0]);
-        /*
-        bindingDisplayNameText.text = InputControlPath.ToHumanReadableString(
-            jumpAction.action.bindings[bindingIndex].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
-        */
-        rebindingOperation.Dispose();
-    }
+    public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
 }

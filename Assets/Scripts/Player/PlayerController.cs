@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        controls = new Controls();
+        if (controls == null) controls = new Controls();
         gameplayActions = controls.Gameplay;
 
         // groundMovement.[action].performed += context => do something

@@ -14,7 +14,6 @@ public class RebindSaveLoad : MonoBehaviour
 
     public void OnDisable()
     {
-        Debug.Log("Saving Keybinds");
         var rebinds = actions.SaveBindingOverridesAsJson();
         PlayerPrefs.SetString("rebinds", rebinds);
     }
