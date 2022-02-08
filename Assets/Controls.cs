@@ -107,6 +107,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""755459e4-5493-4a63-a8f2-343978e353bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ccf1c69-499c-41bf-a54f-ecb319d13284"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -297,6 +317,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Abilities2 = m_Gameplay.FindAction("Abilities 2", throwIfNotFound: true);
         m_Gameplay_Abilities3 = m_Gameplay.FindAction("Abilities 3", throwIfNotFound: true);
         m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
+        m_Gameplay_Escape = m_Gameplay.FindAction("Escape", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -368,6 +389,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Abilities2;
     private readonly InputAction m_Gameplay_Abilities3;
     private readonly InputAction m_Gameplay_Shield;
+    private readonly InputAction m_Gameplay_Escape;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -381,6 +403,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Abilities2 => m_Wrapper.m_Gameplay_Abilities2;
         public InputAction @Abilities3 => m_Wrapper.m_Gameplay_Abilities3;
         public InputAction @Shield => m_Wrapper.m_Gameplay_Shield;
+        public InputAction @Escape => m_Wrapper.m_Gameplay_Escape;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -417,6 +440,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shield.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
                 @Shield.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
                 @Shield.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
+                @Escape.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -448,6 +474,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shield.started += instance.OnShield;
                 @Shield.performed += instance.OnShield;
                 @Shield.canceled += instance.OnShield;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -496,6 +525,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAbilities2(InputAction.CallbackContext context);
         void OnAbilities3(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement movement;
     [SerializeField] MouseLook mouseLook;
     [SerializeField] PlayerAbilities playerAbilities;
+    [SerializeField] Popup menu;
 
     Controls controls;
     Controls.GameplayActions gameplayActions;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(2);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
+        gameplayActions.Escape.performed += _ => menu.popup();
     }
 
     private void Update()
