@@ -33,9 +33,6 @@ public class Rebinding : MonoBehaviour
                 if (CheckDuplicateBinding())
                 {
                     inputActionReference.action.RemoveBindingOverride(bindingIndex);
-                    CleanUp();
-                    OnClick();
-                    return;
                 }
                 actions.Enable();
                 CleanUp();
@@ -58,23 +55,13 @@ public class Rebinding : MonoBehaviour
     private bool CheckDuplicateBinding()
     {
         InputBinding newbinding = inputActionReference.action.bindings[bindingIndex];
-        Debug.Log(newbinding);
+        Debug.Log("newBinding: " + newbinding.id);
         foreach (InputBinding binding in actions.bindings)
         {
-            /*
-            if (binding.isComposite) {
-                binding.
-                Debug.Log(binding + " is Composite");
-                foreach (InputBindingCompositeContext composite in binding)
-                {
-
-                }
-            }
-            */
-            if (binding.action == newbinding.action) continue;
+            if (binding.id == newbinding.id) continue;
             if (binding.effectivePath == newbinding.effectivePath)
             {
-                Debug.Log("Duplicate Bindings found: " + newbinding.effectivePath);
+                Debug.Log("Duplicate Bindings found: " + newbinding.effectivePath + " vs. " + binding);
                 return true;
             }
         }
