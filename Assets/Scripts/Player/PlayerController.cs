@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement movement;
     [SerializeField] MouseLook mouseLook;
     [SerializeField] PlayerAbilities playerAbilities;
+    public RebindSaveLoad saveLoad;
 
     Controls controls;
     Controls.GameplayActions gameplayActions;
@@ -17,7 +18,18 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (controls == null) controls = new Controls();
+        if (controls == null)
+        {
+            Debug.Log("New Controls");
+            controls = new Controls();
+        }
+
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds)) {
+            Debug.Log("Load Existing Keybinds");
+            controls.LoadBindingOverridesFromJson(rebinds);
+        }
+
         gameplayActions = controls.Gameplay;
 
         // groundMovement.[action].performed += context => do something

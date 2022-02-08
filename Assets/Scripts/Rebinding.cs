@@ -18,25 +18,34 @@ public class Rebinding : MonoBehaviour
     public void OnEnable()
     {
         bindingDisplayNameText = this.GetComponentInChildren<Text>();
-        LoadKeybindSettings();
+        //LoadKeybindSettings(actions);
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds))
+        {
+            Debug.Log("Load Existing Keybinds");
+            actions.LoadBindingOverridesFromJson(rebinds);
+        }
         UpdateDisplayText();
     }
     public void OnDisable()
     {
-        SaveKeybindSettings();
+        //SaveKeybindSettings();
     }
 
     public void OnClick()
     {
+        actions.Disable();
         rebindingOperation = inputActionReference.action.PerformInteractiveRebinding()
             .OnComplete(operation => UpdateDisplayText())
             .Start();      
     }
     private void UpdateDisplayText()
     {
+        actions.Enable();
         bindingDisplayNameText.text = inputActionReference.action.GetBindingDisplayString(bindingIndex);
         if (rebindingOperation != null) rebindingOperation.Dispose();
     }
+    /*
 
     public void SaveKeybindSettings()
     {
@@ -44,13 +53,14 @@ public class Rebinding : MonoBehaviour
         PlayerPrefs.SetString("rebinds", rebinds);
         Debug.Log("Saving Keybinds");
     }
-    public void LoadKeybindSettings()
+    public void LoadKeybindSettings(InputActionAsset inputActions)
     {
         if (PlayerPrefs.HasKey("rebinds")) {
             Debug.Log("In");
             var rebinds = PlayerPrefs.GetString("rebinds");
-            if (!string.IsNullOrEmpty(rebinds)) actions.LoadBindingOverridesFromJson(rebinds);
+            if (!string.IsNullOrEmpty(rebinds)) inputActions.LoadBindingOverridesFromJson(rebinds);
         }
     }
+    */
 }
 

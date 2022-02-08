@@ -51,10 +51,16 @@ public class MainMenuScene : MonoBehaviour
             
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(GameObject.Find("InterSceneObject"));
+    }
+
     public void loadLevel(string name)
     {
         Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
         PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
+        
         SceneManager.LoadScene(name);
     }
 
