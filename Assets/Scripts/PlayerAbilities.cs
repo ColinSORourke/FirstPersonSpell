@@ -14,7 +14,6 @@ public class PlayerAbilities : MonoBehaviour
     public float totalCastTime;
 
     PlayerStateScript myState;
-
     GenericUI myUI;
 
     // Start is called before the first frame update
@@ -39,12 +38,12 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         int i = 0;
-        foreach(GameObject tar in Targets){
+        foreach(GameObject tarObjs in Targets){
             bool visible;
             if (i == currTarget){
-                visible = hasLOS(tar);
+                visible = hasLOS(tarObjs);
             } else {
-                visible = hasLOS(tar);
+                visible = hasLOS(tarObjs);
             }
             
             visibleTargets[i] = visible;
@@ -57,12 +56,18 @@ public class PlayerAbilities : MonoBehaviour
             i += 1;        
         }
 
+        float range = 0.0f;
+        bool tar = currTarget != -1;
+        if (tar)
+        {
+            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
+        }
+
         if (castTime != -1.0f){
             castTime += Time.deltaTime;
 
             float valid;
-            float range = 0.0f;
-            bool tar = currTarget != -1;
             if (tar){
                 range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
             }
@@ -88,34 +93,37 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
 
-        parseInput();
+        
+        //parseInput();
     }
 
-    void parseInput()
+    public void parseInput()
     {
+        /*
         if (Input.GetKeyUp(KeyCode.Mouse0)){
             newTarget();
         }
+        */
 
         float valid;
         float range = 0.0f;
         bool tar = currTarget != -1;
-        if (tar){
-            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
-            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
-        }
-        valid = myState.validCast(0, tar, range);
+        
 
+        /*
         if (Input.GetKeyUp("1") && valid != -1.0f ){
             this.cast(0, valid);
         }
-        
+        */
         valid = myState.validCast(1, tar, range);
+        /*
         if (Input.GetKeyUp("2") && valid != -1.0f){
             this.cast(1, valid);
         }
-
+        */
         valid = myState.validCast(2, tar, range);
+
+        /*
         if (Input.GetKeyUp("3") && valid != -1.0f){
             this.cast(2, valid);
         }
@@ -128,13 +136,25 @@ public class PlayerAbilities : MonoBehaviour
                 myUI.displayShield();
             }
         }
+        */
     }
 
-    void cast(int slot, float Time){
+    public void castSpell(int slot){
+        float valid = 0;
+        float range = 0.0f;
+        bool tar = currTarget != -1;
+        if (tar)
+        {
+            range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
+            //Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
+        }
+
+        valid = myState.validCast(slot, tar, range);
+
         var spell = myState.spellQueue[slot];
         if (spell.castTime > 0){
             castTime = 0.0f;
-            totalCastTime = Time;
+            totalCastTime = valid;
             castingSpell = spell;
             castingSpellSlot = slot;
         } else {
@@ -147,7 +167,16 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-    void newTarget(){
+    public void castShield(){
+        Debug.Log("Pressed Shield Button");
+        if (myState.currShields > 0)
+        {
+            myState.shieldDur = myState.shieldTime;
+            myState.currShields -= 1;
+            myUI.displayShield();
+        }
+    }
+    public void newTarget(){
         int oldTar = currTarget;
         if (oldTar != -1){
             Targets[oldTar].GetComponent<GenericUI>().unTarget();

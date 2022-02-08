@@ -17,7 +17,6 @@ public class MainMenuScene : MonoBehaviour
 
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    public Dropdown qualityDropdown;
     //public Dropdown textureDropdown;
     //public Dropdown aaDropdown;
     public Slider volumeSlider;
@@ -29,8 +28,11 @@ public class MainMenuScene : MonoBehaviour
     public GameObject[] characterModels;
 
     public Text mouseSensitivityText;
+    public GameObject KeybindsGroup;
 
     private bool isMenu = true;
+    private int currentResolutionIndex = 0;
+
     void Start()
     {
         if (mainCanvas == null)
@@ -39,6 +41,7 @@ public class MainMenuScene : MonoBehaviour
         }
 
         makeResolutionOptions();
+        LoadSettings();
     }
 
     void Update()
@@ -51,10 +54,20 @@ public class MainMenuScene : MonoBehaviour
             
     }
 
+    private void Awake()
+    {
+        if (!KeybindsGroup.activeSelf)
+        {
+            KeybindsGroup.SetActive(true);
+            KeybindsGroup.SetActive(false);
+        }
+    }
+
     public void loadLevel(string name)
     {
         Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
         PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
+        
         SceneManager.LoadScene(name);
     }
 
@@ -90,7 +103,6 @@ public class MainMenuScene : MonoBehaviour
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.RefreshShownValue();
-        LoadSettings(currentResolutionIndex);
     }
 
     public void SetVolume(float volume)
@@ -107,38 +119,29 @@ public class MainMenuScene : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public void SetQuality(int qualityIndex)
-    {
-        if (qualityIndex != 6) QualitySettings.SetQualityLevel(qualityIndex);
-        qualityDropdown.value = qualityIndex;
-    }
+    public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
     public void SaveSettings()
     {
-        PlayerPrefs.SetInt("QualitySettingPreference", qualityDropdown.value);
         PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
-        //PlayerPrefs.SetInt("TextureQualityPreference", textureDropdown.value);
-        //PlayerPrefs.SetInt("AntiAliasingPreference", aaDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference", System.Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("VolumePreference", currentVolume);
         PlayerPrefs.SetFloat("MouseSensitivityPreference", mouseSensitivitySlider.value);
     }
-    public void LoadSettings(int currentResolutionIndex)
+    public void LoadSettings()
     {
-        qualityDropdown.value = PlayerPrefs.HasKey("QualitySettingPreference") ? PlayerPrefs.GetInt("QualitySettingPreference") : 3;
         resolutionDropdown.value = PlayerPrefs.HasKey("ResolutionPreference") ? PlayerPrefs.GetInt("ResolutionPreference") : currentResolutionIndex;
-        /*
-        if (PlayerPrefs.HasKey("TextureQualityPreference"))
-            textureDropdown.value = PlayerPrefs.GetInt("TextureQualityPreference");
-        else
-            textureDropdown.value = 0;
-        if (PlayerPrefs.HasKey("AntiAliasingPreference"))
-            aaDropdown.value = PlayerPrefs.GetInt("AntiAliasingPreference");
-        else
-            aaDropdown.value = 1;
-        */
         Screen.fullScreen = PlayerPrefs.HasKey("FullscreenPreference") ? System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference")) : true;
         volumeSlider.value = PlayerPrefs.HasKey("VolumePreference") ? PlayerPrefs.GetFloat("VolumePreference") : 0.5f;
         mouseSensitivitySlider.value = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
+    }
+
+    public void ResetSettings()
+    {
+        PlayerPrefs.DeleteKey("ResolutionPreference");
+        PlayerPrefs.DeleteKey("FullscreenPreference");
+        PlayerPrefs.DeleteKey("VolumePreference");
+        PlayerPrefs.DeleteKey("MouseSensitivityPreference");
+        LoadSettings();
     }
 
     public void selectCharacter(string newCharacter)
@@ -167,27 +170,6 @@ public class MainMenuScene : MonoBehaviour
                 break;
         }
     }
-    public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
 
-    public InputActionReference walkAction;
-    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
-    public void RemapButtonClicked(InputAction actionToRebind)
-    {
-        rebindingOperation = actionToRebind.PerformInteractiveRebinding()
-                    // To avoid accidental input from mouse motion
-                    .WithControlsExcluding("Mouse")
-                    .OnMatchWaitForAnother(0.1f)
-                    .OnComplete(operation => RebindComplete())
-                    .Start();
-    }
-    private void RebindComplete()
-    {
-        int bindingIndex = walkAction.action.GetBindingIndexForControl(walkAction.action.controls[0]);
-        /*
-        bindingDisplayNameText.text = InputControlPath.ToHumanReadableString(
-            jumpAction.action.bindings[bindingIndex].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
-        */
-        rebindingOperation.Dispose();
-    }
+    
 }
