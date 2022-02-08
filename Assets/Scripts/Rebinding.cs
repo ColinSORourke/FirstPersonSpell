@@ -29,7 +29,7 @@ public class Rebinding : MonoBehaviour
     }
     public void OnDisable()
     {
-        //SaveKeybindSettings();
+        SaveKeybindSettings();
     }
 
     public void OnClick()
@@ -45,7 +45,7 @@ public class Rebinding : MonoBehaviour
         bindingDisplayNameText.text = inputActionReference.action.GetBindingDisplayString(bindingIndex);
         if (rebindingOperation != null) rebindingOperation.Dispose();
     }
-    /*
+    
 
     public void SaveKeybindSettings()
     {
@@ -53,6 +53,7 @@ public class Rebinding : MonoBehaviour
         PlayerPrefs.SetString("rebinds", rebinds);
         Debug.Log("Saving Keybinds");
     }
+    /*
     public void LoadKeybindSettings(InputActionAsset inputActions)
     {
         if (PlayerPrefs.HasKey("rebinds")) {
