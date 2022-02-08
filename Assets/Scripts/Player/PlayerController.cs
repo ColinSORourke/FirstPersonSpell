@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Movement movement;
     [SerializeField] MouseLook mouseLook;
     [SerializeField] PlayerAbilities playerAbilities;
-    public RebindSaveLoad saveLoad;
 
     Controls controls;
     Controls.GameplayActions gameplayActions;

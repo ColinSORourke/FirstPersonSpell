@@ -17,7 +17,6 @@ public class MainMenuScene : MonoBehaviour
 
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    public Dropdown qualityDropdown;
     //public Dropdown textureDropdown;
     //public Dropdown aaDropdown;
     public Slider volumeSlider;
@@ -113,14 +112,8 @@ public class MainMenuScene : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public void SetQuality(int qualityIndex)
-    {
-        if (qualityIndex != 6) QualitySettings.SetQualityLevel(qualityIndex);
-        qualityDropdown.value = qualityIndex;
-    }
     public void SaveSettings()
     {
-        PlayerPrefs.SetInt("QualitySettingPreference", qualityDropdown.value);
         PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
         //PlayerPrefs.SetInt("TextureQualityPreference", textureDropdown.value);
         //PlayerPrefs.SetInt("AntiAliasingPreference", aaDropdown.value);
@@ -130,7 +123,6 @@ public class MainMenuScene : MonoBehaviour
     }
     public void LoadSettings(int currentResolutionIndex)
     {
-        qualityDropdown.value = PlayerPrefs.HasKey("QualitySettingPreference") ? PlayerPrefs.GetInt("QualitySettingPreference") : 3;
         resolutionDropdown.value = PlayerPrefs.HasKey("ResolutionPreference") ? PlayerPrefs.GetInt("ResolutionPreference") : currentResolutionIndex;
         /*
         if (PlayerPrefs.HasKey("TextureQualityPreference"))
