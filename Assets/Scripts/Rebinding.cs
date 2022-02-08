@@ -7,8 +7,6 @@ using UnityEngine.InputSystem;
 public class Rebinding : MonoBehaviour
 {
     [SerializeField] public InputActionAsset actions;
-    //[SerializeField] public Controls controls = null;
-    //[SerializeField] private InputAction inputAction = null;
     [SerializeField] public InputActionReference inputActionReference = null;
     [SerializeField] private Text bindingDisplayNameText = null;
     [SerializeField] private int bindingIndex = 0;
@@ -18,13 +16,7 @@ public class Rebinding : MonoBehaviour
     public void OnEnable()
     {
         bindingDisplayNameText = this.GetComponentInChildren<Text>();
-        //LoadKeybindSettings(actions);
-        var rebinds = PlayerPrefs.GetString("rebinds");
-        if (!string.IsNullOrEmpty(rebinds))
-        {
-            Debug.Log("Load Existing Keybinds");
-            actions.LoadBindingOverridesFromJson(rebinds);
-        }
+        LoadKeybindSettings();
         UpdateDisplayText();
     }
     public void OnDisable()
@@ -35,17 +27,59 @@ public class Rebinding : MonoBehaviour
     public void OnClick()
     {
         actions.Disable();
-        rebindingOperation = inputActionReference.action.PerformInteractiveRebinding()
-            .OnComplete(operation => UpdateDisplayText())
+        rebindingOperation = inputActionReference.action.PerformInteractiveRebinding(bindingIndex)
+            //.WithTargetBinding(bindingIndex)
+            .OnComplete(operation => {
+                if (CheckDuplicateBinding())
+                {
+                    inputActionReference.action.RemoveBindingOverride(bindingIndex);
+                    CleanUp();
+                    OnClick();
+                    return;
+                }
+                actions.Enable();
+                CleanUp();
+                UpdateDisplayText();
+                
+            })
             .Start();      
     }
+
     private void UpdateDisplayText()
     {
-        actions.Enable();
         bindingDisplayNameText.text = inputActionReference.action.GetBindingDisplayString(bindingIndex);
+    }
+
+    private void CleanUp()
+    {
         if (rebindingOperation != null) rebindingOperation.Dispose();
     }
     
+    private bool CheckDuplicateBinding()
+    {
+        InputBinding newbinding = inputActionReference.action.bindings[bindingIndex];
+        Debug.Log(newbinding);
+        foreach (InputBinding binding in actions.bindings)
+        {
+            /*
+            if (binding.isComposite) {
+                binding.
+                Debug.Log(binding + " is Composite");
+                foreach (InputBindingCompositeContext composite in binding)
+                {
+
+                }
+            }
+            */
+            if (binding.action == newbinding.action) continue;
+            if (binding.effectivePath == newbinding.effectivePath)
+            {
+                Debug.Log("Duplicate Bindings found: " + newbinding.effectivePath);
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void SaveKeybindSettings()
     {
@@ -53,15 +87,21 @@ public class Rebinding : MonoBehaviour
         PlayerPrefs.SetString("rebinds", rebinds);
         Debug.Log("Saving Keybinds");
     }
-    /*
-    public void LoadKeybindSettings(InputActionAsset inputActions)
+    
+    public void LoadKeybindSettings()
     {
-        if (PlayerPrefs.HasKey("rebinds")) {
-            Debug.Log("In");
-            var rebinds = PlayerPrefs.GetString("rebinds");
-            if (!string.IsNullOrEmpty(rebinds)) inputActions.LoadBindingOverridesFromJson(rebinds);
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds))
+        {
+            Debug.Log("Load Existing Keybinds");
+            actions.LoadBindingOverridesFromJson(rebinds);
         }
     }
-    */
+    
+    public void ResetBinding()
+    {
+        actions.RemoveAllBindingOverrides();
+        SaveKeybindSettings();
+    }
 }
 
