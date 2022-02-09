@@ -65,7 +65,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""537c541e-27c9-4d2f-add8-01e1d8216804"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -112,6 +112,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""755459e4-5493-4a63-a8f2-343978e353bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1661ffbb-b1cc-4e1d-a0b2-ac08b7509d13"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -272,6 +281,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acd45d60-3c1a-4582-bbea-4b4b8aaf2839"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -318,6 +338,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Abilities3 = m_Gameplay.FindAction("Abilities 3", throwIfNotFound: true);
         m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
         m_Gameplay_Escape = m_Gameplay.FindAction("Escape", throwIfNotFound: true);
+        m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -390,6 +411,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Abilities3;
     private readonly InputAction m_Gameplay_Shield;
     private readonly InputAction m_Gameplay_Escape;
+    private readonly InputAction m_Gameplay_Crouch;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -404,6 +426,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Abilities3 => m_Wrapper.m_Gameplay_Abilities3;
         public InputAction @Shield => m_Wrapper.m_Gameplay_Shield;
         public InputAction @Escape => m_Wrapper.m_Gameplay_Escape;
+        public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -443,6 +466,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Escape.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnEscape;
+                @Crouch.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCrouch;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -477,6 +503,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
             }
         }
     }
@@ -526,6 +555,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAbilities3(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

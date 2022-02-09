@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "Shoot",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "537c541e-27c9-4d2f-add8-01e1d8216804",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -90,6 +90,15 @@
                     "name": "Escape",
                     "type": "Button",
                     "id": "755459e4-5493-4a63-a8f2-343978e353bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "PassThrough",
+                    "id": "1661ffbb-b1cc-4e1d-a0b2-ac08b7509d13",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -248,6 +257,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "acd45d60-3c1a-4582-bbea-4b4b8aaf2839",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
