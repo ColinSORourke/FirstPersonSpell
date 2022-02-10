@@ -13,7 +13,7 @@ public class MainMenuScene : MonoBehaviour
     public GameObject mainCamera;
     public float cameraRotationSpeed;
     public Vector2 angles; //angles.x is min, angles.y is max
-    public Dropdown cardDeckDropdown;
+    public Dropdown cardDeckDropdown, levelSelectorDropdown;
 
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
@@ -63,12 +63,11 @@ public class MainMenuScene : MonoBehaviour
         }
     }
 
-    public void loadLevel(string name)
+    public void loadLevel()
     {
         Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
         PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
-        
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(levelSelectorDropdown.options[levelSelectorDropdown.value].text);
     }
 
     public void rotateCamera()
