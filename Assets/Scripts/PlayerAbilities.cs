@@ -74,7 +74,7 @@ public class PlayerAbilities : MonoBehaviour
             valid = myState.validCast(castingSpellSlot, tar, range);
             if (castTime >= totalCastTime){
                 if (valid != -1.0f){
-                    Debug.Log("finished casting");
+                    //finished casting
                     myState.castSpell(castingSpellSlot);
                     castTime = -1.0f;
                     Transform myTar = null;
@@ -153,6 +153,7 @@ public class PlayerAbilities : MonoBehaviour
 
         var spell = myState.spellQueue[slot];
         if (spell.castTime > 0){
+            // Start Casting
             castTime = 0.0f;
             totalCastTime = valid;
             castingSpell = spell;
