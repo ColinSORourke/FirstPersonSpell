@@ -65,7 +65,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""537c541e-27c9-4d2f-add8-01e1d8216804"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

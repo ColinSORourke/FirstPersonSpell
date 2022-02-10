@@ -41,13 +41,14 @@ public class PlayerAbilities : MonoBehaviour
         foreach(GameObject tarObjs in Targets){
             bool visible;
             if (i == currTarget){
-                visible = hasLOS(tarObjs);
+                visible = hasLOS(tarObjs, true);
             } else {
                 visible = hasLOS(tarObjs);
             }
             
             visibleTargets[i] = visible;
             if (i == currTarget && !visible){
+                
                 Targets[currTarget].GetComponent<GenericUI>().unTarget();
                 currTarget = -1;
                 myUI.updateCast(0);
@@ -238,9 +239,16 @@ public class PlayerAbilities : MonoBehaviour
                 if (hit.transform.parent != null){
                     if (hit.transform.parent.gameObject != tar){
                         obj_hit = true; 
+                        if (print){
+                            Debug.Log(hit.transform.parent.gameObject);
+                        }
+                        
                     }
                 } else {
                     obj_hit = true;
+                    if (print){
+                        Debug.Log(hit.transform);
+                    }
                 }
             }
         } 
