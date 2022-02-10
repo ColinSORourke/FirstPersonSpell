@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerUI : GenericUI
 {
     // Start is called before the first frame update
-    public override void Start()
+    public void Awake()
     {
         UITrans = this.gameObject.transform.Find("PlayerUI");
         UI = UITrans.GetComponent<Canvas>();

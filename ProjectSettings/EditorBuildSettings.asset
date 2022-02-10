@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/NetMenu.unity
+    guid: 29bb051ebe9683f4db169a20c2faa511
+  - enabled: 1
+    path: Assets/Scenes/NetGameplay.unity
+    guid: da5cb5e3b556cc541b12c9531c154224
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 9d2542e1de8be7d42bf143d51d6a3f8d
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arches Map Prototype.unity
     guid: c7fac3839ed07ce4eabdd5533c135497
   m_configObjects:

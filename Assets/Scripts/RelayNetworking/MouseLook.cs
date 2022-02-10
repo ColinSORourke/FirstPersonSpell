@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : NetworkBehaviour
 {
     [SerializeField] float sensitivityX = 8f;
     [SerializeField] float sensitivityY = 0.5f;
@@ -12,15 +13,19 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float xClamp = 85f;
     float xRotation = 0f;
 
-    private void Start()
-    {
+    private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
+
+        if (IsLocalPlayer) {
+            playerCamera.gameObject.SetActive(true);
+        } else {
+            playerCamera.gameObject.SetActive(false);
+        }
     }
 
-    private void Update()
-    {
+    private void Update() {
         transform.Rotate(Vector3.up, mouseX);
 
         xRotation -= mouseY;
@@ -30,8 +35,7 @@ public class MouseLook : MonoBehaviour
         playerCamera.eulerAngles = targetRotation;
     }
 
-    public void ReceiveInput(Vector2 mouseInput)
-    {
+    public void ReceiveInput(Vector2 mouseInput) {
         mouseX = mouseInput.x * sensitivityX;
         mouseY = mouseInput.y * sensitivityY;
     }
