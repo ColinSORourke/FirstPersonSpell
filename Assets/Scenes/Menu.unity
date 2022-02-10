@@ -97,10 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 3b2c7fb4a12363f409ca26d82e2e52f3,
-    type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 0e0179368a59cfe469d2c27d25c565a0,
-    type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3b2c7fb4a12363f409ca26d82e2e52f3, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 0e0179368a59cfe469d2c27d25c565a0, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1193,8 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: 6535403425336617304, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: 6535403425336617304, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 587915541}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -2101,8 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: 2381281496820454142, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: 2381281496820454142, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -2253,8 +2249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: 5481240390595336076, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: 5481240390595336076, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -2468,13 +2463,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232897241}
-  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
-  m_LocalPosition: {x: -1.45, y: 2.68, z: -2.83}
+  m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: -1.88, y: 1.13, z: -2.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -15, y: 0, z: 0}
 --- !u!114 &232897245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2982,8 +2977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -4295223395885633473, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -4295223395885633473, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -3235,8 +3229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -1685052189136732561, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -1685052189136732561, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -3396,68 +3389,55 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.908
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.107
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.032
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.92387944
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.3826836
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 315
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -8679921383154817045, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -3990502435823067122, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: -3990502435823067122, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5ac11679852404f11836f30593329ff6, type: 2}
-    - target: {fileID: 919132149155446097, guid: 0f2fa094c10094665956bfebd087af5c,
-        type: 3}
+    - target: {fileID: 919132149155446097, guid: 0f2fa094c10094665956bfebd087af5c, type: 3}
       propertyPath: m_Name
       value: wizardFlip
       objectReference: {fileID: 0}
@@ -4041,8 +4021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -4838,8 +4817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 4
@@ -5184,8 +5162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 1509214295}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 1
@@ -7150,8 +7127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 1846008883}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 2
@@ -8836,8 +8812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -5620842650025660865, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -5620842650025660865, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
@@ -10385,8 +10360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -1059366032838843425, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 3
@@ -11646,28 +11620,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
-    type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
 --- !u!114 &1781210927
@@ -12422,8 +12385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
-  inputActionReference: {fileID: -3038104405478891268, guid: 106562b124329154988f7fd16c123ddb,
-    type: 3}
+  inputActionReference: {fileID: -3038104405478891268, guid: 106562b124329154988f7fd16c123ddb, type: 3}
   bindingDisplayNameText: {fileID: 0}
   waitingForInputText: {fileID: 1418764202}
   bindingIndex: 0
