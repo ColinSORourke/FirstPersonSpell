@@ -30,21 +30,26 @@ public class Rebinding : MonoBehaviour
         actions.Disable();
         waitingForInputText.SetActive(true);
         rebindingOperation = inputActionReference.action.PerformInteractiveRebinding(bindingIndex)
-            //.WithTargetBinding(bindingIndex)
+            .OnCancel(operation =>
+            {
+                DoneRebinding();
+            })
             .OnComplete(operation => {
                 if (CheckDuplicateBinding())
                 {
                     inputActionReference.action.RemoveBindingOverride(bindingIndex);
                 }
-                actions.Enable();
-                waitingForInputText.SetActive(false);
-                CleanUp();
-                UpdateDisplayText();
-                
+                DoneRebinding();
             })
             .Start();      
     }
-
+    private void DoneRebinding()
+    {
+        actions.Enable();
+        waitingForInputText.SetActive(false);
+        UpdateDisplayText();
+        CleanUp();
+    }
     private void UpdateDisplayText()
     {
         bindingDisplayNameText.text = inputActionReference.action.GetBindingDisplayString(bindingIndex);
