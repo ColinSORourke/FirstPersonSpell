@@ -9,6 +9,7 @@ public class Rebinding : MonoBehaviour
     [SerializeField] public InputActionAsset actions;
     [SerializeField] public InputActionReference inputActionReference = null;
     [SerializeField] private Text bindingDisplayNameText = null;
+    [SerializeField] private GameObject waitingForInputText = null;
     [SerializeField] private int bindingIndex = 0;
 
     private InputActionRebindingExtensions.RebindingOperation rebindingOperation = null;
@@ -27,6 +28,7 @@ public class Rebinding : MonoBehaviour
     public void OnClick()
     {
         actions.Disable();
+        waitingForInputText.SetActive(true);
         rebindingOperation = inputActionReference.action.PerformInteractiveRebinding(bindingIndex)
             //.WithTargetBinding(bindingIndex)
             .OnComplete(operation => {
@@ -35,6 +37,7 @@ public class Rebinding : MonoBehaviour
                     inputActionReference.action.RemoveBindingOverride(bindingIndex);
                 }
                 actions.Enable();
+                waitingForInputText.SetActive(false);
                 CleanUp();
                 UpdateDisplayText();
                 
