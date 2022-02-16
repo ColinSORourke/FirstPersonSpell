@@ -12,6 +12,7 @@ public class PlayerStateScript : MonoBehaviour
     public float maxMana = 50.0f;
     public float currMana = 50.0f;
     public float manaThreshold = 30.0f;
+    public bool doManaRegen = true;
 
     public float maxUlt = 20.0f;
     public float currUlt = 0.0f;
@@ -86,7 +87,7 @@ public class PlayerStateScript : MonoBehaviour
     // Called every quarter second
     void tick(){
         // Regen mana. Regen is greater if Health is low.
-        if (currMana < manaThreshold){
+        if (currMana < manaThreshold && doManaRegen){
             if (currentHealth <= healthThreshold){
                 currMana += 0.5f;
             } else {
