@@ -52,11 +52,8 @@ public class GenericUI : MonoBehaviour
         Destroy(spellIcons[slot].gameObject);
         int j = slot + 1; 
         while (j < spellIcons.Length){
-            var spellTrans = spellIcons[j].GetComponent<Transform>();
-            spellIcons[j].GetComponent<Transform>().localPosition = spellTrans.localPosition - new Vector3(80, 0, 0);
-            if (j == 3){
-                spellIcons[j].GetComponent<RectTransform>().sizeDelta = new Vector2(60, 60);
-            }
+            var spellTrans = spellIcons[j].GetComponent<RectTransform>();
+            spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition - new Vector2(150, 0);
             spellIcons[j].name = "Spell" + (j-1);
             spellIcons[j-1] = spellIcons[j];
 

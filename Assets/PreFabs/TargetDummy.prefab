@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 8351938042615357952}
   - component: {fileID: 2425180066893474297}
   - component: {fileID: 3889721331092560613}
+  - component: {fileID: 2175345638049191551}
   m_Layer: 7
   m_Name: TargetDummy
   m_TagString: Untagged
@@ -696,6 +697,7 @@ MonoBehaviour:
   maxMana: 50
   currMana: 50
   manaThreshold: 30
+  doManaRegen: 1
   maxUlt: 20
   currUlt: 0
   maxShields: 3
@@ -748,6 +750,22 @@ MonoBehaviour:
   UltBar: {fileID: 0}
   Shield: {fileID: 0}
   ShieldCount: {fileID: 0}
+--- !u!114 &2175345638049191551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351938042615357958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 755462f1497e0ad42b358ec75f22f918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellDecks:
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
+  - {fileID: 11400000, guid: e984a8fdc418cb6428149276a7d8846d, type: 2}
+  - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
 --- !u!1 &8351938043527398701
 GameObject:
   m_ObjectHideFlags: 0
