@@ -64,9 +64,9 @@ public class PlayerUI : GenericUI
         
 
         var cardtrans = cardObj.GetComponent<RectTransform>();
-        cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),80);
+        cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),100);
         if (slot == 3){
-            cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),40);
+            cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),50);
         }
         cardtrans.Find("ManaCost").GetComponent<Text>().text = spell.manaCost + "";
         cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";
