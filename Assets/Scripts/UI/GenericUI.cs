@@ -12,7 +12,7 @@ public class GenericUI : MonoBehaviour
     public Camera cameraToLookAt;
     public Canvas UI;
     public Transform UITrans;
-    public Image[] spellIcons = new Image[4];
+    public GameObject[] spellIcons = new GameObject[4];
     public Image CastBar;
     public Image ManaBar;
     public Image UltBar;
@@ -48,7 +48,7 @@ public class GenericUI : MonoBehaviour
         CastBar.fillAmount = percentage;
     }
 
-    public virtual void shiftSpells(int slot, Sprite icon){
+    public virtual void shiftSpells(int slot, baseSpellScript spell){
         Destroy(spellIcons[slot].gameObject);
         int j = slot + 1; 
         while (j < spellIcons.Length){
@@ -62,25 +62,13 @@ public class GenericUI : MonoBehaviour
 
             j += 1;
         }
-        this.addIcon(icon, 3);
+        this.addIcon(spell, 3);
     }
 
-    public virtual void addIcon(Sprite icon, int slot){
-        GameObject imgObject = new GameObject("Spell" + slot); 
-        //Create the GameObject
-        Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
-        NewImage.sprite = icon; //Set the Sprite of the Image Component on the new GameObject
-
-        var imgtrans = imgObject.GetComponent<RectTransform>();
-        imgtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
-        imgtrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        imgtrans.localPosition = new Vector3(-80 + (80 * slot),-130,0);
-        imgtrans.sizeDelta = new Vector2(60, 60);
-        if (slot == 3){
-            imgtrans.sizeDelta = new Vector2(40, 40);
-        }
-        imgObject.SetActive(true);
-        spellIcons[slot] = NewImage;
+    public virtual void addIcon(baseSpellScript spell, int slot){
+        /* 
+        To Implement in PlayerUI
+        */
     }
 
     public virtual void displayShield(){

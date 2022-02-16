@@ -68,7 +68,7 @@ public class PlayerStateScript : MonoBehaviour
             baseSpellScript added = spellDeck[ shuffleOrder[i] ];
             spellQueue.Add(added);
             if (i < 4){
-                myUI.addIcon(added.icon, i);
+                myUI.addIcon(added, i);
             }
             i += 1;
         }
@@ -241,6 +241,6 @@ public class PlayerStateScript : MonoBehaviour
         spellsCast += 1;
 
         myUI.updateMana(currMana/maxMana);
-        myUI.shiftSpells(slot, spellQueue[3].icon);
+        myUI.shiftSpells(slot, spellQueue[3]);
     }
 }

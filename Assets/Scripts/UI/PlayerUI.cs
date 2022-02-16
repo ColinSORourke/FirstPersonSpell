@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerUI : GenericUI
 {
+
+    public GameObject cardPrefab;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -49,6 +52,29 @@ public class PlayerUI : GenericUI
             auraIcons[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0, 0);
             j += 1;
         }
+    }
+
+    public override void addIcon(baseSpellScript spell, int slot){
+
+        GameObject cardObj = Instantiate(cardPrefab, cardPrefab.transform.position, Quaternion.identity);
+
+        cardObj.transform.SetParent(UITrans);
+        //Create the GameObject
+
+        
+
+        var cardtrans = cardObj.GetComponent<RectTransform>();
+        cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),80);
+        if (slot == 3){
+            cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),40);
+        }
+        cardtrans.Find("ManaCost").GetComponent<Text>().text = spell.manaCost + "";
+        cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";
+        cardtrans.Find("RangeText").GetComponent<Text>().text = spell.range + "";
+        cardtrans.Find("Image").GetComponent<Image>().sprite = spell.icon;
+        cardtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+        cardObj.SetActive(true);
+        spellIcons[slot] = cardObj;
     }
 
     override public void target(){
