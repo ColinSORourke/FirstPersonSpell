@@ -20,6 +20,7 @@ public class MouseLook : NetworkBehaviour
 
         if (IsLocalPlayer) {
             playerCamera.gameObject.SetActive(true);
+            GetComponentInChildren<MeshRenderer>().enabled = false;
         } else {
             playerCamera.gameObject.SetActive(false);
         }

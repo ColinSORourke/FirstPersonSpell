@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2679792689890536950}
   - component: {fileID: 2679792689890536949}
   - component: {fileID: 2679792689890536948}
-  - component: {fileID: 637892529525523974}
+  - component: {fileID: 7255200763403561552}
+  - component: {fileID: -9180818529802305284}
   m_Layer: 2
   m_Name: HealthItem
   m_TagString: Untagged
@@ -399,7 +400,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &637892529525523974
+--- !u!114 &7255200763403561552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,8 +409,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2679792689890536955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ff089b0fe664af896e86c24e60f14a, type: 3}
+  m_Script: {fileID: 11500000, guid: 59e9c152ec6e25e428606853be3dc03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 0
   baseY: 0
+--- !u!114 &-9180818529802305284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679792689890536955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

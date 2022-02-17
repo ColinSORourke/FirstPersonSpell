@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Spell", menuName = "ScriptableObjects/baseSpellScript", order = 1)]
@@ -37,14 +38,8 @@ public class baseSpellScript : ScriptableObject
             // Spawn Projectile that calls onHit upon collision
             Vector3 dir = Target.transform.position - Player.transform.position;
             dir.Normalize();
-            var projectile = Instantiate(projObj, Player.transform.position + (dir * projSpeed), Quaternion.identity);
-            var flyScript = projectile.AddComponent<ProjectileBehavior>();
-            flyScript.spell = this;
-            flyScript.Target = Target;
-            flyScript.speed = projSpeed;
-            flyScript.Source = Player;
-            flyScript.slot = slot;
-            flyScript.lifespan = projLifespan;
+            Vector3 pos = Player.transform.position + (dir * projSpeed);
+            FindObjectOfType<SpellRpcs>().SpawnProjectileServerRpc(NetworkManager.Singleton.LocalClientId, slot, pos.x, pos.y, pos.z);
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){

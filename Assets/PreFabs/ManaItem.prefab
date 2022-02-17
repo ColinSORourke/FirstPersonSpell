@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5303516435620904745}
   - component: {fileID: 5303516435620904746}
   - component: {fileID: 5303516435620904747}
-  - component: {fileID: 5303516435620904750}
+  - component: {fileID: 5615483653675360203}
+  - component: {fileID: 1741593031059092678}
   m_Layer: 2
   m_Name: ManaItem
   m_TagString: Untagged
@@ -399,7 +400,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5303516435620904750
+--- !u!114 &5615483653675360203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,8 +409,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5303516435620904740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd20a15e6ff94f9cb771e5681f0af77, type: 3}
+  m_Script: {fileID: 11500000, guid: b951db4e84e8ff143b51614c9e7fdbee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 0
   baseY: 0
+--- !u!114 &1741593031059092678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303516435620904740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

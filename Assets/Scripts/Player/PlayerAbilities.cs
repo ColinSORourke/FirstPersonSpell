@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    List<GameObject> Targets;
-    List<bool> visibleTargets;
-    int currTarget = -1;
+    public List<GameObject> Targets;
+    public List<bool> visibleTargets;
+    public int currTarget = -1;
 
     baseSpellScript castingSpell;
     int castingSpellSlot;
@@ -197,7 +197,7 @@ public class PlayerAbilities : MonoBehaviour
 
         foreach(RaycastHit hit in hits){  
             if (hit.transform.parent != null){
-                if (hit.transform.parent.gameObject.layer == 7){
+                if (hit.transform.parent.gameObject.layer == 7 && hit.transform.parent != transform) {
                     GameObject tar = hit.transform.parent.gameObject;
                     int i = 0;
                     while (i < Targets.Count){
@@ -237,7 +237,7 @@ public class PlayerAbilities : MonoBehaviour
         foreach(RaycastHit hit in hits){  
             if (!obj_hit){
                 if (hit.transform.parent != null){
-                    if (hit.transform.parent.gameObject != tar){
+                    if (hit.transform.parent.gameObject != tar && hit.transform.parent != transform) {
                         obj_hit = true; 
                         if (print){
                             Debug.Log(hit.transform.parent.gameObject);

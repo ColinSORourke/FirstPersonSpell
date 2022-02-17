@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerStateScript : MonoBehaviour
+public class PlayerStateScript : NetworkBehaviour
 {
     public float maxHealth = 50.0f;
     public float currentHealth = 50.0f;
@@ -242,5 +243,20 @@ public class PlayerStateScript : MonoBehaviour
 
         myUI.updateMana(currMana/maxMana);
         myUI.shiftSpells(slot, spellQueue[3].icon);
+    }
+
+    [ClientRpc]
+    public void PickupHealthClientRpc(ClientRpcParams clientRpcParams = default) {
+        pickupHealthCrystal();
+    }
+
+    [ClientRpc]
+    public void PickupManaClientRpc(ClientRpcParams clientRpcParams = default) {
+        pickupManaCrystal();
+    }
+
+    [ClientRpc]
+    public void PickupUltClientRpc(ClientRpcParams clientRpcParams = default) {
+        pickupUltCrystal();
     }
 }

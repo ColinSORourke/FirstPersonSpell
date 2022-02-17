@@ -180,9 +180,11 @@ public class LobbyManager : NetworkBehaviour
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
         if (IsServer) {
+            Vector3 playerPosition = new Vector3(-24f, 1.5f, 0f);
             foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList) {
-                GameObject go = Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
+                GameObject go = Instantiate(playerPrefab, playerPosition, playerPrefab.transform.rotation);
                 go.GetComponent<NetworkObject>().SpawnAsPlayerObject(client.ClientId);
+                playerPosition.x += 12f;
             }
         }
     }

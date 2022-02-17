@@ -18,7 +18,7 @@ MonoBehaviour:
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
-  projObj: {fileID: 0}
+  projObj: {fileID: 6923778780920329287, guid: 2d940c532c0389e4898c79026d0b7bdf, type: 3}
   damage: 5
   ultCost: 0
   range: 1000
