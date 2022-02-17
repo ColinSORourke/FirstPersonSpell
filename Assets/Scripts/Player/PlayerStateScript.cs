@@ -49,10 +49,10 @@ public class PlayerStateScript : NetworkBehaviour
         allDecks = this.GetComponent<SelectDeck>();
 
         //Create Card Deck
-        Debug.Log("Card Deck ID: " + playerCardDeckId);
+        /* Debug.Log("Card Deck ID: " + playerCardDeckId);
         spellDeck = allDecks.spellDecks[playerCardDeckId].getSpellDeck();
         //Create Ult
-        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell();
+        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell(); */
 
         int[] shuffleOrder = { 0,1,2,3,4,5,6 };
         int i = 6;
