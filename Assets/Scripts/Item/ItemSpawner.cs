@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public GameObject[] itemPrefabs = new GameObject[5];
+    public GameObject[] itemPrefabs;
     public int maxItems = 3;
     int currItems = 0;
     Vector3[] spawnPoints;
@@ -19,6 +19,8 @@ public class ItemSpawner : MonoBehaviour
         items = new GameObject[number];
         int i = 0;
         while (i < number){
+            //Debug.Log(spawnParent.GetChild(i).gameObject.tag);
+            spawnParent.GetChild(i).gameObject.tag = spawnParent.GetChild(i).gameObject.tag == "Untagged" ? assignRandomTagToObject() : spawnParent.GetChild(i).gameObject.tag;
             Vector3 pos = spawnParent.GetChild(i).position;
             pos.x -= 0.5f;
             pos.y += 1.2f;
@@ -39,14 +41,14 @@ public class ItemSpawner : MonoBehaviour
     }
 
     void spawnItem(){
-        GameObject toSpawn = itemPrefabs[Random.Range(0, 3)];
         Transform crysParent = transform.GetChild(1);
+        Transform platformParent = transform.GetChild(0);
         if (currItems < maxItems){
-            int i = Random.Range(0, spawnPoints.Length);
+            int i = 0;// = Random.Range(0, spawnPoints.Length);
             while (items[i] != null){
                 i = Random.Range(0, spawnPoints.Length);
             }
-            items[i] = Instantiate(toSpawn, spawnPoints[i], Quaternion.identity);
+            items[i] = Instantiate(toSpawnObjectAt(platformParent.GetChild(i)), spawnPoints[i], Quaternion.identity);
             items[i].transform.parent = crysParent;
             currItems += 1;
         }
@@ -54,5 +56,29 @@ public class ItemSpawner : MonoBehaviour
 
     public void itemDestroyed(){
         currItems -= 1;
+    }
+
+    private string assignRandomTagToObject()
+    {
+        string[] tagList = {"UltItem", "ManaItem", "HealthItem" };
+        int index = Random.Range(0, tagList.Length);
+        
+        return tagList[index];
+    }
+
+    private GameObject toSpawnObjectAt(Transform platform)
+    {
+        switch (platform.tag)
+        {
+            case "Untagged":
+                break;
+            case "ManaItem":
+                return itemPrefabs[0];
+            case "HealthItem":
+                return itemPrefabs[1];
+            case "UltItem":
+                return itemPrefabs[2];
+        }
+        return itemPrefabs[Random.Range(0, 3)];
     }
 }

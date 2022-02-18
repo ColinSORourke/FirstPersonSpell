@@ -12,6 +12,7 @@ public class PlayerStateScript : MonoBehaviour
     public float maxMana = 50.0f;
     public float currMana = 50.0f;
     public float manaThreshold = 30.0f;
+    public bool doManaRegen = true;
 
     public float maxUlt = 20.0f;
     public float currUlt = 0.0f;
@@ -68,7 +69,7 @@ public class PlayerStateScript : MonoBehaviour
             baseSpellScript added = spellDeck[ shuffleOrder[i] ];
             spellQueue.Add(added);
             if (i < 4){
-                myUI.addIcon(added.icon, i);
+                myUI.addIcon(added, i);
             }
             i += 1;
         }
@@ -86,7 +87,7 @@ public class PlayerStateScript : MonoBehaviour
     // Called every quarter second
     void tick(){
         // Regen mana. Regen is greater if Health is low.
-        if (currMana < manaThreshold){
+        if (currMana < manaThreshold && doManaRegen){
             if (currentHealth <= healthThreshold){
                 currMana += 0.5f;
             } else {
@@ -241,6 +242,6 @@ public class PlayerStateScript : MonoBehaviour
         spellsCast += 1;
 
         myUI.updateMana(currMana/maxMana);
-        myUI.shiftSpells(slot, spellQueue[3].icon);
+        myUI.shiftSpells(slot, spellQueue[3]);
     }
 }

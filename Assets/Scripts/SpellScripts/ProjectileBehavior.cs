@@ -40,6 +40,8 @@ public class ProjectileBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
+        Debug.Log("Projectile entered Collider");
+        Debug.Log(collider);
         if (collider.GetComponent<Transform>().parent != null){
             Transform Hit = collider.GetComponent<Transform>().parent;
             if (Hit == Target){

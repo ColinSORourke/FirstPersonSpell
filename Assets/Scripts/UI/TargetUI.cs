@@ -31,11 +31,11 @@ public class TargetUI : GenericUI
         // DO NOTHING
     }
 
-    override public void shiftSpells(int slot, Sprite icon){
+    override public void shiftSpells(int slot, baseSpellScript spell){
         // DO NOTHING
     }
 
-    override public void addIcon(Sprite icon, int slot){
+    override public void addIcon(baseSpellScript spell, int slot){
         // DO NOTHING
     }
 }
