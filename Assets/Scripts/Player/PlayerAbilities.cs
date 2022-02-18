@@ -13,8 +13,8 @@ public class PlayerAbilities : MonoBehaviour
     public float castTime = -1.0f;
     public float totalCastTime;
 
-    PlayerStateScript myState;
-    GenericUI myUI;
+    public PlayerStateScript myState;
+    public GenericUI myUI;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,6 @@ public class PlayerAbilities : MonoBehaviour
         int i = 0;
         foreach(GameObject tarObjs in Targets){
             bool visible;
-            Debug.Log("Drawing Ray to " + tarObjs.transform + " at " + tarObjs.transform.position);
             if (i == currTarget){
                 visible = hasLOS(tarObjs, true);
             } else {
@@ -49,8 +48,7 @@ public class PlayerAbilities : MonoBehaviour
             
             visibleTargets[i] = visible;
             if (i == currTarget && !visible){
-                Debug.Log("Lost sight on " + currTarget);
-                Targets[currTarget].GetComponent<GenericUI>().unTarget();
+                Targets[currTarget].GetComponent<PlayerStateScript>().myUI.unTarget();
                 currTarget = -1;
                 myUI.updateCast(0);
                 castTime = -1.0f;
@@ -63,7 +61,7 @@ public class PlayerAbilities : MonoBehaviour
         if (tar)
         {
             range = Vector3.Distance(Targets[currTarget].transform.position, this.gameObject.transform.position);
-            Targets[currTarget].GetComponent<GenericUI>().updateRange(range);
+            Targets[currTarget].GetComponent<PlayerStateScript>().myUI.updateRange(range);
         }
 
         if (castTime != -1.0f){
@@ -182,7 +180,7 @@ public class PlayerAbilities : MonoBehaviour
     public void newTarget(){
         int oldTar = currTarget;
         if (oldTar != -1){
-            Targets[oldTar].GetComponent<GenericUI>().unTarget();
+            Targets[oldTar].GetComponent<PlayerStateScript>().myUI.unTarget();
         }
 
         RaycastHit[] hits;
@@ -197,7 +195,6 @@ public class PlayerAbilities : MonoBehaviour
         Debug.DrawRay (this.gameObject.transform.position, dir * 10000.0f, Color.cyan, 1.0f);
 
         foreach(RaycastHit hit in hits){  
-            Debug.Log(hit.transform);
             if (hit.transform.parent != null){
                 if (hit.transform.parent.gameObject.layer == 7 && hit.transform.parent != transform) {
                     GameObject tar = hit.transform.parent.gameObject;
@@ -205,7 +202,6 @@ public class PlayerAbilities : MonoBehaviour
                     while (i < Targets.Count){
                         if (Targets[i] == tar){
                             currTarget = i;
-                            Debug.Log("Targeted " + i);
                             break;
                         }
                         i += 1;
@@ -221,7 +217,7 @@ public class PlayerAbilities : MonoBehaviour
             myUI.updateCast(0);
             castTime = -1.0f;
         } else {
-            Targets[currTarget].GetComponent<GenericUI>().target();
+            Targets[currTarget].GetComponent<PlayerStateScript>().myUI.target();
         }
     }
 

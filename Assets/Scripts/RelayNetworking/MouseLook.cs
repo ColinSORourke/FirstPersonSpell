@@ -24,6 +24,8 @@ public class MouseLook : NetworkBehaviour
             this.transform.Find("Sphere").gameObject.SetActive(false);
             this.gameObject.layer = 0;
             GetComponentInChildren<MeshRenderer>().enabled = false;
+            var playUI = this.gameObject.GetComponent<PlayerUI>();
+            playUI.enabled = true;
         } else {
             playerCamera.gameObject.SetActive(false);
             this.gameObject.GetComponent<PlayerUI>().enabled = false;
@@ -33,6 +35,7 @@ public class MouseLook : NetworkBehaviour
             this.gameObject.GetComponent<Movement>().enabled = false;
             this.gameObject.GetComponent<PlayerController>().enabled = false;
             this.gameObject.GetComponent<CharacterController>().enabled = false;
+            this.transform.Find("PlayerUI").gameObject.SetActive(false);
         }
     }
 

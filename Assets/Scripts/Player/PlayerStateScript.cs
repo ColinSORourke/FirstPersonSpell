@@ -45,7 +45,13 @@ public class PlayerStateScript : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myUI = this.GetComponent<GenericUI>();
+        var myUIs = this.GetComponents<GenericUI>();
+        foreach (GenericUI UI in myUIs){
+            if (UI.enabled){
+                myUI = UI;
+                break;
+            }
+        }
         allDecks = this.GetComponent<SelectDeck>();
 
         //Create Card Deck
