@@ -40,6 +40,7 @@ public class PlayerAbilities : MonoBehaviour
         int i = 0;
         foreach(GameObject tarObjs in Targets){
             bool visible;
+            Debug.Log("Drawing Ray to " + tarObjs.transform + " at " + tarObjs.transform.position);
             if (i == currTarget){
                 visible = hasLOS(tarObjs, true);
             } else {
@@ -48,7 +49,7 @@ public class PlayerAbilities : MonoBehaviour
             
             visibleTargets[i] = visible;
             if (i == currTarget && !visible){
-                
+                Debug.Log("Lost sight on " + currTarget);
                 Targets[currTarget].GetComponent<GenericUI>().unTarget();
                 currTarget = -1;
                 myUI.updateCast(0);
@@ -196,6 +197,7 @@ public class PlayerAbilities : MonoBehaviour
         Debug.DrawRay (this.gameObject.transform.position, dir * 10000.0f, Color.cyan, 1.0f);
 
         foreach(RaycastHit hit in hits){  
+            Debug.Log(hit.transform);
             if (hit.transform.parent != null){
                 if (hit.transform.parent.gameObject.layer == 7 && hit.transform.parent != transform) {
                     GameObject tar = hit.transform.parent.gameObject;
@@ -203,6 +205,7 @@ public class PlayerAbilities : MonoBehaviour
                     while (i < Targets.Count){
                         if (Targets[i] == tar){
                             currTarget = i;
+                            Debug.Log("Targeted " + i);
                             break;
                         }
                         i += 1;
@@ -232,9 +235,14 @@ public class PlayerAbilities : MonoBehaviour
         ry.direction = dir; 
 
         hits = Physics.RaycastAll (ry, dir.magnitude); 
-        Debug.DrawRay (this.gameObject.transform.position, dir, Color.cyan, 1.0f); 
+        if (print){
+            Debug.DrawRay (this.gameObject.transform.position, dir, Color.red, 1.0f);
+        } else {
+            Debug.DrawRay (this.gameObject.transform.position, dir, Color.cyan, 1.0f);
+        }
+         
 
-        foreach(RaycastHit hit in hits){  
+        foreach(RaycastHit hit in hits){ 
             if (!obj_hit){
                 if (hit.transform.parent != null){
                     if (hit.transform.parent.gameObject != tar && hit.transform.parent != transform) {

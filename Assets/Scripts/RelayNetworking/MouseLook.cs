@@ -21,12 +21,18 @@ public class MouseLook : NetworkBehaviour
         if (IsLocalPlayer) {
             playerCamera.gameObject.SetActive(true);
             this.transform.Find("InfoCanvas").gameObject.SetActive(false);
+            this.transform.Find("Sphere").gameObject.SetActive(false);
+            this.gameObject.layer = 0;
             GetComponentInChildren<MeshRenderer>().enabled = false;
         } else {
             playerCamera.gameObject.SetActive(false);
             this.gameObject.GetComponent<PlayerUI>().enabled = false;
             var tarUI = this.gameObject.GetComponent<TargetUI>();
             tarUI.enabled = true;
+            this.gameObject.GetComponent<PlayerAbilities>().enabled = false;
+            this.gameObject.GetComponent<Movement>().enabled = false;
+            this.gameObject.GetComponent<PlayerController>().enabled = false;
+            this.gameObject.GetComponent<CharacterController>().enabled = false;
         }
     }
 
