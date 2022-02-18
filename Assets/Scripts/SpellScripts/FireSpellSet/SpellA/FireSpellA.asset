@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: FireSpellA
   m_EditorClassIdentifier: 
   id: 101
-  manaCost: 5
+  manaCost: 0
   castTime: 1
   isProjectile: 1
   projSpeed: 0.2
-  projLifespan: 1
+  projLifespan: 1000
   projObj: {fileID: 6923778780920329287, guid: 2d940c532c0389e4898c79026d0b7bdf, type: 3}
   damage: 2
-  ultCost: 0
-  range: 10
+  ultCost: 3
+  range: 36
   reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 0}
