@@ -8,6 +8,9 @@ public class PlayerUI : GenericUI
 
     public GameObject cardPrefab;
 
+    public override void updateMana(float percentage){
+        ManaBar.fillAmount = percentage * 0.86f;
+    }
     // Start is called before the first frame update
     public override void Start()
     {
@@ -64,9 +67,9 @@ public class PlayerUI : GenericUI
         
 
         var cardtrans = cardObj.GetComponent<RectTransform>();
-        cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),100);
+        cardtrans.anchoredPosition = new Vector2(130 + (-100 * slot),60);
         if (slot == 3){
-            cardtrans.anchoredPosition = new Vector2(200 + (-150 * slot),50);
+            cardtrans.anchoredPosition = new Vector2(130 + (-100 * slot),30);
         }
         cardtrans.Find("ManaCost").GetComponent<Text>().text = spell.manaCost + "";
         cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";
