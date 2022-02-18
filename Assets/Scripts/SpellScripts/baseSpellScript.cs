@@ -39,7 +39,7 @@ public class baseSpellScript : ScriptableObject
             Vector3 dir = Target.transform.position - Player.transform.position;
             dir.Normalize();
             Vector3 pos = Player.transform.position + (dir * projSpeed);
-            FindObjectOfType<SpellRpcs>().SpawnProjectileServerRpc(NetworkManager.Singleton.LocalClientId, slot, pos.x, pos.y, pos.z);
+            FindObjectOfType<SpellRpcs>().SpawnProjectileServerRpc(NetworkManager.Singleton.LocalClientId, slot, pos.x, pos.y, pos.z, Target.GetComponent<NetworkObject>().OwnerClientId);
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
