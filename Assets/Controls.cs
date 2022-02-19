@@ -512,6 +512,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Abilities3 = m_Gameplay.FindAction("Abilities 3", throwIfNotFound: true);
         m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
         m_Gameplay_Escape = m_Gameplay.FindAction("Escape", throwIfNotFound: true);
+        m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         // Spectator
         m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
         m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
@@ -519,7 +520,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Spectator_MouseY = m_Spectator.FindAction("MouseY", throwIfNotFound: true);
         m_Spectator_Escape = m_Spectator.FindAction("Escape", throwIfNotFound: true);
         m_Spectator_Sprint = m_Spectator.FindAction("Sprint", throwIfNotFound: true);
-        m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);

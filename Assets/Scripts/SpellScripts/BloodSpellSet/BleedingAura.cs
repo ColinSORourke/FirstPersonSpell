@@ -20,6 +20,12 @@ public class BleedingAura : baseAuraScript
     override public void onExpire(Transform Player, Transform Target, int stack, int tickNum)
     {
         Debug.Log("Bleeding expired");
+        if(stack == 3)
+        {
+            PlayerStateScript pManaRegen = Target.GetComponent<PlayerStateScript>();
+            pManaRegen.doManaRegen = true;
+
+        }
     }
 
     override public void onStack(Transform Player, Transform Target, int stack)
@@ -28,8 +34,8 @@ public class BleedingAura : baseAuraScript
 
         if(stack == 3)
         {
-            //PlayerStateScript pManaRegen = Target.GetComponent<PlayerStateScript>();
-            
+            PlayerStateScript pManaRegen = Target.GetComponent<PlayerStateScript>();
+            pManaRegen.doManaRegen = false;
 
         }
     }
