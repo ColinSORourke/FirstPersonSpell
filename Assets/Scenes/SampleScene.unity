@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43748972, g: 0.4853109, b: 0.56558526, a: 1}
+  m_IndirectSpecularColor: {r: 0.4374901, g: 0.48531127, b: 0.56558615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1166,7 +1166,6 @@ MonoBehaviour:
   movement: {fileID: 369927502}
   mouseLook: {fileID: 369927507}
   playerAbilities: {fileID: 369927505}
-  menu: {fileID: 0}
 --- !u!114 &369927502
 MonoBehaviour:
   m_ObjectHideFlags: 0

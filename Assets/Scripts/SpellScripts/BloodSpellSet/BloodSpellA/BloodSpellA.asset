@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee1c15c8903c14342851e0d6d7d5139e, type: 3}
+  m_Name: BloodSpellA
+  m_EditorClassIdentifier: 
+  id: 401
+  manaCost: 5
+  castTime: 0.5
+  isProjectile: 1
+  projSpeed: 0.1
+  projLifespan: 5
+  projObj: {fileID: 1696106164046204527, guid: a9cc8db1c15d05e4e8101d550c16b189, type: 3}
+  damage: 3
+  ultCost: 0
+  range: 24
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 0}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  icon: {fileID: 0}
+  castParticle: {fileID: 0}
+  hitParticle: {fileID: 0}
