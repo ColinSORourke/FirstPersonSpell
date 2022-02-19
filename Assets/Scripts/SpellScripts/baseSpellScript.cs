@@ -23,6 +23,9 @@ public class baseSpellScript : ScriptableObject
     public baseAuraScript aura_B;
     public baseSpellScript token;
 
+    public string spellName;
+    public string description;
+
     public Sprite icon;
     public ParticleSystem castParticle;
     public ParticleSystem hitParticle;    
