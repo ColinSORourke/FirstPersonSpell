@@ -27,6 +27,9 @@ MonoBehaviour:
   aura_A: {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 0}
+  spellName: Blood Blast
+  description: Pay 2 health to fire a large blast of blood at the target, dealing 
+    8 damage If target is bleeding, inflict a stack of bleeding
+  icon: {fileID: 21300000, guid: 9a77f154c28774d459509b0ec4849651, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

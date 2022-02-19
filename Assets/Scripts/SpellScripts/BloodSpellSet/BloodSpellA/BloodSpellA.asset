@@ -27,6 +27,8 @@ MonoBehaviour:
   aura_A: {fileID: 0}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 0}
+  spellName: Blood Strike
+  description: Fire a blast of blood at the target, dealing 3 damage
+  icon: {fileID: 21300000, guid: feccc0f46cee9824b995081fd5517aec, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

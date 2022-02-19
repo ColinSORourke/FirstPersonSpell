@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d03ac7e7b81032448e2711407cdb079, type: 3}
+  m_Name: BloodDeck
+  m_EditorClassIdentifier: 
+  id: 902
+  spellDeck:
+  - {fileID: 11400000, guid: e31f8fc3f7b96bb428998ee47cd7e7ba, type: 2}
+  - {fileID: 11400000, guid: ac50f7c45dc41314da69d8d116482d70, type: 2}
+  - {fileID: 11400000, guid: 71af3f9a45c8e844cb95fa5c1ef47919, type: 2}
+  - {fileID: 11400000, guid: b69fc22adfda90c4694cd7e9242965ff, type: 2}
+  - {fileID: 11400000, guid: 2920caeb2aac9624b912be610970c06e, type: 2}
+  - {fileID: 11400000, guid: 1db0c6303e5565340b751747efdac835, type: 2}
+  - {fileID: 11400000, guid: 1862553cfc791c447abbd0899861605b, type: 2}
+  ultSpell: {fileID: 11400000, guid: 3497dc1091b35184ab68da2c9b1fa94c, type: 2}

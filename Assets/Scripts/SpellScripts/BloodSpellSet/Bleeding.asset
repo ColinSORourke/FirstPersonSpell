@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06d508e3b773984daa3ef54ba848a40, type: 3}
   m_Name: Bleeding
   m_EditorClassIdentifier: 
-  id: 0
-  stackable: 0
-  maxStacks: 1
-  tickSpeed: -1
+  id: 4
+  stackable: 1
+  maxStacks: 3
+  tickSpeed: 2
   damage: 1
   auraParticle: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 71d1f41049793e94194b5785f940c545, type: 3}

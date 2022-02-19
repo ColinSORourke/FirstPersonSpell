@@ -12,21 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef8d460cf03db4478b915aa7179ba7e, type: 3}
   m_Name: BloodSpellC
   m_EditorClassIdentifier: 
-  id: 0
-  manaCost: 0
-  castTime: 0
+  id: 403
+  manaCost: 10
+  castTime: 1
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
   projObj: {fileID: 0}
-  damage: 0
+  damage: 5
   ultCost: 0
-  range: 0
-  reqTarget: 0
+  range: 12
+  reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 0}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 0}
+  spellName: Transfusion
+  description: 'Siphon 5 health from the target, health siphoned is granted as bonus
+    health Positional (L): gain 5 additional bonus health'
+  icon: {fileID: 21300000, guid: 761fe237b847eaa458c9867852479ff8, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

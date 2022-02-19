@@ -12,21 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785ca3078495a8948849a5fc5e738a2a, type: 3}
   m_Name: BloodSpellUlt
   m_EditorClassIdentifier: 
-  id: 0
+  id: 408
   manaCost: 0
-  castTime: 0
+  castTime: 2
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
   projObj: {fileID: 0}
-  damage: 0
-  ultCost: 0
-  range: 0
-  reqTarget: 0
+  damage: 10
+  ultCost: 15
+  range: 12
+  reqTarget: 1
   exhaust: 0
-  aura_A: {fileID: 0}
+  aura_A: {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 0}
+  spellName: Vampirism
+  description: Siphon up to 10 (+2 per stack of bleeding) health and 10 mana from
+    the target Siphoned health is added to bonus health, mana still caps at 50
+  icon: {fileID: 21300000, guid: dd7977d3c7ce2384c9eaa1173913b3d4, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}
