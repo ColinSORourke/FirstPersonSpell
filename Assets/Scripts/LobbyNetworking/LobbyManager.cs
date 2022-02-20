@@ -195,7 +195,7 @@ public class LobbyManager : NetworkBehaviour
             MakeClientLeaveClientRpc();
             StartCoroutine(WaitToLeaveHost());
         } else {
-            if (ServerGameNetPortal.Instance.gameInProg) {
+            if (SceneManager.GetActiveScene().name != "NetMenu") {
                 RemoveLeaverTargetClientRpc(NetworkManager.Singleton.LocalClientId);
             }
 
