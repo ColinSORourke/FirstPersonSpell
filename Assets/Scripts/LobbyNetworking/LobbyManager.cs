@@ -183,7 +183,7 @@ public class LobbyManager : NetworkBehaviour
             Vector3 playerPosition = new Vector3(-24f, 1.5f, 0f);
             foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList) {
                 GameObject go = Instantiate(playerPrefab, playerPosition, playerPrefab.transform.rotation);
-                go.name = "Player" + client.ClientId;
+                go.name = "Player " + client.ClientId;
                 go.GetComponent<NetworkObject>().SpawnAsPlayerObject(client.ClientId);
                 playerPosition.x += 12f;
             }
@@ -287,6 +287,6 @@ public class LobbyManager : NetworkBehaviour
 
     [ClientRpc]
     private void RemoveLeaverTargetClientRpc(ulong leaverId) {
-        NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject.gameObject.GetComponent<PlayerAbilities>().RemoveTarget(NetworkManager.Singleton.ConnectedClients[leaverId].PlayerObject.gameObject);
+        GameObject.Find("Player " + NetworkManager.Singleton.LocalClientId).GetComponent<PlayerAbilities>().RemoveTarget(GameObject.Find("Player " + leaverId));
     }
 }
