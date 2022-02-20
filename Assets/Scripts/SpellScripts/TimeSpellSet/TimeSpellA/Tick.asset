@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d3453b5da911043a59e75f73426376, type: 3}
+  m_Name: Tick
+  m_EditorClassIdentifier: 
+  id: 301
+  manaCost: 5
+  castTime: 0
+  isProjectile: 1
+  projSpeed: 0.1
+  projLifespan: 5
+  projObj: {fileID: 1036287290068651672, guid: a3505fda0ff64d0479a2b754be42092c, type: 3}
+  damage: 2
+  ultCost: 0
+  range: 12
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 0}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  spellName: Tick
+  description: 
+  icon: {fileID: 21300000, guid: 4c531384637f6c243bb933e82b4cd208, type: 3}
+  castParticle: {fileID: 0}
+  hitParticle: {fileID: 0}

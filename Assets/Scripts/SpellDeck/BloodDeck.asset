@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d03ac7e7b81032448e2711407cdb079, type: 3}
   m_Name: BloodDeck
   m_EditorClassIdentifier: 
-  id: 902
+  id: 903
   spellDeck:
   - {fileID: 11400000, guid: e31f8fc3f7b96bb428998ee47cd7e7ba, type: 2}
   - {fileID: 11400000, guid: ac50f7c45dc41314da69d8d116482d70, type: 2}

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f1d6e28d89dd0429bcfebf9c230b76, type: 3}
+  m_Name: TimeOfReckoning
+  m_EditorClassIdentifier: 
+  id: 308
+  manaCost: 0
+  castTime: 1
+  isProjectile: 0
+  projSpeed: 0
+  projLifespan: 0
+  projObj: {fileID: 0}
+  damage: 0
+  ultCost: 18
+  range: 12
+  reqTarget: 0
+  exhaust: 0
+  aura_A: {fileID: 11400000, guid: 8def312fc892ed845b947327b2530e46, type: 2}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  spellName: 
+  description: 
+  icon: {fileID: 21300000, guid: eadbc85076175364b8d8cb33cf257321, type: 3}
+  castParticle: {fileID: 0}
+  hitParticle: {fileID: 0}

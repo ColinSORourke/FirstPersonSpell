@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Rewind", menuName = "ScriptableObjects/TimeSpells/TimeSpellD", order = 1)]
+public class RewindSpell : baseSpellScript
+{
+    // Start is called before the first frame update
+    override public void onCastSpecific(Transform Player, Transform Target, int slot)
+    {
+        // None
+        Debug.Log("Cast Rewind");
+        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
+        caster.applyAura(Player, aura_A, 3);
+    }
+
+    // Update is called once per frame
+    override public void onHit(Transform Player, Transform Target, int slot)
+    {
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
+    }
+}
