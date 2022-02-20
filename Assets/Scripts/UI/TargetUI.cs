@@ -19,14 +19,14 @@ public class TargetUI : GenericUI
         Shield.enabled = false;
     }
 
-    public override void Start() {
-        cameraToLookAt = Camera.main;
-    }
-
     override public void Update(){
         var barTransf = UI.GetComponent<Transform>();
-        barTransf.LookAt(cameraToLookAt.transform);
-        barTransf.rotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
+        if (cameraToLookAt != null) {
+            barTransf.LookAt(cameraToLookAt.transform);
+            barTransf.rotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
+        } else {
+            cameraToLookAt = Camera.main;
+        }
     }
 
     override public void updateCast(float percentage){
