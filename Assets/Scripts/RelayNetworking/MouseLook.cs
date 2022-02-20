@@ -14,6 +14,8 @@ public class MouseLook : NetworkBehaviour
     float xRotation = 0f;
 
     private void Start() {
+        gameObject.name = "Player " + NetworkManager.Singleton.LocalClientId;
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
