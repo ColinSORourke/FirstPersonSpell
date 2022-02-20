@@ -277,6 +277,7 @@ public class LobbyManager : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     private void RemoveLeaverTargetServerRpc(ulong leaverId) {
+        Debug.Log("gib cowf");
         RemoveLeaverTargetClientRpc(leaverId);
     }
 
