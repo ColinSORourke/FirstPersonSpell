@@ -216,16 +216,18 @@ public class LobbyManager : NetworkBehaviour
     }
 
     private void HandleLobbyPlayersStateChanged(NetworkListEvent<LobbyPlayerState> lobbyState) {
-        for (int i = 0; i < lobbyPlayerModels.Length; i++) {
-            if (lobbyPlayers.Count > i) {
-                lobbyPlayerModels[i].SetActive(true);
+        if (SceneManager.GetActiveScene().name == "NetMenu") {
+            for (int i = 0; i < lobbyPlayerModels.Length; i++) {
+                if (lobbyPlayers.Count > i) {
+                    lobbyPlayerModels[i].SetActive(true);
+                }
+                else {
+                    lobbyPlayerModels[i].SetActive(false);
+                }
             }
-            else {
-                lobbyPlayerModels[i].SetActive(false);
-            }
-        }
 
-        StartCoroutine(WaitForPlayerName(lobbyPlayers.Count));
+            StartCoroutine(WaitForPlayerName(lobbyPlayers.Count));
+        }
     }
 
     private IEnumerator WaitForPlayerName(int playersCount) {

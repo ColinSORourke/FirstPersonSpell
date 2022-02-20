@@ -17,14 +17,16 @@ public class TargetUI : GenericUI
         Shield = UITrans.Find("Shield").GetComponent<Image>();
         TargetMark = UITrans.Find("TargetMarker").GetComponent<Image>();
         Shield.enabled = false;
+    }
 
+    public override void Start() {
         cameraToLookAt = Camera.main;
     }
 
     override public void Update(){
         var barTransf = UI.GetComponent<Transform>();
         barTransf.LookAt(cameraToLookAt.transform);
-        barTransf.localRotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
+        barTransf.rotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
     }
 
     override public void updateCast(float percentage){
