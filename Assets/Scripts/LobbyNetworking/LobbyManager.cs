@@ -195,12 +195,12 @@ public class LobbyManager : NetworkBehaviour
             MakeClientLeaveClientRpc();
             StartCoroutine(WaitToLeaveHost());
         } else {
-            gameNetPortal.transitioning = true;
-            GameNetPortal.Instance.RequestDisconnect();
-
             if (ServerGameNetPortal.Instance.gameInProg) {
                 RemoveLeaverTargetClientRpc(NetworkManager.Singleton.LocalClientId);
             }
+
+            gameNetPortal.transitioning = true;
+            GameNetPortal.Instance.RequestDisconnect();
         }
     }
 
