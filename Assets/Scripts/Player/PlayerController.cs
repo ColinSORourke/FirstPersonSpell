@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] MouseLook mouseLook;
     [SerializeField] PlayerAbilities playerAbilities;
     //[SerializeField] Popup menu;
+    [SerializeField] GameObject leaveButton;
 
     Controls controls;
     Controls.GameplayActions gameplayActions;
@@ -45,7 +46,16 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(2);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
-        //gameplayActions.Escape.performed += _ => menu.popup();
+        gameplayActions.Escape.performed += _ => {
+            leaveButton.SetActive(!leaveButton.activeSelf);
+            if (leaveButton.activeSelf) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            } else {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        };
     }
 
     private void Update()

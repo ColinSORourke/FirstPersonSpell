@@ -273,4 +273,15 @@ public class PlayerAbilities : MonoBehaviour
         }
         return goList;
     }
+
+    public void RemoveTarget(GameObject leaverPlayer) {
+        if (Targets[currTarget] == leaverPlayer) {
+            currTarget = -1;
+            myUI.updateCast(0);
+            castTime = -1.0f;
+        }
+
+        visibleTargets.RemoveAt(Targets.IndexOf(leaverPlayer));
+        Targets.Remove(leaverPlayer);
+    }
 }

@@ -18,6 +18,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         private Dictionary<ulong, string> clientIdToGuid;
         private Dictionary<ulong, int> clientSceneMap;
         private bool gameInProgress;
+        public bool gameInProg {get {return gameInProgress;}}
 
         private const int MaxConnectionPayload = 1024;
 

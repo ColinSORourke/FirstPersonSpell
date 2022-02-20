@@ -190,12 +190,6 @@ public class LobbyManager : NetworkBehaviour
         }
     }
 
-    /*[ClientRpc]
-    private void SpawnPlayerClientRpc() {
-        GameObject go = Instantiate(playerPrefab, playerPrefab.transform.position, playerPrefab.transform.rotation);
-        go.GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
-    }*/
-
     public void OnLeaveClicked() {
         if (IsHost) {
             MakeClientLeaveClientRpc();
@@ -203,6 +197,10 @@ public class LobbyManager : NetworkBehaviour
         } else {
             gameNetPortal.transitioning = true;
             GameNetPortal.Instance.RequestDisconnect();
+
+            if (ServerGameNetPortal.Instance.gameInProg) {
+                RemoveLeaverTargetClientRpc(NetworkManager.Singleton.LocalClientId);
+            }
         }
     }
 
@@ -275,5 +273,10 @@ public class LobbyManager : NetworkBehaviour
             gameNetPortal.transitioning = true;
             GameNetPortal.Instance.RequestDisconnect();
         }
+    }
+
+    [ClientRpc]
+    private void RemoveLeaverTargetClientRpc(ulong leaverId, ClientRpcParams clientRpcParams = default) {
+        NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject.gameObject.GetComponent<PlayerAbilities>().RemoveTarget(NetworkManager.Singleton.ConnectedClients[leaverId].PlayerObject.gameObject);
     }
 }
