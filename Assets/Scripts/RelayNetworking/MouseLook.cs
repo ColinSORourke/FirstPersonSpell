@@ -14,7 +14,7 @@ public class MouseLook : NetworkBehaviour
     float xRotation = 0f;
 
     private void Start() {
-        gameObject.name = "Player " + NetworkManager.Singleton.LocalClientId;
+        gameObject.name = "Player " + gameObject.GetComponent<NetworkObject>().OwnerClientId;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
