@@ -287,6 +287,6 @@ public class LobbyManager : NetworkBehaviour
 
     [ClientRpc]
     private void RemoveLeaverTargetClientRpc(ulong leaverId) {
-        if (NetworkManager.Singleton.LocalClientId != leaverId) GameObject.Find("Player " + NetworkManager.Singleton.LocalClientId).GetComponent<PlayerAbilities>().RemoveTarget(GameObject.Find("Player " + leaverId));
+        if (NetworkManager.Singleton.LocalClientId != leaverId) GameObject.Find("Player " + NetworkManager.Singleton.LocalClientId).GetComponent<PlayerAbilities>().RemoveTarget(leaverId);
     }
 }
