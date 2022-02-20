@@ -197,10 +197,10 @@ public class LobbyManager : NetworkBehaviour
         } else {
             if (SceneManager.GetActiveScene().name != "NetMenu") {
                 RemoveLeaverTargetServerRpc(NetworkManager.Singleton.LocalClientId);
+            } else {
+                gameNetPortal.transitioning = true;
+                GameNetPortal.Instance.RequestDisconnect();
             }
-
-            gameNetPortal.transitioning = true;
-            GameNetPortal.Instance.RequestDisconnect();
         }
     }
 
@@ -277,13 +277,16 @@ public class LobbyManager : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     private void RemoveLeaverTargetServerRpc(ulong leaverId) {
-        Debug.Log("gib cowf");
         RemoveLeaverTargetClientRpc(leaverId);
+        MakeClientLeaveClientRpc(new ClientRpcParams {
+            Send = new ClientRpcSendParams {
+                TargetClientIds = new ulong[] { leaverId }
+            }
+        });
     }
 
     [ClientRpc]
     private void RemoveLeaverTargetClientRpc(ulong leaverId) {
-        Debug.Log("give me coffee");
         NetworkManager.Singleton.ConnectedClients[NetworkManager.Singleton.LocalClientId].PlayerObject.gameObject.GetComponent<PlayerAbilities>().RemoveTarget(NetworkManager.Singleton.ConnectedClients[leaverId].PlayerObject.gameObject);
     }
 }
