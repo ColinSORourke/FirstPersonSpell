@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Movement movement;
     [SerializeField] MouseLook mouseLook;
+    [SerializeField] GameObject gameplayUIGroup, menuUIGroup, player;
     [SerializeField] PlayerAbilities playerAbilities;
-    //[SerializeField] Popup menu;
+
 
     Controls controls;
     Controls.GameplayActions gameplayActions;
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(0);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
-        //gameplayActions.Escape.performed += _ => menu.popup();
+        gameplayActions.Escape.performed += _ => switchUIGroup();
     }
 
     private void Update()
@@ -64,5 +65,23 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
+    private void switchUIGroup(){
+        bool temp = gameplayUIGroup.activeSelf;
+        gameplayUIGroup.SetActive(!temp);
+        menuUIGroup.SetActive(temp);
+        Cursor.visible = menuUIGroup.activeSelf;
+        if (!Cursor.visible) {
+            Cursor.lockState = CursorLockMode.Locked;
+            player.GetComponent<MouseLook>().enabled = true;
+            player.GetComponent<Movement>().enabled = true;
+        }
+            
+        else {
+            Cursor.lockState = CursorLockMode.None;
+            player.GetComponent<MouseLook>().enabled = false;
+            player.GetComponent<Movement>().enabled = false;
+        }
+        
+    }
  
 }

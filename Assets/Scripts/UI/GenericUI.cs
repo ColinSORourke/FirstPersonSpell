@@ -113,7 +113,7 @@ public class GenericUI : MonoBehaviour
         if (range < 12.0){
             TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
         }
-        else if (range < 26.0){
+        else if (range < 24.0){
             TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
         }
         else{
