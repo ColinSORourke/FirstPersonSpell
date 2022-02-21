@@ -48,7 +48,11 @@ public class ItemSpawner : MonoBehaviour
             while (items[i] != null){
                 i = Random.Range(0, spawnPoints.Length);
             }
-            items[i] = Instantiate(toSpawnObjectAt(platformParent.GetChild(i)), spawnPoints[i], Quaternion.identity);
+            Transform platform = platformParent.GetChild(i);
+       
+            items[i] = Instantiate(toSpawnObjectAt(platform), spawnPoints[i], Quaternion.identity);
+            platform.tag = switchTag(platform.tag);
+
             items[i].transform.parent = crysParent;
             currItems += 1;
         }
@@ -80,5 +84,19 @@ public class ItemSpawner : MonoBehaviour
                 return itemPrefabs[2];
         }
         return itemPrefabs[Random.Range(0, 3)];
+    }
+
+    private string switchTag(string tag, bool needSwitch = true)
+    {
+        if (!needSwitch) return "Untagged";
+
+        if (tag == "ManaItem")
+        {
+            int x = Random.Range(0, 2);
+            return x == 0 ? "HealthItem" : "UltItem";
+        } else if (tag == "HealthItem" || tag == "UltItem") {
+            return "ManaItem";
+        }
+        return "Untagged";
     }
 }
