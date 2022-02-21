@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ProjectileBehavior : MonoBehaviour
+public class ProjectileBehavior : NetworkBehaviour
 {
     public Transform Target;
     public float speed;
@@ -40,16 +41,17 @@ public class ProjectileBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if (collider.GetComponent<Transform>().parent != null){
-            Transform Hit = collider.GetComponent<Transform>().parent;
-            if (Hit == Target){
+        Transform Hit = collider.GetComponent<Transform>().parent;
+        if (Hit != null && Hit == Target) {
+            if (Target.GetComponent<NetworkObject>().IsLocalPlayer) {
                 Debug.Log("Spell Hit");
                 GameObject.Destroy(this.gameObject);
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
                     spell.onHit(Source, Target, slot);
                 }
+            } else {
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
         }
-        
     }
 }
