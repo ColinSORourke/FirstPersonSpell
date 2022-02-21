@@ -250,19 +250,4 @@ public class PlayerStateScript : NetworkBehaviour
         myUI.updateMana(currMana/maxMana);
         myUI.shiftSpells(slot, spellQueue[3].icon);
     }
-
-    [ClientRpc]
-    public void PickupHealthClientRpc(ClientRpcParams clientRpcParams = default) {
-        pickupHealthCrystal();
-    }
-
-    [ClientRpc]
-    public void PickupManaClientRpc(ClientRpcParams clientRpcParams = default) {
-        pickupManaCrystal();
-    }
-
-    [ClientRpc]
-    public void PickupUltClientRpc(ClientRpcParams clientRpcParams = default) {
-        pickupUltCrystal();
-    }
 }

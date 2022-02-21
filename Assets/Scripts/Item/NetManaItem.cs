@@ -24,13 +24,9 @@ public class NetManaItem : NetworkBehaviour
 
     void OnTriggerEnter(Collider collider) {
         PlayerStateScript Player = collider.GetComponent<PlayerStateScript>();
-        if (Player != null) {
+        if (Player != null && Player.enabled) {
             DespawnServerRpc();
-            Player.PickupManaClientRpc(new ClientRpcParams {
-                Send = new ClientRpcSendParams {
-                    TargetClientIds = new ulong[] { Player.gameObject.GetComponent<NetworkObject>().OwnerClientId }
-                }
-            });
+            Player.pickupManaCrystal();
         }
     }
 
