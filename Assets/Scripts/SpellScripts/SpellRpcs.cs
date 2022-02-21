@@ -10,7 +10,6 @@ public class SpellRpcs : NetworkBehaviour
         GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
         baseSpellScript spell = player.GetComponent<PlayerStateScript>().spellQueue[slot];
         var projectile = Instantiate(spell.projObj, new Vector3(posx, posy, posz), Quaternion.identity);
-        projectile.GetComponent<NetworkObject>().Spawn();
         var flyScript = projectile.AddComponent<ProjectileBehavior>();
         flyScript.spell = spell;
         flyScript.Target = NetworkManager.Singleton.ConnectedClients[targetId].PlayerObject.transform;
@@ -18,5 +17,6 @@ public class SpellRpcs : NetworkBehaviour
         flyScript.Source = player.transform;
         flyScript.slot = slot;
         flyScript.lifespan = spell.projLifespan;
+        projectile.GetComponent<NetworkObject>().Spawn();
     }
 }
