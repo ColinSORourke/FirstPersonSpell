@@ -20,18 +20,20 @@ public class SpellRpcs : NetworkBehaviour
         flyScript.Source = player.transform;
         flyScript.slot = slot;
         flyScript.lifespan = spell.projLifespan;
-        projectiles.Add(projectile);
     }
 
     [ClientRpc]
-    public void DestroyProjectileClientRpc(ulong sourceId, ulong targetId, int projectileIndex, int slot, ClientRpcParams clientRpcParams = default) {
-        Debug.Log("Spell Hit");
-        GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
-        GameObject targetPlayer = GameObject.Find("Player " + targetId);
-        GameObject.Destroy(projectiles[projectileIndex]);
-        projectiles.RemoveAt(projectileIndex);
-        if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
-            sourcePlayer.GetComponent<PlayerStateScript>().spellQueue[slot].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
+    public void DestroyProjectileClientRpc(ulong sourceId, ulong targetId, int projectileIndex, int slot) {
+        if (NetworkManager.Singleton.LocalClientId == targetId) {
+            Debug.Log("Spell Hit");
+            GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
+            GameObject targetPlayer = GameObject.Find("Player " + targetId);
+            GameObject.Destroy(projectiles[projectileIndex]);
+            if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
+                sourcePlayer.GetComponent<PlayerStateScript>().spellQueue[slot].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
+            }
         }
+
+        projectiles.RemoveAt(projectileIndex);
     }
 }

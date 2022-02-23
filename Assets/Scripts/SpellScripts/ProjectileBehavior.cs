@@ -48,11 +48,7 @@ public class ProjectileBehavior : NetworkBehaviour
         Transform Hit = collider.GetComponent<Transform>().parent;
         if (Hit != null && Hit == Target) {
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), slot, new ClientRpcParams {
-                Send = new ClientRpcSendParams {
-                    TargetClientIds = new ulong[] { Target.GetComponent<NetworkObject>().OwnerClientId }
-                }
-            });
+            spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), slot);
         }
     }
 }
