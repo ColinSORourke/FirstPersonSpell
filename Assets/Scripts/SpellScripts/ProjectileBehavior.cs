@@ -15,12 +15,16 @@ public class ProjectileBehavior : NetworkBehaviour
 
     //public bool timerRunning;
 
+    public SpellRpcs spellRpcs;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Start called");
         //timerRunning = true;
+
+        spellRpcs = FindObjectOfType<SpellRpcs>();
     }
 
     // Update is called once per frame
@@ -43,15 +47,12 @@ public class ProjectileBehavior : NetworkBehaviour
     void OnTriggerEnter(Collider collider){
         Transform Hit = collider.GetComponent<Transform>().parent;
         if (Hit != null && Hit == Target) {
-            if (Target.GetComponent<NetworkObject>().IsLocalPlayer) {
-                Debug.Log("Spell Hit");
-                GameObject.Destroy(this.gameObject);
-                if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
-                    spell.onHit(Source, Target, slot);
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), slot, new ClientRpcParams {
+                Send = new ClientRpcSendParams {
+                    TargetClientIds = new ulong[] { Target.GetComponent<NetworkObject>().OwnerClientId }
                 }
-            } else {
-                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            }
+            });
         }
     }
 }
