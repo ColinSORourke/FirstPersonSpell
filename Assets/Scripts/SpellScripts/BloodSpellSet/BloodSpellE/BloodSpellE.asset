@@ -22,7 +22,7 @@ MonoBehaviour:
   damage: 0
   ultCost: 0
   range: 36
-  reqTarget: 0
+  reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 0}
   aura_B: {fileID: 0}
