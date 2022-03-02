@@ -28,7 +28,9 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Recalibrate
-  description: 
+  description: If you cast this spell from the left most slot of your hand, gain
+    an ult point per stack of 'clockwork' you have. Apply a stack of 'clockwork'
+    to yourself for 5 seconds.
   icon: {fileID: 21300000, guid: 3c30b959391cb36479dace07468218c7, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

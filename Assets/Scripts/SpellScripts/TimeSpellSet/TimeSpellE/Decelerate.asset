@@ -28,7 +28,8 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Decelerate
-  description: 
+  description: Deal 4 damage to target. Slow target on hit for 5 seconds. Apply a
+    stack of 'clockwork' to self for 5 seconds.
   icon: {fileID: 21300000, guid: b7aa45a05b75ff0438200b40c4c9383f, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

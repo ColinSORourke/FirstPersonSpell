@@ -28,7 +28,8 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Rewind
-  description: 
+  description: Save your current health, mana, and position. After 3 seconds, jump
+    back through time to your current state.
   icon: {fileID: 21300000, guid: 2e8ab78cfe92d9448a1afb72de3c6f39, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}
