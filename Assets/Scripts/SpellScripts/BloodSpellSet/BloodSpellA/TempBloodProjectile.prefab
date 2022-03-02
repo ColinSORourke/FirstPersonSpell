@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5779683741553968034}
   - component: {fileID: 481559162515855528}
   - component: {fileID: 4045270337642633861}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TempBloodProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
