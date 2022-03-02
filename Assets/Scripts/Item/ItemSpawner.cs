@@ -9,6 +9,12 @@ public class ItemSpawner : MonoBehaviour
     int currItems = 0;
     Vector3[] spawnPoints;
     public GameObject[] items;
+
+    public float healthRepeatTime = 10.0f;
+    public float manaRepeatTime = 0.5f;
+    private bool isManaSpawnMethodActive = false;
+    private bool isHealthUltSpawnMethodActive = false;
+    private string secondCategoryTag = "HealthItem";
     // Start is called before the first frame update
     void Start()
     {
@@ -30,16 +36,18 @@ public class ItemSpawner : MonoBehaviour
             i += 1;
         }
 
-        InvokeRepeating("spawnItem", 10.0f, 10.0f);
+        //InvokeRepeating("spawnItem", 10.0f, 10.0f);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isManaSpawnMethodActive) StartCoroutine(spawnItem("ManaItem", manaRepeatTime));
+        if (!isHealthUltSpawnMethodActive) StartCoroutine(spawnItem("HealthItem", healthRepeatTime));
     }
 
+    /*
     void spawnItem(){
         Transform crysParent = transform.GetChild(1);
         Transform platformParent = transform.GetChild(0);
@@ -56,6 +64,41 @@ public class ItemSpawner : MonoBehaviour
             items[i].transform.parent = crysParent;
             currItems += 1;
         }
+    }
+    */
+
+    IEnumerator spawnItem(string tagName, float repeatTime)
+    {
+        //Debug.Log("Tag Name: " + tagName + " | isHealth: " + isHealthUltSpawnMethodActive + " | isMana: " + isManaSpawnMethodActive);
+        if (tagName == "ManaItem") isManaSpawnMethodActive = true;
+        if (tagName == "HealthItem" || tagName == "UltItem") isHealthUltSpawnMethodActive = true;
+        //Debug.Log("Tag Name: " + tagName + " | isHealth: " + isHealthUltSpawnMethodActive + " | isMana: " + isManaSpawnMethodActive);
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(repeatTime);
+
+        Transform crysParent = transform.GetChild(1);
+        Transform platformParent = transform.GetChild(0);
+        if (currItems < maxItems)
+        {
+            int i = 0;// = Random.Range(0, spawnPoints.Length);
+            // repeat until find vacant slot and same tagname to spawn correct type
+            while (items[i] != null && items[i].transform.tag != tagName)
+            {
+                i = Random.Range(0, spawnPoints.Length);
+            }
+            Transform platform = platformParent.GetChild(i);
+            items[i] = Instantiate(toSpawnObjectAt(platform), spawnPoints[i], Quaternion.identity);
+            //platform.tag = switchTag(platform.tag);
+            items[i].transform.parent = crysParent;
+            currItems += 1;
+            Debug.Log("Spawning new " + tagName + " after " + repeatTime + " seconds at " + platform.name);
+        }
+
+        if (tagName == "HealthItem" || tagName == "UltItem") secondCategoryTag = (Random.Range(0, 2) == 1) ? "HealthItem" : "UltItem";
+        yield return new WaitForEndOfFrame();
+        if (tagName == "ManaItem" && isManaSpawnMethodActive) isManaSpawnMethodActive = false;
+        if ((tagName == "HealthItem" || tagName == "UltItem") && isHealthUltSpawnMethodActive) isHealthUltSpawnMethodActive = false;
+
     }
 
     public void itemDestroyed(){
