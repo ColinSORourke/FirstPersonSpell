@@ -21,12 +21,14 @@ MonoBehaviour:
   projObj: {fileID: 0}
   damage: 8
   ultCost: 0
-  range: 1000
+  range: 12
   reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 21300000, guid: dde82ea33afec4216ad0e09f3279f95e, type: 3}
+  spellName: Freezing Blast
+  description: Deal 8 damage to target. Apply frostbite aura for 5 seconds.
+  icon: {fileID: 21300000, guid: b669e73eb640a2b4fb97d1f7b1b5262b, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}

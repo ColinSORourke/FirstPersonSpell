@@ -27,6 +27,9 @@ MonoBehaviour:
   aura_A: {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
-  icon: {fileID: 21300000, guid: d37a6438ae0004726844056cb809e617, type: 3}
+  spellName: Icy Brew
+  description: Deal 8 damage to target. If the target had existing stacks of frostbite,
+    gain an ultimate point.
+  icon: {fileID: 21300000, guid: cdd6424e032a0b540b3bc6ba1c58fcaf, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}
