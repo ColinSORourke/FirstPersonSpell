@@ -37,11 +37,14 @@ public class SpellRpcs : NetworkBehaviour
             }
         }
 
-        projectiles.RemoveAt(projectileIndex);
+        if (!IsHost) {
+            projectiles.RemoveAt(projectileIndex);
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void DestroyProjectileServerRpc(int projectileIndex) {
         GameObject.Destroy(projectiles[projectileIndex]);
+        projectiles.RemoveAt(projectileIndex);
     }
 }
