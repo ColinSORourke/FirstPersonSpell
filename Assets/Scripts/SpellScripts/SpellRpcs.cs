@@ -6,19 +6,7 @@ using UnityEngine;
 public class SpellRpcs : NetworkBehaviour
 {
     public List<GameObject> projectiles;
-
-    private int destroyProjectilesRunning = 0;
-
-    public void Update() {
-        if(destroyProjectilesRunning == 0) {
-            for(int i = projectiles.Count - 1; i >= 0; i--) {
-                if(projectiles[i] == null) {
-                    projectiles.RemoveAt(i);
-                }
-            }
-        }
-    }
-
+    
     [ServerRpc(RequireOwnership = false)]
     public void SpawnProjectileServerRpc(ulong clientId, int slot, float posx, float posy, float posz, ulong targetId) {
         GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
@@ -36,7 +24,6 @@ public class SpellRpcs : NetworkBehaviour
 
     [ClientRpc]
     public void DestroyProjectileClientRpc(ulong sourceId, ulong targetId, int projectileIndex, int slot) {
-        destroyProjectilesRunning++;
         if (NetworkManager.Singleton.LocalClientId == targetId) {
             Debug.Log("Spell Hit");
             GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
@@ -52,15 +39,23 @@ public class SpellRpcs : NetworkBehaviour
 
         if (!IsHost) {
             projectiles[projectileIndex] = null;
+            if(NoProjectiles()) projectiles.Clear();
         }
-        destroyProjectilesRunning--;
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void DestroyProjectileServerRpc(int projectileIndex) {
-        destroyProjectilesRunning++;
         GameObject.Destroy(projectiles[projectileIndex]);
         projectiles[projectileIndex] = null;
-        destroyProjectilesRunning--;
+        if (NoProjectiles()) projectiles.Clear();
+    }
+
+    public bool NoProjectiles() {
+        foreach(var projectile in projectiles) {
+            if(projectile != null) {
+                return false;
+            }
+        }
+        return true;
     }
 }
