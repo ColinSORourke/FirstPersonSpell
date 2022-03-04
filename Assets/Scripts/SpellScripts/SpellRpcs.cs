@@ -28,12 +28,20 @@ public class SpellRpcs : NetworkBehaviour
             Debug.Log("Spell Hit");
             GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
             GameObject targetPlayer = GameObject.Find("Player " + targetId);
-            GameObject.Destroy(projectiles[projectileIndex]);
+            //GameObject.Destroy(projectiles[projectileIndex]);
+            projectiles[projectileIndex].GetComponent<MeshRenderer>().enabled = false;
+            projectiles[projectileIndex].GetComponent<Collider>().enabled = false;
+            DestroyProjectileServerRpc(projectileIndex);
             if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
                 sourcePlayer.GetComponent<PlayerStateScript>().spellQueue[slot].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
             }
         }
 
         projectiles.RemoveAt(projectileIndex);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void DestroyProjectileServerRpc(int projectileIndex) {
+        GameObject.Destroy(projectiles[projectileIndex]);
     }
 }

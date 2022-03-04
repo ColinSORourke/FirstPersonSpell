@@ -48,6 +48,7 @@ public class ProjectileBehavior : NetworkBehaviour
         Transform Hit = collider.GetComponent<Transform>().parent;
         if (Hit != null && Hit == Target) {
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            this.gameObject.GetComponent<Collider>().enabled = false;
             spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), slot);
         }
     }
