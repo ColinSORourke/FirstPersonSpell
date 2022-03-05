@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Popup : MonoBehaviour
 {
-    public Canvas canvas;
+    //public Canvas canvas;
     public bool active = false;
     public GameObject menuUI;
     public GameObject gameplayUI;
     public GameObject player;
 
     public void popup(){
-        active = !menuUI.activeSelf;
+        active = menuUI.activeSelf;
         //canvas.enabled = active;
-        menuUI.SetActive(active);
-        gameplayUI.SetActive(!active);
+        menuUI.SetActive(!active);
+        gameplayUI.SetActive(active);
 
         Cursor.visible = menuUI.activeSelf;
         if (Cursor.visible){

@@ -116,6 +116,7 @@ public class PlayerStateScript : MonoBehaviour
         int i = 0; 
         while (i < auras.Count){
             liveAura a = auras[i];
+            myUI.updateAura(i, a);
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
                 this.removeAura(i);
@@ -127,13 +128,24 @@ public class PlayerStateScript : MonoBehaviour
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
         int matchInd = hasAura(aura.id);
+        Debug.Log("applyAura called");
         // Check if we already have this type of Aura
         if (matchInd != -1){
+            Debug.Log("Already have this aura");
             // Make sure we aren't shortening the duration
             if (auras[matchInd].duration < duration){
                 auras[matchInd].duration = duration;
             }
-            auras[matchInd].onStack();
+            bool canStack = auras[matchInd].onStack();
+            if (canStack){
+                for (int i = 0; i < auras.Count; i++){
+                    if (auras[i].aura.id == aura.id){
+                        myUI.stackAura(auras[i], auras[i].stacks);
+                        break;
+                    }
+                }
+            }
+            
         } else {
             liveAura toApply = new liveAura();
             toApply.aura = aura;

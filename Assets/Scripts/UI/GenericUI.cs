@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GenericUI : MonoBehaviour
 {
     public List<Image> auraIcons = new List<Image>();
+    public List<Text> auraStackText = new List<Text>();
+    public List<Text> auraTimerText = new List<Text>();
     public Image HealthBar;
     public Image BonusBar;
     public Image TargetMark;
@@ -92,18 +94,92 @@ public class GenericUI : MonoBehaviour
         imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
         imgObject.SetActive(true);
         auraIcons.Add(NewImage);
+        
+    }
+
+    public virtual void stackAura(liveAura stackedAura, int stackNum){
+        GameObject aura = null;
+        int location = -1;
+        //Find the position in the list of the aura to be stacked
+        for (int i = 0; i < auraIcons.Count; i++){
+            if (auraIcons[i].gameObject.name == ("Aura" + stackedAura.aura.id)){
+                aura = auraIcons[i].gameObject;
+                location = i;
+            }
+        }
+
+        if (auraStackText.Count <= location){
+            GameObject textObject = new GameObject("Aura" + stackedAura.aura.id + " stack");
+            Text stack = textObject.AddComponent<Text>();
+            stack.text = "x" + stackNum.ToString();
+            stack.fontSize = 10;
+            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
+            textObject.GetComponent<Text>().color = Color.black;
+
+            var txtTrans = textObject.GetComponent<RectTransform>();
+            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
+            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
+            txtTrans.localPosition = new Vector3( (0.5f * location),0.3f,0);
+            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
+            txtTrans.sizeDelta = new Vector2(15, 15);
+            textObject.SetActive(true);
+            auraStackText.Add(stack);
+        }
+        else{
+            auraStackText[location].gameObject.GetComponent<Text>().text = "x" + stackNum.ToString();
+        }
+        
+        
+    }
+
+    public virtual void updateAura(int auraPos, liveAura updateAura){
+        if (auraPos >= auraTimerText.Count){
+            GameObject textObject = new GameObject("Aura" + updateAura.aura.id + " timer");
+            Text stack = textObject.AddComponent<Text>();
+            stack.text = updateAura.duration.ToString() + "s";
+            stack.fontSize = 10;
+            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
+            textObject.GetComponent<Text>().color = Color.black;
+
+            var txtTrans = textObject.GetComponent<RectTransform>();
+            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
+            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
+            txtTrans.localPosition = new Vector3(-1f + (0.5f * auraPos),-0.1f,0);
+            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
+            txtTrans.sizeDelta = new Vector2(30, 15);
+            textObject.SetActive(true);
+            auraTimerText.Add(stack);
+        }
+        else{
+            auraTimerText[auraPos].gameObject.GetComponent<Text>().text = updateAura.duration.ToString() + "s";
+        }
     }
 
     public virtual void removeAura(int i){
+        //Only delete from stack List if Aura is stacked
+        if (i < auraStackText.Count){
+            var stackTxt = auraStackText[i].gameObject.name;
+            if(stackTxt.Substring(0, stackTxt.Length - 6) == auraIcons[i].gameObject.name){
+                Destroy(auraStackText[i].gameObject);
+                auraStackText.RemoveAt(i);
+            } 
+        } 
+        
         Destroy(auraIcons[i].gameObject);
         auraIcons.RemoveAt(i);
+        Destroy(auraTimerText[i].gameObject);
+        auraTimerText.RemoveAt(i);
+
         int j = i; 
         while (j < auraIcons.Count){
             var auraTrans = auraIcons[j].GetComponent<Transform>();
             auraIcons[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0, 0);
+            auraStackText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0.3f, 0);
+            auraTimerText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-3, -0.1f, 0);
             j += 1;
         }
     }
+
 
     public virtual void target(){
         TargetMark.enabled = true;
