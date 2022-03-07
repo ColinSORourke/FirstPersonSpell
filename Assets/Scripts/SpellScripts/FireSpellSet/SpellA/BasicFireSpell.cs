@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FireSpellA", menuName = "ScriptableObjects/FireSpells/FireSpellA", order = 1)]
@@ -17,8 +18,9 @@ public class BasicFireSpell : baseSpellScript
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         target.takeDamage(damage);
         if (hitParticle != null){
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(10);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(10);
+            FindObjectOfType<SpellRpcs>().SpawnParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId);
         }
     }
 }
