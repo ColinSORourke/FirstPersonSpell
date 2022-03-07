@@ -58,4 +58,12 @@ public class SpellRpcs : NetworkBehaviour
         }
         return true;
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SpawnParticleServerRpc(ulong clientId, int slot, ulong targetId) {
+        GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
+        baseSpellScript spell = player.GetComponent<PlayerStateScript>().spellQueue[slot];
+        var particle = Instantiate(spell.hitParticle, NetworkManager.Singleton.ConnectedClients[targetId].PlayerObject.transform);
+        particle.GetComponent<NetworkObject>().Spawn();
+    }
 }

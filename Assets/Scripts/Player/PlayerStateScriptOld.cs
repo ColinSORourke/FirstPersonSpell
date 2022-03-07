@@ -3,27 +3,19 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerStateScript : NetworkBehaviour
+public class PlayerStateScriptOld : NetworkBehaviour
 {
     public float maxHealth = 50.0f;
-    //public float currentHealth = 50.0f;
-    private NetworkVariable<float> _currentHealth = new NetworkVariable<float>(50.0f);
-    public float currentHealth => _currentHealth.Value;
-    //public float currentBonus = 20.0f;
-    private NetworkVariable<float> _currentBonus = new NetworkVariable<float>(20.0f);
-    public float currentBonus => _currentBonus.Value;
+    public float currentHealth = 50.0f;
+    public float currentBonus = 20.0f;
     public float healthThreshold = 20.0f;
 
     public float maxMana = 50.0f;
-    //public float currMana = 50.0f;
-    private NetworkVariable<float> _currMana = new NetworkVariable<float>(50.0f);
-    public float currMana => _currMana.Value;
+    public float currMana = 50.0f;
     public float manaThreshold = 30.0f;
 
     public float maxUlt = 20.0f;
-    //public float currUlt = 0.0f;
-    private NetworkVariable<float> _currUlt = new NetworkVariable<float>(0.0f);
-    public float currUlt => _currUlt.Value;
+    public float currUlt = 0.0f;
 
     public int maxShields = 3;
     public int currShields = 3;
@@ -89,7 +81,7 @@ public class PlayerStateScript : NetworkBehaviour
         }
 
         InvokeRepeating("tick", 0.0f, 0.25f);
-        //myUI.updateUlt(0.0f);
+        myUI.updateUlt(0.0f);
     }
 
     // Update is called once per frame
@@ -103,15 +95,15 @@ public class PlayerStateScript : NetworkBehaviour
         // Regen mana. Regen is greater if Health is low.
         if (currMana < manaThreshold){
             if (currentHealth <= healthThreshold){
-                changeManaServerRpc(0.5f);
+                currMana += 0.5f;
             } else {
-                changeManaServerRpc(0.25f);
+                currMana += 0.25f;
             }
         }
 
         // Decay bonus healths
         if (currentBonus > 0.0f){
-            changeBonusServerRpc(-0.25f);
+            currentBonus -= 0.25f;
         }
 
         // Decay shield duration.
@@ -123,8 +115,8 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
        
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
-        //myUI.updateMana(currMana/maxMana);
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
+        myUI.updateMana(currMana/maxMana);
 
         // Decay Auras
         int i = 0; 
@@ -137,36 +129,6 @@ public class PlayerStateScript : NetworkBehaviour
                 i += 1;
             }
         }
-    }
-
-    public void OnEnable() {
-        _currentHealth.OnValueChanged += OnHealthChanged;
-        _currentBonus.OnValueChanged += OnBonusChanged;
-        _currMana.OnValueChanged += OnManaChanged;
-        _currUlt.OnValueChanged += OnUltChanged;
-    }
-
-    public void OnDisable() {
-        _currentHealth.OnValueChanged -= OnHealthChanged;
-        _currentBonus.OnValueChanged -= OnBonusChanged;
-        _currMana.OnValueChanged -= OnManaChanged;
-        _currUlt.OnValueChanged -= OnUltChanged;
-    }
-
-    public void OnHealthChanged(float oldValue, float newValue) {
-        myUI.updateHealth(currentHealth / maxHealth, currentBonus / maxHealth);
-    }
-
-    public void OnBonusChanged(float oldValue, float newValue) {
-        myUI.updateHealth(currentHealth / maxHealth, currentBonus / maxHealth);
-    }
-
-    public void OnManaChanged(float oldValue, float newValue) {
-        myUI.updateMana(currMana / maxMana);
-    }
-
-    public void OnUltChanged(float oldValue, float newValue) {
-        myUI.updateUlt(currUlt / ultSpell.ultCost);
     }
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
@@ -220,65 +182,47 @@ public class PlayerStateScript : NetworkBehaviour
         }
         if (dam > currentBonus){
             dam -= currentBonus;
-            changeBonusServerRpc(-maxHealth);
-            changeHealthServerRpc(-dam);
+            currentBonus = 0;
+            currentHealth -= dam;
         } else if (currentBonus > 0){
-            changeBonusServerRpc(-dam);
+            currentBonus -= dam;
         } else {
-            changeHealthServerRpc(-dam);
+            currentHealth -= dam;
         }
 
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
 
         if (currentHealth <= 0){
             // Trigger death
         }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void changeHealthServerRpc(float value) {
-        _currentHealth.Value += value;
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void changeBonusServerRpc(float value) {
-        _currentBonus.Value += value;
-        _currentBonus.Value = Mathf.Clamp(currentBonus, 0, maxHealth);
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void changeManaServerRpc(float value){
-        _currMana.Value += value;
-        _currMana.Value = Mathf.Clamp(currMana, 0, maxMana);
-        //myUI.updateMana(currMana/maxMana);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void changeUltServerRpc(float value) {
-        _currUlt.Value += value;
-        //myUI.updateUlt(currUlt/ultSpell.ultCost);
+    public void changeMana(float value){
+        currMana += value;
+        currMana = Mathf.Clamp(currMana, 0, maxMana);
+        myUI.updateMana(currMana/maxMana);
     }
 
     public void pickupManaCrystal(){
-        changeManaServerRpc(15.0f);
+        currMana += 15.0f;
+        currMana = Mathf.Clamp(currMana, 0, maxMana);
         manaPickedUp += 1;
-        //myUI.updateMana(currMana/maxMana);
+        myUI.updateMana(currMana/maxMana);
     }
 
     public void pickupUltCrystal(){
-        changeUltServerRpc(3.0f);
+        currUlt += 3.0f;
         if (currUlt >= ultSpell.ultCost){
-            changeUltServerRpc(-ultSpell.ultCost);
+            currUlt -= ultSpell.ultCost;
             spellQueue.Add(ultSpell);
         }
-        //myUI.updateUlt(currUlt/ultSpell.ultCost);
+        myUI.updateUlt(currUlt/ultSpell.ultCost);
     }
 
     public void pickupHealthCrystal(){
-        changeBonusServerRpc(15.0f);
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
+        currentBonus += 15.0f;
+        currentBonus = Mathf.Clamp(currentBonus, 0, maxHealth);
+        myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
     public float validCast(int slot, bool Target, float distance){
@@ -295,15 +239,15 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void castSpell(int slot){
         var castSpell = spellQueue[slot];
-        changeManaServerRpc(-castSpell.manaCost * manaCostMult);
-        changeBonusServerRpc(0.0f);
+        currMana -= castSpell.manaCost * manaCostMult;
+        currentBonus = Mathf.Clamp(currentBonus, 0, maxHealth);
         spellQueue.RemoveAt(slot);
         if (!castSpell.exhaust){
             spellQueue.Add(castSpell);
         }
         spellsCast += 1;
 
-        //myUI.updateMana(currMana/maxMana);
+        myUI.updateMana(currMana/maxMana);
         myUI.shiftSpells(slot, spellQueue[3].icon);
     }
 }

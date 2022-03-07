@@ -20,7 +20,7 @@ public class IceRamperSpell : baseSpellScript
         if (target.hasAura(aura_A.id) != -1)
         {
             PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
-            player.currUlt += 1.0f;
+            player.changeUltServerRpc(1.0f);
         }
         if (hitParticle != null)
         {
