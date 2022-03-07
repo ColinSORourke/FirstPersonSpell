@@ -144,6 +144,8 @@ public class PlayerUI : GenericUI
         cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";
         cardtrans.Find("RangeText").GetComponent<Text>().text = spell.range + "";
         cardtrans.Find("Image").GetComponent<Image>().sprite = spell.icon;
+        cardtrans.Find("NameText").GetComponent<Text>().text = spell.spellName + "";
+        cardtrans.Find("DescriptionText").GetComponent<Text>().text = spell.description + "";
         cardtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
         cardObj.SetActive(true);
         spellIcons[slot] = cardObj;
