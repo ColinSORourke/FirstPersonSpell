@@ -60,10 +60,13 @@ public class SpellRpcs : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void SpawnParticleServerRpc(ulong clientId, int slot, ulong targetId) {
+    public void SpawnParticleServerRpc(ulong clientId, int slot, ulong targetId, bool emit) {
         GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
         baseSpellScript spell = player.GetComponent<PlayerStateScript>().spellQueue[slot];
         var particle = Instantiate(spell.hitParticle, NetworkManager.Singleton.ConnectedClients[targetId].PlayerObject.transform);
         particle.GetComponent<NetworkObject>().Spawn();
+        if (emit) {
+            particle.Emit(10);
+        }
     }
 }
