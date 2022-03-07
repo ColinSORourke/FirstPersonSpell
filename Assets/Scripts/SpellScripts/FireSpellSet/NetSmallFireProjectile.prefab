@@ -209,7 +209,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2002300487161623947, guid: 6890805f9a4c142669fe56d0c2d07ada, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6890805f9a4c142669fe56d0c2d07ada, type: 3}
 --- !u!4 &6923778782505381134 stripped
 Transform:
