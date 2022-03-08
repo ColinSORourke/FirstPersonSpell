@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba233b93d4aa46fe8b2c2c0506af7d9, type: 3}
+  m_Name: FireSpellA
+  m_EditorClassIdentifier: 
+  id: 101
+  manaCost: 5
+  castTime: 1
+  isProjectile: 1
+  projSpeed: 0.2
+  projLifespan: 1
+  projObj: {fileID: 6923778780920329287, guid: 15525b4d54a514236bf55ba3b1c5f8cc, type: 3}
+  damage: 3
+  ultCost: 0
+  range: 24
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 11400000, guid: 2d48813b542ef410cb6fd1d8f895c718, type: 2}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  spellName: Fireball
+  description: Launch a fireball at the target dealing 3 damage If target is not
+    burned, apply burn for 5 seconds
+  icon: {fileID: 21300000, guid: c2c9f57e339f5d1488d53a453ea67833, type: 3}
+  castParticle: {fileID: 0}
+  hitParticle: {fileID: 8962791607997238272, guid: eea94a6fb9e8541cf8cc521678144514, type: 3}
