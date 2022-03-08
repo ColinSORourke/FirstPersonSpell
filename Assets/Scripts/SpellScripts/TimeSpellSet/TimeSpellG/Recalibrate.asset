@@ -24,7 +24,7 @@ MonoBehaviour:
   range: 12
   reqTarget: 0
   exhaust: 0
-  aura_A: {fileID: 0}
+  aura_A: {fileID: 11400000, guid: b0cd753edb5e74b499e167eac3c502f9, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Recalibrate
