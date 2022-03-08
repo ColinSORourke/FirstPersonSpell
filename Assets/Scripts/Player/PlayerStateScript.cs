@@ -128,7 +128,6 @@ public class PlayerStateScript : MonoBehaviour
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
         int matchInd = hasAura(aura.id);
-        Debug.Log("applyAura called");
         // Check if we already have this type of Aura
         if (matchInd != -1){
             Debug.Log("Already have this aura");
