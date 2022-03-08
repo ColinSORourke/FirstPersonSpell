@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6583db767401a4a88a896a302f36c8d0, type: 3}
+  m_Name: FireSpellF
+  m_EditorClassIdentifier: 
+  id: 106
+  manaCost: 10
+  castTime: 1
+  isProjectile: 1
+  projSpeed: 0.2
+  projLifespan: 1
+  projObj: {fileID: 6923778780920329287, guid: 15525b4d54a514236bf55ba3b1c5f8cc, type: 3}
+  damage: 2
+  ultCost: 0
+  range: 12
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 0}
+  aura_B: {fileID: 0}
+  token: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  spellName: Fire Starter
+  description: 'Fire a small ember at the target dealing 2 damage Positional (L):
+    add "Meteor" to the bottom of your deck'
+  icon: {fileID: 21300000, guid: ebf3bed16e49b5e4bb55ba1be402d829, type: 3}
+  castParticle: {fileID: 0}
+  hitParticle: {fileID: 8962791607997238272, guid: eea94a6fb9e8541cf8cc521678144514, type: 3}

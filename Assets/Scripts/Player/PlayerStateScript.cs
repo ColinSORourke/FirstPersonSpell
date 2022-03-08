@@ -22,6 +22,10 @@ public class PlayerStateScript : MonoBehaviour
     public float shieldTime = 4.0f;
     public float shieldDur = -1.0f;
 
+    //sound
+    public AudioClip[] iceDeckSounds;
+    private AudioSource audioSource;
+
     public List<liveAura> auras = new List<liveAura>();
 
     public static int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
@@ -47,6 +51,7 @@ public class PlayerStateScript : MonoBehaviour
     {
         myUI = this.GetComponent<GenericUI>();
         allDecks = this.GetComponent<SelectDeck>();
+        audioSource = this.GetComponent<AudioSource>();
 
         //Create Card Deck
         Debug.Log("Card Deck ID: " + playerCardDeckId);
