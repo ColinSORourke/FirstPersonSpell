@@ -189,12 +189,14 @@ public class GenericUI : MonoBehaviour
 
     public virtual void updateRange(float range){
         if (range < 12.0){
-            TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
+            TargetMark.GetComponent<Image>().color = new Color32(84,255,95,255);
         }
         else if (range < 24.0){
-            TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
+            TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
         }
-        else{
+        else if (range < 36.0) {
+            TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
+        } else {
             TargetMark.GetComponent<Image>().color = new Color32(217,18,10,255);
         }
         
