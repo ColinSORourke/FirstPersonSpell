@@ -24,8 +24,8 @@ MonoBehaviour:
   range: 24
   reqTarget: 1
   exhaust: 0
-  aura_A: {fileID: 11400000, guid: 0fdf57b29aca2b944b0276b3b0fdc7ac, type: 2}
-  aura_B: {fileID: 0}
+  aura_A: {fileID: 11400000, guid: b0cd753edb5e74b499e167eac3c502f9, type: 2}
+  aura_B: {fileID: 11400000, guid: 0fdf57b29aca2b944b0276b3b0fdc7ac, type: 2}
   token: {fileID: 0}
   spellName: Decelerate
   description: Deal 4 damage to target. Slow target on hit for 5 seconds. Apply a
