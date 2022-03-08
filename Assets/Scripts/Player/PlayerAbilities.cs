@@ -81,8 +81,9 @@ public class PlayerAbilities : MonoBehaviour
                     Transform myTar = null;
                     if (castingSpell.reqTarget){
                         myTar = Targets[currTarget].transform;
-                    }
+                    };
                     castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
+                    StartCoroutine(playAudio(castingSpell.getAudio("onCast")));
                     myUI.updateCast(0);
                 } else {
                     castTime = -1.0f;
@@ -93,51 +94,6 @@ public class PlayerAbilities : MonoBehaviour
                 myUI.updateCast(castTime/totalCastTime);
             }
         }
-
-        
-        //parseInput();
-    }
-
-    public void parseInput()
-    {
-        /*
-        if (Input.GetKeyUp(KeyCode.Mouse0)){
-            newTarget();
-        }
-        */
-
-        float valid;
-        float range = 0.0f;
-        bool tar = currTarget != -1;
-        
-
-        /*
-        if (Input.GetKeyUp("1") && valid != -1.0f ){
-            this.cast(0, valid);
-        }
-        */
-        valid = myState.validCast(1, tar, range);
-        /*
-        if (Input.GetKeyUp("2") && valid != -1.0f){
-            this.cast(1, valid);
-        }
-        */
-        valid = myState.validCast(2, tar, range);
-
-        /*
-        if (Input.GetKeyUp("3") && valid != -1.0f){
-            this.cast(2, valid);
-        }
-
-        if (Input.GetKeyUp(KeyCode.F)){
-            Debug.Log("Pressed F");
-            if (myState.currShields> 0){
-                myState.shieldDur = myState.shieldTime;
-                myState.currShields -= 1;
-                myUI.displayShield();
-            }
-        }
-        */
     }
 
     public void castSpell(int slot){
@@ -268,5 +224,15 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
         return goList;
+    }
+
+    public IEnumerator playAudio(AudioClip audioClip)
+    {
+        Debug.Log("Play Audio");
+        myState.audioSource.clip = audioClip;
+        myState.audioSource.Play();
+        yield return new WaitForEndOfFrame();
+        // Use this code if you want to play audio one at a time
+        //yield return new WaitForSeconds(myState.audioSource.clip.length);
     }
 }

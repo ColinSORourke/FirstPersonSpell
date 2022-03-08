@@ -33,16 +33,16 @@ public class GenericUI : MonoBehaviour
         
     }
 
-    public virtual void updateHealth(float currPerc, float bonusPerc){
+    public virtual void updateHealth(float currHealth, float currPerc, float bonusPerc){
         HealthBar.fillAmount = currPerc;
         BonusBar.fillAmount = bonusPerc;
     }
 
-    public virtual void updateMana(float percentage){
+    public virtual void updateMana(float currMana, float percentage){
         ManaBar.fillAmount = percentage;
     }
 
-    public virtual void updateUlt(float percentage){
+    public virtual void updateUlt(float currUlt, float percentage){
         UltBar.fillAmount = percentage;
     }
 
@@ -72,6 +72,8 @@ public class GenericUI : MonoBehaviour
         To Implement in PlayerUI
         */
     }
+
+
 
     public virtual void displayShield(){
         Shield.enabled = true;
