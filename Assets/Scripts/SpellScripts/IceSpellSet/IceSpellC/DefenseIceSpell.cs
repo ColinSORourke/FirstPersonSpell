@@ -13,7 +13,7 @@ public class DefenseIceSpell : baseSpellScript
         PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
         player.currentBonus += 15.0f;
         player.currentBonus = Mathf.Clamp(player.currentBonus, 0, player.maxHealth);
-        player.myUI.updateHealth(player.currentHealth / player.maxHealth, player.currentBonus / player.maxHealth);
+        player.myUI.updateHealth(player.currentHealth, player.currentHealth / player.maxHealth, player.currentBonus / player.maxHealth);
     }
 
     // Update is called once per frame
