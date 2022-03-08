@@ -405,10 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54ceceaf8aec43d986e86e53919aa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   active: 0
   menuUI: {fileID: 7366513865564166243}
   gameplayUI: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &5200265658982630413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   currShields: 3
   shieldTime: 4
   shieldDur: -1
+  audioSource: {fileID: 0}
   spellDeck:
   - {fileID: 11400000, guid: ff865a99f6d174d4b845db4efc219745, type: 2}
   - {fileID: 11400000, guid: dcbbe85e3b03c5e45b7ba5714c7c6726, type: 2}
@@ -1300,6 +1301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   auraIcons: []
+  auraStackText: []
+  auraTimerText: []
   HealthBar: {fileID: 0}
   BonusBar: {fileID: 0}
   TargetMark: {fileID: 0}
@@ -1317,6 +1320,9 @@ MonoBehaviour:
   Shield: {fileID: 0}
   ShieldCount: {fileID: 0}
   cardPrefab: {fileID: 2832418026383751474, guid: ff70b9d0c49d344b1932d9db9f03053d, type: 3}
+  healthCount: {fileID: 0}
+  manaCount: {fileID: 0}
+  ultCount: {fileID: 0}
 --- !u!114 &7035575578005313223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1339,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a78cb7ca04503b4ebc48703d37b02a6, type: 2}
   - {fileID: 11400000, guid: e984a8fdc418cb6428149276a7d8846d, type: 2}
   - {fileID: 11400000, guid: e4ebde67e45150544869788d28283bc6, type: 2}
+  - {fileID: 11400000, guid: 8140caff4698daf40a3a7e6085e35564, type: 2}
 --- !u!114 &7035575578005313231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,7 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 7035575578005313228}
   speed: 11
-  jumpHeight: 3.5
+  jumpHeight: 5
   gravity: -30
   groundMask:
     serializedVersion: 2
@@ -1368,6 +1375,7 @@ MonoBehaviour:
   mouseLook: {fileID: 7035575578005313219}
   gameplayUIGroup: {fileID: 0}
   menuUIGroup: {fileID: 0}
+  player: {fileID: 0}
   playerAbilities: {fileID: 7035575578005313217}
 --- !u!114 &7035575578005313225
 MonoBehaviour:
