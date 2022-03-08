@@ -81,8 +81,9 @@ public class PlayerAbilities : MonoBehaviour
                     Transform myTar = null;
                     if (castingSpell.reqTarget){
                         myTar = Targets[currTarget].transform;
-                    }
+                    };
                     castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
+                    StartCoroutine(playAudio(castingSpell.getAudio("onCast")));
                     myUI.updateCast(0);
                 } else {
                     castTime = -1.0f;
@@ -268,5 +269,15 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
         return goList;
+    }
+
+    public IEnumerator playAudio(AudioClip audioClip)
+    {
+        Debug.Log("Play Audio");
+        myState.audioSource.clip = audioClip;
+        myState.audioSource.Play();
+        yield return new WaitForEndOfFrame();
+        // Use this code if you want to play audio one at a time
+        //yield return new WaitForSeconds(myState.audioSource.clip.length);
     }
 }
