@@ -24,9 +24,5 @@ public class FireSpellUlt : baseSpellScript
         }
         float duration = 10.0f;
         target.applyAura(Player, aura_A, duration);
-        if (hitParticle != null)
-        {
-            Instantiate(hitParticle, Target);
-        }
     }
 }
