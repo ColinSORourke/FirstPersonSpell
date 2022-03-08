@@ -9,7 +9,7 @@ public class flameBarrierSpell : baseSpellScript
     override public void onCastSpecific(Transform Player, Transform Target, int slot){
         // None
         Debug.Log("Cast Flame Barrier Spell");
-        PlayerStateScript p = Target.GetComponent<PlayerStateScript>();
+        PlayerStateScript p = Player.GetComponent<PlayerStateScript>();
         p.applyAura(Player, aura_B, 10.0f);
     }
 
