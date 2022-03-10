@@ -28,7 +28,7 @@ public class baseSpellScript : ScriptableObject
     public ParticleSystem castParticle;
     public ParticleSystem hitParticle;    
 
-    public virtual void onCastGeneral(Transform Player, Transform Target, int slot){
+    public virtual void onCastGeneral(Transform Player, Transform Target, int index, int slot){
         if (castParticle != null){
             Instantiate(castParticle, Player);
         }
@@ -39,14 +39,14 @@ public class baseSpellScript : ScriptableObject
             Vector3 dir = Target.transform.position - Player.transform.position;
             dir.Normalize();
             Vector3 pos = Player.transform.position + (dir * projSpeed);
-            FindObjectOfType<SpellRpcs>().SpawnProjectileServerRpc(NetworkManager.Singleton.LocalClientId, slot, pos.x, pos.y, pos.z, Target.GetComponent<NetworkObject>().OwnerClientId);
+            FindObjectOfType<SpellRpcs>().SpawnProjectileServerRpc(NetworkManager.Singleton.LocalClientId, index, slot, pos.x, pos.y, pos.z, Target.GetComponent<NetworkObject>().OwnerClientId);
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
-                    FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, slot);
+                    FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
                 }
             } else {
-                FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, slot);
+                FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
             }
             
         }

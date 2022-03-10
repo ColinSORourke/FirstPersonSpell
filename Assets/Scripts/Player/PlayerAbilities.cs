@@ -81,7 +81,7 @@ public class PlayerAbilities : MonoBehaviour
                     if (castingSpell.reqTarget){
                         myTar = Targets[currTarget].transform;
                     }
-                    castingSpell.onCastGeneral(transform, myTar, castingSpellSlot);
+                    castingSpell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, castingSpell), castingSpellSlot);
                     myUI.updateCast(0);
                 } else {
                     castTime = -1.0f;
@@ -164,7 +164,7 @@ public class PlayerAbilities : MonoBehaviour
             if (spell.reqTarget){
                 myTar = Targets[currTarget].transform;
             }
-            spell.onCastGeneral(transform, myTar, slot);
+            spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
         }
     }
 

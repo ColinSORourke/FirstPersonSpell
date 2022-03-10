@@ -9,6 +9,7 @@ public class ProjectileBehavior : NetworkBehaviour
     public float speed;
     public baseSpellScript spell;
     public Transform Source;
+    public int index;
     public int slot;
     
     public float lifespan;
@@ -49,7 +50,7 @@ public class ProjectileBehavior : NetworkBehaviour
         if (Hit != null && Hit == Target) {
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             this.gameObject.GetComponent<Collider>().enabled = false;
-            spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), slot);
+            spellRpcs.DestroyProjectileClientRpc(Source.GetComponent<NetworkObject>().OwnerClientId, Target.GetComponent<NetworkObject>().OwnerClientId, spellRpcs.projectiles.IndexOf(this.gameObject), index, slot);
         }
     }
 }
