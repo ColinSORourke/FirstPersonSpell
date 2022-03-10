@@ -71,6 +71,11 @@ public class SpellRpcs : NetworkBehaviour
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void HitPlayerServerRpc(ulong sourceId, ulong targetId, int index, int slot) {
+        HitPlayerClientRpc(sourceId, targetId, index, slot);
+    }
+
     [ClientRpc]
     public void HitPlayerClientRpc(ulong sourceId, ulong targetId, int index, int slot) {
         if (NetworkManager.Singleton.LocalClientId == targetId) {

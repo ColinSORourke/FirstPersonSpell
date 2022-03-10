@@ -43,10 +43,10 @@ public class baseSpellScript : ScriptableObject
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
-                    FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
+                    FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
                 }
             } else {
-                FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
+                FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
             }
             
         }
