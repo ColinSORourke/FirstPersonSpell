@@ -61,10 +61,11 @@ public class SpellRpcs : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void SpawnParticleClientRpc(ulong clientId, int index, ulong targetId, bool emit) {
-        GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
-        baseSpellScript spell = player.GetComponent<PlayerStateScript>().spellDeck[index];
-        var particle = Instantiate(spell.hitParticle, NetworkManager.Singleton.ConnectedClients[targetId].PlayerObject.transform);
+    public void SpawnParticleClientRpc(ulong sourceId, int index, ulong targetId, bool emit) {
+        GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
+        GameObject targetPlayer = GameObject.Find("Player " + targetId);
+        baseSpellScript spell = sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index];
+        var particle = Instantiate(spell.hitParticle, targetPlayer.transform);
         if (emit) {
             particle.Emit(10);
         }
