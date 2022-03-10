@@ -43,10 +43,10 @@ public class baseSpellScript : ScriptableObject
         } else {
             if (reqTarget){
                 if( ! Target.GetComponent<PlayerStateScript>().isShielded() ){
-                    this.onHit(Player, Target, slot);
+                    FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, slot);
                 }
             } else {
-                this.onHit(Player, Target, slot);
+                FindObjectOfType<SpellRpcs>().HitPlayerClientRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, slot);
             }
             
         }
@@ -59,7 +59,7 @@ public class baseSpellScript : ScriptableObject
     public virtual void onHit(Transform Player, Transform Target, int slot){
         Debug.Log("Hit a basic spell");
         if (hitParticle != null){
-            FindObjectOfType<SpellRpcs>().SpawnParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
         }
        
     }

@@ -1919,27 +1919,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  currentHealth: 50
-  currentBonus: 20
   healthThreshold: 20
   maxMana: 50
-  currMana: 50
   manaThreshold: 30
   maxUlt: 20
-  currUlt: 0
   maxShields: 3
   currShields: 3
   shieldTime: 4
   shieldDur: -1
   spellDeck:
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
+  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
+  - {fileID: 11400000, guid: 6315e5d8d600043f29409e4ea784be45, type: 2}
+  - {fileID: 11400000, guid: e37ed8f24c91941139f0ed2e195ee495, type: 2}
+  - {fileID: 11400000, guid: 763843b2f1f7049698daa0b7a7d6253e, type: 2}
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
-  ultSpell: {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  ultSpell: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
   spellQueue: []
   spellsCast: 0
   manaPickedUp: 0

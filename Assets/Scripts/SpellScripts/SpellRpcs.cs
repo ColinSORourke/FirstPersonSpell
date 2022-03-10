@@ -59,14 +59,25 @@ public class SpellRpcs : NetworkBehaviour
         return true;
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void SpawnParticleServerRpc(ulong clientId, int slot, ulong targetId, bool emit) {
+    [ClientRpc]
+    public void SpawnParticleClientRpc(ulong clientId, int slot, ulong targetId, bool emit) {
         GameObject player = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.gameObject;
         baseSpellScript spell = player.GetComponent<PlayerStateScript>().spellQueue[slot];
         var particle = Instantiate(spell.hitParticle, NetworkManager.Singleton.ConnectedClients[targetId].PlayerObject.transform);
-        particle.GetComponent<NetworkObject>().Spawn();
         if (emit) {
             particle.Emit(10);
+        }
+    }
+
+    [ClientRpc]
+    public void HitPlayerClientRpc(ulong sourceId, ulong targetId, int slot) {
+        if (NetworkManager.Singleton.LocalClientId == targetId) {
+            Debug.Log("Spell Hit");
+            GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
+            GameObject targetPlayer = GameObject.Find("Player " + targetId);
+            if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
+                sourcePlayer.GetComponent<PlayerStateScript>().spellQueue[slot].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
+            }
         }
     }
 }

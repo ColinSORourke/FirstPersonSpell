@@ -20,7 +20,7 @@ public class BasicFireSpell : baseSpellScript
         if (hitParticle != null){
             //var particleBurst = Instantiate(hitParticle, Target);
             //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }
