@@ -32,3 +32,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ee32899c97b101b43968715b1df92aec, type: 3}
   castParticle: {fileID: 0}
   hitParticle: {fileID: 0}
+  castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: 497c862cf9107804dbd58620fded0be5, type: 3}
