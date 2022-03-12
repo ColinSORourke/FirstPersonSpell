@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43748972, g: 0.4853109, b: 0.56558526, a: 1}
+  m_IndirectSpecularColor: {r: 0.4374901, g: 0.48531127, b: 0.56558615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1533,7 +1533,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21668
+  m_Name: pb_Mesh28298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1790,7 +1790,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh45854
+  m_Name: pb_Mesh28212
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2011,7 +2011,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21888
+  m_Name: pb_Mesh28508
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4496,6 +4496,8 @@ MonoBehaviour:
   - {fileID: 0}
   maxItems: 3
   items: []
+  healthRepeatTime: 10
+  manaRepeatTime: 0.5
 --- !u!1 &1546195718
 GameObject:
   m_ObjectHideFlags: 0
@@ -5320,7 +5322,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21850
+  m_Name: pb_Mesh28456
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7486,7 +7488,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21904
+  m_Name: pb_Mesh28436
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
