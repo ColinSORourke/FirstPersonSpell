@@ -177,7 +177,6 @@ public class LobbyManager : NetworkBehaviour
     }
 
     public IEnumerator EndGameCountdown() {
-        Debug.Log("Hi benny");
         isCountdown = true;
         countdown = 8;
         SetCountdownTextClientRpc(countdown.ToString());

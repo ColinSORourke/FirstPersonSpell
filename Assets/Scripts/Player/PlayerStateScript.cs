@@ -51,7 +51,7 @@ public class PlayerStateScript : NetworkBehaviour
     private SelectDeck allDecks;
 
     public bool alive = true;
-    public AliveManager aliveManager;
+    //public AliveManager aliveManager;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +94,7 @@ public class PlayerStateScript : NetworkBehaviour
         InvokeRepeating("tick", 0.0f, 0.25f);
         //myUI.updateUlt(0.0f);
 
-        aliveManager = FindObjectOfType<AliveManager>();
+        //aliveManager = FindObjectOfType<AliveManager>();
     }
 
     // Update is called once per frame
@@ -143,7 +143,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (aliveManager.AlivesInGame < 2 && alive) {
+        if (AliveManager.Instance.AlivesInGame < 2 && alive) {
             alive = false;
             EndGameServerRpc();
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
@@ -249,7 +249,7 @@ public class PlayerStateScript : NetworkBehaviour
         if (currentHealth <= 0){
             // Trigger death
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
-            aliveManager.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
+            AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }
     }
 
