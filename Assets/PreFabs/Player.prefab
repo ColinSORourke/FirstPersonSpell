@@ -2093,6 +2093,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e37ed8f24c91941139f0ed2e195ee495, type: 2}
   - {fileID: 11400000, guid: 763843b2f1f7049698daa0b7a7d6253e, type: 2}
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
   ultSpell: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
   spellQueue: []
   spellsCast: 0
@@ -2215,7 +2217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 106562b124329154988f7fd16c123ddb,
+    type: 3}
   m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
