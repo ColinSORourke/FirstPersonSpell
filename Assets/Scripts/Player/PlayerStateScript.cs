@@ -232,7 +232,23 @@ public class PlayerStateScript : NetworkBehaviour
 
         if (currentHealth <= 0){
             // Trigger death
+            DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DeathDisablesServerRpc(ulong leaverId) {
+        FindObjectOfType<LobbyManager>().RemoveLeaverTargetClientRpc(leaverId);
+        DeathDisablesClientRpc();
+    }
+
+    [ClientRpc]
+    private void DeathDisablesClientRpc() {
+        GetComponentInChildren<MeshRenderer>().enabled = false;
+        foreach (Collider collider in GetComponentsInChildren<Collider>()) collider.gameObject.layer = 12;
+        GetComponent<TargetUI>().enabled = false;
+        GetComponent<PlayerUI>().enabled = false;
+        GetComponent<PlayerAbilities>().enabled = false;
     }
 
     [ServerRpc(RequireOwnership = false)]
