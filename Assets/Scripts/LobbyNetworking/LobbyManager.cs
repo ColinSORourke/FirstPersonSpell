@@ -176,6 +176,23 @@ public class LobbyManager : NetworkBehaviour
         StartCoroutine(WaitForSceneToSpawn("NetGameplay"));
     }
 
+    public IEnumerator EndGameCountdown() {
+        Debug.Log("Hi benny");
+        isCountdown = true;
+        countdown = 8;
+        SetCountdownTextClientRpc(countdown.ToString());
+        SetCountdownActiveClientRpc(true);
+        for (; countdown > 0; countdown--) {
+            SetCountdownTextClientRpc(countdown.ToString());
+            yield return new WaitForSeconds(1);
+        }
+        SetCountdownTextClientRpc(countdown.ToString());
+        yield return new WaitForSeconds(0.5f);
+        EndGameServerRpc();
+        isCountdown = false;
+        yield break;
+    }
+
     private IEnumerator WaitForSceneToSpawn(string sceneName) {
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
@@ -289,5 +306,11 @@ public class LobbyManager : NetworkBehaviour
     [ClientRpc]
     public void RemoveLeaverTargetClientRpc(ulong leaverId) {
         if (NetworkManager.Singleton.LocalClientId != leaverId) GameObject.Find("Player " + NetworkManager.Singleton.LocalClientId).GetComponent<PlayerAbilities>().RemoveTarget(leaverId);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void EndGameServerRpc() {
+        MakeClientLeaveClientRpc();
+        StartCoroutine(WaitToLeaveHost());
     }
 }

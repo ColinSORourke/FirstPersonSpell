@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseLook : NetworkBehaviour
 {
@@ -28,6 +29,7 @@ public class MouseLook : NetworkBehaviour
             GetComponentInChildren<MeshRenderer>().enabled = false;
             var playUI = this.gameObject.GetComponent<PlayerUI>();
             playUI.enabled = true;
+            FindObjectOfType<LobbyManager>().countdownText = transform.Find("KeyUI/Countdown").GetComponent<Text>();
         } else {
             playerCamera.gameObject.SetActive(false);
             this.gameObject.GetComponent<PlayerUI>().enabled = false;

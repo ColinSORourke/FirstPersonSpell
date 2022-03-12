@@ -59,6 +59,6 @@ public class PlayerManager : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void RemovePlayerIdServerRpc(ulong clientId) {
-        playerIdsInGame.Remove(clientId);
+        if (playerIdsInGame.Contains(clientId)) playerIdsInGame.Remove(clientId);
     }
 }

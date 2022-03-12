@@ -50,6 +50,9 @@ public class PlayerStateScript : NetworkBehaviour
 
     private SelectDeck allDecks;
 
+    public bool alive = true;
+    public AliveManager aliveManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -90,6 +93,8 @@ public class PlayerStateScript : NetworkBehaviour
 
         InvokeRepeating("tick", 0.0f, 0.25f);
         //myUI.updateUlt(0.0f);
+
+        aliveManager = FindObjectOfType<AliveManager>();
     }
 
     // Update is called once per frame
@@ -137,6 +142,17 @@ public class PlayerStateScript : NetworkBehaviour
                 i += 1;
             }
         }
+
+        if (aliveManager.AlivesInGame < 2 && alive) {
+            alive = false;
+            EndGameServerRpc();
+            transform.Find("KeyUI/Victory").gameObject.SetActive(true);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void EndGameServerRpc() {
+        StartCoroutine(FindObjectOfType<LobbyManager>().EndGameCountdown());
     }
 
     public void OnEnable() {
@@ -233,6 +249,7 @@ public class PlayerStateScript : NetworkBehaviour
         if (currentHealth <= 0){
             // Trigger death
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
+            aliveManager.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }
     }
 
@@ -250,6 +267,7 @@ public class PlayerStateScript : NetworkBehaviour
             if (canvas.gameObject.tag != "Key") canvas.gameObject.SetActive(false);
         }
         GetComponent<PlayerController>().DisableCasting();
+        alive = false;
     }
 
     [ServerRpc(RequireOwnership = false)]
