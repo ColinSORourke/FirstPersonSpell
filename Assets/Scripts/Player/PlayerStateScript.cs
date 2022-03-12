@@ -246,8 +246,7 @@ public class PlayerStateScript : NetworkBehaviour
     private void DeathDisablesClientRpc() {
         GetComponentInChildren<MeshRenderer>().enabled = false;
         foreach (Collider collider in GetComponentsInChildren<Collider>()) collider.gameObject.layer = 12;
-        GetComponent<TargetUI>().enabled = false;
-        GetComponent<PlayerUI>().enabled = false;
+        foreach (Canvas canvas in GetComponentsInChildren<Canvas>()) canvas.gameObject.SetActive(false);
         GetComponent<PlayerAbilities>().enabled = false;
     }
 
