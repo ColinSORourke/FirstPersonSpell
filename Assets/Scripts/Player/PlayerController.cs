@@ -97,6 +97,14 @@ public class PlayerController : MonoBehaviour
         };
     }
 
+    public void DisableCasting() {
+        gameplayActions.Shoot.performed -= _ => playerAbilities.newTarget();
+        gameplayActions.Abilities1.performed -= _ => playerAbilities.castSpell(0);
+        gameplayActions.Abilities2.performed -= _ => playerAbilities.castSpell(1);
+        gameplayActions.Abilities3.performed -= _ => playerAbilities.castSpell(2);
+        gameplayActions.Shield.performed -= _ => playerAbilities.castShield();
+    }
+
     private void OnDestroy()
     {
         if (enabled) {

@@ -246,8 +246,10 @@ public class PlayerStateScript : NetworkBehaviour
     private void DeathDisablesClientRpc() {
         GetComponentInChildren<MeshRenderer>().enabled = false;
         foreach (Collider collider in GetComponentsInChildren<Collider>()) collider.gameObject.layer = 12;
-        foreach (Canvas canvas in GetComponentsInChildren<Canvas>()) canvas.gameObject.SetActive(false);
-        GetComponent<PlayerAbilities>().enabled = false;
+        foreach (Canvas canvas in GetComponentsInChildren<Canvas>()) {
+            if (canvas.gameObject.tag != "Key") canvas.gameObject.SetActive(false);
+        }
+        GetComponent<PlayerController>().DisableCasting();
     }
 
     [ServerRpc(RequireOwnership = false)]
