@@ -18,7 +18,7 @@ MonoBehaviour:
   isProjectile: 1
   projSpeed: 0.1
   projLifespan: 5
-  projObj: {fileID: 7645604505232120644, guid: 767e8bcb4f480d241a8b3b305320e4c1, type: 3}
+  projObj: {fileID: 683032854609871725, guid: 81ad35c3f2837a84c921b90785ddaeec, type: 3}
   damage: 4
   ultCost: 0
   range: 36
@@ -31,7 +31,7 @@ MonoBehaviour:
   description: Launch a snowball that applies a frostbite aura for 5 seconds. If
     the target already has a frostbite aura, deal 4 damage instead.
   icon: {fileID: 21300000, guid: c73e864d7232e0745ad9a65ab1b46adc, type: 3}
-  castParticle: {fileID: 0}
-  hitParticle: {fileID: 0}
+  castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
+  hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}
   hitAudioClip: {fileID: 8300000, guid: 7bdae400421171f43bac2bf37b4f9495, type: 3}

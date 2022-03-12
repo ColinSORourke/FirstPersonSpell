@@ -22,7 +22,13 @@ public class BleedBolt : baseSpellScript
         {
                 pHP.currentHealth+=5.0f;
         }
-        tHP.applyAura(Player, aura_A, duration); 
+        tHP.applyAura(Player, aura_A, duration);
         
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
+
     }
 }

@@ -30,7 +30,11 @@ public class UltDestruction : baseSpellScript
     override public void onHit(Transform Player, Transform Target, int slot)
     {
 
-        
-        
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
+
     }
 }

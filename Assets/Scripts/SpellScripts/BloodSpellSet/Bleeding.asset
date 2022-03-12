@@ -17,5 +17,5 @@ MonoBehaviour:
   maxStacks: 3
   tickSpeed: 2
   damage: 1
-  auraParticle: {fileID: 0}
+  auraParticle: {fileID: 8646286805468350203, guid: 0b031d362904bf943be95eb06218357a, type: 3}
   icon: {fileID: 21300000, guid: 71d1f41049793e94194b5785f940c545, type: 3}

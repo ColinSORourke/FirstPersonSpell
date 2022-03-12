@@ -23,5 +23,11 @@ public class BurnPayoffSpell : baseSpellScript
         }
         target.takeDamage(this.damage + extraDamage);
         Debug.Log("Hit Burn Consume Spell");
+
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
     }
 }

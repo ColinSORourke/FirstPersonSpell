@@ -26,5 +26,11 @@ public class SnowballSpell : baseSpellScript
         }
 
         Debug.Log("Hit Snowball Spell");
+
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
     }
 }

@@ -24,5 +24,10 @@ public class SelfDamageBloodSpell : baseSpellScript
         {
                 tHP.applyAura(Player, aura_A, duration); 
         }
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
     }
 }
