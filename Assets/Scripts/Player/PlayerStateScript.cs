@@ -33,7 +33,7 @@ public class PlayerStateScript : NetworkBehaviour
     public List<liveAura> auras = new List<liveAura>();
 
     public static int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
-    public baseSpellScript[] spellDeck = new baseSpellScript[7];
+    public baseSpellScript[] spellDeck = new baseSpellScript[10];
     public baseSpellScript ultSpell;
     public List<baseSpellScript> spellQueue = new List<baseSpellScript>();
 
