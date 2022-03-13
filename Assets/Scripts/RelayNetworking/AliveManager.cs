@@ -51,10 +51,6 @@ public class AliveManager : NetworkBehaviour
         };
     }
 
-    public override void OnDestroy() {
-        aliveIdsInGame.Dispose();
-    }
-
     [ServerRpc(RequireOwnership = false)]
     public void AddAliveIdServerRpc(ulong clientId) {
         aliveIdsInGame.Add(clientId);
