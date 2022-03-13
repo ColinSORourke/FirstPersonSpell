@@ -58,7 +58,7 @@ public class GenericUI : MonoBehaviour
             if (j == 3){spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(0, 30);
 
             }
-            spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(100, 0);
+            spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(140, 0);
             spellIcons[j].name = "Spell" + (j-1);
             spellIcons[j-1] = spellIcons[j];
 

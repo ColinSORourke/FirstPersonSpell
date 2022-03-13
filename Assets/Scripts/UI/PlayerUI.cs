@@ -26,57 +26,10 @@ public class PlayerUI : GenericUI
         CastBar = UITrans.Find("CastBar").GetComponent<Image>();
         UltBar = UITrans.Find("Ultimate").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
+        healthCount = UITrans.Find("HealthText").gameObject;
+        manaCount = UITrans.Find("ManaText").gameObject;
+        ultCount = UITrans.Find("UltText").gameObject;
         Shield.enabled = false;
-
-        healthCount = new GameObject("HeathNum");
-        Text health = healthCount.AddComponent<Text>();
-        health.text = "50.0";
-        health.fontSize = 14;
-        health.fontStyle = FontStyle.Bold;
-        health.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-        healthCount.GetComponent<Text>().color = Color.white;
-
-        var healthTrans = healthCount.GetComponent<RectTransform>();
-        healthTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
-        healthTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        healthTrans.localPosition = UITrans.Find("Health").localPosition + new Vector3(4,29,0);
-        //healthTrans.localScale = new Vector3(1,1,1);
-        healthTrans.sizeDelta = new Vector2(40, 20);
-        healthCount.SetActive(true);
-
-        manaCount = new GameObject("ManaNum");
-        Text mana = manaCount.AddComponent<Text>();
-        mana.text = "50.0";
-        mana.fontSize = 14;
-        mana.fontStyle = FontStyle.Bold;
-        mana.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-        manaCount.GetComponent<Text>().color = Color.white;
-
-        var manaTrans = manaCount.GetComponent<RectTransform>();
-        manaTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
-        manaTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        manaTrans.localPosition = UITrans.Find("Mana").localPosition + new Vector3(4,28,0);
-        //manaTrans.localScale = new Vector3(1,1,1);
-        manaTrans.sizeDelta = new Vector2(45, 20);
-        manaCount.SetActive(true);
-
-        ultCount= new GameObject("UltNum");
-        Text ult = ultCount.AddComponent<Text>();
-        ult.text = "0.0";
-        ult.fontSize = 14;
-        ult.fontStyle = FontStyle.Bold;
-        ult.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-        ultCount.GetComponent<Text>().color = Color.white;
-
-        var ultTrans = ultCount.GetComponent<RectTransform>();
-        ultTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
-        ultTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        ultTrans.localPosition = UITrans.Find("Ultimate").localPosition + new Vector3(7,27,0);
-        //ultTrans.localScale = new Vector3(1,1,1);
-        ultTrans.sizeDelta = new Vector2(40, 20);
-        ultCount.SetActive(true);
-
-
     }
 
     public override void updateMana(float currMana, float percentage){
@@ -198,17 +151,16 @@ public class PlayerUI : GenericUI
 
     public override void addIcon(baseSpellScript spell, int slot){
 
-        GameObject cardObj = Instantiate(cardPrefab, cardPrefab.transform.position, Quaternion.identity);
+        GameObject cardObj = Instantiate(cardPrefab, UITrans, false);
 
-        cardObj.transform.SetParent(UITrans);
         //Create the GameObject
 
         
 
         var cardtrans = cardObj.GetComponent<RectTransform>();
-        cardtrans.anchoredPosition = new Vector2(130 + (-100 * slot),60);
+        cardtrans.anchoredPosition = new Vector2(130 + (-140 * slot),60);
         if (slot == 3){
-            cardtrans.anchoredPosition = new Vector2(130 + (-100 * slot),30);
+            cardtrans.anchoredPosition = new Vector2(130 + (-140 * slot),30);
         }
         cardtrans.Find("ManaCost").GetComponent<Text>().text = spell.manaCost + "";
         cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";

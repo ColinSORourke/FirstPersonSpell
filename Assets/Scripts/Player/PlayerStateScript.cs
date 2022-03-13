@@ -97,7 +97,7 @@ public class PlayerStateScript : NetworkBehaviour
             i += 1;
         }
 
-        //InvokeRepeating("tick", 0.0f, 0.25f);
+        InvokeRepeating("tick", 0.0f, 0.25f);
         myUI.updateUlt(currUlt, 0.0f);
     }
 
