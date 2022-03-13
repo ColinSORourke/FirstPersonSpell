@@ -19,6 +19,7 @@ public class PlayerStateScript : NetworkBehaviour
     private NetworkVariable<float> _currMana = new NetworkVariable<float>(50.0f);
     public float currMana => _currMana.Value;
     public float manaThreshold = 30.0f;
+    public bool doManaRegen = true;
 
     public float maxUlt = 20.0f;
     //public float currUlt = 0.0f;
@@ -30,10 +31,12 @@ public class PlayerStateScript : NetworkBehaviour
     public float shieldTime = 4.0f;
     public float shieldDur = -1.0f;
 
+    public AudioSource audioSource;
+
     public List<liveAura> auras = new List<liveAura>();
 
-    public static int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
-    public baseSpellScript[] spellDeck = new baseSpellScript[10];
+    public static int playerCardDeckId = 1; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
+    public baseSpellScript[] spellDeck = new baseSpellScript[7];
     public baseSpellScript ultSpell;
     public List<baseSpellScript> spellQueue = new List<baseSpellScript>();
 
@@ -64,6 +67,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
         allDecks = this.GetComponent<SelectDeck>();
+        audioSource = this.GetComponent<AudioSource>();
 
         //Create Card Deck
         /* Debug.Log("Card Deck ID: " + playerCardDeckId);
@@ -86,15 +90,13 @@ public class PlayerStateScript : NetworkBehaviour
             baseSpellScript added = spellDeck[ shuffleOrder[i] ];
             spellQueue.Add(added);
             if (i < 4){
-                myUI.addIcon(added.icon, i);
+                myUI.addIcon(added, i);
             }
             i += 1;
         }
 
         InvokeRepeating("tick", 0.0f, 0.25f);
-        //myUI.updateUlt(0.0f);
-
-        //aliveManager = FindObjectOfType<AliveManager>();
+        myUI.updateUlt(currUlt, 0.0f);
     }
 
     // Update is called once per frame
@@ -106,7 +108,7 @@ public class PlayerStateScript : NetworkBehaviour
     // Called every quarter second
     void tick(){
         // Regen mana. Regen is greater if Health is low.
-        if (currMana < manaThreshold){
+        if (currMana < manaThreshold && doManaRegen){
             if (currentHealth <= healthThreshold){
                 changeManaServerRpc(0.5f);
             } else {
@@ -135,6 +137,7 @@ public class PlayerStateScript : NetworkBehaviour
         int i = 0; 
         while (i < auras.Count){
             liveAura a = auras[i];
+            myUI.updateAura(i, a);
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
                 this.removeAura(i);
@@ -189,11 +192,21 @@ public class PlayerStateScript : NetworkBehaviour
         int matchInd = hasAura(aura.id);
         // Check if we already have this type of Aura
         if (matchInd != -1){
+            Debug.Log("Already have this aura");
             // Make sure we aren't shortening the duration
             if (auras[matchInd].duration < duration){
                 auras[matchInd].duration = duration;
             }
-            auras[matchInd].onStack();
+            bool canStack = auras[matchInd].onStack();
+            if (canStack){
+                for (int i = 0; i < auras.Count; i++){
+                    if (auras[i].aura.id == aura.id){
+                        myUI.stackAura(auras[i], auras[i].stacks);
+                        break;
+                    }
+                }
+            }
+            
         } else {
             liveAura toApply = new liveAura();
             toApply.aura = aura;

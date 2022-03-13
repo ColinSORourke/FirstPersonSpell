@@ -1,0 +1,11 @@
+Note:
+
+1. VFX for each individual elemenet are not exclusive
+
+---
+
+To Fix: 
+
+1. Particles dying with projectiles
+2. Bloodspatter VFX graph
+3. Placeholder "pooling" for Bleed aura VFX

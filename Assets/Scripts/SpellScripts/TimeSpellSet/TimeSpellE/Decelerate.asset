@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7be6b5119fbf214690ce6a6c472a024, type: 3}
+  m_Name: Decelerate
+  m_EditorClassIdentifier: 
+  id: 305
+  manaCost: 15
+  castTime: 1
+  isProjectile: 1
+  projSpeed: 0.1
+  projLifespan: 5
+  projObj: {fileID: 8297249185502433730, guid: 42c3ae5a717ccfb47b206eb7bbf62690, type: 3}
+  damage: 4
+  ultCost: 0
+  range: 24
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 11400000, guid: b0cd753edb5e74b499e167eac3c502f9, type: 2}
+  aura_B: {fileID: 11400000, guid: 0fdf57b29aca2b944b0276b3b0fdc7ac, type: 2}
+  token: {fileID: 0}
+  spellName: Decelerate
+  description: Deal 4 damage to target. Slow target on hit for 5 seconds. Apply a
+    stack of 'clockwork' to self for 5 seconds.
+  icon: {fileID: 21300000, guid: b7aa45a05b75ff0438200b40c4c9383f, type: 3}
+  castParticle: {fileID: 8319142979115335276, guid: 9b22e71f15838fa4386a139f32ce4f7b, type: 3}
+  hitParticle: {fileID: 8319142979115335276, guid: 07b9c6a4fd07297439780c1ba1b5b473, type: 3}
+  castAudioClip: {fileID: 8300000, guid: 2094fdabd8d261c4e99bab98e72bae34, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: 8262508c1d2a8cd41863a77dd911fb8b, type: 3}

@@ -68,17 +68,20 @@ public class liveAura {
         aura.onExpire(src, on, stacks, tickNum);
     }
 
-    public void onStack(){
+    public bool onStack(){
         if (stacks < aura.maxStacks)
         {
             stacks += 1;
             aura.onStack(src, on, stacks);
+            return true;
         }
+        return false;
     }
 
     public int update(float delta){
         tickTime += delta;
         duration -= delta;
+        
         if (tickTime > aura.tickSpeed && aura.tickSpeed != -1){
             tickTime = 0.0f;
             tickNum += 1;

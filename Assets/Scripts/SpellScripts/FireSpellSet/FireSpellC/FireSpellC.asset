@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc22c06612a7a48829f5f869edc2b763, type: 3}
+  m_Name: FireSpellC
+  m_EditorClassIdentifier: 
+  id: 103
+  manaCost: 15
+  castTime: 0.5
+  isProjectile: 0
+  projSpeed: 0
+  projLifespan: 0
+  projObj: {fileID: 0}
+  damage: 0
+  ultCost: 0
+  range: 0
+  reqTarget: 0
+  exhaust: 0
+  aura_A: {fileID: 0}
+  aura_B: {fileID: 11400000, guid: 5b8140dfe5cf41e49b9931d2ed0701cb, type: 2}
+  token: {fileID: 0}
+  spellName: Flame Barrier
+  description: Create a flame barrier than reduces damage taken by 50% for 10 seconds
+  icon: {fileID: 21300000, guid: ce457574e83f38a488076b4cb3819abf, type: 3}
+  castParticle: {fileID: 1746490584521272958, guid: 0985253e79b8ce14bb29d17d9ed19957, type: 3}
+  hitParticle: {fileID: 0}
+  castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: 497c862cf9107804dbd58620fded0be5, type: 3}

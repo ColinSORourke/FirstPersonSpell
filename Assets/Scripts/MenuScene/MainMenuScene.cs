@@ -13,7 +13,7 @@ public class MainMenuScene : MonoBehaviour
     public GameObject mainCamera;
     public float cameraRotationSpeed;
     public Vector2 angles; //angles.x is min, angles.y is max
-    public Dropdown cardDeckDropdown;
+    public Dropdown cardDeckDropdown, levelSelectorDropdown;
 
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
@@ -25,7 +25,8 @@ public class MainMenuScene : MonoBehaviour
     Resolution[] resolutions;
 
     public GameObject playerCharacter;
-    public GameObject[] characterModels;
+    public Material[] characterMaterials;
+    private MeshRenderer playerCharacterRenderer;
 
     public Text mouseSensitivityText;
     public GameObject KeybindsGroup;
@@ -39,6 +40,8 @@ public class MainMenuScene : MonoBehaviour
         {
             Debug.Log("Missing mainCanvas object");
         }
+
+        playerCharacterRenderer = playerCharacter.GetComponent<MeshRenderer>();
 
         makeResolutionOptions();
         LoadSettings();
@@ -63,12 +66,11 @@ public class MainMenuScene : MonoBehaviour
         }
     }
 
-    public void loadLevel(string name)
+    public void loadLevel()
     {
         Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
         PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
-        
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(levelSelectorDropdown.options[levelSelectorDropdown.value].text);
     }
 
     public void rotateCamera()
@@ -146,27 +148,30 @@ public class MainMenuScene : MonoBehaviour
 
     public void selectCharacter(string newCharacter)
     {
-        Material mat = playerCharacter.GetComponent<Renderer>().material;
         Debug.Log("New Color/Model: " + newCharacter);
+        /* On Inspector:
+         * Mat1 - Blue
+         * Mat2 - Red
+         * Mat3 - Green
+         * Mat4 - Purple
+         */
         switch (newCharacter)
         {
             case "Red":
-                mat.SetColor("_Color", Color.red);
+                playerCharacterRenderer.material = characterMaterials[1];
                 break;
             case "Blue":
-                mat.SetColor("_Color", Color.blue);
+                playerCharacterRenderer.material = characterMaterials[0];
                 break;
             case "Green":
-                mat.SetColor("_Color", Color.green);
+                playerCharacterRenderer.material = characterMaterials[2];
                 break;
-            case "Black":
-                mat.SetColor("_Color", Color.black);
+            case "Purple":
+                playerCharacterRenderer.material = characterMaterials[3];
                 break;
             case "White":
-                mat.SetColor("_Color", Color.white);
                 break;
             case "Gray":
-                mat.SetColor("_Color", Color.gray);
                 break;
         }
     }

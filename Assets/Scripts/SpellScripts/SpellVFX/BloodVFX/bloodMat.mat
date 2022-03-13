@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: bloodMat
+  m_Shader: {fileID: -6465566751694194690, guid: 58ff615b250d31f4aa2022bd0d7f91d9, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_8af46275ac014a03909662672790166c:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_125376a0da5643c183bd719d44ec036e: 1
+    - Vector1_24e87d810b344465b2530bea897b4ecd: 7
+    - Vector1_2caa923ff10947608ca36b7499062ef1: 1.8
+    - Vector1_4abc530127b64a86b44479cbb2ab041a: 60
+    - Vector1_5d1673e090014238bbbd84e44f01ce61: 2
+    - Vector1_875a29373b7e4ebab393fd4bb4936889: 2.5
+    - Vector1_94b8492eb4f444109248772680dd24ec: 0
+    - Vector1_cf94aff3ff1d408aa9b3d74dd8c29779: 0
+    m_Colors:
+    - Color_78dbaa011f684f7594e0e8f4e62b816d: {r: 83.46362, g: 0, b: 0.8739647, a: 0}
+    - Color_9e6def2bbd1445c9886c72d193586cf1: {r: 5.122823, g: 0.3624639, b: 0.3624639, a: 0}
+    - Color_d2ee3a260eab4beab590be65b5416493: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_1a834dba636d4e37bd3d0b6e2f4037ef: {r: 0.1, g: 0, b: 0, a: 0}
+    - Vector2_e8da9899548149c08f571e5199667263: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

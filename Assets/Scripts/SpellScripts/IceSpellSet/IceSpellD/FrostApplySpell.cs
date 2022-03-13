@@ -23,6 +23,10 @@ public class FrostApplySpell : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-
+        if (hitParticle != null)
+        {
+            var particleBurst = Instantiate(hitParticle, Target);
+            particleBurst.Emit(10);
+        }
     }
 }

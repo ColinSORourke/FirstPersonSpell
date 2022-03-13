@@ -24,9 +24,15 @@ public class baseSpellScript : ScriptableObject
     public baseAuraScript aura_B;
     public baseSpellScript token;
 
+    public string spellName;
+    public string description;
+
     public Sprite icon;
     public ParticleSystem castParticle;
-    public ParticleSystem hitParticle;    
+    public ParticleSystem hitParticle;
+
+    public AudioClip castAudioClip;
+    public AudioClip hitAudioClip;
 
     public virtual void onCastGeneral(Transform Player, Transform Target, int index, int slot){
         if (castParticle != null){
@@ -61,6 +67,17 @@ public class baseSpellScript : ScriptableObject
         if (hitParticle != null){
             FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
         }
-       
+    }
+
+    public virtual AudioClip getAudio(string type)
+    {
+        Debug.Log("Cast a basic audio");
+        switch (type){
+            case "onCast":
+                return castAudioClip;
+            case "onHit":
+                return hitAudioClip;    
+        }
+        return null;
     }
 }

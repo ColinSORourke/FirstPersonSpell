@@ -14,11 +14,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 9d2542e1de8be7d42bf143d51d6a3f8d
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Arches Map Prototype.unity
+    guid: 08b26cf5f293310489769a104ee25e1c
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Arches Map Prototype.unity
+    guid: 08b26cf5f293310489769a104ee25e1c
   - enabled: 0
     path: Assets/Scenes/Arches Map Prototype.unity
     guid: c7fac3839ed07ce4eabdd5533c135497
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 7e9e1fbad0c79ad499adeb17d112734f, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 7e9e1fbad0c79ad499adeb17d112734f,
+      type: 2}

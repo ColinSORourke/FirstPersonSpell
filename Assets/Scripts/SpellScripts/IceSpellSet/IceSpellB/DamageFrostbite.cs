@@ -24,9 +24,6 @@ public class DamageFrostbite : baseSpellScript
         }
         float duration = 5.0f;
         target.applyAura(Player, aura_A, duration);
-        if (hitParticle != null)
-        {
-            Instantiate(hitParticle, Target);
-        }
+        
     }
 }

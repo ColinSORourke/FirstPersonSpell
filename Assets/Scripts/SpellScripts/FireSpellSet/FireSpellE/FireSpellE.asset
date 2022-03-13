@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea6b73e8250d433a8a5ce8b2dff019e, type: 3}
+  m_Name: FireSpellE
+  m_EditorClassIdentifier: 
+  id: 105
+  manaCost: 15
+  castTime: 1
+  isProjectile: 1
+  projSpeed: 0.1
+  projLifespan: 10
+  projObj: {fileID: 3851380569608633218, guid: 0550f3983c81f76449f9bee6fb799266, type: 3}
+  damage: 3
+  ultCost: 0
+  range: 24
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 11400000, guid: 2d48813b542ef410cb6fd1d8f895c718, type: 2}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  spellName: Flame Burst
+  description: Shoot a fireball that deals 3 + (2 * seconds left of burn) and remove
+    the remaining burn
+  icon: {fileID: 21300000, guid: b3ae41acc9364f0469f0adde8dbe6b76, type: 3}
+  castParticle: {fileID: 5429109308165724534, guid: cfb02cb924817ec40a71d40c5a1afd7d, type: 3}
+  hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}
+  castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: 497c862cf9107804dbd58620fded0be5, type: 3}

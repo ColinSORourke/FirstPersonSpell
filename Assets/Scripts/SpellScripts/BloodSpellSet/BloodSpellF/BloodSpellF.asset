@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 641d668a3c0c41f47ada00ac5bbbd623, type: 3}
+  m_Name: BloodSpellF
+  m_EditorClassIdentifier: 
+  id: 406
+  manaCost: 15
+  castTime: 2
+  isProjectile: 0
+  projSpeed: 0
+  projLifespan: 0
+  projObj: {fileID: 6565553207202630263, guid: 61f47cf3eb20d5840bb4a4b5bf6f6833, type: 3}
+  damage: 0
+  ultCost: 0
+  range: 24
+  reqTarget: 1
+  exhaust: 0
+  aura_A: {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
+  aura_B: {fileID: 0}
+  token: {fileID: 0}
+  spellName: Hemorrhage
+  description: Inflict a stack of bleeding upon yourself, and 2 stacks of bleeding
+    on your target If used at 10 health or below, apply 3 stacks to the enemy instead
+  icon: {fileID: 21300000, guid: 620a0f4a929a64347a49acc6c0e8e8b0, type: 3}
+  castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
+  hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}
+  castAudioClip: {fileID: 8300000, guid: dd9e24535715b6744850142101b29f54, type: 3}
+  hitAudioClip: {fileID: 8300000, guid: 9eee8cd5104cb9b4e9742b16e87808d6, type: 3}

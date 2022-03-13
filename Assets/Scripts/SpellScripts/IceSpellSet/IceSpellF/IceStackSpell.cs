@@ -9,7 +9,7 @@ public class IceStackSpell : baseSpellScript
     override public void onCastSpecific(Transform Player, Transform Target, int slot)
     {
         // None
-        Debug.Log("Cast Snowball Spell");
+        Debug.Log("Cast IceStack Spell");
     }
 
     // Update is called once per frame
@@ -29,6 +29,6 @@ public class IceStackSpell : baseSpellScript
                 particleBurst.Emit(20);
             }
         
-        Debug.Log("Hit Snowball Spell");
+        Debug.Log("Hit IceStack Spell");
     }
 }

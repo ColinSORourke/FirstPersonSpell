@@ -296,6 +296,180 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Spectator"",
+            ""id"": ""eea64e9c-0820-4240-a218-a214afe3db21"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bd0616b3-eb12-47f1-b40d-6369c92169a6"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MouseX"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5bcd6794-9bb3-449b-acf5-32a00e6d065e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseY"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""522f7560-2572-4b9f-88be-c73255d93084"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""470a7451-0645-4bcf-a4f0-fdc6be10c4a3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5ab0765-f5d7-4aa6-b065-e010bbee91d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""bb8704ad-1589-4e4d-afe0-239c980cc6e9"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""534ba171-f1d2-47e0-b4ef-8b8b21ed2197"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""85d1b0a4-78a1-4d5b-9ad5-a333b2b247b6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""dd5e05c4-2406-4aa9-923a-5239c5983a51"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""2d89c381-5a15-41b2-92aa-6c64d5471dbf"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""b2fd9094-f300-41fc-bf6b-1272cf2b4aa6"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Backward"",
+                    ""id"": ""774399ca-455e-46c8-bf1e-a37663a07b69"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""beae579b-be64-46fc-a65d-a17e86631914"",
+                    ""path"": ""<Mouse>/delta/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d62891ca-c3ad-4d19-9011-962b3305af6a"",
+                    ""path"": ""<Mouse>/delta/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d2e7c9b-3d48-4624-afbf-7270bb6a9d28"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e5e7f54-c3af-486e-a3fb-6424dfc92931"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Menu"",
             ""id"": ""b47e43bc-944b-4af3-861f-0e33945cfd3c"",
             ""actions"": [
@@ -339,6 +513,13 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
         m_Gameplay_Escape = m_Gameplay.FindAction("Escape", throwIfNotFound: true);
         m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
+        // Spectator
+        m_Spectator = asset.FindActionMap("Spectator", throwIfNotFound: true);
+        m_Spectator_Move = m_Spectator.FindAction("Move", throwIfNotFound: true);
+        m_Spectator_MouseX = m_Spectator.FindAction("MouseX", throwIfNotFound: true);
+        m_Spectator_MouseY = m_Spectator.FindAction("MouseY", throwIfNotFound: true);
+        m_Spectator_Escape = m_Spectator.FindAction("Escape", throwIfNotFound: true);
+        m_Spectator_Sprint = m_Spectator.FindAction("Sprint", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -511,6 +692,71 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
 
+    // Spectator
+    private readonly InputActionMap m_Spectator;
+    private ISpectatorActions m_SpectatorActionsCallbackInterface;
+    private readonly InputAction m_Spectator_Move;
+    private readonly InputAction m_Spectator_MouseX;
+    private readonly InputAction m_Spectator_MouseY;
+    private readonly InputAction m_Spectator_Escape;
+    private readonly InputAction m_Spectator_Sprint;
+    public struct SpectatorActions
+    {
+        private @Controls m_Wrapper;
+        public SpectatorActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Spectator_Move;
+        public InputAction @MouseX => m_Wrapper.m_Spectator_MouseX;
+        public InputAction @MouseY => m_Wrapper.m_Spectator_MouseY;
+        public InputAction @Escape => m_Wrapper.m_Spectator_Escape;
+        public InputAction @Sprint => m_Wrapper.m_Spectator_Sprint;
+        public InputActionMap Get() { return m_Wrapper.m_Spectator; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SpectatorActions set) { return set.Get(); }
+        public void SetCallbacks(ISpectatorActions instance)
+        {
+            if (m_Wrapper.m_SpectatorActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMove;
+                @MouseX.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseX;
+                @MouseX.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseX;
+                @MouseX.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseX;
+                @MouseY.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseY;
+                @MouseY.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseY;
+                @MouseY.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnMouseY;
+                @Escape.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnEscape;
+                @Sprint.started -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_SpectatorActionsCallbackInterface.OnSprint;
+            }
+            m_Wrapper.m_SpectatorActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @MouseX.started += instance.OnMouseX;
+                @MouseX.performed += instance.OnMouseX;
+                @MouseX.canceled += instance.OnMouseX;
+                @MouseY.started += instance.OnMouseY;
+                @MouseY.performed += instance.OnMouseY;
+                @MouseY.canceled += instance.OnMouseY;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+            }
+        }
+    }
+    public SpectatorActions @Spectator => new SpectatorActions(this);
+
     // Menu
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
@@ -556,6 +802,14 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnShield(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+    }
+    public interface ISpectatorActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnMouseX(InputAction.CallbackContext context);
+        void OnMouseY(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

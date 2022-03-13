@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class GenericUI : MonoBehaviour
 {
     public List<Image> auraIcons = new List<Image>();
+    public List<Text> auraStackText = new List<Text>();
+    public List<Text> auraTimerText = new List<Text>();
     public Image HealthBar;
     public Image BonusBar;
     public Image TargetMark;
     public Camera cameraToLookAt;
     public Canvas UI;
     public Transform UITrans;
-    public Image[] spellIcons = new Image[4];
+    public GameObject[] spellIcons = new GameObject[4];
     public Image CastBar;
     public Image ManaBar;
     public Image UltBar;
@@ -31,16 +33,16 @@ public class GenericUI : MonoBehaviour
         
     }
 
-    public virtual void updateHealth(float currPerc, float bonusPerc){
+    public virtual void updateHealth(float currHealth, float currPerc, float bonusPerc){
         HealthBar.fillAmount = currPerc;
         BonusBar.fillAmount = bonusPerc;
     }
 
-    public virtual void updateMana(float percentage){
+    public virtual void updateMana(float currMana, float percentage){
         ManaBar.fillAmount = percentage;
     }
 
-    public virtual void updateUlt(float percentage){
+    public virtual void updateUlt(float currUlt, float percentage){
         UltBar.fillAmount = percentage;
     }
 
@@ -48,40 +50,30 @@ public class GenericUI : MonoBehaviour
         CastBar.fillAmount = percentage;
     }
 
-    public virtual void shiftSpells(int slot, Sprite icon){
+    public virtual void shiftSpells(int slot, baseSpellScript spell){
         Destroy(spellIcons[slot].gameObject);
         int j = slot + 1; 
         while (j < spellIcons.Length){
-            var spellTrans = spellIcons[j].GetComponent<Transform>();
-            spellIcons[j].GetComponent<Transform>().localPosition = spellTrans.localPosition - new Vector3(80, 0, 0);
-            if (j == 3){
-                spellIcons[j].GetComponent<RectTransform>().sizeDelta = new Vector2(60, 60);
+            var spellTrans = spellIcons[j].GetComponent<RectTransform>();
+            if (j == 3){spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(0, 30);
+
             }
+            spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(100, 0);
             spellIcons[j].name = "Spell" + (j-1);
             spellIcons[j-1] = spellIcons[j];
 
             j += 1;
         }
-        this.addIcon(icon, 3);
+        this.addIcon(spell, 3);
     }
 
-    public virtual void addIcon(Sprite icon, int slot){
-        GameObject imgObject = new GameObject("Spell" + slot); 
-        //Create the GameObject
-        Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
-        NewImage.sprite = icon; //Set the Sprite of the Image Component on the new GameObject
-
-        var imgtrans = imgObject.GetComponent<RectTransform>();
-        imgtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
-        imgtrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        imgtrans.localPosition = new Vector3(-80 + (80 * slot),-130,0);
-        imgtrans.sizeDelta = new Vector2(60, 60);
-        if (slot == 3){
-            imgtrans.sizeDelta = new Vector2(40, 40);
-        }
-        imgObject.SetActive(true);
-        spellIcons[slot] = NewImage;
+    public virtual void addIcon(baseSpellScript spell, int slot){
+        /* 
+        To Implement in PlayerUI
+        */
     }
+
+
 
     public virtual void displayShield(){
         Shield.enabled = true;
@@ -104,18 +96,92 @@ public class GenericUI : MonoBehaviour
         imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
         imgObject.SetActive(true);
         auraIcons.Add(NewImage);
+        
+    }
+
+    public virtual void stackAura(liveAura stackedAura, int stackNum){
+        GameObject aura = null;
+        int location = -1;
+        //Find the position in the list of the aura to be stacked
+        for (int i = 0; i < auraIcons.Count; i++){
+            if (auraIcons[i].gameObject.name == ("Aura" + stackedAura.aura.id)){
+                aura = auraIcons[i].gameObject;
+                location = i;
+            }
+        }
+
+        if (auraStackText.Count <= location){
+            GameObject textObject = new GameObject("Aura" + stackedAura.aura.id + " stack");
+            Text stack = textObject.AddComponent<Text>();
+            stack.text = "x" + stackNum.ToString();
+            stack.fontSize = 10;
+            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
+            textObject.GetComponent<Text>().color = Color.black;
+
+            var txtTrans = textObject.GetComponent<RectTransform>();
+            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
+            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
+            txtTrans.localPosition = new Vector3( (0.5f * location),0.3f,0);
+            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
+            txtTrans.sizeDelta = new Vector2(15, 15);
+            textObject.SetActive(true);
+            auraStackText.Add(stack);
+        }
+        else{
+            auraStackText[location].gameObject.GetComponent<Text>().text = "x" + stackNum.ToString();
+        }
+        
+        
+    }
+
+    public virtual void updateAura(int auraPos, liveAura updateAura){
+        if (auraPos >= auraTimerText.Count){
+            GameObject textObject = new GameObject("Aura" + updateAura.aura.id + " timer");
+            Text stack = textObject.AddComponent<Text>();
+            stack.text = updateAura.duration.ToString() + "s";
+            stack.fontSize = 10;
+            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
+            textObject.GetComponent<Text>().color = Color.black;
+
+            var txtTrans = textObject.GetComponent<RectTransform>();
+            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
+            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
+            txtTrans.localPosition = new Vector3(-1f + (0.5f * auraPos),-0.1f,0);
+            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
+            txtTrans.sizeDelta = new Vector2(30, 15);
+            textObject.SetActive(true);
+            auraTimerText.Add(stack);
+        }
+        else{
+            auraTimerText[auraPos].gameObject.GetComponent<Text>().text = updateAura.duration.ToString() + "s";
+        }
     }
 
     public virtual void removeAura(int i){
+        //Only delete from stack List if Aura is stacked
+        if (i < auraStackText.Count){
+            var stackTxt = auraStackText[i].gameObject.name;
+            if(stackTxt.Substring(0, stackTxt.Length - 6) == auraIcons[i].gameObject.name){
+                Destroy(auraStackText[i].gameObject);
+                auraStackText.RemoveAt(i);
+            } 
+        } 
+        
         Destroy(auraIcons[i].gameObject);
         auraIcons.RemoveAt(i);
+        Destroy(auraTimerText[i].gameObject);
+        auraTimerText.RemoveAt(i);
+
         int j = i; 
         while (j < auraIcons.Count){
             var auraTrans = auraIcons[j].GetComponent<Transform>();
             auraIcons[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0, 0);
+            auraStackText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0.3f, 0);
+            auraTimerText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-3, -0.1f, 0);
             j += 1;
         }
     }
+
 
     public virtual void target(){
         TargetMark.enabled = true;
@@ -123,12 +189,14 @@ public class GenericUI : MonoBehaviour
 
     public virtual void updateRange(float range){
         if (range < 12.0){
+            TargetMark.GetComponent<Image>().color = new Color32(84,255,95,255);
+        }
+        else if (range < 24.0){
             TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
         }
-        else if (range < 26.0){
+        else if (range < 36.0) {
             TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
-        }
-        else{
+        } else {
             TargetMark.GetComponent<Image>().color = new Color32(217,18,10,255);
         }
         

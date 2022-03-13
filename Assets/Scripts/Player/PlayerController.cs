@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Movement movement;
     [SerializeField] MouseLook mouseLook;
+    [SerializeField] GameObject gameplayUIGroup, menuUIGroup, player;
     [SerializeField] PlayerAbilities playerAbilities;
     //[SerializeField] Popup menu;
     [SerializeField] GameObject leaveButton;
@@ -53,20 +54,11 @@ public class PlayerController : MonoBehaviour
         gameplayActions.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
 
         gameplayActions.Shoot.performed += _ => playerAbilities.newTarget();
-        gameplayActions.Abilities1.performed += _ => playerAbilities.castSpell(0);
+        gameplayActions.Abilities1.performed += _ => playerAbilities.castSpell(2);
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
-        gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(2);
+        gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(0);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
-        gameplayActions.Escape.performed += _ => {
-            leaveButton.SetActive(!leaveButton.activeSelf);
-            if (leaveButton.activeSelf) {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            } else {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        };
+        gameplayActions.Escape.performed += _ => switchUIGroup();
     }
 
     private void OnDisable() {
@@ -85,16 +77,7 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed -= _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed -= _ => playerAbilities.castSpell(2);
         gameplayActions.Shield.performed -= _ => playerAbilities.castShield();
-        gameplayActions.Escape.performed -= _ => {
-            leaveButton.SetActive(!leaveButton.activeSelf);
-            if (leaveButton.activeSelf) {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            } else {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        };
+        gameplayActions.Escape.performed -= _ => switchUIGroup();
     }
 
     public void DisableCasting() {
@@ -123,16 +106,27 @@ public class PlayerController : MonoBehaviour
             gameplayActions.Abilities2.performed -= _ => playerAbilities.castSpell(1);
             gameplayActions.Abilities3.performed -= _ => playerAbilities.castSpell(2);
             gameplayActions.Shield.performed -= _ => playerAbilities.castShield();
-            gameplayActions.Escape.performed -= _ => {
-                leaveButton.SetActive(!leaveButton.activeSelf);
-                if (leaveButton.activeSelf) {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                } else {
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
-                }
-            };
+            gameplayActions.Escape.performed -= _ => switchUIGroup();
         }
     }
+	
+    private void switchUIGroup(){
+        bool temp = gameplayUIGroup.activeSelf;
+        gameplayUIGroup.SetActive(!temp);
+        menuUIGroup.SetActive(temp);
+        Cursor.visible = menuUIGroup.activeSelf;
+        if (!Cursor.visible) {
+            Cursor.lockState = CursorLockMode.Locked;
+            player.GetComponent<MouseLook>().enabled = true;
+            player.GetComponent<Movement>().enabled = true;
+        }
+            
+        else {
+            Cursor.lockState = CursorLockMode.None;
+            player.GetComponent<MouseLook>().enabled = false;
+            player.GetComponent<Movement>().enabled = false;
+        }
+        
+    }
+	
 }
