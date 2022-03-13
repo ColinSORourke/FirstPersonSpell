@@ -2179,6 +2179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393850800}
   - component: {fileID: 1393850801}
+  - component: {fileID: 1393850802}
   m_Layer: 0
   m_Name: AliveManager
   m_TagString: Untagged
@@ -2212,6 +2213,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a9332e88215f74889ec4d6d009b10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1393850802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393850799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1907174722
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1546195718
 GameObject:
   m_ObjectHideFlags: 0
