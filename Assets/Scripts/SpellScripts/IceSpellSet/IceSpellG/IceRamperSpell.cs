@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IceSpellG", menuName = "ScriptableObjects/IceSpells/IceSpellG", order = 1)]
@@ -24,8 +25,9 @@ public class IceRamperSpell : baseSpellScript
         }
         if (hitParticle != null)
         {
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(20);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(20);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
 
         Debug.Log("Hit Snowball Spell");

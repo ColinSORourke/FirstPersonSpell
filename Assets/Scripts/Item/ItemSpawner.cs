@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class ItemSpawner : MonoBehaviour
+public class ItemSpawner : NetworkBehaviour
 {
+    public static ItemSpawner Instance => instance;
+    private static ItemSpawner instance;
+
     public GameObject[] itemPrefabs;
     public int maxItems = 3;
     int currItems = 0;
@@ -16,6 +20,16 @@ public class ItemSpawner : MonoBehaviour
     private bool isHealthUltSpawnMethodActive = false;
     private string secondCategoryTag = "HealthItem";
     // Start is called before the first frame update
+
+    private void Awake() {
+        if (!NetworkManager.Singleton.IsServer) {
+            this.enabled = false;
+            return;
+        }
+
+        instance = this;
+    }
+
     void Start()
     {
         Transform spawnParent = transform.GetChild(0);
@@ -88,8 +102,9 @@ public class ItemSpawner : MonoBehaviour
             }
             Transform platform = platformParent.GetChild(i);
             items[i] = Instantiate(toSpawnObjectAt(platform), spawnPoints[i], Quaternion.identity);
+            items[i].GetComponent<NetworkObject>().Spawn();
             //platform.tag = switchTag(platform.tag);
-            items[i].transform.parent = crysParent;
+            //items[i].transform.parent = crysParent;
             currItems += 1;
             Debug.Log("Spawning new " + tagName + " after " + repeatTime + " seconds at " + platform.name);
         }

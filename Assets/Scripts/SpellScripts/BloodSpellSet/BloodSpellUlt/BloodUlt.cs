@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BloodSpellUlt", menuName = "ScriptableObjects/BloodSpells/BloodSpellUlt", order = 1)]
@@ -34,8 +35,9 @@ public class BloodUlt : baseSpellScript
     {
         if (hitParticle != null)
         {
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(10);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(10);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

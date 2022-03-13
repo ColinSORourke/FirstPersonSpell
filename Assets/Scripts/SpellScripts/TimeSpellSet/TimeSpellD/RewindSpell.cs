@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Rewind", menuName = "ScriptableObjects/TimeSpells/TimeSpellD", order = 1)]
@@ -19,8 +20,9 @@ public class RewindSpell : baseSpellScript
     {
         if (hitParticle != null)
         {
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(10);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(10);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

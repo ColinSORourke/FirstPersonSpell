@@ -14,7 +14,9 @@ namespace DapperDino.UMT.Lobby.Networking {
         public static ServerGameNetPortal Instance => instance;
         private static ServerGameNetPortal instance;
 
-        private Dictionary<string, PlayerData> clientData;
+        
+        [SerializeField] private Dictionary<string, PlayerData> clientData;
+
         private Dictionary<ulong, string> clientIdToGuid;
         private Dictionary<ulong, int> clientSceneMap;
         private bool gameInProgress;
@@ -59,6 +61,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         public PlayerData? GetPlayerData(ulong clientId) {
             if (clientIdToGuid.TryGetValue(clientId, out string clientGuid)) {
                 if (clientData.TryGetValue(clientGuid, out PlayerData playerData)) {
+                    Debug.Log("In get: " + playerData.SelectedDeck);
                     return playerData;
                 }
                 else {
@@ -234,7 +237,8 @@ namespace DapperDino.UMT.Lobby.Networking {
         public void SetClientDeck(ulong clientId, int selectedDeck) {
             if (clientIdToGuid.TryGetValue(clientId, out string guid)) {
                 if (clientData[guid].ClientId == clientId) {
-                    clientData[guid].SetDeck(selectedDeck);
+                    PlayerData pd = clientData[guid];
+                    clientData[guid] = new PlayerData(pd.PlayerName, pd.ClientId, selectedDeck, pd.SelectedColor);
                 }
             }
         }
@@ -242,7 +246,8 @@ namespace DapperDino.UMT.Lobby.Networking {
         public void SetClientColor(ulong clientId, int selectedColor) {
             if (clientIdToGuid.TryGetValue(clientId, out string guid)) {
                 if (clientData[guid].ClientId == clientId) {
-                    clientData[guid].SetColor(selectedColor);
+                    PlayerData pd = clientData[guid];
+                    clientData[guid] = new PlayerData(pd.PlayerName, pd.ClientId, pd.SelectedDeck, selectedColor);
                 }
             }
         }

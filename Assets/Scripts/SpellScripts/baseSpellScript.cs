@@ -52,7 +52,7 @@ public class baseSpellScript : ScriptableObject
                     FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
                 }
             } else {
-                FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Target.GetComponent<NetworkObject>().OwnerClientId, index, slot);
+                FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Player.GetComponent<NetworkObject>().OwnerClientId, index, slot);
             }
             
         }

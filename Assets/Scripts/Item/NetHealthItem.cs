@@ -35,6 +35,6 @@ public class NetHealthItem : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void DespawnServerRpc() {
         gameObject.GetComponent<NetworkObject>().Despawn();
-        NetItemSpawner.Instance.itemDestroyed();
+        ItemSpawner.Instance.itemDestroyed();
     }
 }

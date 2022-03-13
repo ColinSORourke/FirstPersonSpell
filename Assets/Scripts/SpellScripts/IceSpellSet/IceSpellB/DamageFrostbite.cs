@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "IceSpellB", menuName = "ScriptableObjects/IceSpells/IceSpellB", order = 1)]
@@ -19,8 +20,9 @@ public class DamageFrostbite : baseSpellScript
         target.takeDamage(damage);
         if (hitParticle != null)
         {
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(10);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(10);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
         float duration = 5.0f;
         target.applyAura(Player, aura_A, duration);

@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "FireSpellC", menuName = "ScriptableObjects/FireSpells/FireSpellC", order = 1)]
-public class damageBurnSpell : baseSpellScript
+public class flameBarrierSpell : baseSpellScript
 {
     // Start is called before the first frame update
     override public void onCastSpecific(Transform Player, Transform Target, int slot){

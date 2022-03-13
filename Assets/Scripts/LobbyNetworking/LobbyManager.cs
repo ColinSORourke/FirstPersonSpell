@@ -315,10 +315,10 @@ public class LobbyManager : NetworkBehaviour
     }
 
     public void OnDeckSelected(int selectedDeck) {
-        ServerGameNetPortal.Instance.SetClientDeck(NetworkManager.Singleton.LocalClientId, selectedDeck);
+        serverGameNetPortal.SetClientDeck(NetworkManager.Singleton.LocalClientId, selectedDeck);
     }
 
     public void OnColorSelected(int selectedColor) {
-        ServerGameNetPortal.Instance.SetClientColor(NetworkManager.Singleton.LocalClientId, selectedColor);
+        serverGameNetPortal.SetClientColor(NetworkManager.Singleton.LocalClientId, selectedColor);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TimeOfReckoning", menuName = "ScriptableObjects/TimeSpells/TimeSpellUlt", order = 1)]
@@ -22,8 +23,9 @@ public class TimeOfReckoningSpell : baseSpellScript
     {
         if (hitParticle != null)
         {
-            var particleBurst = Instantiate(hitParticle, Target);
-            particleBurst.Emit(10);
+            //var particleBurst = Instantiate(hitParticle, Target);
+            //particleBurst.Emit(10);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

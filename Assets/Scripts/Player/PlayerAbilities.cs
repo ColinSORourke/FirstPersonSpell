@@ -109,20 +109,23 @@ public class PlayerAbilities : MonoBehaviour
         valid = myState.validCast(slot, tar, range);
 
         var spell = myState.spellQueue[slot];
-        if (spell.castTime > 0){
+        if (valid != -1.0f){
+            if (spell.castTime > 0){
             // Start Casting
             castTime = 0.0f;
             totalCastTime = valid;
             castingSpell = spell;
             castingSpellSlot = slot;
-        } else {
-            myState.castSpell(slot);
-            Transform myTar = null;
-            if (spell.reqTarget){
-                myTar = Targets[currTarget].transform;
+            } else {
+                myState.castSpell(slot);
+                Transform myTar = null;
+                if (spell.reqTarget){
+                    myTar = Targets[currTarget].transform;
+                }
+                spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
             }
-            spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
         }
+        
     }
 
     public void castShield(){
