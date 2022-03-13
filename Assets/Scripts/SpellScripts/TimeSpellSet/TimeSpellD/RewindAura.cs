@@ -35,8 +35,8 @@ public class RewindAura : baseAuraScript
         Debug.Log(savePos.x);
         Player.transform.position = savePos;
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.currMana = saveMana;
-        caster.currentHealth = saveHealth;
+        caster.changeManaServerRpc(saveMana - caster.currMana);
+        caster.changeHealthServerRpc(saveHealth - caster.currentHealth);
     }
 
     override public void onStack(Transform Player, Transform Target, int stack)

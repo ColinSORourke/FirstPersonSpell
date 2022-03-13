@@ -20,11 +20,11 @@ public class BloodUlt : baseSpellScript
             extraDamage = 2.0f * numStacks;
             target.takeDamage(extraDamage);
         }
-        self.currentBonus += (damage + extraDamage);
-        self.currMana += damage;
+        self.changeBonusServerRpc(damage + extraDamage);
+        self.changeManaServerRpc(damage);
         if (self.currMana > 50.0f) //caps mana gained to max
         {
-            self.currMana -= self.currMana - 50.0f;
+            self.changeManaServerRpc(-(self.currMana - 50.0f));
         }
 
     }

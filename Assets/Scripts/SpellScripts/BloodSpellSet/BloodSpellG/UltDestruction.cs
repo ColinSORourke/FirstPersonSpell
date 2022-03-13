@@ -16,13 +16,13 @@ public class UltDestruction : baseSpellScript
         pHP.takeDamage(2.0f);
         if(tHP.currUlt > 2.0f)
         {
-            tHP.currUlt -= 2.0f;
+            tHP.changeUltServerRpc(-2.0f);
         }
         if(tHP.currUlt == 1.0f)
         {
-            tHP.currUlt -= 1.0f;
+            tHP.changeUltServerRpc(-1.0f);
         }
-        pHP.currUlt += 2.0f;
+        pHP.changeUltServerRpc(2.0f);
 
     }
 

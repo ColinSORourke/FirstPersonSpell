@@ -12,7 +12,7 @@ public class WindUpSpell : baseSpellScript
         Debug.Log("Cast Windup");
         
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.changeMana(10.0f);
+        caster.changeManaServerRpc(10.0f);
         caster.applyAura(Player, aura_A, 5);
 
     }

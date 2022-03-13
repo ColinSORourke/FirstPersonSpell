@@ -12,7 +12,7 @@ public class TimeOfReckoningSpell : baseSpellScript
         Debug.Log("Cast TimeOfReckoning");
         
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.changeMana(20.0f);
+        caster.changeManaServerRpc(20.0f);
         caster.applyAura(Player, aura_A, 20);
 
     }

@@ -20,7 +20,7 @@ public class BleedBolt : baseSpellScript
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
         if (tHP.hasAura(aura_A.id) == 1)
         {
-                pHP.currentHealth+=5.0f;
+            pHP.changeHealthServerRpc(5.0f);
         }
         tHP.applyAura(Player, aura_A, duration);
         

@@ -13,10 +13,10 @@ public class BloodSiphon : baseSpellScript
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         PlayerStateScript self = Player.GetComponent<PlayerStateScript>();
         target.takeDamage(damage);
-        self.currentBonus+=5.0f;
-        if(slot == 0)
+        self.changeBonusServerRpc(5.0f);
+        if (slot == 0)
         {
-            self.currentBonus+=5.0f;
+            self.changeBonusServerRpc(5.0f);
         }
 
     }

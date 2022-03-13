@@ -26,6 +26,8 @@ namespace DapperDino.UMT.Lobby.Networking {
         public LobbyManager lobbyManager;
         public PlayerManager playerManager;
         public GameObject readyButton;
+        public GameObject deckSelectGroup;
+        public GameObject colorSelectGroup;
 
         public GameObject[] toDestroy;
         public bool transitioning;
@@ -113,6 +115,8 @@ namespace DapperDino.UMT.Lobby.Networking {
 
         public void SetReadyActive() {
             readyButton.SetActive(true);
+            deckSelectGroup.SetActive(true);
+            colorSelectGroup.SetActive(true);
         }
 
         #region Message Handlers

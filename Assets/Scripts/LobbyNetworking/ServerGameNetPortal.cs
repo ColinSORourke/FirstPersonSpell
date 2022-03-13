@@ -75,7 +75,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         public void StartGame() {
             gameInProgress = true;
 
-            NetworkManager.Singleton.SceneManager.LoadScene("NetGameplay", LoadSceneMode.Single);
+            NetworkManager.Singleton.SceneManager.LoadScene("Net Arches Map Prototype", LoadSceneMode.Single);
         }
 
         public void EndRound() {
@@ -146,7 +146,7 @@ namespace DapperDino.UMT.Lobby.Networking {
             string clientGuid = Guid.NewGuid().ToString();
             string playerName = PlayerPrefs.GetString("PlayerName", "Missing Name");
 
-            clientData.Add(clientGuid, new PlayerData(playerName, NetworkManager.Singleton.LocalClientId));
+            clientData.Add(clientGuid, new PlayerData(playerName, NetworkManager.Singleton.LocalClientId, 0, 0));
             clientIdToGuid.Add(NetworkManager.Singleton.LocalClientId, clientGuid);
         }
 
@@ -196,7 +196,7 @@ namespace DapperDino.UMT.Lobby.Networking {
             if (gameReturnStatus == ConnectStatus.Success) {
                 clientSceneMap[clientId] = connectionPayload.clientScene;
                 clientIdToGuid[clientId] = connectionPayload.clientGUID;
-                clientData[connectionPayload.clientGUID] = new PlayerData(connectionPayload.playerName, clientId);
+                clientData[connectionPayload.clientGUID] = new PlayerData(connectionPayload.playerName, clientId, 0, 0);
                 Debug.Log("Success for " + clientId);
             }
 
@@ -229,6 +229,22 @@ namespace DapperDino.UMT.Lobby.Networking {
                     TargetClientIds = new ulong[] { clientId }
                 }
             });
+        }
+
+        public void SetClientDeck(ulong clientId, int selectedDeck) {
+            if (clientIdToGuid.TryGetValue(clientId, out string guid)) {
+                if (clientData[guid].ClientId == clientId) {
+                    clientData[guid].SetDeck(selectedDeck);
+                }
+            }
+        }
+
+        public void SetClientColor(ulong clientId, int selectedColor) {
+            if (clientIdToGuid.TryGetValue(clientId, out string guid)) {
+                if (clientData[guid].ClientId == clientId) {
+                    clientData[guid].SetColor(selectedColor);
+                }
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ public class CleansingFlameSpell : baseSpellScript
         for (i = 0; i <self.auras.Count; i++)
         {
             self.removeAura(i);
-            self.currUlt++;
+            self.changeUltServerRpc(1.0f);
         }
     }
 

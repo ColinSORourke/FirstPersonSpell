@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerStateScriptOld : NetworkBehaviour
 {
-    public float maxHealth = 50.0f;
+    /*public float maxHealth = 50.0f;
     public float currentHealth = 50.0f;
     public float currentBonus = 20.0f;
     public float healthThreshold = 20.0f;
@@ -55,10 +55,10 @@ public class PlayerStateScriptOld : NetworkBehaviour
         allDecks = this.GetComponent<SelectDeck>();
 
         //Create Card Deck
-        /* Debug.Log("Card Deck ID: " + playerCardDeckId);
+        *//* Debug.Log("Card Deck ID: " + playerCardDeckId);
         spellDeck = allDecks.spellDecks[playerCardDeckId].getSpellDeck();
         //Create Ult
-        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell(); */
+        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell(); *//*
 
         int[] shuffleOrder = { 0,1,2,3,4,5,6 };
         int i = 6;
@@ -249,5 +249,5 @@ public class PlayerStateScriptOld : NetworkBehaviour
 
         myUI.updateMana(currMana/maxMana);
         myUI.shiftSpells(slot, spellQueue[3].icon);
-    }
+    }*/
 }

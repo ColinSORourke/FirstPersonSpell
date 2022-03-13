@@ -1,3 +1,4 @@
+using DapperDino.UMT.Lobby.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -70,10 +71,11 @@ public class PlayerStateScript : NetworkBehaviour
         audioSource = this.GetComponent<AudioSource>();
 
         //Create Card Deck
-        /* Debug.Log("Card Deck ID: " + playerCardDeckId);
+        playerCardDeckId = ServerGameNetPortal.Instance.GetPlayerData(OwnerClientId).Value.SelectedDeck;
+        Debug.Log(OwnerClientId + " Card Deck ID: " + playerCardDeckId);
         spellDeck = allDecks.spellDecks[playerCardDeckId].getSpellDeck();
         //Create Ult
-        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell(); */
+        ultSpell = allDecks.spellDecks[playerCardDeckId].getUltSpell();
 
         int[] shuffleOrder = { 0,1,2,3,4,5,6 };
         int i = 6;
@@ -173,19 +175,19 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void OnHealthChanged(float oldValue, float newValue) {
-        myUI.updateHealth(currentHealth / maxHealth, currentBonus / maxHealth);
+        myUI.updateHealth(currentHealth, currentHealth / maxHealth, currentBonus / maxHealth);
     }
 
     public void OnBonusChanged(float oldValue, float newValue) {
-        myUI.updateHealth(currentHealth / maxHealth, currentBonus / maxHealth);
+        myUI.updateHealth(currentHealth, currentHealth / maxHealth, currentBonus / maxHealth);
     }
 
     public void OnManaChanged(float oldValue, float newValue) {
-        myUI.updateMana(currMana / maxMana);
+        myUI.updateMana(currMana, currMana / maxMana);
     }
 
     public void OnUltChanged(float oldValue, float newValue) {
-        myUI.updateUlt(currUlt / ultSpell.ultCost);
+        myUI.updateUlt(currUlt, currUlt / ultSpell.ultCost);
     }
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
@@ -352,6 +354,6 @@ public class PlayerStateScript : NetworkBehaviour
         spellsCast += 1;
 
         //myUI.updateMana(currMana/maxMana);
-        myUI.shiftSpells(slot, spellQueue[3].icon);
+        myUI.shiftSpells(slot, spellQueue[3]);
     }
 }

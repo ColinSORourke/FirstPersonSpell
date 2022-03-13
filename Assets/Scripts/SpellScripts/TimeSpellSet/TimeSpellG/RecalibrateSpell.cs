@@ -15,7 +15,7 @@ public class RecalibrateSpell : baseSpellScript
         if (slot == 0) {
             if(caster.hasAura(aura_A.id) != -1) {
                 int numStacks = caster.auras[caster.hasAura(aura_A.id)].stacks;
-                caster.currUlt += numStacks;
+                caster.changeUltServerRpc(numStacks);
             }
         }
         caster.applyAura(Player, aura_A, 5);

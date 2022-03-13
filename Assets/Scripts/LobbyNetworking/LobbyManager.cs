@@ -173,7 +173,7 @@ public class LobbyManager : NetworkBehaviour
 
         ServerGameNetPortal.Instance.StartGame();
 
-        StartCoroutine(WaitForSceneToSpawn("NetGameplay"));
+        StartCoroutine(WaitForSceneToSpawn("Net Arches Map Prototype"));
     }
 
     public IEnumerator EndGameCountdown() {
@@ -197,7 +197,7 @@ public class LobbyManager : NetworkBehaviour
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
         if (IsServer) {
-            Vector3 playerPosition = new Vector3(-24f, 1.5f, 0f);
+            Vector3 playerPosition = new Vector3(140.0f, 73.0f, 235.0f);
             foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList) {
                 GameObject go = Instantiate(playerPrefab, playerPosition, playerPrefab.transform.rotation);
                 go.GetComponent<NetworkObject>().SpawnAsPlayerObject(client.ClientId);
@@ -312,5 +312,13 @@ public class LobbyManager : NetworkBehaviour
     private void EndGameServerRpc() {
         MakeClientLeaveClientRpc();
         StartCoroutine(WaitToLeaveHost());
+    }
+
+    public void OnDeckSelected(int selectedDeck) {
+        ServerGameNetPortal.Instance.SetClientDeck(NetworkManager.Singleton.LocalClientId, selectedDeck);
+    }
+
+    public void OnColorSelected(int selectedColor) {
+        ServerGameNetPortal.Instance.SetClientColor(NetworkManager.Singleton.LocalClientId, selectedColor);
     }
 }

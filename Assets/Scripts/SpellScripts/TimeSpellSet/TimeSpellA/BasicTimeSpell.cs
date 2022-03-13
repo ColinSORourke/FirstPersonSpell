@@ -19,7 +19,7 @@ public class BasicTimeSpell : baseSpellScript
         tHP.takeDamage(damage);
 
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.changeMana(10.0f);
+        caster.changeManaServerRpc(10.0f);
 
         if (hitParticle != null)
         {
