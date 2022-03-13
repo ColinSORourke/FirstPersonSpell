@@ -4797,6 +4797,12 @@ MonoBehaviour:
   - {fileID: 1498225102}
   - {fileID: 769319641}
   - {fileID: 1968290429}
+  spawnPoints:
+  - {x: 165, y: 74, z: 235}
+  - {x: 152, y: 74, z: 255}
+  - {x: 127, y: 74, z: 258}
+  - {x: 115, y: 74, z: 235}
+  - {x: 127, y: 74, z: 215}
   countdownText: {fileID: 359191029}
   readyImage: {fileID: 308377541}
   playerPrefab: {fileID: 3313923701444843684, guid: c33762b8e71cc4148a8f3fe0257d50ba, type: 3}

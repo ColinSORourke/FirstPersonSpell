@@ -11,6 +11,8 @@ using TMPro;
 public class LobbyManager : NetworkBehaviour
 {
     public GameObject[] lobbyPlayerModels;
+    public Vector3[] spawnPoints;
+
     public Text countdownText;
     public Image readyImage;
     public GameObject playerPrefab;
@@ -197,11 +199,13 @@ public class LobbyManager : NetworkBehaviour
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
         if (IsServer) {
-            Vector3 playerPosition = new Vector3(140.0f, 73.0f, 235.0f);
+            int i = 0;
+            
             foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList) {
+                Vector3 playerPosition = spawnPoints[i];
                 GameObject go = Instantiate(playerPrefab, playerPosition, playerPrefab.transform.rotation);
                 go.GetComponent<NetworkObject>().SpawnAsPlayerObject(client.ClientId);
-                playerPosition.x += 12f;
+                i += 1;
             }
         }
     }
