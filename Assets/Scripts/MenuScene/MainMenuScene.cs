@@ -69,7 +69,7 @@ public class MainMenuScene : MonoBehaviour
     public void loadLevel()
     {
         Debug.Log(cardDeckDropdown.value + " - " + cardDeckDropdown.options[cardDeckDropdown.value].text);
-        PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
+        //PlayerStateScript.playerCardDeckId = cardDeckDropdown.value;
         SceneManager.LoadScene(levelSelectorDropdown.options[levelSelectorDropdown.value].text);
     }
 

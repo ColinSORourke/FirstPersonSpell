@@ -319,10 +319,20 @@ public class LobbyManager : NetworkBehaviour
     }
 
     public void OnDeckSelected(int selectedDeck) {
-        serverGameNetPortal.SetClientDeck(NetworkManager.Singleton.LocalClientId, selectedDeck);
+        DeckSelectServerRPC(NetworkManager.Singleton.LocalClientId, selectedDeck);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void DeckSelectServerRPC(ulong clientId, int sDeck){
+        ServerGameNetPortal.Instance.SetClientDeck(clientId, sDeck);
     }
 
     public void OnColorSelected(int selectedColor) {
-        serverGameNetPortal.SetClientColor(NetworkManager.Singleton.LocalClientId, selectedColor);
+        ColorSelectServerRPC(NetworkManager.Singleton.LocalClientId, selectedColor);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ColorSelectServerRPC(ulong clientId, int sColor){
+        ServerGameNetPortal.Instance.SetClientColor(clientId, sColor);
     }
 }

@@ -36,7 +36,7 @@ public class PlayerStateScript : NetworkBehaviour
 
     public List<liveAura> auras = new List<liveAura>();
 
-    public static int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
+    public int playerCardDeckId = 0; //ID for Card Decks, 901 will be default ID for default Card Deck (when applicable)
     public baseSpellScript[] spellDeck = new baseSpellScript[7];
     public baseSpellScript ultSpell;
     public List<baseSpellScript> spellQueue = new List<baseSpellScript>();
@@ -67,11 +67,16 @@ public class PlayerStateScript : NetworkBehaviour
                 break;
             }
         }
-        allDecks = this.GetComponent<SelectDeck>();
+        
         audioSource = this.GetComponent<AudioSource>();
 
+        InvokeRepeating("tick", 0.0f, 0.25f);
+        myUI.updateUlt(currUlt, 0.0f);
+    }
+
+    public void setDeck(){
+        allDecks = this.GetComponent<SelectDeck>();
         //Create Card Deck
-        playerCardDeckId = ServerGameNetPortal.Instance.GetPlayerData(OwnerClientId).Value.SelectedDeck;
         Debug.Log(OwnerClientId + " Card Deck ID: " + playerCardDeckId);
         spellDeck = allDecks.spellDecks[playerCardDeckId].getSpellDeck();
         //Create Ult
@@ -96,9 +101,6 @@ public class PlayerStateScript : NetworkBehaviour
             }
             i += 1;
         }
-
-        InvokeRepeating("tick", 0.0f, 0.25f);
-        myUI.updateUlt(currUlt, 0.0f);
     }
 
     // Update is called once per frame

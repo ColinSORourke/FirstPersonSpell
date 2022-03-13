@@ -235,6 +235,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         }
 
         public void SetClientDeck(ulong clientId, int selectedDeck) {
+            Debug.Log("Changing Deck Selected for client: " + clientId);
             if (clientIdToGuid.TryGetValue(clientId, out string guid)) {
                 if (clientData[guid].ClientId == clientId) {
                     PlayerData pd = clientData[guid];

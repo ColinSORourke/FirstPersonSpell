@@ -13,6 +13,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         private NetworkVariable<NetworkString> playerName = new NetworkVariable<NetworkString>();
 
         private NetworkVariable<int> colorInt = new NetworkVariable<int>();
+        private NetworkVariable<int> deckInt = new NetworkVariable<int>();
 
         private bool nameSet = false;
 
@@ -23,6 +24,7 @@ namespace DapperDino.UMT.Lobby.Networking {
             if (IsServer) {
                 playerName.Value = serverGameNetPortal.GetPlayerData(OwnerClientId).Value.PlayerName;
                 colorInt.Value = serverGameNetPortal.GetPlayerData(OwnerClientId).Value.SelectedColor;
+                deckInt.Value = serverGameNetPortal.GetPlayerData(OwnerClientId).Value.SelectedDeck;
             }
         }
 
@@ -30,6 +32,8 @@ namespace DapperDino.UMT.Lobby.Networking {
             var localPlayerOverlay = gameObject.GetComponentInChildren<TextMeshProUGUI>();
             localPlayerOverlay.text = playerName.Value;
             wizRenderer.material = characterMaterials[colorInt.Value];
+            gameObject.GetComponent<PlayerStateScript>().playerCardDeckId = deckInt.Value;
+            gameObject.GetComponent<PlayerStateScript>().setDeck();
         }
 
         void Awake()

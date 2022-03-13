@@ -1909,6 +1909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3313923701444843706}
   - component: {fileID: 3313923701444843707}
+  - component: {fileID: 6100556469812529686}
   - component: {fileID: 3313923701444843705}
   - component: {fileID: 3313923701444843708}
   - component: {fileID: 3313923701444843709}
@@ -1918,7 +1919,6 @@ GameObject:
   - component: {fileID: 3313923701444843681}
   - component: {fileID: 3313923701444843682}
   - component: {fileID: 3313923701444843683}
-  - component: {fileID: 6100556469812529686}
   - component: {fileID: 3313923701444843704}
   - component: {fileID: 3313923701444843703}
   - component: {fileID: 6308602916531562915}
@@ -1971,6 +1971,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6100556469812529686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313923701444843684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e71c05fa3dc7d4ca5cb37f1858e3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverGameNetPortal: {fileID: 0}
+  wizRenderer: {fileID: 3313923701337238061}
+  characterMaterials:
+  - {fileID: 2100000, guid: 5ac11679852404f11836f30593329ff6, type: 2}
+  - {fileID: 2100000, guid: 6dbfdb0e36a148942be3f9e213cd9f4e, type: 2}
+  - {fileID: 2100000, guid: c18ed6abc07c7cb42af54ce32528c45a, type: 2}
+  - {fileID: 2100000, guid: 070b47d7262b0b54bbed9a76730da207, type: 2}
 --- !u!114 &3313923701444843705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,6 +2045,7 @@ MonoBehaviour:
   shieldTime: 4
   shieldDur: -1
   audioSource: {fileID: 0}
+  playerCardDeckId: 0
   spellDeck:
   - {fileID: 11400000, guid: 9af67a17c3e3d4cdc988c15b3bdcd803, type: 2}
   - {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
@@ -2225,25 +2245,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6100556469812529686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3313923701444843684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e71c05fa3dc7d4ca5cb37f1858e3db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverGameNetPortal: {fileID: 0}
-  wizRenderer: {fileID: 3313923701337238061}
-  characterMaterials:
-  - {fileID: 2100000, guid: 5ac11679852404f11836f30593329ff6, type: 2}
-  - {fileID: 2100000, guid: 6dbfdb0e36a148942be3f9e213cd9f4e, type: 2}
-  - {fileID: 2100000, guid: c18ed6abc07c7cb42af54ce32528c45a, type: 2}
-  - {fileID: 2100000, guid: 070b47d7262b0b54bbed9a76730da207, type: 2}
 --- !u!114 &3313923701444843704
 MonoBehaviour:
   m_ObjectHideFlags: 0
