@@ -3903,7 +3903,11 @@ MonoBehaviour:
   volumeSlider: {fileID: 576888698}
   mouseSensitivitySlider: {fileID: 136641698}
   playerCharacter: {fileID: 117467522}
-  characterMaterials: []
+  characterMaterials:
+  - {fileID: 2100000, guid: 5ac11679852404f11836f30593329ff6, type: 2}
+  - {fileID: 2100000, guid: 6dbfdb0e36a148942be3f9e213cd9f4e, type: 2}
+  - {fileID: 2100000, guid: c18ed6abc07c7cb42af54ce32528c45a, type: 2}
+  - {fileID: 2100000, guid: 070b47d7262b0b54bbed9a76730da207, type: 2}
   mouseSensitivityText: {fileID: 462494992}
   KeybindsGroup: {fileID: 1256640252}
 --- !u!4 &405067418
@@ -4695,7 +4699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 405067417}
         m_TargetAssemblyTypeName: MainMenuScene, Assembly-CSharp
         m_MethodName: selectCharacter
         m_Mode: 5
@@ -4705,6 +4709,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Blue
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 513920795}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnColorSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &497033943
@@ -12454,7 +12470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 405067417}
         m_TargetAssemblyTypeName: MainMenuScene, Assembly-CSharp
         m_MethodName: selectCharacter
         m_Mode: 5
@@ -12464,6 +12480,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Red
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 513920795}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnColorSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1421884084
@@ -16730,7 +16758,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 405067417}
         m_TargetAssemblyTypeName: MainMenuScene, Assembly-CSharp
         m_MethodName: selectCharacter
         m_Mode: 5
@@ -16740,6 +16768,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Green
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 513920795}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnColorSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2008196012
@@ -17564,7 +17604,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 405067417}
         m_TargetAssemblyTypeName: MainMenuScene, Assembly-CSharp
         m_MethodName: selectCharacter
         m_Mode: 5
@@ -17574,6 +17614,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Purple
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 513920795}
+        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
+        m_MethodName: OnColorSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2144739406

@@ -41,7 +41,7 @@ public class MainMenuScene : MonoBehaviour
             Debug.Log("Missing mainCanvas object");
         }
 
-        playerCharacterRenderer = playerCharacter.GetComponent<MeshRenderer>();
+        playerCharacterRenderer = playerCharacter.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
 
         makeResolutionOptions();
         LoadSettings();

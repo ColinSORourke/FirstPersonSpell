@@ -58,7 +58,16 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(0);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
-        gameplayActions.Escape.performed += _ => switchUIGroup();
+        gameplayActions.Escape.performed += _ => {
+            leaveButton.SetActive(!leaveButton.activeSelf);
+            if (leaveButton.activeSelf) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            } else {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        };
     }
 
     private void OnDisable() {

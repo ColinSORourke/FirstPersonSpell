@@ -12,17 +12,24 @@ namespace DapperDino.UMT.Lobby.Networking {
 
         private NetworkVariable<NetworkString> playerName = new NetworkVariable<NetworkString>();
 
+        private NetworkVariable<int> colorInt = new NetworkVariable<int>();
+
         private bool nameSet = false;
+
+        public MeshRenderer wizRenderer;
+        public Material[] characterMaterials;
 
         public override void OnNetworkSpawn() {
             if (IsServer) {
                 playerName.Value = serverGameNetPortal.GetPlayerData(OwnerClientId).Value.PlayerName;
+                colorInt.Value = serverGameNetPortal.GetPlayerData(OwnerClientId).Value.SelectedColor;
             }
         }
 
         public void SetName() {
             var localPlayerOverlay = gameObject.GetComponentInChildren<TextMeshProUGUI>();
             localPlayerOverlay.text = playerName.Value;
+            wizRenderer.material = characterMaterials[colorInt.Value];
         }
 
         void Awake()
