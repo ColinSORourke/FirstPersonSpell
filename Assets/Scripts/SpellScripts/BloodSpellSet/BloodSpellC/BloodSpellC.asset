@@ -29,7 +29,7 @@ MonoBehaviour:
   token: {fileID: 0}
   spellName: Transfusion
   description: 'Siphon 5 health from the target, health siphoned is granted as bonus
-    health Positional (L): gain 5 additional bonus health'
+    health Positional (R): gain 5 additional bonus health'
   icon: {fileID: 21300000, guid: 761fe237b847eaa458c9867852479ff8, type: 3}
   castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
   hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}

@@ -18,7 +18,7 @@ public class BurnManaSpell : baseSpellScript
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         target.takeDamage(this.damage);
         if (target.hasAura(aura_A.id) != -1){
-            target.changeManaServerRpc(10.0f);
+            target.changeManaServerRpc(-10.0f);
             //pMana.changeMana(10.0f);
             if (hitParticle != null){
                 //var particleBurst = Instantiate(hitParticle, Target);
