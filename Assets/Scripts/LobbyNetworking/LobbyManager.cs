@@ -339,10 +339,10 @@ public class LobbyManager : NetworkBehaviour
     
     [ClientRpc]
     public void ColorSelectClientRPC(ulong clientId, int sColor){
-        int ind = PlayerManager.Instance.PlayerIdsInGame.IndexOf(clientId)
-        if (clientId == LocalClientId){
+        int ind = PlayerManager.Instance.PlayerIdsInGame.IndexOf(clientId);
+        if (clientId == NetworkManager.Singleton.LocalClientId){
             ind = 0;
-        } else {
+        } else if (clientId < NetworkManager.Singleton.LocalClientId){
             ind += 1;
         }
         GameObject model = lobbyPlayerModels[ind];
