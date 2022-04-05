@@ -334,5 +334,13 @@ public class LobbyManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void ColorSelectServerRPC(ulong clientId, int sColor){
         ServerGameNetPortal.Instance.SetClientColor(clientId, sColor);
+        ColorSelectClientRPC(clientId, sColor);
+    }
+    
+    [ClientRpc]
+    public void ColorSelectClientRPC(ulong clientId, int sColor){
+        GameObject model = lobbyPlayerModels[PlayerManager.playerIdsInGame.indexOf(clientId)];
+        MeshRenderer modelRenderer = model.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
+        modelRenderer.material = model.GetComponent<ModelSkinStorage>().characterMaterials[sColor];
     }
 }

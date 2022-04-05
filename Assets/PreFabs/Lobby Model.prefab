@@ -215,6 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7571211429676462772}
+  - component: {fileID: 6785666306491468324}
   m_Layer: 0
   m_Name: Lobby Model
   m_TagString: Untagged
@@ -238,6 +239,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!114 &6785666306491468324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571211429676462773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539cd4bd5d0824efc8c0711cce4e06c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterMaterials:
+  - {fileID: 2100000, guid: 5ac11679852404f11836f30593329ff6, type: 2}
+  - {fileID: 2100000, guid: 6dbfdb0e36a148942be3f9e213cd9f4e, type: 2}
+  - {fileID: 2100000, guid: c18ed6abc07c7cb42af54ce32528c45a, type: 2}
+  - {fileID: 2100000, guid: 070b47d7262b0b54bbed9a76730da207, type: 2}
 --- !u!1 &7571211429720048186
 GameObject:
   m_ObjectHideFlags: 0
