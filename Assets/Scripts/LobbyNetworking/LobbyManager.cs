@@ -339,7 +339,7 @@ public class LobbyManager : NetworkBehaviour
     
     [ClientRpc]
     public void ColorSelectClientRPC(ulong clientId, int sColor){
-        GameObject model = lobbyPlayerModels[PlayerManager.playerIdsInGame.indexOf(clientId)];
+        GameObject model = lobbyPlayerModels[PlayerManager.Instance.PlayerIdsInGame.IndexOf(clientId)];
         MeshRenderer modelRenderer = model.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
         modelRenderer.material = model.GetComponent<ModelSkinStorage>().characterMaterials[sColor];
     }
