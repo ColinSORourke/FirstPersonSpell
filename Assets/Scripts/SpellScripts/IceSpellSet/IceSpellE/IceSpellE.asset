@@ -28,8 +28,9 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Snowball Fight
-  description: Launch a snowball that applies a frostbite aura for 5 seconds. If    
-    the target already has a frostbite aura, deal 4 damage instead.
+  description: "Lob a snowball at the target. \nIf the target has no stacks of frostbite,
+    apply a stack of frostbite. \nIf the target has existing stacks of frostbite,
+    deal 4 damage instead."
   icon: {fileID: 21300000, guid: b669e73eb640a2b4fb97d1f7b1b5262b, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}

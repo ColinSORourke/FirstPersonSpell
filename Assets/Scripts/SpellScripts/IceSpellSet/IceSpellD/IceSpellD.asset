@@ -28,12 +28,12 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Chilling Sight
-  description: Apply a stack of frostbite for 5 seconds. If cast from the right-most
-    slot, apply 2 instead.
+  description: 'Apply a stack of frostbite aura to target for 5 seconds.
+
+    Positional
+    (R): Apply 2 stacks instead.'
   icon: {fileID: 21300000, guid: 22cd5e87c3596a34a880108819039ddf, type: 3}
-  castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85,
-    type: 3}
-  hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2,
-    type: 3}
+  castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
+  hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}
   hitAudioClip: {fileID: 8300000, guid: 7bdae400421171f43bac2bf37b4f9495, type: 3}
