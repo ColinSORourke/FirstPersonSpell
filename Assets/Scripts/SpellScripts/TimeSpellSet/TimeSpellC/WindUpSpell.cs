@@ -4,6 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Windup", menuName = "ScriptableObjects/TimeSpells/TimeSpellC", order = 1)]
+
 public class WindUpSpell : baseSpellScript
 {
     // Start is called before the first frame update

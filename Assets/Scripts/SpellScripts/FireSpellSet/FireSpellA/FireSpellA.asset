@@ -28,8 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Fireball
-  description: Launch a fireball at the target dealing 3 damage If target is not
-    burned, apply burn for 5 seconds
+  description: 'Launch a fireball at the target dealing 3 damage.
+
+    If the target
+    is not burned, apply burn for 5 seconds.'
   icon: {fileID: 21300000, guid: c2c9f57e339f5d1488d53a453ea67833, type: 3}
   castParticle: {fileID: 5429109308165724534, guid: cfb02cb924817ec40a71d40c5a1afd7d, type: 3}
   hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}

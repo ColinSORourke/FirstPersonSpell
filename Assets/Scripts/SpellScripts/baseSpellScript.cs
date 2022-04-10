@@ -25,6 +25,7 @@ public class baseSpellScript : ScriptableObject
     public baseSpellScript token;
 
     public string spellName;
+    [TextArea]
     public string description;
 
     public Sprite icon;

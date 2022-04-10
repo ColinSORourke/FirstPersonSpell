@@ -28,7 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Ice Monolith
-  description: Deal 15 damage, then apply a 15 second frostbite aura.
+  description: 'Deal 15 damage to target.
+
+    Apply a 15 second frostbite aura
+    to target.'
   icon: {fileID: 21300000, guid: 5886f0ce63b9b974e9b94c11fb16d8e5, type: 3}
   castParticle: {fileID: 1430125577951951014, guid: 7af7e6c47ef2711419a474dbab855402, type: 3}
   hitParticle: {fileID: 457307505533930131, guid: 3a7c4267a121c574096b20214407a9bf, type: 3}
