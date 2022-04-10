@@ -21,7 +21,7 @@ public class SelfDamageBloodSpell : baseSpellScript
         PlayerStateScript pHP = Player.GetComponent<PlayerStateScript>();
         pHP.takeDamage(2.0f);
         float duration = 10.0f;
-        if (tHP.hasAura(aura_A.id) == 1)
+        if (tHP.hasAura(aura_A.id) == 4)
         {
                 tHP.applyAura(Player, aura_A, duration); 
         }
