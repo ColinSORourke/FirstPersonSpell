@@ -178,6 +178,12 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void OnHealthChanged(float oldValue, float newValue) {
         myUI.updateHealth(currentHealth, currentHealth / maxHealth, currentBonus / maxHealth);
+
+        if (currentHealth <= 0){
+            // Trigger death
+            DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
+            AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
+        }
     }
 
     public void OnBonusChanged(float oldValue, float newValue) {
@@ -190,6 +196,10 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void OnUltChanged(float oldValue, float newValue) {
         myUI.updateUlt(currUlt, currUlt / ultSpell.ultCost);
+        if (currUlt >= ultSpell.ultCost){
+            changeUltServerRpc(-ultSpell.ultCost);
+            spellQueue.Add(ultSpell);
+        }
     }
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
@@ -261,13 +271,7 @@ public class PlayerStateScript : NetworkBehaviour
             changeHealthServerRpc(-dam);
         }
 
-        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
-
-        if (currentHealth <= 0){
-            // Trigger death
-            DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
-            AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
-        }
+        //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);   
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -321,10 +325,7 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void pickupUltCrystal(){
         changeUltServerRpc(3.0f);
-        if (currUlt >= ultSpell.ultCost){
-            changeUltServerRpc(-ultSpell.ultCost);
-            spellQueue.Add(ultSpell);
-        }
+        
         //myUI.updateUlt(currUlt/ultSpell.ultCost);
     }
 

@@ -187,7 +187,7 @@ public class PlayerAbilities : MonoBehaviour
 
         Vector3 dir = tar.transform.position - this.gameObject.transform.position; 
         Ray ry = new Ray(); 
-        ry.origin = this.gameObject.transform.position; 
+        ry.origin = ( this.gameObject.transform.position + new Vector3(0.0f, 1.0f, 0.0f) ); 
         ry.direction = dir; 
 
         hits = Physics.RaycastAll (ry, dir.magnitude); 

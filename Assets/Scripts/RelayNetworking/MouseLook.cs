@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MouseLook : NetworkBehaviour
 {
-    [SerializeField] float sensitivityX = 8f;
+    [SerializeField] float sensitivityX = 2.0f;
     [SerializeField] float sensitivityY = 0.5f;
     float mouseX, mouseY;
 
@@ -19,7 +19,8 @@ public class MouseLook : NetworkBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
+        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") / 2 : 2.0f;
+        sensitivityY = sensitivityX / 4;
 
         if (IsLocalPlayer) {
             playerCamera.gameObject.SetActive(true);

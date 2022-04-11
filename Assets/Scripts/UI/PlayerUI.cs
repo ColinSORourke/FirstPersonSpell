@@ -40,7 +40,7 @@ public class PlayerUI : GenericUI
     public override void updateHealth(float currHealth, float currPerc, float bonusPerc){
         HealthBar.fillAmount = currPerc;
         BonusBar.fillAmount = bonusPerc;
-        healthCount.GetComponent<Text>().text = currHealth.ToString("n1");
+        healthCount.GetComponent<Text>().text = ((currPerc + bonusPerc) * 50.0).ToString("n1");
     }
 
     public override void updateUlt(float currUlt, float percentage){
@@ -162,12 +162,7 @@ public class PlayerUI : GenericUI
         if (slot == 3){
             cardtrans.anchoredPosition = new Vector2(130 + (-140 * slot),30);
         }
-        cardtrans.Find("ManaCost").GetComponent<Text>().text = spell.manaCost + "";
-        cardtrans.Find("CastTime").GetComponent<Text>().text = spell.castTime + "\nsec";
-        cardtrans.Find("RangeText").GetComponent<Text>().text = spell.range + "";
-        cardtrans.Find("Image").GetComponent<Image>().sprite = spell.icon;
-        cardtrans.Find("NameText").GetComponent<Text>().text = spell.spellName + "";
-        cardtrans.Find("DescriptionText").GetComponent<Text>().text = spell.description + "";
+        cardObj.GetComponent<CardUI>().MatchSpell(spell);
         cardtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
         cardObj.SetActive(true);
         spellIcons[slot] = cardObj;
