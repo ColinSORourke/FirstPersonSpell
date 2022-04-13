@@ -16,6 +16,8 @@ public class PlayerAbilities : MonoBehaviour
     public PlayerStateScript myState;
     public GenericUI myUI;
 
+    public GameObject shieldObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +96,8 @@ public class PlayerAbilities : MonoBehaviour
                 myUI.updateCast(castTime/totalCastTime);
             }
         }
+
+        if (myState.shieldDur <= 0) shieldObject.SetActive(false); //If shieldDur is zero (after some time after being called), shield GameObject should be gone
     }
 
     public void castSpell(int slot){
@@ -127,16 +131,17 @@ public class PlayerAbilities : MonoBehaviour
         }
         
     }
-
     public void castShield(){
         Debug.Log("Pressed Shield Button");
         if (myState.currShields > 0)
         {
+            shieldObject.SetActive(true);
             myState.shieldDur = myState.shieldTime;
             myState.currShields -= 1;
             myUI.displayShield();
         }
     }
+
     public void newTarget(){
         int oldTar = currTarget;
         if (oldTar != -1){
