@@ -27,6 +27,9 @@ public class PlayerAbilities : MonoBehaviour
         Targets = FindGameObjectsInLayer(7);
         visibleTargets = new List<bool>();
 
+        shieldObject = Instantiate<GameObject>(shieldObject, this.transform);
+        shieldObject.SetActive(false);
+
         int i = 0;
 
         while(i < Targets.Count)
