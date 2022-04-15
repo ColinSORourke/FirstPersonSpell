@@ -181,6 +181,7 @@ public class PlayerStateScript : NetworkBehaviour
 
         if (currentHealth <= 0 && alive){
             // Trigger death
+            Debug.Log("Died: " + NetworkManager.Singleton.LocalClientId);
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }
