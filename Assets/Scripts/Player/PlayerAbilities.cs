@@ -27,11 +27,10 @@ public class PlayerAbilities : MonoBehaviour
         Targets = FindGameObjectsInLayer(7);
         visibleTargets = new List<bool>();
 
-        shieldObject = Instantiate<GameObject>(shieldObject, this.transform);
-        shieldObject.SetActive(false);
+        //shieldObject = Instantiate<GameObject>(shieldObject, this.transform);
+        //shieldObject.SetActive(false);
 
         int i = 0;
-
         while(i < Targets.Count)
         {
             visibleTargets.Add(false);
@@ -50,7 +49,7 @@ public class PlayerAbilities : MonoBehaviour
             } else {
                 visible = hasLOS(tarObjs);
             }
-            
+        
             visibleTargets[i] = visible;
             if (i == currTarget && !visible){
                 Targets[currTarget].GetComponent<PlayerStateScript>().myUI.unTarget();
@@ -100,7 +99,7 @@ public class PlayerAbilities : MonoBehaviour
             }
         }
 
-        if (myState.shieldDur <= 0) shieldObject.SetActive(false); //If shieldDur is zero (after some time after being called), shield GameObject should be gone
+        //if (myState.shieldDur <= 0) shieldObject.SetActive(false); //If shieldDur is zero (after some time after being called), shield GameObject should be gone
     }
 
     public void castSpell(int slot){
@@ -138,7 +137,7 @@ public class PlayerAbilities : MonoBehaviour
         Debug.Log("Pressed Shield Button");
         if (myState.currShields > 0)
         {
-            shieldObject.SetActive(true);
+            //shieldObject.SetActive(true);
             myState.shieldDur = myState.shieldTime;
             myState.currShields -= 1;
             myUI.displayShield();
