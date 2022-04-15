@@ -27,6 +27,9 @@ public class PlayerStateScript : NetworkBehaviour
     private NetworkVariable<float> _currUlt = new NetworkVariable<float>(0.0f);
     public float currUlt => _currUlt.Value;
 
+    /* ShieldDur is the duration left on a currently active shield.
+     * CurrShields is how many uses of the shield the player has left.
+     */
     public int maxShields = 3;
     public int currShields = 3;
     public float shieldTime = 4.0f;
@@ -47,8 +50,10 @@ public class PlayerStateScript : NetworkBehaviour
     public float takeDamageMult = 1.0f;
     public float manaCostMult = 1.0f;
     public float castTimeMult = 1.0f;
-
-    public float moveSpeed = 12.0f;
+  
+    private Movement myMovement;
+    private NetworkVariable<float> _moveSpeed = new NetworkVariable<float>(12.0f);
+    public float moveSpeed => _moveSpeed.Value;
 
     public GenericUI myUI;
 
@@ -69,6 +74,9 @@ public class PlayerStateScript : NetworkBehaviour
         }
         
         audioSource = this.GetComponent<AudioSource>();
+
+        myMovement = this.GetComponent<Movement>();
+        myMovement.SetSpeed(moveSpeed);
 
         InvokeRepeating("tick", 0.0f, 0.25f);
         myUI.updateUlt(currUlt, 0.0f);
@@ -315,6 +323,12 @@ public class PlayerStateScript : NetworkBehaviour
     public void changeUltServerRpc(float value) {
         _currUlt.Value += value;
         //myUI.updateUlt(currUlt/ultSpell.ultCost);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void changePlayerMovementSpeedRpc(float newSpeed) {
+        _moveSpeed.Value = newSpeed;
+        myMovement.SetSpeed(newSpeed);
     }
 
     public void pickupManaCrystal(){
