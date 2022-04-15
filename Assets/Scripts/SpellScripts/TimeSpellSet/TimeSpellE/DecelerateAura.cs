@@ -9,7 +9,8 @@ public class DecelerateAura : baseAuraScript
     {
         Debug.Log("Deceleration applied");
         PlayerStateScript tSpeed = Target.GetComponent<PlayerStateScript>();
-        tSpeed.moveSpeed -= 2.0f;
+        //tSpeed.moveSpeed -= 2.0f;
+        tSpeed.changePlayerMovementSpeedRpc(tSpeed.moveSpeed - 2.0f);
     }
 
     override public void onTick(Transform Player, Transform Target, int stack, int tickNum)
@@ -21,7 +22,8 @@ public class DecelerateAura : baseAuraScript
     {
         Debug.Log("Deceleration expired");
         PlayerStateScript tSpeed = Target.GetComponent<PlayerStateScript>();
-        tSpeed.moveSpeed += 2.0f;
+        //tSpeed.moveSpeed += 2.0f;
+        tSpeed.changePlayerMovementSpeedRpc(tSpeed.moveSpeed + 2.0f);
     }
 
     override public void onStack(Transform Player, Transform Target, int stack)
