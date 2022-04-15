@@ -63,6 +63,7 @@ public class AliveManager : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void RemoveAliveIdServerRpc(ulong clientId) {
+        Debug.Log("Removing: " + clientId);
         if (aliveIdsInGame.Contains(clientId)) aliveIdsInGame.Remove(clientId);
     }
 }
