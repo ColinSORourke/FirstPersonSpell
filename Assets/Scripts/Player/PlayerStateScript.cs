@@ -179,7 +179,7 @@ public class PlayerStateScript : NetworkBehaviour
     public void OnHealthChanged(float oldValue, float newValue) {
         myUI.updateHealth(currentHealth, currentHealth / maxHealth, currentBonus / maxHealth);
 
-        if (currentHealth <= 0){
+        if (currentHealth <= 0 && alive){
             // Trigger death
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
