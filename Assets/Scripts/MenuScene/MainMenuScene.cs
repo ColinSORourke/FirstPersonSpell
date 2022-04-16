@@ -45,6 +45,8 @@ public class MainMenuScene : MonoBehaviour
 
         makeResolutionOptions();
         LoadSettings();
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
