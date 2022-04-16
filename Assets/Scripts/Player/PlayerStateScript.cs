@@ -336,6 +336,8 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public float validCast(int slot, bool Target, float distance){
+        if (!alive) return -1.0f;
+
         if ((Target && distance < spellQueue[slot].range) || !spellQueue[slot].reqTarget){
             if (spellQueue[slot].manaCost * manaCostMult <= currMana){
                 return spellQueue[slot].castTime * castTimeMult;

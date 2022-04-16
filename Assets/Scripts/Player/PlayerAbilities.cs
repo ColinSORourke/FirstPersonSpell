@@ -242,7 +242,7 @@ public class PlayerAbilities : MonoBehaviour
     }
 
     public void RemoveTarget(ulong leaverId) {
-        if (Targets[currTarget] == null || Targets[currTarget].name == "Player " + leaverId) {
+        if (currTarget >= 0 && (Targets[currTarget] == null || Targets[currTarget].name == "Player " + leaverId)) {
             currTarget = -1;
             myUI.updateCast(0);
             castTime = -1.0f;
