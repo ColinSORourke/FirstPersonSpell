@@ -50,4 +50,9 @@ public class Movement : MonoBehaviour
     {
         jump = true;
     }
+
+    public void setMovementSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 }

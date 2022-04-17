@@ -61,6 +61,8 @@ public class PlayerStateScript : NetworkBehaviour
     void Start()
     {
         var myUIs = this.GetComponents<GenericUI>();
+        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat";
+
         foreach (GenericUI UI in myUIs){
             if (UI.enabled){
                 myUI = UI;
@@ -290,6 +292,7 @@ public class PlayerStateScript : NetworkBehaviour
         }
         GetComponent<PlayerController>().DisableCasting();
         alive = false;
+        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat";
     }
 
     [ServerRpc(RequireOwnership = false)]
