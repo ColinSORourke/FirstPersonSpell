@@ -61,7 +61,7 @@ public class PlayerStateScript : NetworkBehaviour
     void Start()
     {
         var myUIs = this.GetComponents<GenericUI>();
-        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat";
+        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Victory";
 
         foreach (GenericUI UI in myUIs){
             if (UI.enabled){
