@@ -24,7 +24,7 @@ public class DamageFrostbite : baseSpellScript
             //particleBurst.Emit(10);
             FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
-        float duration = 5.0f;
+        float duration = 8.0f;
         target.applyAura(Player, aura_A, duration);
         
     }

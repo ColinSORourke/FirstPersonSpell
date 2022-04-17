@@ -116,15 +116,15 @@ public class PlayerStateScript : NetworkBehaviour
         // Regen mana. Regen is greater if Health is low.
         if (currMana < manaThreshold && doManaRegen){
             if (currentHealth <= healthThreshold){
-                changeManaServerRpc(0.5f);
+                changeManaServerRpc(0.4f);
             } else {
-                changeManaServerRpc(0.25f);
+                changeManaServerRpc(0.20f);
             }
         }
 
         // Decay bonus healths
         if (currentBonus > 0.0f){
-            changeBonusServerRpc(-0.25f);
+            changeBonusServerRpc(-0.20f);
         }
 
         // Decay shield duration.
@@ -334,7 +334,7 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void pickupHealthCrystal(){
-        changeBonusServerRpc(15.0f);
+        changeHealthServerRpc(10.0f);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 

@@ -19,9 +19,9 @@ MonoBehaviour:
   projSpeed: 0.1
   projLifespan: 5
   projObj: {fileID: 8297249185502433730, guid: 42c3ae5a717ccfb47b206eb7bbf62690, type: 3}
-  damage: 2
+  damage: 4
   ultCost: 0
-  range: 12
+  range: 15
   reqTarget: 1
   exhaust: 0
   aura_A: {fileID: 0}

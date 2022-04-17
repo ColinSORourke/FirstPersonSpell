@@ -12,7 +12,7 @@ public class RewindSpell : baseSpellScript
         // None
         Debug.Log("Cast Rewind");
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.applyAura(Player, aura_A, 3);
+        caster.applyAura(Player, aura_A, 5);
     }
 
     // Update is called once per frame

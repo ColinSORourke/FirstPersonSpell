@@ -17,7 +17,7 @@ public class SnowballSpell : baseSpellScript
     override public void onHit(Transform Player, Transform Target, int slot)
     {
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
-        float duration = 5.0f;
+        float duration = 8.0f;
         if (target.hasAura(aura_A.id) == -1)
         {
                 target.applyAura(Player, aura_A, duration); 

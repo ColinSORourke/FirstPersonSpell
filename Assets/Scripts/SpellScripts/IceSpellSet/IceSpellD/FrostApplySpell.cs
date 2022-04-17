@@ -12,7 +12,7 @@ public class FrostApplySpell : baseSpellScript
         // None
         Debug.Log("Cast FrostApply Spell");
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
-        float duration = 5.0f;
+        float duration = 8.0f;
         target.applyAura(Player, aura_A, duration);
         if(slot == 0)
         {

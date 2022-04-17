@@ -21,7 +21,7 @@ MonoBehaviour:
   projObj: {fileID: 0}
   damage: 0
   ultCost: 0
-  range: 12
+  range: 15
   reqTarget: 0
   exhaust: 0
   aura_A: {fileID: 11400000, guid: b0cd753edb5e74b499e167eac3c502f9, type: 2}
