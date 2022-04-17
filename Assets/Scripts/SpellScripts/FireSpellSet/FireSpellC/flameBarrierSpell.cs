@@ -10,18 +10,14 @@ public class flameBarrierSpell : baseSpellScript
     override public void onCastSpecific(Transform Player, Transform Target, int slot){
         // None
         Debug.Log("Cast Damage Burn Spell");
+        PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
+        player.applyAura(Player, aura_B, 10.0f);
     }
 
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot)
     {
-        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
-        target.takeDamage(damage);
-        target.applyAura(Player, aura_A, 5.0f);
+        //target.takeDamage(damage);
         
-        if (hitParticle != null){
-            //Instantiate(hitParticle, Target);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
-        }
     }
 }
