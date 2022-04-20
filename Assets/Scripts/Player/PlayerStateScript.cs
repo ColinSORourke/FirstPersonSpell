@@ -57,6 +57,19 @@ public class PlayerStateScript : NetworkBehaviour
     public bool alive = true;
     //public AliveManager aliveManager;
 
+    public enum AnimState
+    {
+        Idle,
+        Walk
+    }
+
+    [SerializeField]
+    private NetworkVariable<AnimState> networkAnimState = new NetworkVariable<AnimState>();
+
+    private Animator animator;
+
+    private AnimState oldAnimState = AnimState.Idle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +87,8 @@ public class PlayerStateScript : NetworkBehaviour
 
         InvokeRepeating("tick", 0.0f, 0.25f);
         myUI.updateUlt(currUlt, 0.0f);
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void setDeck(){
@@ -108,7 +123,10 @@ public class PlayerStateScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (oldAnimState != networkAnimState.Value) {
+            oldAnimState = networkAnimState.Value;
+            animator.SetTrigger($"{networkAnimState.Value}");
+        }
     }
 
     // Called every quarter second
@@ -364,5 +382,10 @@ public class PlayerStateScript : NetworkBehaviour
 
         //myUI.updateMana(currMana/maxMana);
         myUI.shiftSpells(slot, spellQueue[3]);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateAnimStateServerRpc(AnimState state) {
+        networkAnimState.Value = state;
     }
 }

@@ -1829,6 +1829,7 @@ GameObject:
   - component: {fileID: 3313923701337238062}
   - component: {fileID: 3313923701337238060}
   - component: {fileID: 3313923701337238061}
+  - component: {fileID: 3032482785613790502}
   m_Layer: 0
   m_Name: WIZARD
   m_TagString: Untagged
@@ -1899,6 +1900,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &3032482785613790502
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313923701337238063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e787c5115666a5a4c96a9155e32ffb91, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3313923701444843684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,6 +2086,8 @@ MonoBehaviour:
   moveSpeed: 12
   myUI: {fileID: 0}
   alive: 1
+  networkAnimState:
+    m_InternalValue: 0
 --- !u!114 &3313923701444843710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,6 +2107,7 @@ MonoBehaviour:
   totalCastTime: 0
   myState: {fileID: 0}
   myUI: {fileID: 0}
+  shieldObject: {fileID: 0}
 --- !u!114 &3313923701444843711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2179,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  playerStateScript: {fileID: 3313923701444843709}
 --- !u!114 &3313923701444843682
 MonoBehaviour:
   m_ObjectHideFlags: 0

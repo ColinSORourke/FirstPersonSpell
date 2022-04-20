@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
 
+    [SerializeField] PlayerStateScript playerStateScript;
+
     private void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(transform.position - (new Vector3(0, transform.localScale.y, 0)), 0.2f, groundMask);
@@ -39,6 +41,9 @@ public class Movement : MonoBehaviour
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
+
+        if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
+        else playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Walk);
     }
 
     public void ReceiveInput(Vector2 _horizontalInput)
