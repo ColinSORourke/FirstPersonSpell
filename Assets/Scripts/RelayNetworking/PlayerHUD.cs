@@ -17,7 +17,7 @@ namespace DapperDino.UMT.Lobby.Networking {
 
         private bool nameSet = false;
 
-        public MeshRenderer wizRenderer;
+        public SkinnedMeshRenderer wizRenderer;
         public Material[] characterMaterials;
 
         public override void OnNetworkSpawn() {
