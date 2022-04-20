@@ -27,7 +27,7 @@ public class MouseLook : NetworkBehaviour
             this.transform.Find("InfoCanvas").gameObject.SetActive(false);
             this.transform.Find("Sphere").gameObject.SetActive(false);
             this.gameObject.layer = 0;
-            GetComponentInChildren<MeshRenderer>().enabled = false;
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             var playUI = this.gameObject.GetComponent<PlayerUI>();
             playUI.enabled = true;
             FindObjectOfType<LobbyManager>().countdownText = transform.Find("KeyUI/Countdown").GetComponent<Text>();
