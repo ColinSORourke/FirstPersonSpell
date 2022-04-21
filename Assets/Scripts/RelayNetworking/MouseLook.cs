@@ -41,6 +41,7 @@ public class MouseLook : NetworkBehaviour
             this.gameObject.GetComponent<PlayerController>().enabled = false;
             this.gameObject.GetComponent<CharacterController>().enabled = false;
             this.transform.Find("PlayerUI").gameObject.SetActive(false);
+            this.transform.Find("KeyUI").gameObject.SetActive(false);
         }
     }
 

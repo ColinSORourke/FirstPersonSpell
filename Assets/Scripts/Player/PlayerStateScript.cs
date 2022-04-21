@@ -74,7 +74,6 @@ public class PlayerStateScript : NetworkBehaviour
     void Start()
     {
         var myUIs = this.GetComponents<GenericUI>();
-        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Victory";
 
         foreach (GenericUI UI in myUIs){
             if (UI.enabled){
@@ -170,9 +169,11 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance.AlivesInGame < 2 && alive) {
-            alive = false;
-            EndGameServerRpc();
+        if (AliveManager.Instance.AlivesInGame < 2) {
+            if (alive) {
+                alive = false;
+                EndGameServerRpc();
+            }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
         }
     }
@@ -202,6 +203,8 @@ public class PlayerStateScript : NetworkBehaviour
         if (currentHealth <= 0 && GetComponent<NetworkObject>().IsLocalPlayer) {
             // Trigger death
             Debug.Log("Died: " + NetworkManager.Singleton.LocalClientId);
+            alive = false;
+            transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat!";
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }
@@ -309,8 +312,6 @@ public class PlayerStateScript : NetworkBehaviour
             if (canvas.gameObject.tag != "Key") canvas.gameObject.SetActive(false);
         }
         GetComponent<PlayerController>().DisableCasting();
-        alive = false;
-        transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat";
     }
 
     [ServerRpc(RequireOwnership = false)]
