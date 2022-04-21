@@ -303,7 +303,7 @@ public class PlayerStateScript : NetworkBehaviour
 
     [ClientRpc]
     private void DeathDisablesClientRpc() {
-        GetComponentInChildren<MeshRenderer>().enabled = false;
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         foreach (Collider collider in GetComponentsInChildren<Collider>()) collider.gameObject.layer = 12;
         foreach (Canvas canvas in GetComponentsInChildren<Canvas>()) {
             if (canvas.gameObject.tag != "Key") canvas.gameObject.SetActive(false);

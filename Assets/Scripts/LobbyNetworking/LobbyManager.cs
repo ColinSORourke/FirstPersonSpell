@@ -25,6 +25,7 @@ public class LobbyManager : NetworkBehaviour
 
     private NetworkList<LobbyPlayerState> lobbyPlayers;
     private string playerName;
+    private int playerColor;
     private bool nameUpdated;
     private bool containsId;
 
@@ -270,13 +271,18 @@ public class LobbyManager : NetworkBehaviour
             yield return new WaitUntil(() => nameUpdated);
             localPlayerOverlay = lobbyPlayerModels[j].GetComponentInChildren<TextMeshProUGUI>();
             localPlayerOverlay.text = playerName;
+
+            GameObject model = lobbyPlayerModels[j];
+            MeshRenderer modelRenderer = model.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
+            modelRenderer.material = model.GetComponent<ModelSkinStorage>().characterMaterials[playerColor];
+
             j++;
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void GetPlayerNameServerRpc(ulong userId, ulong clientId) {
-        SetNameStringClientRpc(serverGameNetPortal.GetPlayerData(userId).Value.PlayerName, new ClientRpcParams {
+        SetNameStringClientRpc(serverGameNetPortal.GetPlayerData(userId).Value.PlayerName, serverGameNetPortal.GetPlayerData(userId).Value.SelectedColor, new ClientRpcParams {
             Send = new ClientRpcSendParams {
                 TargetClientIds = new ulong[] { clientId }
             }
@@ -284,8 +290,9 @@ public class LobbyManager : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void SetNameStringClientRpc(string playerNameFromServer, ClientRpcParams clientRpcParams = default) {
+    private void SetNameStringClientRpc(string playerNameFromServer, int playerColorFromServer, ClientRpcParams clientRpcParams = default) {
         playerName = playerNameFromServer;
+        playerColor = playerColorFromServer;
         nameUpdated = true;
     }
 
