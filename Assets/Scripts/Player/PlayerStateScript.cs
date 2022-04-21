@@ -316,7 +316,9 @@ public class PlayerStateScript : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void changeHealthServerRpc(float value) {
+        
         _currentHealth.Value += value;
+        _currentBonus.Value = Mathf.Clamp(currentBonus, 0, maxHealth);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
