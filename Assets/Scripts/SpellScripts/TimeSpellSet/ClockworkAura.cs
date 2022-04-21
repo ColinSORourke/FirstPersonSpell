@@ -9,7 +9,7 @@ public class ClockworkAura : baseAuraScript
     {
         Debug.Log("Clockwork applied");
         PlayerStateScript pSpeed = Player.GetComponent<PlayerStateScript>();
-        pSpeed.moveSpeed += 2.0f;
+        pSpeed.changeSpeed(4.0f);
     }
 
     override public void onTick(Transform Player, Transform Target, int stack, int tickNum)
@@ -21,7 +21,10 @@ public class ClockworkAura : baseAuraScript
     {
         Debug.Log("Frostbite expired");
         PlayerStateScript pSpeed = Player.GetComponent<PlayerStateScript>();
-        pSpeed.moveSpeed -= 2.0f;
+        pSpeed.changeSpeed(-4.0f);
+        if (stack == 2){
+            pSpeed.changeSpeed(-4.0f);
+        }
     }
 
     override public void onStack(Transform Player, Transform Target, int stack)
@@ -30,7 +33,7 @@ public class ClockworkAura : baseAuraScript
         if (stack == 2)
         {
             PlayerStateScript pSpeed = Target.GetComponent<PlayerStateScript>();
-            pSpeed.moveSpeed += 2.0f;
+            pSpeed.changeSpeed(4.0f);
         }
 
     }

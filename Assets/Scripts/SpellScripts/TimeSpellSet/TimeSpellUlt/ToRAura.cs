@@ -9,7 +9,7 @@ public class ToRAura : baseAuraScript
     {
         Debug.Log("Time of Reckoning applied");
         PlayerStateScript pSpeed = Player.GetComponent<PlayerStateScript>();
-        pSpeed.moveSpeed += 2.0f;
+        pSpeed.changeSpeed(4.0f);
         pSpeed.castTimeMult -= .2f;
         pSpeed.manaCostMult -= .4f;
     }
@@ -23,7 +23,7 @@ public class ToRAura : baseAuraScript
     {
         Debug.Log("Frostbite expired");
         PlayerStateScript pSpeed = Player.GetComponent<PlayerStateScript>();
-        pSpeed.moveSpeed -= 2.0f;
+        pSpeed.changeSpeed(-4.0f);
         pSpeed.castTimeMult += .2f;
         pSpeed.manaCostMult += .4f;
     }

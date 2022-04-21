@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    [SerializeField] float speed = 11f;
+    [SerializeField] float speed = 12.0f;
     Vector2 horizontalInput;
 
     [SerializeField] float jumpHeight = 3.5f;

@@ -49,8 +49,10 @@ public class PlayerStateScript : NetworkBehaviour
     public float castTimeMult = 1.0f;
 
     public float moveSpeed = 12.0f;
+    public Movement myMove;
 
     public GenericUI myUI;
+    
 
     private SelectDeck allDecks;
 
@@ -169,13 +171,13 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance.AlivesInGame < 2) {
+        /* if (AliveManager.Instance.AlivesInGame < 2) {
             if (alive) {
                 alive = false;
                 EndGameServerRpc();
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
-        }
+        } */
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -279,6 +281,11 @@ public class PlayerStateScript : NetworkBehaviour
     
     public bool isShielded(){
         return (shieldDur > 0.0f);
+    }
+
+    public void changeSpeed(float value){
+        moveSpeed += value;
+        myMove.setMovementSpeed(moveSpeed);
     }
 
     public void takeDamage(float dam, bool mult = true){
