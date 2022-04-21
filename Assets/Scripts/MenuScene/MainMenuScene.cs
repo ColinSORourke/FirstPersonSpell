@@ -46,16 +46,12 @@ public class MainMenuScene : MonoBehaviour
         makeResolutionOptions();
         LoadSettings();
 
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     void Update()
     {
-        if (Cursor.lockState != CursorLockMode.None){
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
         if ((!isMenu && this.mainCamera.transform.eulerAngles.y <= angles.y) || 
             (isMenu && this.mainCamera.transform.eulerAngles.y >= angles.x))
         {
