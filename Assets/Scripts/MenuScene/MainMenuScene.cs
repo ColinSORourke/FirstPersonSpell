@@ -53,6 +53,7 @@ public class MainMenuScene : MonoBehaviour
     {
         if (Cursor.lockState != CursorLockMode.None){
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         if ((!isMenu && this.mainCamera.transform.eulerAngles.y <= angles.y) || 
