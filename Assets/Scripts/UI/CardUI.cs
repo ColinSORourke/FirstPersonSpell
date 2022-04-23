@@ -17,7 +17,9 @@ public class CardUI : MonoBehaviour
 
     public void MatchSpell(baseSpellScript spell){
         this.transform.GetComponent<Image>().sprite = cardBacks[(spell.id/100) - 1 ];
-        Range.sprite = rangeIcons[ (((int)spell.range)/15) - 1];
+        if ( (((int)spell.range)/15) - 1 >= 0){
+            Range.sprite = rangeIcons[ (((int)spell.range)/15) - 1];
+        }
 
         ManaCost.text = spell.manaCost + "";
         CastTime.text = spell.castTime + "";
