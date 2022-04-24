@@ -141,6 +141,8 @@ public class PlayerAbilities : MonoBehaviour
             myState.shieldDur = myState.shieldTime;
             myState.currShields -= 1;
             myUI.displayShield();
+
+            myState.ShieldActiveServerRpc(true);
         }
     }
 

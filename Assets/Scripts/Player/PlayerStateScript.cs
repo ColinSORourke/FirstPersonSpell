@@ -152,6 +152,8 @@ public class PlayerStateScript : NetworkBehaviour
             if (shieldDur == 0.0f){
                 shieldDur = -1.0f;
                 myUI.removeShield();
+
+                ShieldActiveServerRpc(false);
             }
         }
        
@@ -397,5 +399,15 @@ public class PlayerStateScript : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateAnimStateServerRpc(AnimState state) {
         networkAnimState.Value = state;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ShieldActiveServerRpc(bool state) {
+        ShieldActiveClientRpc(state);
+    }
+
+    [ClientRpc]
+    public void ShieldActiveClientRpc(bool state) {
+        if (!IsLocalPlayer) transform.Find("ShieldPlaceholder").gameObject.SetActive(state);
     }
 }
