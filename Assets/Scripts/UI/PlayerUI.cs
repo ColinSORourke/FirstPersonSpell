@@ -157,6 +157,11 @@ public class PlayerUI : GenericUI
         }
     }
 
+    public override void removeShield() {
+        Shield.gameObject.SetActive(false);
+        shieldCount.SetActive(false);
+    }
+
     public override void addIcon(baseSpellScript spell, int slot){
 
         GameObject cardObj = Instantiate(cardPrefab, UITrans, false);

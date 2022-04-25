@@ -152,8 +152,9 @@ public class PlayerStateScript : NetworkBehaviour
             shieldDur -= 0.25f;
             if (shieldDur == 0.0f){
                 shieldDur = -1.0f;
-                myUI.removeShield();
                 myUI.ShieldFill.fillAmount = 1f;
+
+                if (currShields == 0) myUI.removeShield();
 
                 ShieldActiveServerRpc(false);
             }

@@ -2300,6 +2300,7 @@ MonoBehaviour:
   healthCount: {fileID: 0}
   manaCount: {fileID: 0}
   ultCount: {fileID: 0}
+  shieldCount: {fileID: 0}
 --- !u!114 &3313923701444843680
 MonoBehaviour:
   m_ObjectHideFlags: 0
