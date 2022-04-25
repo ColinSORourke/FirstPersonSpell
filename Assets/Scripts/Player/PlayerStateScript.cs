@@ -148,10 +148,12 @@ public class PlayerStateScript : NetworkBehaviour
 
         // Decay shield duration.
         if (shieldDur > 0.0f){
+            myUI.updateShield(currShields, shieldDur / shieldTime);
             shieldDur -= 0.25f;
             if (shieldDur == 0.0f){
                 shieldDur = -1.0f;
                 myUI.removeShield();
+                myUI.ShieldFill.fillAmount = 1f;
 
                 ShieldActiveServerRpc(false);
             }

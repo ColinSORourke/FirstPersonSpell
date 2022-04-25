@@ -19,7 +19,7 @@ public class GenericUI : MonoBehaviour
     public Image ManaBar;
     public Image UltBar;
     public Image Shield;
-    public Text ShieldCount;
+    public Image ShieldFill;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -48,6 +48,10 @@ public class GenericUI : MonoBehaviour
 
     public virtual void updateCast(float percentage){
         CastBar.fillAmount = percentage;
+    }
+
+    public virtual void updateShield(float currShield, float percentage){
+        ShieldFill.fillAmount = percentage;
     }
 
     public virtual void shiftSpells(int slot, baseSpellScript spell){

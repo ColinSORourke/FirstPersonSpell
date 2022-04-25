@@ -14,6 +14,7 @@ public class PlayerUI : GenericUI
 
     public GameObject ultCount;
 
+    public GameObject shieldCount;
 
     // Start is called before the first frame update
     public void Awake()
@@ -26,10 +27,12 @@ public class PlayerUI : GenericUI
         CastBar = UITrans.Find("CastBar").GetComponent<Image>();
         UltBar = UITrans.Find("Ultimate").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
+        ShieldFill = Shield.transform.Find("Shield_Fill").GetComponent<Image>();
         healthCount = UITrans.Find("HealthText").gameObject;
         manaCount = UITrans.Find("ManaText").gameObject;
         ultCount = UITrans.Find("UltText").gameObject;
-        Shield.enabled = false;
+        shieldCount = UITrans.Find("ShieldText").gameObject;
+        //Shield.enabled = false;
     }
 
     public override void updateMana(float currMana, float percentage){
@@ -50,6 +53,11 @@ public class PlayerUI : GenericUI
 
     override public void displayShield(){
         Shield.enabled = true;
+    }
+    public override void updateShield(float currShield, float percentage)
+    {
+        ShieldFill.fillAmount = percentage;
+        shieldCount.GetComponent<Text>().text = currShield.ToString();
     }
 
     // Will have to change the positions & sizes for the player UI
