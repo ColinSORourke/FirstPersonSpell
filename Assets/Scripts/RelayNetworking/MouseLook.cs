@@ -19,8 +19,8 @@ public class MouseLook : NetworkBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") / 2 : 2.0f;
-        sensitivityY = sensitivityX / 4;
+        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") / 5 : 2.0f;
+        sensitivityY = sensitivityX / 2;
 
         if (IsLocalPlayer) {
             playerCamera.gameObject.SetActive(true);
