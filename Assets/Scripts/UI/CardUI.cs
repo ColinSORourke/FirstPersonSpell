@@ -14,11 +14,13 @@ public class CardUI : MonoBehaviour
 
     public Sprite[] cardBacks = new Sprite[4];
     public Sprite[] rangeIcons = new Sprite[3];
+    public Color32[] rangeColors = new Color32[] { new Color32(84,255,95,255), new Color32(251,249,13,255), new Color32(250,143,13,255) };
 
     public void MatchSpell(baseSpellScript spell){
         this.transform.GetComponent<Image>().sprite = cardBacks[(spell.id/100) - 1 ];
         if ( (((int)spell.range)/15) - 1 >= 0){
             Range.sprite = rangeIcons[ (((int)spell.range)/15) - 1];
+            Range.color = rangeColors[ (((int)spell.range)/15) - 1];
         }
 
         ManaCost.text = spell.manaCost + "";

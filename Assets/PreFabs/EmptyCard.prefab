@@ -190,6 +190,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 36d7527f4f4f047d999fce579d70d4dd, type: 3}
   - {fileID: 21300000, guid: 9b17b1ae37a094830a00824fb1f42aec, type: 3}
   - {fileID: 21300000, guid: 74df03a8c9c23463ba3f9ffbdc7ebf82, type: 3}
+  rangeColors:
+  - serializedVersion: 2
+    rgba: 4284481364
+  - serializedVersion: 2
+    rgba: 4279106043
+  - serializedVersion: 2
+    rgba: 4279078906
 --- !u!1 &4505361133759512171
 GameObject:
   m_ObjectHideFlags: 0

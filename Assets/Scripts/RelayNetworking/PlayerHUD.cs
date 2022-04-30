@@ -15,6 +15,8 @@ namespace DapperDino.UMT.Lobby.Networking {
         private NetworkVariable<int> colorInt = new NetworkVariable<int>();
         private NetworkVariable<int> deckInt = new NetworkVariable<int>();
 
+        public TextMeshProUGUI localPlayerOverlay;
+
         private bool nameSet = false;
 
         public SkinnedMeshRenderer wizRenderer;
@@ -29,7 +31,6 @@ namespace DapperDino.UMT.Lobby.Networking {
         }
 
         public void SetName() {
-            var localPlayerOverlay = gameObject.GetComponentInChildren<TextMeshProUGUI>();
             localPlayerOverlay.text = playerName.Value;
             wizRenderer.material = characterMaterials[colorInt.Value];
             gameObject.GetComponent<PlayerStateScript>().playerCardDeckId = deckInt.Value;

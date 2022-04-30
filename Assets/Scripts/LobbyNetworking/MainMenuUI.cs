@@ -10,6 +10,7 @@ namespace DapperDino.UMT.Lobby {
         public bool[] hostBoolActives;
         public GameObject[] clientObjectActives;
         public bool[] clientBoolActives;
+        public MainMenuScene scene;
 
         [SerializeField] private InputField displayNameInputField;
         [SerializeField] private Image displayNameImage;
@@ -28,6 +29,7 @@ namespace DapperDino.UMT.Lobby {
 
                 PlayerPrefs.SetString("PlayerName", displayNameInputField.text);
 
+                scene.rotateCamera();
                 GameNetPortal.Instance.StartHost();
             } else {
                 displayNameImage.color = Color.red;
@@ -44,6 +46,7 @@ namespace DapperDino.UMT.Lobby {
 
                 PlayerPrefs.SetString("PlayerName", displayNameInputField.text);
 
+                scene.rotateCamera();
                 ClientGameNetPortal.Instance.StartClient();
             } else {
                 displayNameImage.color = Color.red;
