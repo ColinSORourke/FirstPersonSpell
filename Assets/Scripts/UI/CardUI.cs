@@ -26,6 +26,6 @@ public class CardUI : MonoBehaviour
         //cardtrans.Find("RangeText").GetComponent<Text>().text = spell.range + "";
         Icon.sprite = spell.icon;
         Name.text = spell.spellName + "";
-        DescText.text = spell.description + "";
+        DescText.text = "\t" + spell.description;
     }
 }
