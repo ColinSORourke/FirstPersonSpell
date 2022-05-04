@@ -46,7 +46,7 @@ public class liveAura {
     public float tickTime;
     public int tickNum;
 
-    ParticleSystem activeParticle;
+    public ParticleSystem activeParticle;
 
     public virtual void onApply(){
         if (aura.auraParticle != null)
@@ -97,17 +97,6 @@ public class liveAura {
 }
 
 public class fakeAura : liveAura {
-    public baseAuraScript aura;
-
-    public Transform on;
-    public Transform src;
-    public int stacks;
-    public float duration;
-    public float tickTime;
-    public int tickNum;
-
-    ParticleSystem activeParticle;
-
     public override void onApply(){
         if (aura.auraParticle != null)
         {
