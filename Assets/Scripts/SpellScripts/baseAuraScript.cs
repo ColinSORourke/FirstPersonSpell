@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class baseAuraScript : ScriptableObject
 {
     public int id;
+    public int selfIndex;
     public bool stackable = false;
     public int maxStacks = 1;
     public float tickSpeed = -1.0f;
@@ -47,7 +48,7 @@ public class liveAura {
 
     ParticleSystem activeParticle;
 
-    public void onApply(){
+    public virtual void onApply(){
         if (aura.auraParticle != null)
         {
             activeParticle = GameObject.Instantiate(aura.auraParticle, on);
@@ -56,11 +57,11 @@ public class liveAura {
 
     }
 
-    public void onTick(){
+    public virtual void onTick(){
         aura.onTick(src, on, stacks, tickNum);
     }
 
-    public void onExpire(){
+    public virtual void onExpire(){
         if (aura.auraParticle != null)
         {
             GameObject.Destroy(activeParticle.gameObject);
@@ -68,7 +69,7 @@ public class liveAura {
         aura.onExpire(src, on, stacks, tickNum);
     }
 
-    public bool onStack(){
+    public virtual bool onStack(){
         if (stacks < aura.maxStacks)
         {
             stacks += 1;
@@ -92,5 +93,45 @@ public class liveAura {
             return -1;
         }
         return 0;
+    }
+}
+
+public class fakeAura : liveAura {
+    public baseAuraScript aura;
+
+    public Transform on;
+    public Transform src;
+    public int stacks;
+    public float duration;
+    public float tickTime;
+    public int tickNum;
+
+    ParticleSystem activeParticle;
+
+    public override void onApply(){
+        if (aura.auraParticle != null)
+        {
+            activeParticle = GameObject.Instantiate(aura.auraParticle, on);
+        }
+    }
+
+    public override void onTick(){
+        // Nothing
+    }
+
+    public override void onExpire(){
+        if (aura.auraParticle != null)
+        {
+            GameObject.Destroy(activeParticle.gameObject);
+        }
+    }
+
+    public override bool onStack(){
+        if (stacks < aura.maxStacks)
+        {
+            stacks += 1;
+            return true;
+        }
+        return false;
     }
 }

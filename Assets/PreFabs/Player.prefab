@@ -897,7 +897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -105.00003, y: 37.50006}
+  m_AnchoredPosition: {x: -105, y: 37.5}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5171621871951220722
@@ -976,7 +976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -144.2, y: 47.2}
+  m_AnchoredPosition: {x: -144.19995, y: 47.19995}
   m_SizeDelta: {x: 40, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5520830516042858215
@@ -1962,6 +1962,7 @@ GameObject:
   - component: {fileID: 3313923701444843703}
   - component: {fileID: 6308602916531562915}
   - component: {fileID: 2267572372445049463}
+  - component: {fileID: 9146167152129591352}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2466,6 +2467,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9146167152129591352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313923701444843684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9e4b47e796f43308f41a45a8d06350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAuras:
+  - {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
+  - {fileID: 11400000, guid: a7cda53b2ee8e894ea2cdacb8addc3e7, type: 2}
+  - {fileID: 11400000, guid: 2d48813b542ef410cb6fd1d8f895c718, type: 2}
+  - {fileID: 11400000, guid: 5b8140dfe5cf41e49b9931d2ed0701cb, type: 2}
+  - {fileID: 11400000, guid: 746c250cb9ae56e41b027979f3d2c758, type: 2}
+  - {fileID: 11400000, guid: b0cd753edb5e74b499e167eac3c502f9, type: 2}
+  - {fileID: 11400000, guid: a0981aac030d983449a71d14a3adf283, type: 2}
+  - {fileID: 11400000, guid: 0fdf57b29aca2b944b0276b3b0fdc7ac, type: 2}
+  - {fileID: 11400000, guid: 8def312fc892ed845b947327b2530e46, type: 2}
 --- !u!1 &3501570482297758567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3765,7 +3788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -105.00003, y: 37.500046}
+  m_AnchoredPosition: {x: -105, y: 37.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2105886411515424514
