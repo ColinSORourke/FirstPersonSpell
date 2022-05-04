@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ToRAura
   m_EditorClassIdentifier: 
   id: 9
+  selfIndex: 8
   stackable: 0
   maxStacks: 1
   tickSpeed: -1

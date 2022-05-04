@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FrostBite
   m_EditorClassIdentifier: 
   id: 3
+  selfIndex: 4
   stackable: 1
   maxStacks: 3
   tickSpeed: -1

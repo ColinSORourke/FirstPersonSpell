@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Flame Barrier
   m_EditorClassIdentifier: 
   id: 2
+  selfIndex: 3
   stackable: 0
   maxStacks: 1
   tickSpeed: -1

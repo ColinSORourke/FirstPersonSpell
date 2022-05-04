@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Burn
   m_EditorClassIdentifier: 
   id: 1
+  selfIndex: 2
   stackable: 0
   maxStacks: 1
   tickSpeed: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RewindAura
   m_EditorClassIdentifier: 
   id: 7
+  selfIndex: 6
   stackable: 0
   maxStacks: 1
   tickSpeed: -1

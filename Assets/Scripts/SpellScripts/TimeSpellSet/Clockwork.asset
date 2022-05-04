@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Clockwork
   m_EditorClassIdentifier: 
   id: 6
+  selfIndex: 5
   stackable: 1
   maxStacks: 2
   tickSpeed: -1
