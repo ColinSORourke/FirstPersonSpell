@@ -98,7 +98,7 @@ public class liveAura {
 
 public class fakeAura : liveAura {
     public override void onApply(){
-        console.log("Fake aura applied");
+        Debug.Log("Fake aura applied");
         if (aura.auraParticle != null)
         {
             activeParticle = GameObject.Instantiate(aura.auraParticle, on);
@@ -106,12 +106,12 @@ public class fakeAura : liveAura {
     }
 
     public override void onTick(){
-        console.log("Fake aura ticked");
+        Debug.Log("Fake aura ticked");
         // Nothing
     }
 
     public override void onExpire(){
-        console.log("Fake aura Expired");
+        Debug.Log("Fake aura Expired");
         if (aura.auraParticle != null)
         {
             GameObject.Destroy(activeParticle.gameObject);
@@ -119,7 +119,7 @@ public class fakeAura : liveAura {
     }
 
     public override bool onStack(){
-        console.log("Fake aura Stacked");
+        Debug.Log("Fake aura Stacked");
         if (stacks < aura.maxStacks)
         {
             stacks += 1;
