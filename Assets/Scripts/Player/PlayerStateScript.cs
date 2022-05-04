@@ -170,7 +170,9 @@ public class PlayerStateScript : NetworkBehaviour
             myUI.updateAura(i, a);
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
-                this.removeAura(i);
+                if (GetComponent<NetworkObject>().IsLocalPlayer){
+                    this.removeAura(i);
+                }
             } else {
                 i += 1;
             }
