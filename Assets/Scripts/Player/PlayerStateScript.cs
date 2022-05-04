@@ -171,6 +171,7 @@ public class PlayerStateScript : NetworkBehaviour
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
                 if (GetComponent<NetworkObject>().IsLocalPlayer){
+                    auras[i].startRemove();
                     this.removeAura(i);
                 }
             } else {

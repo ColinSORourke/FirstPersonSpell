@@ -47,6 +47,7 @@ public class liveAura {
     public int tickNum;
 
     public ParticleSystem activeParticle;
+    public bool removeStarted = false;
 
     public virtual void onApply(){
         if (aura.auraParticle != null)
@@ -79,6 +80,10 @@ public class liveAura {
         return false;
     }
 
+    public void startRemove(){
+        removeStarted = true;
+    }
+
     public int update(float delta){
         tickTime += delta;
         duration -= delta;
@@ -90,7 +95,12 @@ public class liveAura {
             return 1;  
         }
         if (duration < 0.0f){
-            return -1;
+            if (!removeStarted){
+                return -1;
+            }
+            else {
+                return -2;
+            }
         }
         return 0;
     }
