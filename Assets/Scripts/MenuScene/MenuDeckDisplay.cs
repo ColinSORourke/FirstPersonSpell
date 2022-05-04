@@ -29,6 +29,11 @@ public class MenuDeckDisplay : MonoBehaviour
     }
 
     public void displayDeck(SpellDeck d){
+        for (int i = 0; i < d.spellDeck.Length; i++)
+        {
+            this.transform.GetChild(i + 1).GetComponent<CardUI>().MatchSpell(d.spellDeck[i]);
+        }
+        return;
         this.transform.GetChild(1).GetComponent<CardUI>().MatchSpell(d.spellDeck[0]);
         this.transform.GetChild(2).GetComponent<CardUI>().MatchSpell(d.spellDeck[1]);
         this.transform.GetChild(3).GetComponent<CardUI>().MatchSpell(d.spellDeck[2]);
