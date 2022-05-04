@@ -29,30 +29,17 @@ public class MenuDeckDisplay : MonoBehaviour
     }
 
     public void displayDeck(SpellDeck d){
-        for (int i = 0; i < d.spellDeck.Length; i++)
+        for (int i = 0; i < 8; i++)
         {
             this.transform.GetChild(i + 1).GetComponent<CardUI>().MatchSpell(d.spellDeck[i]);
         }
-        return;
-        this.transform.GetChild(1).GetComponent<CardUI>().MatchSpell(d.spellDeck[0]);
-        this.transform.GetChild(2).GetComponent<CardUI>().MatchSpell(d.spellDeck[1]);
-        this.transform.GetChild(3).GetComponent<CardUI>().MatchSpell(d.spellDeck[2]);
-        this.transform.GetChild(4).GetComponent<CardUI>().MatchSpell(d.spellDeck[3]);
-        this.transform.GetChild(5).GetComponent<CardUI>().MatchSpell(d.spellDeck[4]);
-        this.transform.GetChild(6).GetComponent<CardUI>().MatchSpell(d.spellDeck[5]);
-        this.transform.GetChild(7).GetComponent<CardUI>().MatchSpell(d.spellDeck[6]);
-        this.transform.GetChild(8).GetComponent<CardUI>().MatchSpell(d.spellDeck[7]);
     }
 
     public void displayDeck(int i){
         SpellDeck d = decks[i];
-        this.transform.GetChild(1).GetComponent<CardUI>().MatchSpell(d.spellDeck[0]);
-        this.transform.GetChild(2).GetComponent<CardUI>().MatchSpell(d.spellDeck[1]);
-        this.transform.GetChild(3).GetComponent<CardUI>().MatchSpell(d.spellDeck[2]);
-        this.transform.GetChild(4).GetComponent<CardUI>().MatchSpell(d.spellDeck[3]);
-        this.transform.GetChild(5).GetComponent<CardUI>().MatchSpell(d.spellDeck[4]);
-        this.transform.GetChild(6).GetComponent<CardUI>().MatchSpell(d.spellDeck[5]);
-        this.transform.GetChild(7).GetComponent<CardUI>().MatchSpell(d.spellDeck[6]);
-        this.transform.GetChild(8).GetComponent<CardUI>().MatchSpell(d.spellDeck[7]);
+        for (int j = 0; j < 8; j++)
+        {
+            this.transform.GetChild(j + 1).GetComponent<CardUI>().MatchSpell(d.spellDeck[j]);
+        }
     }
 }
