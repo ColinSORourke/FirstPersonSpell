@@ -30,4 +30,13 @@ public class CardUI : MonoBehaviour
         Name.text = spell.spellName + "";
         DescText.text = "\t" + spell.description;
     }
+
+    public IEnumerator HighlightCard(bool valid, float duration = 0.5f)
+    {
+        GameObject highlight = this.transform.Find("Highlight").Find(valid ? "Valid" : "Invalid").gameObject;
+        if (highlight == null) Debug.Log("Highlight not found");
+        highlight.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        highlight.SetActive(false);
+    }
 }
