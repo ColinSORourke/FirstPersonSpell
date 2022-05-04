@@ -63,7 +63,7 @@ public class baseSpellScript : ScriptableObject
         Debug.Log("Cast a basic spell");
     }
 
-    public virtual void onHit(Transform Player, Transform Target, int slot){
+    public virtual void onHit(Transform Player, Transform Target, int slot, int index){
         Debug.Log("Hit a basic spell");
         if (hitParticle != null){
             FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);

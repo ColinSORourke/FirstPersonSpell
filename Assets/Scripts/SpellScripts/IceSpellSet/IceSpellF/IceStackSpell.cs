@@ -14,7 +14,7 @@ public class IceStackSpell : baseSpellScript
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         target.takeDamage(damage);
@@ -28,7 +28,7 @@ public class IceStackSpell : baseSpellScript
             {
                 //var particleBurst = Instantiate(hitParticle, Target);
                 //particleBurst.Emit(20);
-                FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+                FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
             }
         
         Debug.Log("Hit IceStack Spell");

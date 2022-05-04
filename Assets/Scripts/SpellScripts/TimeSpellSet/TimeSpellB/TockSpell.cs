@@ -14,7 +14,7 @@ public class TockSpell : baseSpellScript
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
         tHP.takeDamage(damage);
@@ -26,7 +26,7 @@ public class TockSpell : baseSpellScript
         {
             //var particleBurst = Instantiate(hitParticle, Target);
             //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

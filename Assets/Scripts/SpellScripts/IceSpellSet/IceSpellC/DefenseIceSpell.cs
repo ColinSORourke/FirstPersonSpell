@@ -16,7 +16,7 @@ public class DefenseIceSpell : baseSpellScript
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
 
     }

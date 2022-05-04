@@ -14,7 +14,7 @@ public class BleedBolt : baseSpellScript
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         float duration = 10.0f;
         PlayerStateScript pHP = Player.GetComponent<PlayerStateScript>();
@@ -29,7 +29,7 @@ public class BleedBolt : baseSpellScript
         {
             //var particleBurst = Instantiate(hitParticle, Target);
             //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
 
     }
