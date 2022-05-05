@@ -29,6 +29,29 @@ public class TargetUI : GenericUI
         }
     }
 
+    override public void addAura(Sprite icon, int id, int count){
+        GameObject auraObj = Instantiate(auraPrefab, UITrans, false);
+        var auraTrans = auraObj.GetComponent<RectTransform>();
+        auraTrans.anchoredPosition = auraTrans.anchoredPosition - new Vector2(0.45f * auraObjs.Count, 0);
+        auraObj.GetComponent<AuraUI>().matchAuraApplication(icon, id);
+        auraObj.GetComponent<AuraUI>().updateStacks(count);
+
+        auraTrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+        auraObjs.Add(auraObj);
+    }
+
+    override public void removeAura(int i){
+        Destroy(auraObjs[i]);
+        auraObjs.RemoveAt(i);
+
+        int j = i; 
+        while (j < auraObjs.Count){
+            var auraTrans = auraObjs[j].GetComponent<RectTransform>();
+            auraObjs[j].GetComponent<RectTransform>().anchoredPosition = auraTrans.anchoredPosition + new Vector2(0.45f, 0);
+            j += 1;
+        }
+    }
+
     override public void updateCast(float percentage){
         // DO NOTHING
     }

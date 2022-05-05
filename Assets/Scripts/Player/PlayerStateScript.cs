@@ -167,7 +167,7 @@ public class PlayerStateScript : NetworkBehaviour
         int i = 0; 
         while (i < auras.Count){
             liveAura a = auras[i];
-            myUI.updateAura(i, a);
+            myUI.updateAura(a);
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
                 if (GetComponent<NetworkObject>().IsLocalPlayer){

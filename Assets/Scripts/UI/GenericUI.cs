@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GenericUI : MonoBehaviour
 {
-    public List<Image> auraIcons = new List<Image>();
-    public List<Text> auraStackText = new List<Text>();
-    public List<Text> auraTimerText = new List<Text>();
+    public GameObject auraPrefab;
+    public List<GameObject> auraObjs = new List<GameObject>();
+
     public Image HealthBar;
     public Image BonusBar;
     public Image TargetMark;
@@ -88,100 +88,51 @@ public class GenericUI : MonoBehaviour
     }
 
     public virtual void addAura(Sprite icon, int id, int count){
-        GameObject imgObject = new GameObject("Aura" + id); 
-        //Create the GameObject
-        Image NewImage = imgObject.AddComponent<Image>(); //Add the Image Component script
-        NewImage.sprite = icon; //Set the Sprite of the Image Component on the new GameObject
 
-        var imgtrans = imgObject.GetComponent<RectTransform>();
-        imgtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
-        imgtrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-        imgtrans.localPosition = new Vector3(-1 + (0.5f * count),0,0);
-        imgtrans.sizeDelta = new Vector2(0.4f, 0.4f);
-        imgObject.SetActive(true);
-        auraIcons.Add(NewImage);
-        
+        GameObject auraObj = Instantiate(auraPrefab, UITrans, false);
+        var auraTrans = auraObj.GetComponent<RectTransform>();
+        auraTrans.anchoredPosition = auraTrans.anchoredPosition + new Vector2(0,80 * auraObjs.Count);
+        auraObj.GetComponent<AuraUI>().matchAuraApplication(icon, id);
+        auraObj.GetComponent<AuraUI>().updateStacks(count);
+
+        auraTrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
+        auraObjs.Add(auraObj);
     }
 
     public virtual void stackAura(liveAura stackedAura, int stackNum){
         GameObject aura = null;
         int location = -1;
         //Find the position in the list of the aura to be stacked
-        for (int i = 0; i < auraIcons.Count; i++){
-            if (auraIcons[i].gameObject.name == ("Aura" + stackedAura.aura.id)){
-                aura = auraIcons[i].gameObject;
+        for (int i = 0; i < auraObjs.Count; i++){
+            if (auraObjs[i].GetComponent<AuraUI>().id == stackedAura.aura.id){
+                aura = auraObjs[i];
                 location = i;
             }
         }
-
-        if (auraStackText.Count <= location){
-            GameObject textObject = new GameObject("Aura" + stackedAura.aura.id + " stack");
-            Text stack = textObject.AddComponent<Text>();
-            stack.text = "x" + stackNum.ToString();
-            stack.fontSize = 10;
-            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-            textObject.GetComponent<Text>().color = Color.black;
-
-            var txtTrans = textObject.GetComponent<RectTransform>();
-            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
-            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-            txtTrans.localPosition = new Vector3( (0.5f * location),0.3f,0);
-            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
-            txtTrans.sizeDelta = new Vector2(15, 15);
-            textObject.SetActive(true);
-            auraStackText.Add(stack);
-        }
-        else{
-            auraStackText[location].gameObject.GetComponent<Text>().text = "x" + stackNum.ToString();
-        }
-        
-        
+        aura.GetComponent<AuraUI>().updateStacks(stackNum);
     }
 
-    public virtual void updateAura(int auraPos, liveAura updateAura){
-        if (auraPos >= auraTimerText.Count){
-            GameObject textObject = new GameObject("Aura" + updateAura.aura.id + " timer");
-            Text stack = textObject.AddComponent<Text>();
-            stack.text = updateAura.duration.ToString() + "s";
-            stack.fontSize = 10;
-            stack.font = (Font)Resources.GetBuiltinResource (typeof(Font), "Arial.ttf");
-            textObject.GetComponent<Text>().color = Color.black;
-
-            var txtTrans = textObject.GetComponent<RectTransform>();
-            txtTrans.SetParent(UI.transform); //Assign the newly created Text GameObject as a Child of the Parent Panel.
-            txtTrans.localRotation = Quaternion.Euler(new Vector3(0,0,0));
-            txtTrans.localPosition = new Vector3(-1f + (0.5f * auraPos),-0.1f,0);
-            txtTrans.localScale = new Vector3(0.02f, 0.02f, 1);
-            txtTrans.sizeDelta = new Vector2(30, 15);
-            textObject.SetActive(true);
-            auraTimerText.Add(stack);
+    public virtual void updateAura(liveAura updateAura){
+        GameObject aura = null;
+        int location = -1;
+        //Find the position in the list of the aura to be stacked
+        for (int i = 0; i < auraObjs.Count; i++){
+            if (auraObjs[i].GetComponent<AuraUI>().id == updateAura.aura.id){
+                aura = auraObjs[i];
+                location = i;
+            }
         }
-        else{
-            auraTimerText[auraPos].gameObject.GetComponent<Text>().text = updateAura.duration.ToString() + "s";
-        }
+        aura.GetComponent<AuraUI>().updateTime(updateAura.duration);
     }
 
     public virtual void removeAura(int i){
-        //Only delete from stack List if Aura is stacked
-        if (i < auraStackText.Count){
-            var stackTxt = auraStackText[i].gameObject.name;
-            if(stackTxt.Substring(0, stackTxt.Length - 6) == auraIcons[i].gameObject.name){
-                Destroy(auraStackText[i].gameObject);
-                auraStackText.RemoveAt(i);
-            } 
-        } 
-        
-        Destroy(auraIcons[i].gameObject);
-        auraIcons.RemoveAt(i);
-        Destroy(auraTimerText[i].gameObject);
-        auraTimerText.RemoveAt(i);
+        Destroy(auraObjs[i]);
+        auraObjs.RemoveAt(i);
 
         int j = i; 
-        while (j < auraIcons.Count){
-            var auraTrans = auraIcons[j].GetComponent<Transform>();
-            auraIcons[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0, 0);
-            auraStackText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-0.5f, 0.3f, 0);
-            auraTimerText[j].GetComponent<Transform>().localPosition = auraTrans.localPosition + new Vector3(-3, -0.1f, 0);
+        while (j < auraObjs.Count){
+            var auraTrans = auraObjs[j].GetComponent<RectTransform>();
+            auraObjs[j].GetComponent<RectTransform>().anchoredPosition = auraTrans.anchoredPosition - new Vector2(0, 80);
             j += 1;
         }
     }
