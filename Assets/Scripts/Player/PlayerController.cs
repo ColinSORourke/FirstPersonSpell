@@ -25,18 +25,20 @@ public class PlayerController : MonoBehaviour
             Debug.Log("New Controls");
             controls = new Controls();
         }
-
+        
         var rebinds = PlayerPrefs.GetString("rebinds");
         if (!string.IsNullOrEmpty(rebinds)) {
             Debug.Log("Load Existing Keybinds");
             controls.LoadBindingOverridesFromJson(rebinds);
         }
+        this.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("VolumePreference");
 
         gameplayActions = controls.Gameplay;
     }
 
     private void Update()
     {
+        //Debug.Log("Player Volume = " + this.GetComponent<AudioSource>().volume);
         movement.ReceiveInput(horizontalInput);
         mouseLook.ReceiveInput(mouseInput);
     }
