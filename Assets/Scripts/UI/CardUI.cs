@@ -38,6 +38,8 @@ public class CardUI : MonoBehaviour
         if (highlight == null) Debug.Log("Highlight not found");
         highlight.SetActive(true);
         yield return new WaitForSeconds(duration);
-        highlight.SetActive(false);
+        if (highlight != null){
+            highlight.SetActive(false);
+        }
     }
 }
