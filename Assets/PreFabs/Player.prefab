@@ -2206,7 +2206,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
-  coyoteTime: 0.08
+  coyoteTime: 0.5
   playerStateScript: {fileID: 3313923701444843709}
 --- !u!114 &3313923701444843682
 MonoBehaviour:

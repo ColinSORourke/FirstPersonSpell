@@ -38,14 +38,14 @@ public class Movement : MonoBehaviour
         // Jump: v = sqrt(-2 * jumpHeight * gravity)
         if (jump)
         {
-            if (isGrounded)
+            if (isGrounded || graceTime > 0)
             {
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;
         }
 
-        if (graceTime <= 0) verticalVelocity.y += gravity * Time.deltaTime;
+        verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
 
         if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
