@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     Vector3 verticalVelocity = Vector3.zero;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
+    public float coyoteTime = 0.1f;
+    private float graceTime;
 
     [SerializeField] PlayerStateScript playerStateScript;
 
@@ -24,6 +26,10 @@ public class Movement : MonoBehaviour
         if (isGrounded)
         {
             verticalVelocity.y = 0;
+            graceTime = coyoteTime;
+        } else
+        {
+            graceTime -= Time.deltaTime;
         }
 
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * speed;
@@ -39,7 +45,7 @@ public class Movement : MonoBehaviour
             jump = false;
         }
 
-        verticalVelocity.y += gravity * Time.deltaTime;
+        if (graceTime <= 0) verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
 
         if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
