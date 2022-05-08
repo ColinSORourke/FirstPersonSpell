@@ -173,6 +173,8 @@ public class PlayerStateScript : NetworkBehaviour
                 if (GetComponent<NetworkObject>().IsLocalPlayer){
                     auras[i].startRemove();
                     this.removeAura(i);
+                } else {
+                    i += 1;
                 }
             } else {
                 i += 1;
