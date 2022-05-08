@@ -40,6 +40,7 @@ public class Movement : MonoBehaviour
         {
             if (isGrounded || graceTime > 0)
             {
+                graceTime = 0;
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;
