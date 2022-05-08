@@ -24,11 +24,11 @@ public class FrostbiteAura : baseAuraScript
         pDmgMult.changeSpeed(2.0f);
         if (stack >= 3)
         {
-            pDmgMult.takeDamageMult -= .20f;
+            pDmgMult.takeDamageMult -= .25f;
         }
         if (stack >= 2)
         {
-            pDmgMult.castTimeMult -= 2f;
+            pDmgMult.castTimeMult -= .25f;
         }
     }
 
@@ -38,12 +38,12 @@ public class FrostbiteAura : baseAuraScript
         if(stack == 2)
         {
             PlayerStateScript pCastMult = Target.GetComponent<PlayerStateScript>();
-            pCastMult.castTimeMult += 2f;
+            pCastMult.castTimeMult += .25f;
         }
         if(stack == 3)
         {
             PlayerStateScript pDmgMult = Target.GetComponent<PlayerStateScript>();
-            pDmgMult.takeDamageMult += .20f;
+            pDmgMult.takeDamageMult += .25f;
 
         }
     }
