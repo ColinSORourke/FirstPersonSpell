@@ -21,9 +21,10 @@ public class ClockworkAura : baseAuraScript
     {
         Debug.Log("Frostbite expired");
         PlayerStateScript pSpeed = Player.GetComponent<PlayerStateScript>();
-        pSpeed.changeSpeed(-2.0f);
         if (stack == 2){
             pSpeed.changeSpeed(-4.0f);
+        } else {
+            pSpeed.changeSpeed(-2.0f);
         }
     }
 
