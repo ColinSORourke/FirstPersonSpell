@@ -367,7 +367,7 @@ public class PlayerStateScript : NetworkBehaviour
     public void changeHealthServerRpc(float value) {
         
         _currentHealth.Value += value;
-        _currentBonus.Value = Mathf.Clamp(currentBonus, 0, maxHealth);
+        _currentBonus.Value = Mathf.Clamp(currentHealth, 0, maxHealth);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
@@ -404,7 +404,7 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void pickupHealthCrystal(){
-        changeHealthServerRpc(10.0f);
+        changeHealthServerRpc(5.0f);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 

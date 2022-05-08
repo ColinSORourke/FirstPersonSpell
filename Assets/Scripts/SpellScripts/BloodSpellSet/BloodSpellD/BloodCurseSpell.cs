@@ -14,7 +14,7 @@ public class BloodCurseSpell : baseSpellScript
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         float duration = 10.0f;
         target.applyAura(Player, aura_B, duration);
-        if(slot == 2)
+        if(slot == 0)
         {
             target.applyAura(Player, aura_B, duration);
         }

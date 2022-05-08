@@ -11,6 +11,9 @@ public class FlyBySpell : baseSpellScript
     {
         // None
         Debug.Log("Cast FlyBy");
+        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
+
+        Debug.Log(caster.moveSpeed);
     }
 
     // Update is called once per frame

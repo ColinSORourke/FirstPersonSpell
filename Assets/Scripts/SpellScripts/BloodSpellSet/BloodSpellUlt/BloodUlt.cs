@@ -22,7 +22,7 @@ public class BloodUlt : baseSpellScript
             target.takeDamage(extraDamage);
         }
         target.changeManaServerRpc(-10.0f);
-        self.changeBonusServerRpc(damage + extraDamage);
+        self.changeHealthServerRpc(damage + extraDamage);
         self.changeManaServerRpc(damage);
         if (self.currMana > 50.0f) //caps mana gained to max
         {
