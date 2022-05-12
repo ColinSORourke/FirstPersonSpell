@@ -28,10 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
   spellName: Fire Starter
-  description: 'Fire a small ember at the target dealing 2 damage.
+  description: 'Fire a small ember dealing 2 damage.
 
-    Positional
-    (R): add (Meteor) to the bottom of your deck.'
+    [R]: Add "Meteor" to the
+    bottom of your deck.'
   icon: {fileID: 21300000, guid: ebf3bed16e49b5e4bb55ba1be402d829, type: 3}
   castParticle: {fileID: 5429109308165724534, guid: cfb02cb924817ec40a71d40c5a1afd7d, type: 3}
   hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}

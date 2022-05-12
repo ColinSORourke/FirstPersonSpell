@@ -28,7 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Icicle Spear
-  description: Launch an icicle at the target dealing 4 damage.
+  description: Launch an icicle at the target dealing 4 damage
   icon: {fileID: 21300000, guid: f3239baa6db76c54896070876f53822f, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}

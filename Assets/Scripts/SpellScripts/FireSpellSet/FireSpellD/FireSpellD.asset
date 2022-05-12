@@ -28,7 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Mana Burn
-  description: 'Shoot a fireball that deals 8 damage.
+  description: 'Shoot a fireball dealing 8 damage.
 
     If the target is burning,
     burn away 10 of the target''s mana.'

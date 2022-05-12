@@ -28,7 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Ice Shield
-  description: Gain 15 temporary health.
+  description: Shield yourself with ice and gain 15 bonus health.
   icon: {fileID: 21300000, guid: ae029c5b21568b14988aea46f73afa45, type: 3}
   castParticle: {fileID: 6394752601074407636, guid: 362abbc6c67ca2940afb249fe2877268, type: 3}
   hitParticle: {fileID: 0}

@@ -28,7 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Flame Burst
-  description: 'Shoot a fireball that deals 3 + (2 * seconds left of burn).
+  description: 'Shoot a fireball dealing 3 + 2 per seconds remaining of ''Burn''.
 
     Remove
     the remaining burn.'

@@ -28,9 +28,8 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Rewind
-  description: "Save your current position, health, and mana value. \nAfter a 5 second
-    delay, you will return to the saved position \nand your health and mana will
-    be restored to the saved values."
+  description: Save your current position, health, and mana. After 5s, leap back
+    through time to your saved state.
   icon: {fileID: 21300000, guid: 2e8ab78cfe92d9448a1afb72de3c6f39, type: 3}
   castParticle: {fileID: 6574687287896291259, guid: 0cd9cec2c07241b4b829c431550ceeb0, type: 3}
   hitParticle: {fileID: 0}

@@ -28,8 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Time of Reckoning
-  description: Gain 20 mana, apply a stack of  'Time of Reckoning' to self for 20
-    seconds.
+  description: Gain 20 mana, gain 1 stack of  'Time of Reckoning' for 20s.
   icon: {fileID: 21300000, guid: eadbc85076175364b8d8cb33cf257321, type: 3}
   castParticle: {fileID: 6574687287896291259, guid: 0cd9cec2c07241b4b829c431550ceeb0, type: 3}
   hitParticle: {fileID: 0}

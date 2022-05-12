@@ -28,10 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 11400000, guid: a7cda53b2ee8e894ea2cdacb8addc3e7, type: 2}
   token: {fileID: 0}
   spellName: Blood Curse
-  description: 'Pay 2 health to curse your target for 10 seconds.
+  description: 'Pay 2 health to apply ''Blood Curse'' for 10s.
 
-    Positional
-    (R): apply an extra curse stack.'
+    [R]: Apply 1
+    more stack of ''Blood Curse''.'
   icon: {fileID: 21300000, guid: 8d87939400b28984399c17878d9dc7ca, type: 3}
   castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
   hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}

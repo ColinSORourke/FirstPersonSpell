@@ -28,7 +28,7 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Meteor
-  description: 'Fires a large meteor from the sky dealing 20 damage to the target.
+  description: 'Fires a large meteor from the sky dealing 20 damage.
 
     Remove
     this card from the deck after being played.'
