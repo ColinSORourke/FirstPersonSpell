@@ -1,12 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuDeckDisplay : MonoBehaviour
 {
     public SpellDeck defaultDeck;
     public SpellDeck[] decks;
     public GameObject cardPrefab;
+
+    public string defaultDescription;  //description of whatever the default deck is
+    public string defaultADescription; //decription of the aura associated with whatever the default deck is
+    public string[] deckDescriptions;  //array of deck descriptions
+    [TextArea]
+    public string[] auraDescriptions;  //array of aura descriptions
+    public Sprite[] auraSprites;    //array of sprites to go above the aura description
+    public Image currAura;         //current aura icon
+    public Text currDDescription;   //current deck description
+    public Text currADescription;   //current aura description
 
     public void Start(){
     
@@ -25,6 +36,8 @@ public class MenuDeckDisplay : MonoBehaviour
         }
 
         this.displayDeck(defaultDeck);
+        currDDescription.text = defaultDescription;
+        currADescription.text = defaultADescription;
         
     }
 
@@ -41,5 +54,11 @@ public class MenuDeckDisplay : MonoBehaviour
         {
             this.transform.GetChild(j + 1).GetComponent<CardUI>().MatchSpell(d.spellDeck[j]);
         }
+        
+        //code for changing the descriptions and aura icon in the deck display
+        currDDescription.text = deckDescriptions[i];
+        currADescription.text = auraDescriptions[i];
+        currAura.sprite = auraSprites[i];
     }
+
 }
