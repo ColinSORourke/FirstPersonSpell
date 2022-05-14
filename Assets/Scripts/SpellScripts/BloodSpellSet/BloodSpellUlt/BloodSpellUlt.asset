@@ -23,7 +23,7 @@ MonoBehaviour:
   ultCost: 12
   range: 15
   reqTarget: 1
-  exhaust: 0
+  exhaust: 1
   aura_A: {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
