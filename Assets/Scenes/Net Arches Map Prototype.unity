@@ -19622,6 +19622,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671123613}
     m_Modifications:
+    - target: {fileID: 5195619161584373856, guid: 7a64910494ea62d4fa6c60914dd2b500, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2bac0c2d29e2b14d8afc1f4cb1a1950, type: 2}
     - target: {fileID: 5988222253582299573, guid: 7a64910494ea62d4fa6c60914dd2b500, type: 3}
       propertyPath: m_Name
       value: Obelisk Blood
@@ -25458,6 +25462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671123613}
     m_Modifications:
+    - target: {fileID: 2322534664203616374, guid: cbeee16072ca46444a7f1d65df537349, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 21142a49d55206d478b2733341235769, type: 2}
     - target: {fileID: 3490395420733782809, guid: cbeee16072ca46444a7f1d65df537349, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -26926,6 +26934,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671123613}
     m_Modifications:
+    - target: {fileID: 723515852085074511, guid: 08a962c404791bd40afec9d4b661ad63, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eeb6daeaffe5aac45a255b1bc83aa76f, type: 2}
     - target: {fileID: 1227949591413570458, guid: 08a962c404791bd40afec9d4b661ad63, type: 3}
       propertyPath: m_Name
       value: Obelisk Ice
@@ -31498,7 +31510,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh74560
+  m_Name: pb_Mesh104666
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
