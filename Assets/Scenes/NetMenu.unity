@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b21ecb5aa06f649bcb4108c7c6e7499b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a40d42c7d917ae4599cbef64c37f1c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16653,9 +16653,9 @@ MonoBehaviour:
     2 Stacks: Increase movement speed
     by 2'
   auraSprites:
-  - {fileID: 21300000, guid: 9fac95353008eab43bd5e55159a2203b, type: 3}
+  - {fileID: 21300000, guid: 4a40d42c7d917ae4599cbef64c37f1c6, type: 3}
   - {fileID: 21300000, guid: 6216a0b604ae2554ebda296489ada664, type: 3}
-  - {fileID: 21300000, guid: 71d1f41049793e94194b5785f940c545, type: 3}
+  - {fileID: 21300000, guid: 49740c10605da274c98c422e1e90a658, type: 3}
   - {fileID: 21300000, guid: 7d08725f2fdb53f478f538a74d73e65a, type: 3}
   currAura: {fileID: 87867878}
   currDDescription: {fileID: 425516954}
