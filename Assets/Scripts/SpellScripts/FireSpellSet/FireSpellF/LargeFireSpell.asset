@@ -32,7 +32,7 @@ MonoBehaviour:
 
     Remove
     this card from the deck after being played.'
-  icon: {fileID: 21300000, guid: d00853089daeffa4f96ef345bbeb97df, type: 3}
+  icon: {fileID: 21300000, guid: bcaead7fd2666f247918f023b125ce94, type: 3}
   castParticle: {fileID: 5429109308165724534, guid: cfb02cb924817ec40a71d40c5a1afd7d, type: 3}
   hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}
   castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
