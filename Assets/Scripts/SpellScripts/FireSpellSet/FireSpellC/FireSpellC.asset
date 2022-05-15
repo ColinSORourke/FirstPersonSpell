@@ -29,7 +29,7 @@ MonoBehaviour:
   token: {fileID: 0}
   spellName: Flame Barrier
   description: Gain 'Flame Barrier' reducing damage taken by 50% for 10s.
-  icon: {fileID: 21300000, guid: ce457574e83f38a488076b4cb3819abf, type: 3}
+  icon: {fileID: 21300000, guid: 8be3ab3754babef45ac67e4420233aa1, type: 3}
   castParticle: {fileID: 1746490584521272958, guid: 0985253e79b8ce14bb29d17d9ed19957, type: 3}
   hitParticle: {fileID: 0}
   castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}

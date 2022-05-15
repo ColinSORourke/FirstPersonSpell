@@ -19,4 +19,4 @@ MonoBehaviour:
   tickSpeed: -1
   damage: 1
   auraParticle: {fileID: 8922594871286050517, guid: c6c71692719145d4bb3c10801c3d3e9b, type: 3}
-  icon: {fileID: 21300000, guid: 12c604f828ffdc74397f1be63bff055a, type: 3}
+  icon: {fileID: 21300000, guid: 6216a0b604ae2554ebda296489ada664, type: 3}

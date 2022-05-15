@@ -32,7 +32,7 @@ MonoBehaviour:
 
     If the target is already burning, apply
     ''Burn'' for 10s instead.'
-  icon: {fileID: 21300000, guid: 83af2d1b316a4ad40b8491930195d166, type: 3}
+  icon: {fileID: 21300000, guid: a0b736c643227cf4ab6222205213cfcd, type: 3}
   castParticle: {fileID: 1746490584521272958, guid: 0985253e79b8ce14bb29d17d9ed19957, type: 3}
   hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}
   castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
