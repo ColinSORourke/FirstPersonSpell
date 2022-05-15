@@ -31,7 +31,7 @@ MonoBehaviour:
   description: 'Deal 15 damage.
 
     Apply 1 stack of ''Frostbite'' for 15s.'
-  icon: {fileID: 21300000, guid: 5886f0ce63b9b974e9b94c11fb16d8e5, type: 3}
+  icon: {fileID: 21300000, guid: 816878ebdd388174db0577e7c36e61c3, type: 3}
   castParticle: {fileID: 1430125577951951014, guid: 7af7e6c47ef2711419a474dbab855402, type: 3}
   hitParticle: {fileID: 457307505533930131, guid: 3a7c4267a121c574096b20214407a9bf, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}

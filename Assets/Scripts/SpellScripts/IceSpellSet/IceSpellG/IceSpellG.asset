@@ -30,7 +30,7 @@ MonoBehaviour:
   spellName: Icy Brew
   description: "Lob an icy concoction dealing 8 damage, \nIf the target has 'Frostbite'
     gain 1 ult point."
-  icon: {fileID: 21300000, guid: cdd6424e032a0b540b3bc6ba1c58fcaf, type: 3}
+  icon: {fileID: 21300000, guid: 5bd50203810bb4b499600ae7c4025fe4, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}

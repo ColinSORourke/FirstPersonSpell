@@ -32,7 +32,7 @@ MonoBehaviour:
 
     [R]: Apply 1 more stack
     of ''Frostbite''.'
-  icon: {fileID: 21300000, guid: 22cd5e87c3596a34a880108819039ddf, type: 3}
+  icon: {fileID: 21300000, guid: 9003befa62a55374db32d75e89894f39, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}

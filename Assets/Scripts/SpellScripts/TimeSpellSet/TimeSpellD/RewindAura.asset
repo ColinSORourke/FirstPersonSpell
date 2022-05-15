@@ -19,7 +19,7 @@ MonoBehaviour:
   tickSpeed: -1
   damage: 0
   auraParticle: {fileID: 6574687287896291259, guid: ca778c8deeccb844b8ea5dd82bc9e269, type: 3}
-  icon: {fileID: 21300000, guid: 2e8ab78cfe92d9448a1afb72de3c6f39, type: 3}
+  icon: {fileID: 21300000, guid: 3782c71123f46d149a1dd9914ea199fb, type: 3}
   saveMana: 4.25
   saveHealth: 50
   savePos: {x: 113.31433, y: 73.15005, z: 187.08235}

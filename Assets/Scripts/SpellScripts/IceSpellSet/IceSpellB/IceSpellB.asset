@@ -32,7 +32,7 @@ MonoBehaviour:
 
     Apply 1 stack
     of ''Frostbite'' for 5s.'
-  icon: {fileID: 21300000, guid: b669e73eb640a2b4fb97d1f7b1b5262b, type: 3}
+  icon: {fileID: 21300000, guid: 4120b80028e035443b8a7dac2ab6683c, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}

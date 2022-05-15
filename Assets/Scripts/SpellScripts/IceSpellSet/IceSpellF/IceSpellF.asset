@@ -30,7 +30,7 @@ MonoBehaviour:
   spellName: Shatter
   description: Break the ice dealing 3 + 3 damage per stack of 'Frostbite'. Remove
     all stacks of 'Frostbite' from target.
-  icon: {fileID: 21300000, guid: 1da9f6ca322b2734c996edacaedae880, type: 3}
+  icon: {fileID: 21300000, guid: f03766deb8b4c5a4f81a861f6ba42295, type: 3}
   castParticle: {fileID: 8480375733580722434, guid: 8d2e242e85aa85d4080ebe481e692b85, type: 3}
   hitParticle: {fileID: 188496119857702832, guid: 45758e517ecd5814c8f9e85d6adbd3d2, type: 3}
   castAudioClip: {fileID: 8300000, guid: c57e39e838a542e459eb13a1dc400705, type: 3}
