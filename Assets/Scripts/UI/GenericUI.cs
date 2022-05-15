@@ -20,6 +20,11 @@ public class GenericUI : MonoBehaviour
     public Image UltBar;
     public Image Shield;
     public Image ShieldFill;
+    public Image RangeIndicator;
+    public Sprite RangeLow;
+    public Sprite RangeMid;
+    public Sprite RangeHigh;
+    public Sprite RangeNo;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -140,24 +145,26 @@ public class GenericUI : MonoBehaviour
 
     public virtual void target(){
         TargetMark.enabled = true;
+        RangeIndicator.enabled = true;
     }
 
     public virtual void updateRange(float range){
         if (range < 15.0){
-            TargetMark.GetComponent<Image>().color = new Color32(84,255,95,255);
+            RangeIndicator.sprite = RangeLow;
         }
         else if (range < 30.0){
-            TargetMark.GetComponent<Image>().color = new Color32(251,249,13,255);
+            RangeIndicator.sprite = RangeMid;
         }
         else if (range < 45.0) {
-            TargetMark.GetComponent<Image>().color = new Color32(250,143,13,255);
+            RangeIndicator.sprite = RangeHigh;
         } else {
-            TargetMark.GetComponent<Image>().color = new Color32(217,18,10,255);
+            RangeIndicator.sprite = RangeNo;
         }
         
     }
 
     public virtual void unTarget(){
         TargetMark.enabled = false;
+        RangeIndicator.enabled = false;
     }
 }
