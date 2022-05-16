@@ -115,7 +115,9 @@ public class PlayerAbilities : MonoBehaviour
         valid = myState.validCast(slot, tar, range);
 
         var spell = myState.spellQueue[slot];
+        CardUI cardObj = myUI.spellIcons[slot].GetComponent<CardUI>();
         if (valid != -1.0f){
+            StartCoroutine(cardObj.HighlightCard(true));
             if (spell.castTime > 0){
             // Start Casting
             castTime = 0.0f;
@@ -130,6 +132,9 @@ public class PlayerAbilities : MonoBehaviour
                 }
                 spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
             }
+        } else
+        {
+            StartCoroutine(cardObj.HighlightCard(false));
         }
         
     }

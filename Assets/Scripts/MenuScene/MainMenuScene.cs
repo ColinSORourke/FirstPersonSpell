@@ -14,6 +14,7 @@ public class MainMenuScene : MonoBehaviour
     public float cameraRotationSpeed;
     public Vector2 angles; //angles.x is min, angles.y is max
     public Dropdown cardDeckDropdown, levelSelectorDropdown;
+    public Toggle fullScreenToggle;
 
     //public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
@@ -134,6 +135,7 @@ public class MainMenuScene : MonoBehaviour
     }
     public void LoadSettings()
     {
+        fullScreenToggle.isOn = PlayerPrefs.HasKey("FullscreenPreference") ? System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference")) : Screen.fullScreen;
         resolutionDropdown.value = PlayerPrefs.HasKey("ResolutionPreference") ? PlayerPrefs.GetInt("ResolutionPreference") : currentResolutionIndex;
         Screen.fullScreen = PlayerPrefs.HasKey("FullscreenPreference") ? System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference")) : true;
         volumeSlider.value = PlayerPrefs.HasKey("VolumePreference") ? PlayerPrefs.GetFloat("VolumePreference") : 0.5f;

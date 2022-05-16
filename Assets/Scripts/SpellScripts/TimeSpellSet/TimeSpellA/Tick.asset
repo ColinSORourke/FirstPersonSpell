@@ -28,8 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Tick
-  description: "Deal 2 damage to target. \nGain 10 mana."
-  icon: {fileID: 21300000, guid: 4c531384637f6c243bb933e82b4cd208, type: 3}
+  description: 'Deal 4 damage.
+
+    Gain 10 mana.'
+  icon: {fileID: 21300000, guid: 0fca396461ed3d44da303e852092cd97, type: 3}
   castParticle: {fileID: 8319142979115335276, guid: 9b22e71f15838fa4386a139f32ce4f7b, type: 3}
   hitParticle: {fileID: 8319142979115335276, guid: 07b9c6a4fd07297439780c1ba1b5b473, type: 3}
   castAudioClip: {fileID: 8300000, guid: 2094fdabd8d261c4e99bab98e72bae34, type: 3}

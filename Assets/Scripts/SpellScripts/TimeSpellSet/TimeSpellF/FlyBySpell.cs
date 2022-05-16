@@ -11,10 +11,13 @@ public class FlyBySpell : baseSpellScript
     {
         // None
         Debug.Log("Cast FlyBy");
+        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
+
+        Debug.Log(caster.moveSpeed);
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
 
@@ -25,7 +28,7 @@ public class FlyBySpell : baseSpellScript
         {
             //var particleBurst = Instantiate(hitParticle, Target);
             //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

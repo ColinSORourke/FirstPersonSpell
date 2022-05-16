@@ -9,7 +9,7 @@ public class FrostbiteAura : baseAuraScript
     {
         Debug.Log("Frostbite applied");
         PlayerStateScript pSpeed = Target.GetComponent<PlayerStateScript>();
-        pSpeed.moveSpeed -= 2.0f;
+        pSpeed.changeSpeed(-2.0f);
     }
 
     override public void onTick(Transform Player, Transform Target, int stack, int tickNum)
@@ -21,14 +21,14 @@ public class FrostbiteAura : baseAuraScript
     {
         Debug.Log("Frostbite expired");
         PlayerStateScript pDmgMult = Target.GetComponent<PlayerStateScript>();
-        pDmgMult.moveSpeed += 2.0f;
+        pDmgMult.changeSpeed(2.0f);
         if (stack >= 3)
         {
-            pDmgMult.takeDamageMult -= .20f;
+            pDmgMult.takeDamageMult -= .25f;
         }
         if (stack >= 2)
         {
-            pDmgMult.castTimeMult -= .20f;
+            pDmgMult.castTimeMult -= .25f;
         }
     }
 
@@ -38,12 +38,12 @@ public class FrostbiteAura : baseAuraScript
         if(stack == 2)
         {
             PlayerStateScript pCastMult = Target.GetComponent<PlayerStateScript>();
-            pCastMult.castTimeMult += .20f;
+            pCastMult.castTimeMult += .25f;
         }
         if(stack == 3)
         {
             PlayerStateScript pDmgMult = Target.GetComponent<PlayerStateScript>();
-            pDmgMult.takeDamageMult += .20f;
+            pDmgMult.takeDamageMult += .25f;
 
         }
     }

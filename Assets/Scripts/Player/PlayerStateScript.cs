@@ -167,10 +167,15 @@ public class PlayerStateScript : NetworkBehaviour
         int i = 0; 
         while (i < auras.Count){
             liveAura a = auras[i];
-            myUI.updateAura(i, a);
+            myUI.updateAura(a);
             int tickInfo = a.update(0.25f);
             if (tickInfo == -1){
-                this.removeAura(i);
+                if (GetComponent<NetworkObject>().IsLocalPlayer){
+                    auras[i].startRemove();
+                    this.removeAura(i);
+                } else {
+                    i += 1;
+                }
             } else {
                 i += 1;
             }
@@ -234,6 +239,22 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
+        int index = this.GetComponent<AuraStorage>().findIndex(aura);
+        this.ApplyAuraServerRpc(index, duration);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void ApplyAuraServerRpc(int index, float duration){
+        ApplyAuraClientRpc(index, duration);
+    }
+
+    [ClientRpc]
+    public void ApplyAuraClientRpc(int index, float duration){
+        baseAuraScript aura = this.GetComponent<AuraStorage>().allAuras[index];
+
+        // INCORRECT AND TEMPORARY
+        Transform src = this.transform;
+
         int matchInd = hasAura(aura.id);
         // Check if we already have this type of Aura
         if (matchInd != -1){
@@ -253,7 +274,12 @@ public class PlayerStateScript : NetworkBehaviour
             }
             
         } else {
-            liveAura toApply = new liveAura();
+            liveAura toApply;
+            if (IsLocalPlayer){
+                toApply = new liveAura();
+            } else {
+                toApply = new fakeAura();
+            }
             toApply.aura = aura;
             toApply.on = this.transform;
             toApply.src = src;
@@ -268,10 +294,21 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void removeAura(int i){
+        removeAuraServerRpc(i);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void removeAuraServerRpc(int i){
+        removeAuraClientRpc(i);
+    }
+
+    [ClientRpc]
+    public void removeAuraClientRpc(int i){
         auras[i].onExpire();
         auras.RemoveAt(i);
         myUI.removeAura(i);
     }
+
 
     public int hasAura(int id){
         int i = 0;
@@ -330,7 +367,7 @@ public class PlayerStateScript : NetworkBehaviour
     public void changeHealthServerRpc(float value) {
         
         _currentHealth.Value += value;
-        _currentBonus.Value = Mathf.Clamp(currentBonus, 0, maxHealth);
+        _currentHealth.Value = Mathf.Clamp(currentHealth, 0, maxHealth);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
@@ -367,7 +404,7 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     public void pickupHealthCrystal(){
-        changeHealthServerRpc(10.0f);
+        changeHealthServerRpc(5.0f);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 

@@ -13,7 +13,7 @@ public class BleedingAura : baseAuraScript
     override public void onTick(Transform Player, Transform Target, int stack, int tickNum)
     {
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
-        tHP.takeDamage(damage, false);
+        tHP.takeDamage(stack, false);
         Debug.Log("Bleeding ticked");
     }
 

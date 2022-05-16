@@ -14,7 +14,7 @@ public class BloodCurseSpell : baseSpellScript
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         float duration = 10.0f;
         target.applyAura(Player, aura_B, duration);
-        if(slot == 2)
+        if(slot == 0)
         {
             target.applyAura(Player, aura_B, duration);
         }
@@ -22,13 +22,13 @@ public class BloodCurseSpell : baseSpellScript
     }
 
     // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot)
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         if (hitParticle != null)
         {
             //var particleBurst = Instantiate(hitParticle, Target);
             //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class baseAuraScript : ScriptableObject
 {
     public int id;
+    public int selfIndex;
     public bool stackable = false;
     public int maxStacks = 1;
     public float tickSpeed = -1.0f;
@@ -45,9 +46,10 @@ public class liveAura {
     public float tickTime;
     public int tickNum;
 
-    ParticleSystem activeParticle;
+    public ParticleSystem activeParticle;
+    public bool removeStarted = false;
 
-    public void onApply(){
+    public virtual void onApply(){
         if (aura.auraParticle != null)
         {
             activeParticle = GameObject.Instantiate(aura.auraParticle, on);
@@ -56,11 +58,11 @@ public class liveAura {
 
     }
 
-    public void onTick(){
+    public virtual void onTick(){
         aura.onTick(src, on, stacks, tickNum);
     }
 
-    public void onExpire(){
+    public virtual void onExpire(){
         if (aura.auraParticle != null)
         {
             GameObject.Destroy(activeParticle.gameObject);
@@ -68,7 +70,7 @@ public class liveAura {
         aura.onExpire(src, on, stacks, tickNum);
     }
 
-    public bool onStack(){
+    public virtual bool onStack(){
         if (stacks < aura.maxStacks)
         {
             stacks += 1;
@@ -76,6 +78,10 @@ public class liveAura {
             return true;
         }
         return false;
+    }
+
+    public void startRemove(){
+        removeStarted = true;
     }
 
     public int update(float delta){
@@ -89,8 +95,46 @@ public class liveAura {
             return 1;  
         }
         if (duration < 0.0f){
-            return -1;
+            if (!removeStarted){
+                return -1;
+            }
+            else {
+                return -2;
+            }
         }
         return 0;
+    }
+}
+
+public class fakeAura : liveAura {
+    public override void onApply(){
+        Debug.Log("Fake aura applied");
+        if (aura.auraParticle != null)
+        {
+            activeParticle = GameObject.Instantiate(aura.auraParticle, on);
+        }
+    }
+
+    public override void onTick(){
+        Debug.Log("Fake aura ticked");
+        // Nothing
+    }
+
+    public override void onExpire(){
+        Debug.Log("Fake aura Expired");
+        if (aura.auraParticle != null)
+        {
+            GameObject.Destroy(activeParticle.gameObject);
+        }
+    }
+
+    public override bool onStack(){
+        Debug.Log("Fake aura Stacked");
+        if (stacks < aura.maxStacks)
+        {
+            stacks += 1;
+            return true;
+        }
+        return false;
     }
 }

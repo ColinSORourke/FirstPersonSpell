@@ -28,10 +28,9 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Hemorrhage
-  description: "Inflict a stack of bleeding upon yourself, \r\nand 2 stacks of bleeding
-    on the target.\r\nIf used at 10 health or below, apply 3 stacks to the target
-    instead."
-  icon: {fileID: 21300000, guid: 620a0f4a929a64347a49acc6c0e8e8b0, type: 3}
+  description: Gain 1 stack of 'Bleeding' and apply 2 stacks of 'Bleeding'. If used
+    at 10 health or below, apply 3 stacks of 'Bleeding' instead.
+  icon: {fileID: 21300000, guid: d148bb8e13c011f46bbd9164b82097fb, type: 3}
   castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
   hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}
   castAudioClip: {fileID: 8300000, guid: dd9e24535715b6744850142101b29f54, type: 3}

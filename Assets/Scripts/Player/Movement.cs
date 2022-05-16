@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     Vector3 verticalVelocity = Vector3.zero;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
+    public float coyoteTime = 0.1f;
+    private float graceTime;
 
     [SerializeField] PlayerStateScript playerStateScript;
 
@@ -24,6 +26,10 @@ public class Movement : MonoBehaviour
         if (isGrounded)
         {
             verticalVelocity.y = 0;
+            graceTime = coyoteTime;
+        } else
+        {
+            graceTime -= Time.deltaTime;
         }
 
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * speed;
@@ -32,8 +38,9 @@ public class Movement : MonoBehaviour
         // Jump: v = sqrt(-2 * jumpHeight * gravity)
         if (jump)
         {
-            if (isGrounded)
+            if (isGrounded || graceTime > 0)
             {
+                graceTime = 0;
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;

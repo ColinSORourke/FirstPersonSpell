@@ -34,7 +34,7 @@ public class SpellRpcs : NetworkBehaviour
             //projectiles[projectileIndex].GetComponent<Collider>().enabled = false;
             DestroyProjectileServerRpc(projectileIndex);
             if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
-                sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
+                sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index].onHit(sourcePlayer.transform, targetPlayer.transform, slot, index);
             }
         }
 
@@ -83,7 +83,7 @@ public class SpellRpcs : NetworkBehaviour
             GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
             GameObject targetPlayer = GameObject.Find("Player " + targetId);
             if (!targetPlayer.GetComponent<PlayerStateScript>().isShielded()) {
-                sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index].onHit(sourcePlayer.transform, targetPlayer.transform, slot);
+                sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index].onHit(sourcePlayer.transform, targetPlayer.transform, slot, index);
             }
         }
     }

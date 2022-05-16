@@ -23,17 +23,14 @@ MonoBehaviour:
   ultCost: 12
   range: 15
   reqTarget: 1
-  exhaust: 0
+  exhaust: 1
   aura_A: {fileID: 11400000, guid: adab11f569af5874f83cb45789398dc1, type: 2}
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Vampirism
-  description: 'Siphon up to 10 (+2 per stack of bleeding) health and 10 mana from
-    the target.
-
-    Siphoned health is added to bonus health, mana still caps at
-    50.'
-  icon: {fileID: 21300000, guid: dd7977d3c7ce2384c9eaa1173913b3d4, type: 3}
+  description: "Siphon up to 10 + 2 health per stack of bleeding on the target. \nSiphon
+    10 mana from the target."
+  icon: {fileID: 21300000, guid: dbcd8300429047d48825df6053baedbd, type: 3}
   castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
   hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}
   castAudioClip: {fileID: 8300000, guid: dd9e24535715b6744850142101b29f54, type: 3}

@@ -28,10 +28,10 @@ MonoBehaviour:
   aura_B: {fileID: 0}
   token: {fileID: 0}
   spellName: Windup
-  description: 'Gain 10 mana.
+  description: 'Gear up! Gain 10 mana.
 
-    Apply a stack of ''clockwork'' to self for 5 seconds.'
-  icon: {fileID: 21300000, guid: ac22d29d6a08dc94587820ab26fd5008, type: 3}
+    Gain 1 stack of ''Clockwork'' for 5s.'
+  icon: {fileID: 21300000, guid: 271ac966f01b1da4291eb9100c13c88d, type: 3}
   castParticle: {fileID: 6574687287896291259, guid: 0cd9cec2c07241b4b829c431550ceeb0, type: 3}
   hitParticle: {fileID: 0}
   castAudioClip: {fileID: 8300000, guid: 2094fdabd8d261c4e99bab98e72bae34, type: 3}
