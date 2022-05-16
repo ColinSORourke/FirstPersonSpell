@@ -181,13 +181,13 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        /* if (AliveManager.Instance.AlivesInGame < 2) {
+        if (AliveManager.Instance.AlivesInGame < 2) {
             if (alive) {
                 alive = false;
                 EndGameServerRpc();
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
-        } */
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
