@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -703,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 6328617837335687410, guid: 5b6eddc24a6bd07418a5e496aab2b8b4, type: 3}
       propertyPath: m_Name
       value: GreyboxHub
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328617837335687410, guid: 5b6eddc24a6bd07418a5e496aab2b8b4, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6672105697631038024, guid: 5b6eddc24a6bd07418a5e496aab2b8b4, type: 3}
       propertyPath: m_RootOrder
@@ -12898,6 +12902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lampTall
       objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
 --- !u!4 &1581806801 stripped
@@ -14692,6 +14700,10 @@ PrefabInstance:
     - target: {fileID: 8182859317322159553, guid: 2f63d684b710e034f96a8129065b1369, type: 3}
       propertyPath: m_Name
       value: GreyboxWalls_Tall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182859317322159553, guid: 2f63d684b710e034f96a8129065b1369, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8846349076053872507, guid: 2f63d684b710e034f96a8129065b1369, type: 3}
       propertyPath: m_RootOrder
@@ -18408,6 +18420,10 @@ PrefabInstance:
     - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_Name
       value: lampShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
