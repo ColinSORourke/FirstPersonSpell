@@ -44,13 +44,18 @@ public class Movement : MonoBehaviour
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;
+            playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.JumpStart);
         }
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
 
-        if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
-        else playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Walk);
+        if (verticalVelocity.y < -1) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.JumpFall);
+        else this.setHorizontalAnimatorState(horizontalInput);
+        /*
+        else if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
+        else playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Run);
+        */
     }
 
     public void ReceiveInput(Vector2 _horizontalInput)
@@ -66,5 +71,34 @@ public class Movement : MonoBehaviour
     public void setMovementSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    private void setHorizontalAnimatorState(Vector2 horizontalInput)
+    {
+        Debug.Log("SetHorizonalAnimatorState");
+        switch (horizontalInput)
+        {
+            case Vector2 v when v.Equals(Vector2.zero):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
+                break;
+            case Vector2 v when v.Equals(Vector2.left):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.StrafeLeft);
+                break;
+            case Vector2 v when v.Equals(Vector2.right):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.StrafeRight);
+                break;
+            case Vector2 v when v.Equals(new Vector2(-1, 1)):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunLeft);
+                break;
+            case Vector2 v when v.Equals(Vector2.one):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunRight);
+                break;
+            case Vector2 v when v.Equals(Vector2.down):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunBack);
+                break;
+            case Vector2 v when v.Equals(Vector2.up):
+                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Run);
+                break;
+        }
     }
 }

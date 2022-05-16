@@ -62,7 +62,19 @@ public class PlayerStateScript : NetworkBehaviour
     public enum AnimState
     {
         Idle,
-        Walk
+        RunLeft,
+        RunRight,
+        StrafeLeft,
+        StrafeRight,
+        Run,
+        RunBack,
+        JumpStart,
+        JumpFall,
+        JumpEnd,
+        BeingHit,
+        CastStart,
+        CastIdle,
+        CastEnd
     }
 
     [SerializeField]
