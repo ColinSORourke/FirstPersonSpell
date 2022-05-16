@@ -55,6 +55,7 @@ public class PlayerAbilities : MonoBehaviour
                 Targets[currTarget].GetComponent<PlayerStateScript>().myUI.unTarget();
                 currTarget = -1;
                 myUI.updateCast(0);
+                myState.UpdateCastServerRPC(false, true);
                 castTime = -1.0f;
             }
             i += 1;        
@@ -89,9 +90,11 @@ public class PlayerAbilities : MonoBehaviour
 					StartCoroutine(playAudio(castingSpell.getAudio("onCast")));
 					
                     myUI.updateCast(0);
+                    myState.UpdateCastServerRPC(false, false);
                 } else {
                     castTime = -1.0f;
                     myUI.updateCast(0);
+                    myState.UpdateCastServerRPC(false, true);
                 }
                 
             } else {
@@ -119,17 +122,19 @@ public class PlayerAbilities : MonoBehaviour
         if (valid != -1.0f){
             StartCoroutine(cardObj.HighlightCard(true));
             if (spell.castTime > 0){
-            // Start Casting
-            castTime = 0.0f;
-            totalCastTime = valid;
-            castingSpell = spell;
-            castingSpellSlot = slot;
+                // Start Casting
+                castTime = 0.0f;
+                myState.UpdateCastServerRPC(true);
+                totalCastTime = valid;
+                castingSpell = spell;
+                castingSpellSlot = slot;
             } else {
                 myState.castSpell(slot);
                 Transform myTar = null;
                 if (spell.reqTarget){
                     myTar = Targets[currTarget].transform;
                 }
+                myState.InstantCastServerRPC();
                 spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
             }
         } else
@@ -190,6 +195,7 @@ public class PlayerAbilities : MonoBehaviour
             currTarget = -1;
             myUI.updateCast(0);
             castTime = -1.0f;
+            myState.UpdateCastServerRPC(false, true);
         } else {
             Targets[currTarget].GetComponent<PlayerStateScript>().myUI.target();
         }
@@ -253,6 +259,7 @@ public class PlayerAbilities : MonoBehaviour
             currTarget = -1;
             myUI.updateCast(0);
             castTime = -1.0f;
+            myState.UpdateCastServerRPC(false, true);
         }
 
         int indexOfNull = Targets.IndexOf(null);

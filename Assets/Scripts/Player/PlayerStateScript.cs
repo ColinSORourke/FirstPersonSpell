@@ -59,30 +59,37 @@ public class PlayerStateScript : NetworkBehaviour
     public bool alive = true;
     //public AliveManager aliveManager;
 
-    public enum AnimState
-    {
-        Idle,
-        RunLeft,
-        RunRight,
-        StrafeLeft,
-        StrafeRight,
-        Run,
-        RunBack,
-        JumpStart,
-        JumpFall,
-        JumpEnd,
-        BeingHit,
-        CastStart,
-        CastIdle,
-        CastEnd
-    }
 
     [SerializeField]
-    private NetworkVariable<AnimState> networkAnimState = new NetworkVariable<AnimState>();
+    private NetworkVariable<Vector2> moveState = new NetworkVariable<Vector2>();
+
+    [SerializeField]
+    private NetworkVariable<bool> jumpState = new NetworkVariable<bool>();
+
+    [SerializeField]
+    private NetworkVariable<bool> groundState = new NetworkVariable<bool>();
+
+    [SerializeField]
+    private NetworkVariable<bool> casting = new NetworkVariable<bool>();
+
+    [SerializeField]
+    private NetworkVariable<int> castInstant = new NetworkVariable<int>();
+
+    [SerializeField]
+    private NetworkVariable<bool> castFail = new NetworkVariable<bool>();
+
+    [SerializeField]
+    private NetworkVariable<int> hitsAnim = new NetworkVariable<int>();
+
+
+    private Vector2 oldMoveState = new Vector2(0.0f, 0.0f);
+    private bool oldJumpState = false;
+    private bool oldGroundState = true;
+    private bool oldCastState = false;
+    private int oldInstant = 0;
+    private int oldHits = 0;
 
     private Animator animator;
-
-    private AnimState oldAnimState = AnimState.Idle;
 
     // Start is called before the first frame update
     void Start()
@@ -136,9 +143,45 @@ public class PlayerStateScript : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (oldAnimState != networkAnimState.Value) {
-            oldAnimState = networkAnimState.Value;
-            animator.SetTrigger($"{networkAnimState.Value}");
+        if (oldMoveState != moveState.Value) {
+            oldMoveState = moveState.Value;
+            animator.SetInteger("LR", (int) Mathf.Round(oldMoveState.x));
+            animator.SetInteger("Forward", (int) Mathf.Round(oldMoveState.y));
+        }
+        if (oldJumpState != jumpState.Value){
+            oldJumpState = jumpState.Value;
+            animator.SetBool("Jumped", oldJumpState);
+        }
+        if (oldGroundState != groundState.Value){
+            oldGroundState = groundState.Value;
+            animator.SetBool("OnGround", oldGroundState);
+        }
+        if (oldCastState != casting.Value){
+            oldCastState = casting.Value;
+            if (oldCastState){
+                Debug.Log("Start Cast Anim");
+                animator.SetTrigger("StartCasting");
+            } else {
+                if (!castFail.Value){
+                    Debug.Log("Finish Cast Anim");
+                    animator.SetTrigger("FinishCasting");
+                } else {
+                    Debug.Log("Fail Cast Anim");
+                    animator.SetTrigger("FailCast");
+                }
+            }
+        }
+
+        if (oldInstant != castInstant.Value){
+            oldInstant = castInstant.Value;
+            Debug.Log("Instant Cast Anim");
+            animator.SetTrigger("StartCasting");
+            animator.SetTrigger("FinishCasting");
+        }
+
+        if (oldHits != hitsAnim.Value){
+            oldHits = hitsAnim.Value;
+            animator.SetTrigger("Hit");
         }
     }
 
@@ -345,6 +388,7 @@ public class PlayerStateScript : NetworkBehaviour
     public void takeDamage(float dam, bool mult = true){
         if (mult){
             dam *= takeDamageMult;
+            this.hitAnimServerRPC();
         }
         if (dam > currentBonus){
             dam -= currentBonus;
@@ -449,8 +493,34 @@ public class PlayerStateScript : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void UpdateAnimStateServerRpc(AnimState state) {
-        networkAnimState.Value = state;
+    public void UpdateMoveStateServerRpc(Vector2 Move) {
+        moveState.Value = Move;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateJumpStateServerRpc(bool b) {
+        jumpState.Value = b;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateGroundStateServerRpc(bool b) {
+        groundState.Value = b;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateCastServerRPC(bool b, bool f = false){
+        casting.Value = b;
+        castFail.Value = f;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void InstantCastServerRPC(){
+        castInstant.Value += 1;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void hitAnimServerRPC(){
+        hitsAnim.Value += 1;
     }
 
     [ServerRpc(RequireOwnership = false)]

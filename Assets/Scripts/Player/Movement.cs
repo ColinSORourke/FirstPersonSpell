@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     Vector3 verticalVelocity = Vector3.zero;
     [SerializeField] LayerMask groundMask;
     bool isGrounded;
+    bool previouslyGrounded = true;
     public float coyoteTime = 0.1f;
     private float graceTime;
 
@@ -25,10 +26,20 @@ public class Movement : MonoBehaviour
         isGrounded = Physics.CheckSphere(transform.position - (new Vector3(0, transform.localScale.y, 0)), 0.2f, groundMask);
         if (isGrounded)
         {
-            verticalVelocity.y = 0;
-            graceTime = coyoteTime;
+            if (!previouslyGrounded){
+                playerStateScript.UpdateGroundStateServerRpc(true);
+                playerStateScript.UpdateJumpStateServerRpc(false);
+                verticalVelocity.y = 0;
+                graceTime = coyoteTime;
+                previouslyGrounded = true;
+            }
         } else
         {
+            if (previouslyGrounded){
+                playerStateScript.UpdateGroundStateServerRpc(false);
+                previouslyGrounded = false;
+            }
+            
             graceTime -= Time.deltaTime;
         }
 
@@ -38,24 +49,23 @@ public class Movement : MonoBehaviour
         // Jump: v = sqrt(-2 * jumpHeight * gravity)
         if (jump)
         {
+            
             if (isGrounded || graceTime > 0)
             {
+                playerStateScript.UpdateJumpStateServerRpc(true);
                 graceTime = 0;
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;
-            playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.JumpStart);
         }
 
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
 
-        if (verticalVelocity.y < -1) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.JumpFall);
-        else this.setHorizontalAnimatorState(horizontalInput);
-        /*
-        else if (horizontalInput.x == 0 && horizontalInput.y == 0) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
-        else playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Run);
-        */
+        /* if (verticalVelocity.y < -1) playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.JumpFall);
+        else this.setHorizontalAnimatorState(horizontalInput); */
+        
+        playerStateScript.UpdateMoveStateServerRpc(horizontalInput);
     }
 
     public void ReceiveInput(Vector2 _horizontalInput)
@@ -65,40 +75,12 @@ public class Movement : MonoBehaviour
 
     public void OnJumpPressed()
     {
+        
         jump = true;
     }
 
     public void setMovementSpeed(float newSpeed)
     {
         speed = newSpeed;
-    }
-
-    private void setHorizontalAnimatorState(Vector2 horizontalInput)
-    {
-        Debug.Log("SetHorizonalAnimatorState");
-        switch (horizontalInput)
-        {
-            case Vector2 v when v.Equals(Vector2.zero):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Idle);
-                break;
-            case Vector2 v when v.Equals(Vector2.left):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.StrafeLeft);
-                break;
-            case Vector2 v when v.Equals(Vector2.right):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.StrafeRight);
-                break;
-            case Vector2 v when v.Equals(new Vector2(-1, 1)):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunLeft);
-                break;
-            case Vector2 v when v.Equals(Vector2.one):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunRight);
-                break;
-            case Vector2 v when v.Equals(Vector2.down):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.RunBack);
-                break;
-            case Vector2 v when v.Equals(Vector2.up):
-                playerStateScript.UpdateAnimStateServerRpc(PlayerStateScript.AnimState.Run);
-                break;
-        }
     }
 }
