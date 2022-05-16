@@ -144,7 +144,6 @@ public class GenericUI : MonoBehaviour
 
 
     public virtual void target(){
-        TargetMark.enabled = true;
         RangeIndicator.enabled = true;
     }
 
