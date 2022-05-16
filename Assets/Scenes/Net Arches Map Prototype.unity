@@ -667,6 +667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lampTall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
 --- !u!4 &171869004 stripped
@@ -1835,6 +1839,10 @@ PrefabInstance:
     - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_Name
       value: lampShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
@@ -3104,6 +3112,10 @@ PrefabInstance:
     - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_Name
       value: lampShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
@@ -6043,6 +6055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lampTall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
 --- !u!4 &771713419 stripped
@@ -6693,6 +6709,10 @@ PrefabInstance:
     - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
       propertyPath: m_Name
       value: lampTall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
@@ -7691,6 +7711,10 @@ PrefabInstance:
     - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_Name
       value: lampShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
@@ -9930,6 +9954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lampShort
       objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11221,6 +11249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lampTall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
 --- !u!4 &1188619404 stripped
@@ -12003,6 +12035,10 @@ PrefabInstance:
     - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_Name
       value: lampShort
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487779070123571344, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7827889234674557482, guid: eff3e6b52e91d7947b9adf98cd7977c3, type: 3}
       propertyPath: m_RootOrder
@@ -20363,6 +20399,10 @@ PrefabInstance:
     - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
       propertyPath: m_Name
       value: lampTall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466251480512964733, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24c27995a07e4847b8358d81f15e051, type: 3}
