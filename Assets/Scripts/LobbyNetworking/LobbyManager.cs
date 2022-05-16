@@ -353,7 +353,7 @@ public class LobbyManager : NetworkBehaviour
             ind += 1;
         }
         GameObject model = lobbyPlayerModels[ind];
-        MeshRenderer modelRenderer = model.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
+        SkinnedMeshRenderer modelRenderer = model.transform.GetChild(1).GetChild(1).GetComponent<SkinnedMeshRenderer>();
         modelRenderer.material = model.GetComponent<ModelSkinStorage>().characterMaterials[sColor];
     }
 }
