@@ -163,7 +163,6 @@ public class GenericUI : MonoBehaviour
     }
 
     public virtual void unTarget(){
-        TargetMark.enabled = false;
         RangeIndicator.enabled = false;
     }
 }
