@@ -24,7 +24,7 @@ public class CardUI : MonoBehaviour
         }
         if ( (((int)spell.range)/15) - 1 >= 0){
             Range.sprite = rangeIcons[ (((int)spell.range)/15) - 1];
-            Range.color = rangeColors[ (((int)spell.range)/15) - 1];
+            //Range.color = rangeColors[ (((int)spell.range)/15) - 1];
         }
 
         ManaCost.text = spell.manaCost + "";
