@@ -26,17 +26,6 @@ public class GenericUI : MonoBehaviour
     public Sprite RangeHigh;
     public Sprite RangeNo;
 
-    public ParticleSystem ManaGlitter;
-    public ParticleSystem ManaTwinkle;
-    public ParticleSystem ManaBlueGlitter;
-    public ParticleSystem UltTwinkle;
-    public ParticleSystem UltSparks;
-    public ParticleSystem UltRing;
-    public ParticleSystem UltRainbow;
-
-    public GameObject ManaParticleSystem;
-    public GameObject UltParticleSystem;
-
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -93,20 +82,8 @@ public class GenericUI : MonoBehaviour
         */
     }
 
-    public virtual void startManaPS(){
 
-    }
-    
-    public virtual void startUltPS(){
 
-    }
-    public virtual void stopManaPS(){
-
-    }
-    
-    public virtual void stopUltPS(){
-
-    }
     public virtual void displayShield(){
         Shield.enabled = true;
     }

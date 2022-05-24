@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8051063095653967600}
   - component: {fileID: 8051063095653967606}
   - component: {fileID: 8051063095653967607}
-  - component: {fileID: 7675684667648467133}
   m_Layer: 5
   m_Name: Blueglitter
   m_TagString: Untagged
@@ -4792,7 +4791,7 @@ ParticleSystemRenderer:
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
-  m_SortingFudge: -100
+  m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
   m_RenderAlignment: 0
@@ -4810,11 +4809,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!222 &7675684667648467133
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8051063095653967601}
-  m_CullTransparentMesh: 1

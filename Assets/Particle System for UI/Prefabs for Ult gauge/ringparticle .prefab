@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5245561270673323233}
   - component: {fileID: 5245561270673323239}
   - component: {fileID: 5245561270673323238}
-  - component: {fileID: 82605027404233545}
   m_Layer: 0
   m_Name: 'ringparticle '
   m_TagString: Untagged
@@ -4819,11 +4818,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!222 &82605027404233545
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245561270673323232}
-  m_CullTransparentMesh: 1

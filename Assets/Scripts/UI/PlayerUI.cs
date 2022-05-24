@@ -32,33 +32,12 @@ public class PlayerUI : GenericUI
         manaCount = UITrans.Find("ManaText").gameObject;
         ultCount = UITrans.Find("UltText").gameObject;
         shieldCount = UITrans.Find("ShieldText").gameObject;
-
-        ManaParticleSystem = UITrans.Find("Mana_PS").gameObject; //.Find("glitter").GetComponent<ParticleSystem>();
-        ManaTwinkle = UITrans.Find("Twinkle(Mana)").GetComponent<ParticleSystem>();//ManaParticleSystem.transform.Find("Twinkle(Mana)").GetComponent<ParticleSystem>();  // GetComponent<ParticleSystem>();
-        ManaGlitter = ManaParticleSystem.transform.Find("glitter").GetComponent<ParticleSystem>();
-        ManaBlueGlitter = ManaParticleSystem.transform.Find("Blueglitter").GetComponent<ParticleSystem>();
-
-        UltParticleSystem = UITrans.Find("Ult_PS").gameObject;
-        UltTwinkle = UltParticleSystem.transform.Find("twinkle(ult)").GetComponent<ParticleSystem>();
-        UltSparks = UltParticleSystem.transform.Find("sparks(ult)").GetComponent<ParticleSystem>();
-        //UltRing = UltParticleSystem.transform.Find("ringparticle").GetComponent<ParticleSystem>();
-        UltRainbow = UltParticleSystem.transform.Find("RainbowParticle").GetComponent<ParticleSystem>();
-                //Shield.enabled = false;
+        //Shield.enabled = false;
     }
 
     public override void updateMana(float currMana, float percentage){
         ManaBar.fillAmount = percentage * 0.86f;
         manaCount.GetComponent<Text>().text = currMana.ToString("n1");
-        if(ManaBar.fillAmount >= 50.0){
-            ManaTwinkle.Play();
-            ManaGlitter.Play();
-            ManaBlueGlitter.Play();
-        }
-        else{
-            ManaTwinkle.Stop();
-            ManaGlitter.Stop();
-            ManaBlueGlitter.Stop();
-        }
     }
 
     public override void updateHealth(float currHealth, float currPerc, float bonusPerc){
@@ -70,7 +49,6 @@ public class PlayerUI : GenericUI
     public override void updateUlt(float currUlt, float percentage){
         UltBar.fillAmount = percentage;
         ultCount.GetComponent<Text>().text = currUlt.ToString("n1");
-
     }
 
     override public void displayShield(){
@@ -99,36 +77,6 @@ public class PlayerUI : GenericUI
         cardtrans.SetParent(UI.transform); //Assign the newly created Image GameObject as a Child of the Parent Panel.
         cardObj.SetActive(true);
         spellIcons[slot] = cardObj;
-    }
-
-    public override void startManaPS(){
-        Debug.Log("Mana PS started");
-        ManaTwinkle.Play();
-        ManaGlitter.Play();
-        ManaBlueGlitter.Play();
-    }
-    
-    public override void startUltPS(){
-        Debug.Log("Ult PS started");
-        UltTwinkle.Play();
-        UltSparks.Play();
-           // UltRing.Play();
-        UltRainbow.Play();
-    }
-
-    public override void stopManaPS(){
-        Debug.Log("Mana PS ended");
-        ManaTwinkle.Stop();
-        ManaGlitter.Stop();
-        ManaBlueGlitter.Stop();
-    }
-    
-    public override void stopUltPS(){
-        Debug.Log("Ult PS ended");
-        UltTwinkle.Stop();
-        UltSparks.Stop();
-           // UltRing.Play();
-        UltRainbow.Stop();
     }
 
     override public void target(){

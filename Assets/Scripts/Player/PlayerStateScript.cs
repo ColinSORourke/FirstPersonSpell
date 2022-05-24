@@ -109,7 +109,6 @@ public class PlayerStateScript : NetworkBehaviour
         myUI.updateUlt(currUlt, 0.0f);
 
         animator = GetComponentInChildren<Animator>();
-        myUI.startManaPS();
     }
 
     public void setDeck(){
@@ -277,7 +276,6 @@ public class PlayerStateScript : NetworkBehaviour
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }
-
     }
 
     public void OnBonusChanged(float oldValue, float newValue) {
@@ -286,13 +284,6 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void OnManaChanged(float oldValue, float newValue) {
         myUI.updateMana(currMana, currMana / maxMana);
-        if (currMana == maxMana){
-            myUI.startManaPS();
-  
-        }
-        else{
-            myUI.stopManaPS();
-        }
     }
 
     public void OnUltChanged(float oldValue, float newValue) {
@@ -300,13 +291,6 @@ public class PlayerStateScript : NetworkBehaviour
         if (currUlt >= ultSpell.ultCost){
             changeUltServerRpc(-ultSpell.ultCost);
             spellQueue.Add(ultSpell);
-        }
-        if (currUlt == maxUlt){
-            myUI.startUltPS();
-  
-        }
-        else{
-            myUI.stopUltPS();
         }
     }
 
