@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8813215877357079334}
   - component: {fileID: 8813215877357079384}
   - component: {fileID: 8813215877357079385}
+  - component: {fileID: -7689898697870996181}
   m_Layer: 0
   m_Name: RainbowParticle
   m_TagString: Untagged
@@ -4818,3 +4819,11 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!222 &-7689898697870996181
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8813215877357079335}
+  m_CullTransparentMesh: 1

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9178479233012403}
   - component: {fileID: 9178479233012405}
   - component: {fileID: 9178479233012404}
+  - component: {fileID: 238169194938651832}
   m_Layer: 5
   m_Name: twinkle(mana)
   m_TagString: Untagged
@@ -4791,7 +4792,7 @@ ParticleSystemRenderer:
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
-  m_SortingFudge: 0
+  m_SortingFudge: -100
   m_NormalDirection: 1
   m_ShadowBias: 0
   m_RenderAlignment: 0
@@ -4809,3 +4810,11 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!222 &238169194938651832
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9178479233012402}
+  m_CullTransparentMesh: 1
