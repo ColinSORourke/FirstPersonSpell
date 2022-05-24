@@ -13,20 +13,16 @@ public class WindUpSpell : baseSpellScript
         // None
         Debug.Log("Cast Windup");
         
-        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.changeManaServerRpc(10.0f);
-        caster.applyAura(Player, aura_A, 5);
+       
 
     }
 
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
+        caster.changeManaServerRpc(10.0f);
+        caster.applyAura(Player, aura_A, 5);
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

@@ -11,9 +11,7 @@ public class BloodSiphon : baseSpellScript
     {
         // None
         Debug.Log("Cast blood siphon");
-        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         PlayerStateScript self = Player.GetComponent<PlayerStateScript>();
-        target.takeDamage(damage);
         self.changeHealthServerRpc(5.0f);
         if (slot == 0)
         {
@@ -25,11 +23,9 @@ public class BloodSiphon : baseSpellScript
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
+        PlayerStateScript self = Player.GetComponent<PlayerStateScript>();
+        target.takeDamage(damage);
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

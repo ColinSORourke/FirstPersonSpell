@@ -24,11 +24,6 @@ public class FlyBySpell : baseSpellScript
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
         tHP.takeDamage(damage + (caster.moveSpeed/2));
 
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

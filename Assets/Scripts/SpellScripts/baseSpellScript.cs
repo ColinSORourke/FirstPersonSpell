@@ -37,7 +37,7 @@ public class baseSpellScript : ScriptableObject
 
     public virtual void onCastGeneral(Transform Player, Transform Target, int index, int slot){
         if (castParticle != null){
-            Instantiate(castParticle, Player);
+            FindObjectOfType<SpellRpcs>().spawnCastParticleServerRpc(NetworkManager.Singleton.LocalClientId, index, true);
         }
         this.onCastSpecific(Player, Target, slot);
 
@@ -55,7 +55,6 @@ public class baseSpellScript : ScriptableObject
             } else {
                 FindObjectOfType<SpellRpcs>().HitPlayerServerRpc(NetworkManager.Singleton.LocalClientId, Player.GetComponent<NetworkObject>().OwnerClientId, index, slot);
             }
-            
         }
     }
 

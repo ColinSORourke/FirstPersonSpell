@@ -24,12 +24,7 @@ public class IceStackSpell : baseSpellScript
             target.takeDamage(3 * numStacks);
             target.removeAura(target.hasAura(aura_A.id));
         }
-            if (hitParticle != null)
-            {
-                //var particleBurst = Instantiate(hitParticle, Target);
-                //particleBurst.Emit(20);
-                FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-            }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         
         Debug.Log("Hit IceStack Spell");
     }

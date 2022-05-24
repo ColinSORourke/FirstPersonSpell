@@ -272,6 +272,7 @@ public class PlayerStateScript : NetworkBehaviour
             Debug.Log("Died: " + NetworkManager.Singleton.LocalClientId);
             alive = false;
             transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat!";
+            transform.Find("KeyUI/SpectateText").gameObject.SetActive(true);
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
         }

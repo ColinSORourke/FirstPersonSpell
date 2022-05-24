@@ -12,6 +12,13 @@ public class RecalibrateSpell : baseSpellScript
         // None
         Debug.Log("Cast Windup");
         
+        
+
+    }
+
+    // Update is called once per frame
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
+    {
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
         if (slot == 0) {
             if(caster.hasAura(aura_A.id) != -1) {
@@ -20,17 +27,6 @@ public class RecalibrateSpell : baseSpellScript
             }
         }
         caster.applyAura(Player, aura_A, 5);
-
-    }
-
-    // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot, int index)
-    {
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

@@ -28,11 +28,6 @@ public class SnowballSpell : baseSpellScript
 
         Debug.Log("Hit Snowball Spell");
 
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

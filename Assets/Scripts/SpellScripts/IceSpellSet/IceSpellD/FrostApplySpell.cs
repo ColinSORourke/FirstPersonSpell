@@ -11,6 +11,13 @@ public class FrostApplySpell : baseSpellScript
     {
         // None
         Debug.Log("Cast FrostApply Spell");
+        
+
+    }
+
+    // Update is called once per frame
+    override public void onHit(Transform Player, Transform Target, int slot, int index)
+    {
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         float duration = 8.0f;
         target.applyAura(Player, aura_A, duration);
@@ -19,16 +26,6 @@ public class FrostApplySpell : baseSpellScript
             target.applyAura(Player, aura_A, duration);
         }
 
-    }
-
-    // Update is called once per frame
-    override public void onHit(Transform Player, Transform Target, int slot, int index)
-    {
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

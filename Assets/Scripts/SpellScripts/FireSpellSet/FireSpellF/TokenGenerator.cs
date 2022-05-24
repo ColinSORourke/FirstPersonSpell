@@ -10,26 +10,20 @@ public class TokenGenerator : baseSpellScript
     override public void onCastSpecific(Transform Player, Transform Target, int slot){
         // None
         Debug.Log("Cast Token Generator Spell");
+        PlayerStateScript targeter = Player.GetComponent<PlayerStateScript>();
+        if (slot == 0){
+            targeter.spellQueue.Add(token);     
+        }
     }
 
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
-        PlayerStateScript targeter = Player.GetComponent<PlayerStateScript>();
+        
         //Targeting targeter = Player.GetComponent<Targeting>();
         target.takeDamage(this.damage);
-        Debug.Log("Hit Basic Fire Spell");
-        Debug.Log(targeter);
-        if (slot == 0){
-            targeter.spellQueue.Add(token);
-            if (hitParticle != null){
-                //var particleBurst = Instantiate(hitParticle, Player);
-                //particleBurst.Emit(10);
-                FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-                Debug.Log("Emitted");
-            }
-        }
         
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

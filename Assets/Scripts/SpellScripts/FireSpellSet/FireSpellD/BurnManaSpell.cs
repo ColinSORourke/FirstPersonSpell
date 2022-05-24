@@ -19,13 +19,8 @@ public class BurnManaSpell : baseSpellScript
         target.takeDamage(this.damage);
         if (target.hasAura(aura_A.id) != -1){
             target.changeManaServerRpc(-10.0f);
-            //pMana.changeMana(10.0f);
-            if (hitParticle != null){
-                //var particleBurst = Instantiate(hitParticle, Target);
-                //particleBurst.Emit(20);
-                FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-            }
         }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         Debug.Log("Hit Mana Fire Spell");
     }
 }

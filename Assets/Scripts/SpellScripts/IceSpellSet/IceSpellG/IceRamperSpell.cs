@@ -23,12 +23,7 @@ public class IceRamperSpell : baseSpellScript
             PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
             player.changeUltServerRpc(1.0f);
         }
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(20);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
 
         Debug.Log("Hit Snowball Spell");
     }

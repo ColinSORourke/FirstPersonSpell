@@ -25,10 +25,6 @@ public class IceUlt : baseSpellScript
         }
         float duration = 15.0f;
         target.applyAura(Player, aura_A, duration);
-        if (hitParticle != null)
-        {
-            //Instantiate(hitParticle, Target);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
     }
 }

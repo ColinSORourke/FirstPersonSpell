@@ -18,12 +18,7 @@ public class DamageFrostbite : baseSpellScript
     {
         PlayerStateScript target = Target.GetComponent<PlayerStateScript>();
         target.takeDamage(damage);
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         float duration = 8.0f;
         target.applyAura(Player, aura_A, duration);
         

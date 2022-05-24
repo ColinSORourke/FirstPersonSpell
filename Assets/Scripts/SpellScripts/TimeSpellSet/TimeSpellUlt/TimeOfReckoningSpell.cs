@@ -11,21 +11,13 @@ public class TimeOfReckoningSpell : baseSpellScript
     {
         // None
         Debug.Log("Cast TimeOfReckoning");
-        
-        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
-        caster.changeManaServerRpc(20.0f);
-        caster.applyAura(Player, aura_A, 20);
-
     }
 
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
-        if (hitParticle != null)
-        {
-            //var particleBurst = Instantiate(hitParticle, Target);
-            //particleBurst.Emit(10);
-            FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-        }
+        PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
+        caster.changeManaServerRpc(20.0f);
+        caster.applyAura(Player, aura_A, 20);
     }
 }

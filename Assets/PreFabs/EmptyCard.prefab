@@ -304,11 +304,11 @@ MonoBehaviour:
   Range: {fileID: 2820710308978929645}
   Back: {fileID: 8577599014616638510}
   cardBacks:
-  - {fileID: 21300000, guid: 9f9c43a20f8a44b269eaae2cc22b28d4, type: 3}
-  - {fileID: 21300000, guid: a2a7cba6d6a0f42deb738250f2d66b08, type: 3}
-  - {fileID: 21300000, guid: d9885c7a2cfab4def894869992fab231, type: 3}
-  - {fileID: 21300000, guid: fa57d689b16974426bf524f90ec0f605, type: 3}
-  - {fileID: 21300000, guid: dadaaf8df38e14fcea7903180ebc97c5, type: 3}
+  - {fileID: 21300000, guid: 11fea129a396b474fb17df2758346683, type: 3}
+  - {fileID: 21300000, guid: f69802211b194469bb207a90b937ceec, type: 3}
+  - {fileID: 21300000, guid: c7669598d2c964e89a3f99811244883a, type: 3}
+  - {fileID: 21300000, guid: ec914fc0dc8bd472dbc325323fccdac0, type: 3}
+  - {fileID: 21300000, guid: 7c6e31c842f024b5a90792be0ebca75d, type: 3}
   rangeIcons:
   - {fileID: 21300000, guid: 5cb130d21cbc01042bb482ba3ad33bb7, type: 3}
   - {fileID: 21300000, guid: e1b7ec29120c1744aad8bf4636eac48f, type: 3}
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2a7cba6d6a0f42deb738250f2d66b08, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f69802211b194469bb207a90b937ceec, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

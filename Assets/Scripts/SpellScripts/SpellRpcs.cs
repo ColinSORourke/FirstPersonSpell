@@ -60,14 +60,35 @@ public class SpellRpcs : NetworkBehaviour
         return true;
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void spawnHitParticleServerRpc(ulong sourceId, int index, ulong targetId, bool emit, int emitNum = 10){
+        SpawnParticleClientRpc(sourceId, index, targetId, emit, emitNum);
+    }
+
     [ClientRpc]
-    public void SpawnParticleClientRpc(ulong sourceId, int index, ulong targetId, bool emit) {
+    public void SpawnParticleClientRpc(ulong sourceId, int index, ulong targetId, bool emit, int emitNum = 10) {
         GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
         GameObject targetPlayer = GameObject.Find("Player " + targetId);
         baseSpellScript spell = sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index];
         var particle = Instantiate(spell.hitParticle, targetPlayer.transform);
         if (emit) {
-            particle.Emit(10);
+            particle.Emit(emitNum);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+
+    public void spawnCastParticleServerRpc(ulong sourceId, int index, bool emit, int emitNum = 10){
+        SpawnCastParticleClientRpc(sourceId, index, emit, emitNum);
+    }
+
+    [ClientRpc]
+    public void SpawnCastParticleClientRpc(ulong sourceId, int index, bool emit, int emitNum = 10) {
+        GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
+        baseSpellScript spell = sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index];
+        var particle = Instantiate(spell.hitParticle, sourcePlayer.transform);
+        if (emit) {
+            particle.Emit(emitNum);
         }
     }
 

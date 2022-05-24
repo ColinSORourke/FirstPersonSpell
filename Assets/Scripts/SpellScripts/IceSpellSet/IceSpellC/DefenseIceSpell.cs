@@ -10,14 +10,13 @@ public class DefenseIceSpell : baseSpellScript
     {
         // None
         Debug.Log("Cast Frost Shield Spell");
-        PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
-        player.changeBonusServerRpc(15.0f);
         //player.myUI.updateHealth(player.currentHealth / player.maxHealth, player.currentBonus / player.maxHealth);
     }
 
     // Update is called once per frame
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
-
+        PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
+        player.changeBonusServerRpc(15.0f);
     }
 }
