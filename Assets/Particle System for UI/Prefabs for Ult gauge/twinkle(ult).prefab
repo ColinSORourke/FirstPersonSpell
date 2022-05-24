@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 756215881966911401}
   - component: {fileID: 756215881966911403}
   - component: {fileID: 756215881966911400}
+  - component: {fileID: 5864639799968303863}
   m_Layer: 0
   m_Name: twinkle(ult)
   m_TagString: Untagged
@@ -4809,3 +4810,11 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!222 &5864639799968303863
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756215881966911406}
+  m_CullTransparentMesh: 1

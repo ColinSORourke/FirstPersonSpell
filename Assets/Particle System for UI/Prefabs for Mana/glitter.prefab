@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 754037364823828947}
   - component: {fileID: 754037364823828949}
   - component: {fileID: 754037364823828948}
+  - component: {fileID: 4874459256013345149}
   m_Layer: 5
   m_Name: glitter
   m_TagString: Untagged
@@ -4809,3 +4810,11 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!222 &4874459256013345149
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754037364823828946}
+  m_CullTransparentMesh: 1
