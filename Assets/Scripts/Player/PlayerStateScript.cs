@@ -52,7 +52,7 @@ public class PlayerStateScript : NetworkBehaviour
     public Movement myMove;
 
     public GenericUI myUI;
-    
+    public Animator damageIndicator;
 
     private SelectDeck allDecks;
 
@@ -391,6 +391,7 @@ public class PlayerStateScript : NetworkBehaviour
             dam *= takeDamageMult;
             this.hitAnimServerRPC();
         }
+        damageIndicator.Play("damage_vignette");
         if (dam > currentBonus){
             dam -= currentBonus;
             changeBonusServerRpc(-maxHealth);
