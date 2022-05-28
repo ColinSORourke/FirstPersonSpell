@@ -59,15 +59,21 @@ public class GenericUI : MonoBehaviour
         ShieldFill.fillAmount = percentage;
     }
 
+    public IEnumerator MoveOverTime (GameObject objectToMove, Vector2 end, float seconds){
+        float elapsedTime = 0;
+        Vector2 startingPos = objectToMove.GetComponent<RectTransform>().anchoredPosition;
+        while (elapsedTime < seconds){
+            objectToMove.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(startingPos, end, (elapsedTime / seconds)); 
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        objectToMove.GetComponent<RectTransform>().anchoredPosition = end;
+    }
     public virtual void shiftSpells(int slot, baseSpellScript spell){
         Destroy(spellIcons[slot].gameObject);
         int j = slot + 1; 
         while (j < spellIcons.Length){
-            var spellTrans = spellIcons[j].GetComponent<RectTransform>();
-            if (j == 3){spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(0, 30);
-
-            }
-            spellIcons[j].GetComponent<RectTransform>().anchoredPosition = spellTrans.anchoredPosition + new Vector2(140, 0);
+            StartCoroutine( MoveOverTime(spellIcons[j], new Vector2(130, 60)  + new Vector2(140, 0) * (1-j), 0.80f));
             spellIcons[j].name = "Spell" + (j-1);
             spellIcons[j-1] = spellIcons[j];
 
