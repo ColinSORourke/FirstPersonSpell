@@ -266,7 +266,9 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void OnHealthChanged(float oldValue, float newValue) {
         myUI.updateHealth(currentHealth, currentHealth / maxHealth, currentBonus / maxHealth);
-
+        if (oldValue - newValue > 2.0f){
+            damageIndicator.Play("damage_vignette");
+        }
         if (currentHealth <= 0 && GetComponent<NetworkObject>().IsLocalPlayer) {
             // Trigger death
             Debug.Log("Died: " + NetworkManager.Singleton.LocalClientId);
@@ -391,7 +393,6 @@ public class PlayerStateScript : NetworkBehaviour
             dam *= takeDamageMult;
             this.hitAnimServerRPC();
         }
-        damageIndicator.Play("damage_vignette");
         if (dam > currentBonus){
             dam -= currentBonus;
             changeBonusServerRpc(-maxHealth);
