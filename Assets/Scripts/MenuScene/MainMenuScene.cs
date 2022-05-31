@@ -26,8 +26,6 @@ public class MainMenuScene : MonoBehaviour
     Resolution[] resolutions;
 
     public GameObject playerCharacter;
-    //public Material[] characterMaterials;
-    private MeshRenderer playerCharacterRenderer;
 
     public Text mouseSensitivityText;
     public Text volumeText;
@@ -42,8 +40,6 @@ public class MainMenuScene : MonoBehaviour
         {
             Debug.Log("Missing mainCanvas object");
         }
-
-        playerCharacterRenderer = playerCharacter.transform.GetChild(0).GetChild(1).GetComponent<MeshRenderer>();
 
         makeResolutionOptions();
         LoadSettings();
