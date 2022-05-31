@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject gameplayUIGroup, menuUIGroup, player;
     [SerializeField] PlayerAbilities playerAbilities;
     //[SerializeField] Popup menu;
-    [SerializeField] GameObject leaveButton;
+    [SerializeField] GameObject inGameMenu;
 
     Controls controls;
     Controls.GameplayActions gameplayActions;
@@ -60,16 +60,28 @@ public class PlayerController : MonoBehaviour
         gameplayActions.Abilities2.performed += _ => playerAbilities.castSpell(1);
         gameplayActions.Abilities3.performed += _ => playerAbilities.castSpell(0);
         gameplayActions.Shield.performed += _ => playerAbilities.castShield();
-        gameplayActions.Escape.performed += _ => {
-            leaveButton.SetActive(!leaveButton.activeSelf);
-            if (leaveButton.activeSelf) {
+        gameplayActions.Escape.performed += _ => this.switchUIGroup();
+        /*
+        {
+            
+            inGameMenu.SetActive(!inGameMenu.activeSelf);
+            if (inGameMenu.activeSelf) {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+
+                //Disable mouse X & Y axis
+                gameplayActions.MouseX.Disable();
+                gameplayActions.MouseY.Disable();
             } else {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+
+                //Ensable mouse X & Y axis
+                gameplayActions.MouseX.Enable();
+                gameplayActions.MouseY.Enable();
             }
         };
+        */
     }
 
     private void OnDisable() {
@@ -121,21 +133,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 	
-    private void switchUIGroup(){
+    public void switchUIGroup(){
         bool temp = gameplayUIGroup.activeSelf;
         gameplayUIGroup.SetActive(!temp);
         menuUIGroup.SetActive(temp);
         Cursor.visible = menuUIGroup.activeSelf;
         if (!Cursor.visible) {
+            //Gameplay mode
             Cursor.lockState = CursorLockMode.Locked;
             player.GetComponent<MouseLook>().enabled = true;
             player.GetComponent<Movement>().enabled = true;
+
+            player.GetComponent<PlayerInGameSetting>().saveSetting();
+            mouseLook.SetSensitityFromPlayerPrefs();
         }
             
         else {
-            Cursor.lockState = CursorLockMode.None;
+            //Ingame Menu mode
+            Cursor.lockState = CursorLockMode.None; 
             player.GetComponent<MouseLook>().enabled = false;
             player.GetComponent<Movement>().enabled = false;
+
+            player.GetComponent<PlayerInGameSetting>().loadSettings();
         }
         
     }

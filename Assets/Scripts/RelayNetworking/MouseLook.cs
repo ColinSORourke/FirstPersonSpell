@@ -59,4 +59,15 @@ public class MouseLook : NetworkBehaviour
         mouseX = mouseInput.x * sensitivityX;
         mouseY = mouseInput.y * sensitivityY;
     }
+
+    public void SetSensitityFromManual(float newSensitivityX = 2.0f)
+    {
+        sensitivityX = newSensitivityX;
+        sensitivityY = sensitivityX / 2;
+    }
+    public void SetSensitityFromPlayerPrefs()
+    {
+        sensitivityX = PlayerPrefs.GetFloat("MouseSensitivityPreference");
+        sensitivityY = sensitivityX / 2;
+    }
 }

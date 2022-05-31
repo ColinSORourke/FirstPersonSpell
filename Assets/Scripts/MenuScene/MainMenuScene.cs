@@ -22,14 +22,15 @@ public class MainMenuScene : MonoBehaviour
     //public Dropdown aaDropdown;
     public Slider volumeSlider;
     public Slider mouseSensitivitySlider;
-    float currentVolume;
+
     Resolution[] resolutions;
 
     public GameObject playerCharacter;
-    public Material[] characterMaterials;
+    //public Material[] characterMaterials;
     private MeshRenderer playerCharacterRenderer;
 
     public Text mouseSensitivityText;
+    public Text volumeText;
     public GameObject KeybindsGroup;
 
     private bool isMenu = true;
@@ -111,11 +112,6 @@ public class MainMenuScene : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    public void SetVolume(float volume)
-    {
-        //audioMixer.SetFloat("Volume", volume);
-        currentVolume = volume;
-    }
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
@@ -126,11 +122,15 @@ public class MainMenuScene : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
     public void setMouseSensitivityValue(float value) { mouseSensitivityText.text = value.ToString("#.##"); }
+    public void setVolume(float volume) {
+        //audioMixer.SetFloat("Volume", volume);
+        volumeText.text = (volume*100).ToString("#");
+    }
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference", System.Convert.ToInt32(Screen.fullScreen));
-        PlayerPrefs.SetFloat("VolumePreference", currentVolume);
+        PlayerPrefs.SetFloat("VolumePreference", volumeSlider.value);
         PlayerPrefs.SetFloat("MouseSensitivityPreference", mouseSensitivitySlider.value);
     }
     public void LoadSettings()
@@ -150,36 +150,4 @@ public class MainMenuScene : MonoBehaviour
         PlayerPrefs.DeleteKey("MouseSensitivityPreference");
         LoadSettings();
     }
-
-    public void selectCharacter(string newCharacter)
-    {
-        Debug.Log("New Color/Model: " + newCharacter);
-        /* On Inspector:
-         * Mat1 - Blue
-         * Mat2 - Red
-         * Mat3 - Green
-         * Mat4 - Purple
-         */
-        switch (newCharacter)
-        {
-            case "Red":
-                playerCharacterRenderer.material = characterMaterials[1];
-                break;
-            case "Blue":
-                playerCharacterRenderer.material = characterMaterials[0];
-                break;
-            case "Green":
-                playerCharacterRenderer.material = characterMaterials[2];
-                break;
-            case "Purple":
-                playerCharacterRenderer.material = characterMaterials[3];
-                break;
-            case "White":
-                break;
-            case "Gray":
-                break;
-        }
-    }
-
-    
 }

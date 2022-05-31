@@ -535,4 +535,9 @@ public class PlayerStateScript : NetworkBehaviour
     public void ShieldActiveClientRpc(bool state) {
         if (!IsLocalPlayer) transform.Find("ShieldPlaceholder").gameObject.SetActive(state);
     }
+
+    public void setAudio(float value)
+    {
+        //audioSource.volume(value);
+    }
 }
