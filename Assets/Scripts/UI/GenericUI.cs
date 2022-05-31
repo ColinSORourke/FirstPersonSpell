@@ -10,7 +10,6 @@ public class GenericUI : MonoBehaviour
 
     public Image HealthBar;
     public Image BonusBar;
-    public Image TargetMark;
     public Camera cameraToLookAt;
     public Canvas UI;
     public Transform UITrans;
@@ -20,6 +19,7 @@ public class GenericUI : MonoBehaviour
     public Image UltBar;
     public Image Shield;
     public Image ShieldFill;
+    public GameObject TargetMark;
     public Image RangeIndicator;
     public Sprite RangeLow;
     public Sprite RangeMid;
@@ -150,25 +150,29 @@ public class GenericUI : MonoBehaviour
 
 
     public virtual void target(){
-        RangeIndicator.enabled = true;
+        TargetMark.SetActive(true);
     }
 
     public virtual void updateRange(float range){
         if (range < 15.0){
+            RangeIndicator.color = new Color32(84,255,95,255);
             RangeIndicator.sprite = RangeLow;
         }
         else if (range < 30.0){
+            RangeIndicator.color = new Color32(251,249,13,255);
             RangeIndicator.sprite = RangeMid;
         }
         else if (range < 45.0) {
+            RangeIndicator.color = new Color32(250,143,13,255);
             RangeIndicator.sprite = RangeHigh;
         } else {
+            RangeIndicator.color = new Color32(217,18,10,255);
             RangeIndicator.sprite = RangeNo;
         }
         
     }
 
     public virtual void unTarget(){
-        RangeIndicator.enabled = false;
+        TargetMark.SetActive(false);
     }
 }

@@ -15,7 +15,8 @@ public class TargetUI : GenericUI
         ManaBar = UITrans.Find("Mana").GetComponent<Image>();
         UltBar = UITrans.Find("UltBar").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
-        RangeIndicator = UITrans.Find("RangeIndicator").GetComponent<Image>();
+        RangeIndicator = UITrans.Find("TargetMark/RangeIndicator").GetComponent<Image>();
+        TargetMark = UITrans.Find("TargetMark").gameObject;
         Shield.enabled = false;
     }
 
