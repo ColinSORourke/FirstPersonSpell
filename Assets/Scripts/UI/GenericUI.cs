@@ -25,6 +25,7 @@ public class GenericUI : MonoBehaviour
     public Sprite RangeMid;
     public Sprite RangeHigh;
     public Sprite RangeNo;
+    public GameObject spinningUlt;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -174,5 +175,14 @@ public class GenericUI : MonoBehaviour
 
     public virtual void unTarget(){
         TargetMark.SetActive(false);
+    }
+
+    public virtual void getUlt(){
+        spinningUlt.SetActive(true);
+        Invoke("disableUlt", 3.5f);
+    }
+
+    public virtual void disableUlt(){
+        spinningUlt.SetActive(false);
     }
 }

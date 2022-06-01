@@ -292,6 +292,7 @@ public class PlayerStateScript : NetworkBehaviour
         myUI.updateUlt(currUlt, currUlt / ultSpell.ultCost);
         if (currUlt >= ultSpell.ultCost){
             changeUltServerRpc(-ultSpell.ultCost);
+            myUI.getUlt();
             spellQueue.Add(ultSpell);
         }
     }
@@ -534,6 +535,7 @@ public class PlayerStateScript : NetworkBehaviour
     [ClientRpc]
     public void ShieldActiveClientRpc(bool state) {
         if (!IsLocalPlayer) transform.Find("ShieldPlaceholder").gameObject.SetActive(state);
+        else if (state) damageIndicator.Play("shield_vignette");
     }
 
     public void setAudio(float value)

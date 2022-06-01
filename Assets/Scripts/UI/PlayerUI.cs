@@ -32,6 +32,7 @@ public class PlayerUI : GenericUI
         manaCount = UITrans.Find("ManaText").gameObject;
         ultCount = UITrans.Find("UltText").gameObject;
         shieldCount = UITrans.Find("ShieldText").gameObject;
+        spinningUlt = UITrans.Find("UltSpin").gameObject;
         //Shield.enabled = false;
     }
 
