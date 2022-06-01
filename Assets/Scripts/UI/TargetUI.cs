@@ -64,4 +64,12 @@ public class TargetUI : GenericUI
     override public void addIcon(baseSpellScript spell, int slot){
         // DO NOTHING
     }
+
+    override public void getUlt(){
+        // DO NOTHING
+    }
+
+    override public void disableUlt(){
+        // DO NOTHING
+    }
 }
