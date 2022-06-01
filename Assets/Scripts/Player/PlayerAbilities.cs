@@ -87,7 +87,7 @@ public class PlayerAbilities : MonoBehaviour
                         myTar = Targets[currTarget].transform;
                     }
                     castingSpell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, castingSpell), castingSpellSlot);
-					StartCoroutine(playAudio(castingSpell.getAudio("onCast")));
+                    myState.playAudioServerRpc(GetComponent<SoundStorage>().findIndex(castingSpell.getAudio("onCast")));
 					
                     myUI.updateCast(0);
                     myState.UpdateCastServerRPC(false, false);

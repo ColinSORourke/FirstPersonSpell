@@ -542,4 +542,16 @@ public class PlayerStateScript : NetworkBehaviour
     {
         //audioSource.volume(value);
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void playAudioServerRpc(int audioIndex) {
+        playAudioClientRpc(audioIndex);
+    }
+
+    [ClientRpc]
+    public void playAudioClientRpc(int audioIndex) {
+        Debug.Log("Play Audio");
+        audioSource.clip = GetComponent<SoundStorage>().selectSoundByInt(audioIndex);
+        audioSource.Play();
+    }
 }
