@@ -33,6 +33,8 @@ public class PlayerStateScript : NetworkBehaviour
     public float shieldDur = -1.0f;
 
     public AudioSource audioSource;
+    public AudioSource footSteppin;
+    public AudioSource localAudio;
 
     public List<liveAura> auras = new List<liveAura>();
 
@@ -240,6 +242,8 @@ public class PlayerStateScript : NetworkBehaviour
             if (alive) {
                 alive = false;
                 EndGameServerRpc();
+                localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(1);
+                localAudio.Play();
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
         }
@@ -274,6 +278,11 @@ public class PlayerStateScript : NetworkBehaviour
             Debug.Log("Died: " + NetworkManager.Singleton.LocalClientId);
             alive = false;
             transform.Find("KeyUI/Victory").gameObject.GetComponent<UnityEngine.UI.Text>().text = "Defeat!";
+
+            localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(0);
+            localAudio.Play();
+            playAudioServerRpc(10);
+
             transform.Find("KeyUI/SpectateText").gameObject.SetActive(true);
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
             AliveManager.Instance.RemoveAliveIdServerRpc(NetworkManager.Singleton.LocalClientId);
@@ -293,6 +302,8 @@ public class PlayerStateScript : NetworkBehaviour
         if (currUlt >= ultSpell.ultCost){
             changeUltServerRpc(-ultSpell.ultCost);
             myUI.getUlt();
+            localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(2);
+            localAudio.Play();
             spellQueue.Add(ultSpell);
         }
     }
@@ -454,17 +465,22 @@ public class PlayerStateScript : NetworkBehaviour
     public void pickupManaCrystal(){
         changeManaServerRpc(15.0f);
         manaPickedUp += 1;
+        localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(3);
+        localAudio.Play();
         //myUI.updateMana(currMana/maxMana);
     }
 
     public void pickupUltCrystal(){
+        localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(3);
+        localAudio.Play();
         changeUltServerRpc(3.0f);
-        
         //myUI.updateUlt(currUlt/ultSpell.ultCost);
     }
 
     public void pickupHealthCrystal(){
         changeHealthServerRpc(5.0f);
+        localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(3);
+        localAudio.Play();
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 
@@ -499,11 +515,24 @@ public class PlayerStateScript : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateMoveStateServerRpc(Vector2 Move) {
         moveState.Value = Move;
+        UpdateMoveSoundClientRpc(Move);
+    }
+
+    [ClientRpc]
+    public void UpdateMoveSoundClientRpc(Vector2 Move){
+        if ((moveState.Value.x != 0 || moveState.Value.y != 0) && groundState.Value){
+            footSteppin.enabled = true;
+        } else {
+            footSteppin.enabled = false;
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void UpdateJumpStateServerRpc(bool b) {
         jumpState.Value = b;
+        if (b){
+            playAudioClientRpc(11);
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -535,7 +564,10 @@ public class PlayerStateScript : NetworkBehaviour
     [ClientRpc]
     public void ShieldActiveClientRpc(bool state) {
         if (!IsLocalPlayer) transform.Find("ShieldPlaceholder").gameObject.SetActive(state);
-        else if (state) damageIndicator.Play("shield_vignette");
+        else if (state) {
+            playAudioServerRpc(9);
+            damageIndicator.Play("shield_vignette");
+        }
     }
 
     public void setAudio(float value)
