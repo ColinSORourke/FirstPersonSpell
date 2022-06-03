@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Load Existing Keybinds");
             controls.LoadBindingOverridesFromJson(rebinds);
         }
-        this.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("VolumePreference");
 
         gameplayActions = controls.Gameplay;
     }

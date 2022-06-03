@@ -2964,7 +2964,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3056,6 +3056,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fd3c98e29865418e84a530a6ddb834a, type: 3}
   - {fileID: 8300000, guid: ed2c0ded0c196428085d4a2a2aa7e153, type: 3}
   - {fileID: 8300000, guid: eb2c2927f8dbb401fb9720d0c1bda391, type: 3}
+  mySources: []
+  musicSource: {fileID: 0}
 --- !u!114 &2072123204897238261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3128,7 +3130,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4613,18 +4615,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2072123204897238261}
         m_TargetAssemblyTypeName: PlayerInGameSetting, Assembly-CSharp
         m_MethodName: setMusicVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2267572372445049463}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: set_volume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

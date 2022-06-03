@@ -19,8 +19,7 @@ public class MouseLook : NetworkBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") / 5 : 2.0f;
-        sensitivityY = sensitivityX / 2;
+        SetSensitityFromPlayerPrefs();
 
         if (IsLocalPlayer) {
             playerCamera.gameObject.SetActive(true);
@@ -60,14 +59,15 @@ public class MouseLook : NetworkBehaviour
         mouseY = mouseInput.y * sensitivityY;
     }
 
-    public void SetSensitityFromManual(float newSensitivityX = 2.0f)
+    public void SetSensitityFromManual(float newSensitivityX = 1.55f)
     {
-        sensitivityX = newSensitivityX;
+        sensitivityX = 0.05f + newSensitivityX*0.15f;
         sensitivityY = sensitivityX / 2;
     }
+
     public void SetSensitityFromPlayerPrefs()
     {
-        sensitivityX = PlayerPrefs.GetFloat("MouseSensitivityPreference");
+        sensitivityX = PlayerPrefs.HasKey("MouseSensitivityPreference") ? 0.05f + PlayerPrefs.GetFloat("MouseSensitivityPreference")*0.15f : 1.55f;
         sensitivityY = sensitivityX / 2;
     }
 }

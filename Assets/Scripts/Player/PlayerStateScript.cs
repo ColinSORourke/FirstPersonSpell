@@ -238,7 +238,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance.AlivesInGame < 2) {
+        /* if (AliveManager.Instance.AlivesInGame < 2) {
             if (alive) {
                 alive = false;
                 EndGameServerRpc();
@@ -246,7 +246,7 @@ public class PlayerStateScript : NetworkBehaviour
                 localAudio.Play();
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
-        }
+        } */
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -582,8 +582,10 @@ public class PlayerStateScript : NetworkBehaviour
 
     [ClientRpc]
     public void playAudioClientRpc(int audioIndex) {
-        Debug.Log("Play Audio");
-        audioSource.clip = GetComponent<SoundStorage>().selectSoundByInt(audioIndex);
-        audioSource.Play();
+        if (alive){
+            Debug.Log("Play Audio");
+            audioSource.clip = GetComponent<SoundStorage>().selectSoundByInt(audioIndex);
+            audioSource.Play();
+        }
     }
 }

@@ -14,6 +14,7 @@ public class PlayerInGameSetting : MonoBehaviour
     public void Start()
     {
         this.loadSettings();
+        
     }
 
     public void setMouseSensitivity(float value)
@@ -24,6 +25,15 @@ public class PlayerInGameSetting : MonoBehaviour
     public void setMusicVolume(float value)
     {
         musicVolumeText.text = (value * 100).ToString("#");
+        GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
+        int i = 0;
+        while (i < allPlayers.Length){
+            Debug.Log(i);
+            allPlayers[i].transform.GetComponent<SoundStorage>().updateVolume(value);
+            i += 1;
+        }
+        AudioSource musicSource = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
+        musicSource.volume = value;
     }
 
     public void saveSetting()
