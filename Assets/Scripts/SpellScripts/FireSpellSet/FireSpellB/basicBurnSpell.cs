@@ -22,5 +22,6 @@ public class basicBurnSpell : baseSpellScript
         }
         target.applyAura(Player, aura_A, duration);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

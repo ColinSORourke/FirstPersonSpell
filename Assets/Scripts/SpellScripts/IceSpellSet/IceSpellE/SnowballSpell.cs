@@ -29,5 +29,6 @@ public class SnowballSpell : baseSpellScript
         Debug.Log("Hit Snowball Spell");
 
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

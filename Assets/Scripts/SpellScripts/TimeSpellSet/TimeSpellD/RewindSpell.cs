@@ -20,5 +20,6 @@ public class RewindSpell : baseSpellScript
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
         caster.applyAura(Player, aura_A, 5);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, slot, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Player, "onHit");
     }
 }

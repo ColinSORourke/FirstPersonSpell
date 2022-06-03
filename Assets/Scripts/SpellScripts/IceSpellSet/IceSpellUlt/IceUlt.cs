@@ -26,5 +26,6 @@ public class IceUlt : baseSpellScript
         float duration = 15.0f;
         target.applyAura(Player, aura_A, duration);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, false);
+        this.playAudio(Target, "onHit");
     }
 }

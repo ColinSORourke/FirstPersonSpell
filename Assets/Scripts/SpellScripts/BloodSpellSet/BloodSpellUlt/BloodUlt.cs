@@ -36,5 +36,6 @@ public class BloodUlt : baseSpellScript
             self.changeManaServerRpc(-(self.currMana - 50.0f));
         }
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

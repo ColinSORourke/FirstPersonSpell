@@ -25,5 +25,6 @@ public class FlyBySpell : baseSpellScript
         tHP.takeDamage(damage + (caster.moveSpeed/2));
 
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

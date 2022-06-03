@@ -19,5 +19,6 @@ public class BasicIceSpell : baseSpellScript
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
         tHP.takeDamage(damage);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

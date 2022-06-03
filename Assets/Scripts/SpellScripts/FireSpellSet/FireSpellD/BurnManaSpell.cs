@@ -22,5 +22,6 @@ public class BurnManaSpell : baseSpellScript
         }
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         Debug.Log("Hit Mana Fire Spell");
+        this.playAudio(Target, "onHit");
     }
 }

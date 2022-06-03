@@ -19,5 +19,6 @@ public class flameBarrierSpell : baseSpellScript
         PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
         player.applyAura(Player, aura_B, 10.0f);
         //target.takeDamage(damage);
+        this.playAudio(Player, "onHit");
     }
 }

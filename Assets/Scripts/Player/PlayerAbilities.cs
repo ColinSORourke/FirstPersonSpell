@@ -136,6 +136,7 @@ public class PlayerAbilities : MonoBehaviour
                 }
                 myState.InstantCastServerRPC();
                 spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
+                myState.playAudioServerRpc(GetComponent<SoundStorage>().findIndex(castingSpell.getAudio("onCast")));
             }
         } else
         {

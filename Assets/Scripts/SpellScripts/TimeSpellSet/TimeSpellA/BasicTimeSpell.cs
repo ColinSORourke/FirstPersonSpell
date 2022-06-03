@@ -23,5 +23,6 @@ public class BasicTimeSpell : baseSpellScript
         caster.changeManaServerRpc(10.0f);
 
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Target, "onHit");
     }
 }

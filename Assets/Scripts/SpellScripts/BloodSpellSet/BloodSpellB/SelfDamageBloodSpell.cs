@@ -25,6 +25,7 @@ public class SelfDamageBloodSpell : baseSpellScript
         {
                 tHP.applyAura(Player, aura_A, duration); 
         }
+        this.playAudio(Target, "onHit");
         FindObjectOfType<SpellRpcs>().SpawnParticleClientRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }
