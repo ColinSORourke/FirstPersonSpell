@@ -106,8 +106,12 @@ public class PlayerStateScript : NetworkBehaviour
         }
         
         audioSource = this.GetComponent<AudioSource>();
-
-        InvokeRepeating("tick", 0.0f, 0.25f);
+        if (GetComponent<NetworkObject>().IsLocalPlayer){
+            InvokeRepeating("tick", 0.0f, 0.25f);
+        } else {
+            InvokeRepeating("falseTick", 0.0f, 0.25f);
+        }
+        
         myUI.updateUlt(currUlt, 0.0f);
 
         animator = GetComponentInChildren<Animator>();
@@ -216,6 +220,14 @@ public class PlayerStateScript : NetworkBehaviour
                 ShieldActiveServerRpc(false);
             }
         }
+
+        if (currUlt >= ultSpell.ultCost){
+            changeUltServerRpc(-ultSpell.ultCost);
+            myUI.getUlt();
+            localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(2);
+            localAudio.Play();
+            spellQueue.Add(ultSpell);
+        }
        
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
         //myUI.updateMana(currMana/maxMana);
@@ -247,6 +259,26 @@ public class PlayerStateScript : NetworkBehaviour
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
         }
+    }
+
+    void falseTick(){
+        // Decay Auras
+        int i = 0; 
+        while (i < auras.Count){
+            liveAura a = auras[i];
+            myUI.updateAura(a);
+            int tickInfo = a.update(0.25f);
+            if (tickInfo == -1){
+                if (GetComponent<NetworkObject>().IsLocalPlayer){
+                    auras[i].startRemove();
+                    this.removeAura(i);
+                } else {
+                    i += 1;
+                }
+            } else {
+                i += 1;
+            }
+        } 
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -299,13 +331,6 @@ public class PlayerStateScript : NetworkBehaviour
 
     public void OnUltChanged(float oldValue, float newValue) {
         myUI.updateUlt(currUlt, currUlt / ultSpell.ultCost);
-        if (currUlt >= ultSpell.ultCost){
-            changeUltServerRpc(-ultSpell.ultCost);
-            myUI.getUlt();
-            localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(2);
-            localAudio.Play();
-            spellQueue.Add(ultSpell);
-        }
     }
 
     public void applyAura(Transform src, baseAuraScript aura, float duration){
@@ -437,8 +462,8 @@ public class PlayerStateScript : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void changeHealthServerRpc(float value) {
         
-        _currentHealth.Value += value;
-        _currentHealth.Value = Mathf.Clamp(currentHealth, 0, maxHealth);
+        float newVal = _currentHealth.Value + value;
+        _currentHealth.Value = Mathf.Clamp(newVal, 0, maxHealth);
         //myUI.updateHealth(currentHealth/maxHealth, currentBonus/maxHealth);
     }
 

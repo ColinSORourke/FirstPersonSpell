@@ -266,8 +266,10 @@ public class PlayerAbilities : MonoBehaviour
         int indexOfNull = Targets.IndexOf(null);
         if (indexOfNull < 0) {
             GameObject leaverPlayer = GameObject.Find("Player " + leaverId);
-            visibleTargets.RemoveAt(Targets.IndexOf(leaverPlayer));
-            Targets.Remove(leaverPlayer);
+            if (Targets.IndexOf(leaverPlayer) != -1){
+                visibleTargets.RemoveAt(Targets.IndexOf(leaverPlayer));
+                Targets.Remove(leaverPlayer);
+            }
         } else {
             visibleTargets.RemoveAt(indexOfNull);
             Targets.RemoveAt(indexOfNull);
