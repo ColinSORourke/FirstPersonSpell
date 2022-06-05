@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [UltItem, ManaItem, HealthItem, Key]
+  tags:
+  - UltItem
+  - ManaItem
+  - HealthItem
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -18,7 +22,7 @@ TagManager:
   - Terrain
   - 
   - Ghost
-  - 
+  - EnemyInfo
   - 
   - 
   - 
