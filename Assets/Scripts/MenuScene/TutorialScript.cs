@@ -16,8 +16,7 @@ public class TutorialScript : MonoBehaviour
     void Start()
     {
         page = 0;
-        actualPage = page + 1;
-        pageCount.text = actualPage.ToString() + " / " + tutorialPages.Length.ToString();
+        updatePageCount();
     }
 
     public void nextPage()
@@ -33,9 +32,7 @@ public class TutorialScript : MonoBehaviour
         page = 0;
         tutorialPages[page].SetActive(true);
         }
-        actualPage = page + 1;
-        pageCount.text = actualPage.ToString() + " / " + tutorialPages.Length.ToString();
-
+        updatePageCount();
     }
 
     public void previousPage()
@@ -51,8 +48,34 @@ public class TutorialScript : MonoBehaviour
         page = tutorialPages.Length - 1;
         tutorialPages[page].SetActive(true);
         }
-        actualPage = page + 1;
-        pageCount.text = actualPage.ToString() + " / " + tutorialPages.Length.ToString();
+        updatePageCount();
+    }
+
+    public void jumpToControls()
+    {
+        tutorialPages[page].SetActive(false);
+        page = 0;
+        tutorialPages[page].SetActive(true);
+
+        updatePageCount();
+    }
+
+    public void jumpToCombat()
+    {
+        tutorialPages[page].SetActive(false);
+        page = 2;
+        tutorialPages[page].SetActive(true);
+
+        updatePageCount();
+    }
+
+    public void jumpToPickUps()
+    {
+        tutorialPages[page].SetActive(false);
+        page = 7;
+        tutorialPages[page].SetActive(true);
+
+        updatePageCount();
     }
 
     public void resetTutorial()
@@ -60,6 +83,12 @@ public class TutorialScript : MonoBehaviour
         tutorialPages[page].SetActive(false);
         page = 0;
         tutorialPages[page].SetActive(true);
+
+        updatePageCount();
+    }
+
+    public void updatePageCount()
+    {
         actualPage = page + 1;
         pageCount.text = actualPage.ToString() + " / " + tutorialPages.Length.ToString();
     }

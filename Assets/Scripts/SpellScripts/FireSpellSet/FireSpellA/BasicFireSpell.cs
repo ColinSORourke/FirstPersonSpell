@@ -19,9 +19,13 @@ public class BasicFireSpell : baseSpellScript
         target.takeDamage(damage);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         float duration = 5.0f;
-        if (target.hasAura(aura_A.id) != 1)
-        {
-                target.applyAura(Player, aura_A, duration); 
+        if (aura_A != null){
+            if (target.hasAura(aura_A.id) != 1)
+            {
+                    target.applyAura(Player, aura_A, duration); 
+            }
         }
+        
+        this.playAudio(Target, "onHit");
     }
 }

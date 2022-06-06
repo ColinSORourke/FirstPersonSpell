@@ -34,6 +34,6 @@ MonoBehaviour:
     ''Burn'' for 10s.'
   icon: {fileID: 21300000, guid: b6a6e8bf8c05d1e44a0ae20d6dd648b4, type: 3}
   castParticle: {fileID: 5429109308165724534, guid: cfb02cb924817ec40a71d40c5a1afd7d, type: 3}
-  hitParticle: {fileID: 4967446681425823520, guid: 21b55ef79d09cb54baca00c6d05b78e2, type: 3}
+  hitParticle: {fileID: 7544149644205433632, guid: d40082105a5473e4594087ab100a2d5f, type: 3}
   castAudioClip: {fileID: 8300000, guid: 7f828a4868275f74baa4d2e93de8840d, type: 3}
   hitAudioClip: {fileID: 8300000, guid: 497c862cf9107804dbd58620fded0be5, type: 3}

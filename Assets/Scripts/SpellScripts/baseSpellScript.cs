@@ -69,6 +69,12 @@ public class baseSpellScript : ScriptableObject
         }
     }
 
+    public void playAudio(Transform Player, string type){
+        PlayerStateScript tHP = Player.GetComponent<PlayerStateScript>();
+        int soundInd = Player.GetComponent<SoundStorage>().findIndex(this.getAudio(type));
+        tHP.playAudioServerRpc(soundInd);
+    }
+
     public virtual AudioClip getAudio(string type)
     {
         Debug.Log("Cast a basic audio");

@@ -18,5 +18,6 @@ public class DefenseIceSpell : baseSpellScript
     {
         PlayerStateScript player = Player.GetComponent<PlayerStateScript>();
         player.changeBonusServerRpc(15.0f);
+        this.playAudio(Player, "onHit");
     }
 }

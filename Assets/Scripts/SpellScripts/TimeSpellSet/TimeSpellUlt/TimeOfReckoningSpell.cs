@@ -19,5 +19,6 @@ public class TimeOfReckoningSpell : baseSpellScript
         PlayerStateScript caster = Player.GetComponent<PlayerStateScript>();
         caster.changeManaServerRpc(20.0f);
         caster.applyAura(Player, aura_A, 20);
+        this.playAudio(Player, "onHit");
     }
 }

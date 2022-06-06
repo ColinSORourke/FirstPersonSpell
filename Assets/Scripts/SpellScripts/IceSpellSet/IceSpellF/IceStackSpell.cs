@@ -27,5 +27,6 @@ public class IceStackSpell : baseSpellScript
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         
         Debug.Log("Hit IceStack Spell");
+        this.playAudio(Target, "onHit");
     }
 }

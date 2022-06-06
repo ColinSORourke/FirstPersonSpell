@@ -32,23 +32,24 @@ public class PlayerUI : GenericUI
         manaCount = UITrans.Find("ManaText").gameObject;
         ultCount = UITrans.Find("UltText").gameObject;
         shieldCount = UITrans.Find("ShieldText").gameObject;
+        spinningUlt = UITrans.Find("UltSpin").gameObject;
         //Shield.enabled = false;
     }
 
     public override void updateMana(float currMana, float percentage){
         ManaBar.fillAmount = percentage * 0.86f;
-        manaCount.GetComponent<Text>().text = currMana.ToString("n1");
+        manaCount.GetComponent<Text>().text = currMana.ToString("n0");
     }
 
     public override void updateHealth(float currHealth, float currPerc, float bonusPerc){
         HealthBar.fillAmount = currPerc;
         BonusBar.fillAmount = bonusPerc;
-        healthCount.GetComponent<Text>().text = ((currPerc + bonusPerc) * 50.0).ToString("n1");
+        healthCount.GetComponent<Text>().text = ((currPerc + bonusPerc) * 50.0).ToString("n0");
     }
 
     public override void updateUlt(float currUlt, float percentage){
         UltBar.fillAmount = percentage;
-        ultCount.GetComponent<Text>().text = currUlt.ToString("n1");
+        ultCount.GetComponent<Text>().text = currUlt.ToString("n0");
     }
 
     override public void displayShield(){

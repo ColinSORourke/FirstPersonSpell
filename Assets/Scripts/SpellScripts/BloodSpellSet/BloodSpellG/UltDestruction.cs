@@ -33,6 +33,6 @@ public class UltDestruction : baseSpellScript
         pHP.changeUltServerRpc(2.0f);
 
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
-
+        this.playAudio(Target, "onHit");
     }
 }

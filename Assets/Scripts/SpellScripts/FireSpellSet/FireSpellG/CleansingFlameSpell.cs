@@ -20,5 +20,6 @@ public class CleansingFlameSpell : baseSpellScript
             self.removeAura(i);
             self.changeUltServerRpc(1.0f);
         }
+        this.playAudio(Player, "onHit");
     }
 }

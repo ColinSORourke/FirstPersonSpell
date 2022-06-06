@@ -18,7 +18,7 @@ MonoBehaviour:
   isProjectile: 0
   projSpeed: 0
   projLifespan: 0
-  projObj: {fileID: 6565553207202630263, guid: 61f47cf3eb20d5840bb4a4b5bf6f6833, type: 3}
+  projObj: {fileID: 5886574859820942537, guid: 3b65ac0a5d0d3a549b17068affa095a0, type: 3}
   damage: 0
   ultCost: 0
   range: 30
@@ -31,7 +31,7 @@ MonoBehaviour:
   description: Gain 1 stack of 'Bleeding' and apply 2 stacks of 'Bleeding'. If used
     at 10 health or below, apply 3 stacks of 'Bleeding' instead.
   icon: {fileID: 21300000, guid: d148bb8e13c011f46bbd9164b82097fb, type: 3}
-  castParticle: {fileID: 4097161514132159413, guid: cd99cbb768160314783c55372b7a7784, type: 3}
+  castParticle: {fileID: 8122212395663777414, guid: e379c3447dcdd264791d1c710ca3615e, type: 3}
   hitParticle: {fileID: 8033044514062516751, guid: e645d30378ccb6748b3a905079329723, type: 3}
   castAudioClip: {fileID: 8300000, guid: dd9e24535715b6744850142101b29f54, type: 3}
   hitAudioClip: {fileID: 8300000, guid: 9eee8cd5104cb9b4e9742b16e87808d6, type: 3}

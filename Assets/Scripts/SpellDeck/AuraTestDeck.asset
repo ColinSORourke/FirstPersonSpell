@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1020
   spellDeck:
-  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
-  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
-  - {fileID: 11400000, guid: ffffc4ccc1f7348edafffff756e514bd, type: 2}
-  - {fileID: 11400000, guid: 42c745e30fb8d4ff3870f72453c4714b, type: 2}
-  - {fileID: 11400000, guid: 724a1422f966948459b97f3eb41371c7, type: 2}
-  - {fileID: 11400000, guid: 724a1422f966948459b97f3eb41371c7, type: 2}
-  - {fileID: 11400000, guid: 724a1422f966948459b97f3eb41371c7, type: 2}
-  - {fileID: 11400000, guid: 724a1422f966948459b97f3eb41371c7, type: 2}
-  ultSpell: {fileID: 11400000, guid: 724a1422f966948459b97f3eb41371c7, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  - {fileID: 11400000, guid: 50bfadb59e081422782be19c06d92438, type: 2}
+  ultSpell: {fileID: 11400000, guid: e97d1b59906104447a8a155dc164cb58, type: 2}

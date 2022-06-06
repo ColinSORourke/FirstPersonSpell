@@ -17,7 +17,9 @@ public class BasicBloodSpell : baseSpellScript
     override public void onHit(Transform Player, Transform Target, int slot, int index)
     {
         PlayerStateScript tHP = Target.GetComponent<PlayerStateScript>();
+        
         tHP.takeDamage(damage);
+        this.playAudio(Target, "onHit");
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
     }
 }

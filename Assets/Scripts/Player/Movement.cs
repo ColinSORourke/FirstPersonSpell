@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
             if (!previouslyGrounded){
                 playerStateScript.UpdateGroundStateServerRpc(true);
                 playerStateScript.UpdateJumpStateServerRpc(false);
+                playerStateScript.playAudioServerRpc(9);
                 verticalVelocity.y = 0;
                 graceTime = coyoteTime;
                 previouslyGrounded = true;
@@ -55,6 +56,7 @@ public class Movement : MonoBehaviour
                 playerStateScript.UpdateJumpStateServerRpc(true);
                 graceTime = 0;
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
+                playerStateScript.playAudioServerRpc(11);
             }
             jump = false;
         }

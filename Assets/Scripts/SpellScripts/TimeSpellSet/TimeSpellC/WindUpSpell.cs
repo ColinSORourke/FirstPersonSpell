@@ -24,5 +24,6 @@ public class WindUpSpell : baseSpellScript
         caster.changeManaServerRpc(10.0f);
         caster.applyAura(Player, aura_A, 5);
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
+        this.playAudio(Player, "onHit");
     }
 }

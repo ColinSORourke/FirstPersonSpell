@@ -87,7 +87,7 @@ public class PlayerAbilities : MonoBehaviour
                         myTar = Targets[currTarget].transform;
                     }
                     castingSpell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, castingSpell), castingSpellSlot);
-					StartCoroutine(playAudio(castingSpell.getAudio("onCast")));
+                    myState.playAudioServerRpc(GetComponent<SoundStorage>().findIndex(castingSpell.getAudio("onCast")));
 					
                     myUI.updateCast(0);
                     myState.UpdateCastServerRPC(false, false);
@@ -136,6 +136,7 @@ public class PlayerAbilities : MonoBehaviour
                 }
                 myState.InstantCastServerRPC();
                 spell.onCastGeneral(transform, myTar, System.Array.IndexOf(myState.spellDeck, spell), slot);
+                myState.playAudioServerRpc(GetComponent<SoundStorage>().findIndex(castingSpell.getAudio("onCast")));
             }
         } else
         {
@@ -265,8 +266,10 @@ public class PlayerAbilities : MonoBehaviour
         int indexOfNull = Targets.IndexOf(null);
         if (indexOfNull < 0) {
             GameObject leaverPlayer = GameObject.Find("Player " + leaverId);
-            visibleTargets.RemoveAt(Targets.IndexOf(leaverPlayer));
-            Targets.Remove(leaverPlayer);
+            if (Targets.IndexOf(leaverPlayer) != -1){
+                visibleTargets.RemoveAt(Targets.IndexOf(leaverPlayer));
+                Targets.Remove(leaverPlayer);
+            }
         } else {
             visibleTargets.RemoveAt(indexOfNull);
             Targets.RemoveAt(indexOfNull);

@@ -86,7 +86,7 @@ public class SpellRpcs : NetworkBehaviour
     public void SpawnCastParticleClientRpc(ulong sourceId, int index, bool emit, int emitNum = 10) {
         GameObject sourcePlayer = GameObject.Find("Player " + sourceId);
         baseSpellScript spell = sourcePlayer.GetComponent<PlayerStateScript>().spellDeck[index];
-        var particle = Instantiate(spell.hitParticle, sourcePlayer.transform);
+        var particle = Instantiate(spell.castParticle, sourcePlayer.transform);
         if (emit) {
             particle.Emit(emitNum);
         }

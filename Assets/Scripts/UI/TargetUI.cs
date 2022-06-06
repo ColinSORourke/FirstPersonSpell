@@ -15,7 +15,8 @@ public class TargetUI : GenericUI
         ManaBar = UITrans.Find("Mana").GetComponent<Image>();
         UltBar = UITrans.Find("UltBar").GetComponent<Image>();
         Shield = UITrans.Find("Shield").GetComponent<Image>();
-        RangeIndicator = UITrans.Find("RangeIndicator").GetComponent<Image>();
+        RangeIndicator = UITrans.Find("TargetMark/RangeIndicator").GetComponent<Image>();
+        TargetMark = UITrans.Find("TargetMark").gameObject;
         Shield.enabled = false;
     }
 
@@ -61,6 +62,14 @@ public class TargetUI : GenericUI
     }
 
     override public void addIcon(baseSpellScript spell, int slot){
+        // DO NOTHING
+    }
+
+    override public void getUlt(){
+        // DO NOTHING
+    }
+
+    override public void disableUlt(){
         // DO NOTHING
     }
 }

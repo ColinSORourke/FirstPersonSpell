@@ -21,6 +21,6 @@ public class DamageFrostbite : baseSpellScript
         FindObjectOfType<SpellRpcs>().spawnHitParticleServerRpc(Player.gameObject.GetComponent<NetworkObject>().OwnerClientId, index, Target.gameObject.GetComponent<NetworkObject>().OwnerClientId, true);
         float duration = 8.0f;
         target.applyAura(Player, aura_A, duration);
-        
+        this.playAudio(Target, "onHit");
     }
 }
