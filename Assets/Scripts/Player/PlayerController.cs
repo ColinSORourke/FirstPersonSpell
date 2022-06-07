@@ -133,9 +133,11 @@ public class PlayerController : MonoBehaviour
     }
 	
     public void switchUIGroup(){
-        bool temp = gameplayUIGroup.activeSelf;
-        gameplayUIGroup.SetActive(!temp);
-        menuUIGroup.SetActive(temp);
+        bool temp = menuUIGroup.activeSelf;
+        if (this.GetComponent<PlayerStateScript>().alive){
+            gameplayUIGroup.SetActive(temp);
+        }
+        menuUIGroup.SetActive(!temp);
         Cursor.visible = menuUIGroup.activeSelf;
         if (!Cursor.visible) {
             //Gameplay mode
