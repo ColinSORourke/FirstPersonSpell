@@ -20,7 +20,7 @@ MonoBehaviour:
   projLifespan: 5
   projObj: {fileID: 3851380569608633218, guid: 0550f3983c81f76449f9bee6fb799266, type: 3}
   damage: 20
-  ultCost: 0
+  ultCost: 50
   range: 45
   reqTarget: 1
   exhaust: 1

@@ -6,6 +6,8 @@ using UnityEngine;
 public class LaggyPlayerReturn : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<NetworkObject>().IsLocalPlayer) other.transform.position = new Vector3(140, 74, 235);
+        if (other.gameObject.GetComponent<NetworkObject>() != null){
+            if (other.gameObject.GetComponent<NetworkObject>().IsLocalPlayer) other.transform.position = new Vector3(140, 74, 235);
+        }
     }
 }

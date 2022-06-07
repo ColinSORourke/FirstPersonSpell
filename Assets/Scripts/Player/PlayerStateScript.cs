@@ -250,15 +250,18 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance.AlivesInGame < 2) {
-            if (alive) {
-                alive = false;
-                EndGameServerRpc();
-                localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(1);
-                localAudio.Play();
+        if (AliveManager.Instance != null){
+            if (AliveManager.Instance.AlivesInGame < 2) {
+                if (alive) {
+                    alive = false;
+                    EndGameServerRpc();
+                    localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(1);
+                    localAudio.Play();
+                }
+                transform.Find("KeyUI/Victory").gameObject.SetActive(true);
             }
-            transform.Find("KeyUI/Victory").gameObject.SetActive(true);
         }
+        
     }
 
     void falseTick(){

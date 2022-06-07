@@ -227,6 +227,7 @@ public class LobbyManager : NetworkBehaviour
 
     private IEnumerator WaitToLeaveHost() {
         yield return new WaitUntil(() => playerManager.PlayersInGame == 1);
+        yield return new WaitForSeconds(1);
         gameNetPortal.transitioning = true;
         GameNetPortal.Instance.RequestDisconnect();
     }
