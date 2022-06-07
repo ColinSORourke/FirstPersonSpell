@@ -19,8 +19,6 @@ public class SoundStorage : MonoBehaviour
             mySources[i].volume = PlayerPrefs.GetFloat("VolumePreference");
             i += 1;
         }
-        musicSource = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
-        musicSource.volume = PlayerPrefs.GetFloat("VolumePreference");
     }
 
     public void updateVolume(float newVolume){

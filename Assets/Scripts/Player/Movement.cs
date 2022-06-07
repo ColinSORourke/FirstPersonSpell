@@ -26,11 +26,12 @@ public class Movement : MonoBehaviour
         isGrounded = Physics.CheckSphere(transform.position - (new Vector3(0, transform.localScale.y, 0)), 0.2f, groundMask);
         if (isGrounded)
         {
+            verticalVelocity.y = 0;
             if (!previouslyGrounded){
                 playerStateScript.UpdateGroundStateServerRpc(true);
                 playerStateScript.UpdateJumpStateServerRpc(false);
                 playerStateScript.playAudioServerRpc(9);
-                verticalVelocity.y = 0;
+                
                 graceTime = coyoteTime;
                 previouslyGrounded = true;
             }

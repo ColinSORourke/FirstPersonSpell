@@ -250,7 +250,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance.AlivesInGame < 2) {
+        /* if (AliveManager.Instance.AlivesInGame < 2) {
             if (alive) {
                 alive = false;
                 EndGameServerRpc();
@@ -258,7 +258,7 @@ public class PlayerStateScript : NetworkBehaviour
                 localAudio.Play();
             }
             transform.Find("KeyUI/Victory").gameObject.SetActive(true);
-        }
+        } */
     }
 
     void falseTick(){
