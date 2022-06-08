@@ -21,6 +21,7 @@ public class MainMenuScene : MonoBehaviour
     //public Dropdown textureDropdown;
     //public Dropdown aaDropdown;
     public Slider volumeSlider;
+    public Slider musicVolumeSlider;
     public Slider mouseSensitivitySlider;
 
     Resolution[] resolutions;
@@ -29,6 +30,7 @@ public class MainMenuScene : MonoBehaviour
 
     public Text mouseSensitivityText;
     public Text volumeText;
+    public Text musicVolumeText;
     public GameObject KeybindsGroup;
 
     private bool isMenu = true;
@@ -122,11 +124,16 @@ public class MainMenuScene : MonoBehaviour
         //audioMixer.SetFloat("Volume", volume);
         volumeText.text = (volume*100).ToString("#");
     }
+
+    public void setMusicVolume(float volume){
+        musicVolumeText.text = (volume*100).ToString("#");
+    }
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("ResolutionPreference", resolutionDropdown.value);
         PlayerPrefs.SetInt("FullscreenPreference", System.Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("VolumePreference", volumeSlider.value);
+        PlayerPrefs.SetFloat("MusicVolumePreference", musicVolumeSlider.value);
         PlayerPrefs.SetFloat("MouseSensitivityPreference", mouseSensitivitySlider.value);
     }
     public void LoadSettings()
@@ -135,6 +142,7 @@ public class MainMenuScene : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.HasKey("ResolutionPreference") ? PlayerPrefs.GetInt("ResolutionPreference") : currentResolutionIndex;
         Screen.fullScreen = PlayerPrefs.HasKey("FullscreenPreference") ? System.Convert.ToBoolean(PlayerPrefs.GetInt("FullscreenPreference")) : true;
         volumeSlider.value = PlayerPrefs.HasKey("VolumePreference") ? PlayerPrefs.GetFloat("VolumePreference") : 0.5f;
+        musicVolumeSlider.value = PlayerPrefs.HasKey("MusicVolumePreference") ? PlayerPrefs.GetFloat("MusicVolumePreference") : 0.5f;
         mouseSensitivitySlider.value = PlayerPrefs.HasKey("MouseSensitivityPreference") ? PlayerPrefs.GetFloat("MouseSensitivityPreference") : 10.0f;
     }
 
@@ -143,6 +151,7 @@ public class MainMenuScene : MonoBehaviour
         PlayerPrefs.DeleteKey("ResolutionPreference");
         PlayerPrefs.DeleteKey("FullscreenPreference");
         PlayerPrefs.DeleteKey("VolumePreference");
+        PlayerPrefs.DeleteKey("MusicVolumePreference");
         PlayerPrefs.DeleteKey("MouseSensitivityPreference");
         LoadSettings();
     }

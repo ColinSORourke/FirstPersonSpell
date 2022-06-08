@@ -32,10 +32,6 @@ public class PlayerInGameSetting : MonoBehaviour
             allPlayers[i].transform.GetComponent<SoundStorage>().updateVolume(value);
             i += 1;
         }
-        if (GameObject.Find("MusicPlayer") != null){
-            AudioSource musicSource = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
-            musicSource.volume = value;
-        }
     }
 
     public void saveSetting()

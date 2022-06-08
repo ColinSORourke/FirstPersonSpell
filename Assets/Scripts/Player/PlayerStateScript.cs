@@ -250,7 +250,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        if (AliveManager.Instance != null){
+        /* if (AliveManager.Instance != null){
             if (AliveManager.Instance.AlivesInGame < 2) {
                 if (alive) {
                     alive = false;
@@ -260,7 +260,7 @@ public class PlayerStateScript : NetworkBehaviour
                 }
                 transform.Find("KeyUI/Victory").gameObject.SetActive(true);
             }
-        }
+        } */
         
     }
 
@@ -316,7 +316,7 @@ public class PlayerStateScript : NetworkBehaviour
 
             localAudio.clip = GetComponent<SoundStorage>().selectLocalSound(0);
             localAudio.Play();
-            playAudioServerRpc(10);
+            //playAudioServerRpc(10);
 
             transform.Find("KeyUI/SpectateText").gameObject.SetActive(true);
             DeathDisablesServerRpc(NetworkManager.Singleton.LocalClientId);
@@ -593,7 +593,7 @@ public class PlayerStateScript : NetworkBehaviour
     public void ShieldActiveClientRpc(bool state) {
         if (!IsLocalPlayer) transform.Find("ShieldPlaceholder").gameObject.SetActive(state);
         else if (state) {
-            playAudioServerRpc(9);
+            //playAudioServerRpc(9);
             damageIndicator.Play("shield_vignette");
         }
     }

@@ -7,7 +7,7 @@ public class MusicSourceVolume : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("VolumePreference");
+        this.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("MusicVolumePreference");
     }
 
     // Update is called once per frame

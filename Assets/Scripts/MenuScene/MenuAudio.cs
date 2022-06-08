@@ -8,21 +8,17 @@ public class MenuAudio : MonoBehaviour
     public AudioSource[] mySources;
 
     // Start is called before the first frame update
-    public void Start()
-    {  
+    public void Awake(){
         mySources = this.GetComponents<AudioSource>();
-        int i = 0;
-        while (i < mySources.Length){
-            mySources[i].volume = PlayerPrefs.GetFloat("VolumePreference");
-            i += 1;
-        }
+        mySources[0].volume = PlayerPrefs.GetFloat("MusicVolumePreference");
+        mySources[1].volume = PlayerPrefs.GetFloat("VolumePreference");
     }
 
     public void changeVolume(float newVolume){
-        int i = 0;
-        while (i < mySources.Length){
-            mySources[i].volume = newVolume;
-            i += 1;
-        }
+        mySources[1].volume = newVolume;
+    }
+
+    public void changeMusic(float newVolume){
+        mySources[0].volume = newVolume;
     }
 }
