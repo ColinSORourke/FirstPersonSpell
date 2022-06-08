@@ -250,7 +250,7 @@ public class PlayerStateScript : NetworkBehaviour
             }
         }
 
-        /* if (AliveManager.Instance != null){
+        if (AliveManager.Instance != null){
             if (AliveManager.Instance.AlivesInGame < 2) {
                 if (alive) {
                     alive = false;
@@ -260,7 +260,7 @@ public class PlayerStateScript : NetworkBehaviour
                 }
                 transform.Find("KeyUI/Victory").gameObject.SetActive(true);
             }
-        } */
+        }
         
     }
 
