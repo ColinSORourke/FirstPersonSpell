@@ -40,17 +40,23 @@ namespace DapperDino.UMT.Lobby {
             if (joinCodeInputField.text.Length != 6) {
                 joinCodeImage.color = Color.red;
             } else if (!String.IsNullOrEmpty(displayNameInputField.text) && displayNameInputField.text.Length <= 12) {
-                displayNameImage.color = Color.white;
-                joinCodeImage.color = Color.white;
-                for (int i = 0; i < clientObjectActives.Length; i++) clientObjectActives[i].SetActive(clientBoolActives[i]);
-
                 PlayerPrefs.SetString("PlayerName", displayNameInputField.text);
-
-                scene.rotateCamera();
                 ClientGameNetPortal.Instance.StartClient();
             } else {
                 displayNameImage.color = Color.red;
             }
+        }
+
+        public void SetClientObjectActives() {
+            displayNameImage.color = Color.white;
+            joinCodeImage.color = Color.white;
+            for (int i = 0; i < clientObjectActives.Length; i++) clientObjectActives[i].SetActive(clientBoolActives[i]);
+
+            scene.rotateCamera();
+        }
+
+        public void SetJoinRed() {
+            joinCodeImage.color = Color.red;
         }
     }
 }
