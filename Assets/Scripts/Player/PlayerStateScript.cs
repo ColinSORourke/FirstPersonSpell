@@ -455,6 +455,7 @@ public class PlayerStateScript : NetworkBehaviour
     [ClientRpc]
     private void DeathDisablesClientRpc() {
         GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+        this.transform.Find("onDeathEffect").gameObject.SetActive(true);
         foreach (Collider collider in GetComponentsInChildren<Collider>()) collider.gameObject.layer = 12;
         foreach (Canvas canvas in GetComponentsInChildren<Canvas>()) {
             if (canvas.gameObject.tag != "Key") canvas.gameObject.SetActive(false);
