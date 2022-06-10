@@ -23,6 +23,7 @@ namespace DapperDino.UMT.Lobby.Networking {
         public RelayManager relayManager;
         public LobbyManager lobbyManager;
         public PlayerManager playerManager;
+        public MainMenuUI mainMenuUI;
 
         private GameNetPortal gameNetPortal;
 
@@ -75,19 +76,33 @@ namespace DapperDino.UMT.Lobby.Networking {
         }
 
         public async void StartClientAsync() {
+            bool exception = false;
+            
             if (relayManager.IsRelayEnabled && !string.IsNullOrEmpty(joinCodeInput.text)) {
-                await relayManager.JoinRelay(joinCodeInput.text);
+                try {
+                    await relayManager.JoinRelay(joinCodeInput.text);
+                }
+                catch (System.Exception e) {
+                    Debug.Log("Exception Caught:");
+                    Debug.LogException(e);
+                    exception = true;
+                }
+                
                 joinCodeOutput.text = joinCodeInput.text;
                 joinCodeOutput.readOnly = true;
             }
 
-            if (NetworkManager.Singleton.StartClient()) {
-                Debug.Log("Client Started");
-                //playerManager.PlayersPlusPlusServerRpc();
-                //StartCoroutine(DelayAddCallToServer());
-            }
-            else {
+            if (!exception) {
+                if (NetworkManager.Singleton.StartClient()) {
+                    Debug.Log("Client Started");
+                    mainMenuUI.SetClientObjectActives();
+                }
+                else {
+                    Debug.Log("Client Not Started");
+                }
+            } else {
                 Debug.Log("Client Not Started");
+                mainMenuUI.SetJoinRed();
             }
         }
 
